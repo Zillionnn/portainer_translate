@@ -1,9 +1,16 @@
 angular.module('portainer')
-.run(['$rootScope', '$state', 'Authentication', 'authManager', 'StateManager', 'EndpointProvider', 'Notifications', 'Analytics', 'cfpLoadingBar', '$transitions', 'HttpRequestHelper',
-function ($rootScope, $state, Authentication, authManager, StateManager, EndpointProvider, Notifications, Analytics, cfpLoadingBar, $transitions, HttpRequestHelper) {
+.run(['$translate', '$rootScope', '$state', 'Authentication', 'authManager', 'StateManager', 'EndpointProvider', 'Notifications', 'Analytics', 'cfpLoadingBar', '$transitions', 'HttpRequestHelper',
+function ($translate, $rootScope, $state, Authentication, authManager, StateManager, EndpointProvider, Notifications, Analytics, cfpLoadingBar, $transitions, HttpRequestHelper) {
+  // config function
   'use strict';
 
   EndpointProvider.initialize();
+  $rootScope.last_name = 'Cat';
+  $rootScope.changeLanguage = function (key) {
+    console.log('do translate \n\n');
+    console.log($translate)
+    $translate.use(key);
+  };
 
   StateManager.initialize()
   .then(function success(state) {

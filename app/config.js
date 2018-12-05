@@ -1,12 +1,28 @@
 angular.module('portainer')
-  .config(['$urlRouterProvider', '$httpProvider', 'localStorageServiceProvider', 'jwtOptionsProvider', 'AnalyticsProvider', '$uibTooltipProvider', '$compileProvider', 'cfpLoadingBarProvider',
-  function ($urlRouterProvider, $httpProvider, localStorageServiceProvider, jwtOptionsProvider, AnalyticsProvider, $uibTooltipProvider, $compileProvider, cfpLoadingBarProvider) {
+  .config(['$translateProvider','$urlRouterProvider', '$httpProvider', 'localStorageServiceProvider', 'jwtOptionsProvider', 'AnalyticsProvider', '$uibTooltipProvider', '$compileProvider', 'cfpLoadingBarProvider',
+  function ($translateProvider, $urlRouterProvider, $httpProvider, localStorageServiceProvider, jwtOptionsProvider, AnalyticsProvider, $uibTooltipProvider, $compileProvider, cfpLoadingBarProvider) {
     'use strict';
 
     var environment = '@@ENVIRONMENT';
     if (environment === 'production') {
       $compileProvider.debugInfoEnabled(false);
     }
+
+    ////////////////////
+    $translateProvider.translations('en', {
+      'CAT': 'cat',
+      'FOO': 'This is a paragraph'
+    });
+   
+    $translateProvider.translations('zh', {
+      'CAT': '猫',
+      'FOO': 'Dies ist ein Absatz'
+    });
+   
+    $translateProvider.preferredLanguage('en');
+    /////////////////////
+
+
 
     localStorageServiceProvider
     .setPrefix('portainer');

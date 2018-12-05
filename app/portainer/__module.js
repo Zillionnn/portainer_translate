@@ -1,7 +1,22 @@
-angular.module('portainer.app', [])
-.config(['$stateRegistryProvider', function ($stateRegistryProvider) {
+angular.module('portainer.app', ['pascalprecht.translate'])
+.config(['$stateRegistryProvider', '$translateProvider', function ($stateRegistryProvider, $translateProvider) {
   'use strict';
 
+    ////////////////////
+    $translateProvider.translations('en', {
+      'TITLE': 'Hello',
+      'FOO': 'This is a paragraph'
+    });
+   
+    $translateProvider.translations('de', {
+      'TITLE': 'Hallo',
+      'FOO': 'Dies ist ein Absatz'
+    });
+   
+    $translateProvider.preferredLanguage('en');
+    /////////////////////
+
+    
   var root = {
     name: 'root',
     abstract: true,

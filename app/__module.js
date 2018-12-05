@@ -23,4 +23,5 @@ angular.module('portainer', [
   'portainer.azure',
   'portainer.docker',
   'extension.storidge',
+  'pascalprecht.translate',
   'rzModule']);
