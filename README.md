@@ -4,3 +4,5 @@
 </p>
 
 ## add angular-translate
+
+### copy assets/i10n  to dist/public/
