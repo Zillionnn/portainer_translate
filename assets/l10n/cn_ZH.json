@@ -1,5 +1,23 @@
 {
     "CAT": "猫",
     "HOME":"主页",
-    "STORIDGE": "存储"
+    "STORIDGE": "存储",
+    "HOST_JOBS":"主要工作",
+    "SCHEDULER":"计划",
+    "MONITOR":"监控",
+    "PROFILES":"配置文件",
+    "SETTINGS":"设置",
+    "USERS":"用户",
+    "TEAMS":"团队",
+    "ENDPOINTS":"终端",
+    "GROUPS":"组",
+    "TAGS":"标签",
+    "REGISTRIES":"注册",
+    "AUTHENTICATION":"认证",
+    "About":"关于",
+    "Important_message":"重要消息",
+    "Information": "信息",
+    "Welcome_to_Portainer":"欢迎来到Portainer！ 单击下面列表中的任何端点以访问管理功能。",
+    "You_do_not_have_access_to_any_environment_Please_contact_your_administrator":"您无权访问任何环境。 请联系您的管理员。",
+    "Endpoint_snapshot_is_disabled":"端点快照已禁用。"
 }

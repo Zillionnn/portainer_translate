@@ -1,15 +1,15 @@
 <rd-header>
-  <rd-header-title title-text="Home">
+  <rd-header-title title-text="{{ 'HOME' | translate }}">
     <a data-toggle="tooltip" title="Refresh" ui-sref="portainer.home" ui-sref-opts="{reload: true}">
-      <i class="fa fa-sync" aria-hidden="true"></i>{{ 'CAT' | translate }}
+      <i class="fa fa-sync" aria-hidden="true"></i>
     </a>
   </rd-header-title>
-  <rd-header-content>Endpoints</rd-header-content>
+  <rd-header-content>{{ 'ENDPOINTS' | translate }}</rd-header-content>
 </rd-header>
 
 <information-panel
   ng-if="motd && motd.Message !== '' && applicationState.UI.dismissedInfoHash !== motd.Hash"
-  title-text="Important message"
+  title-text="{{ 'Important_message' | translate }}"
   dismiss-action="dismissImportantInformation(motd.Hash)">
   <span class="text-muted">
     <p ng-bind-html="motd.Message"></p>
@@ -18,20 +18,22 @@
 
 <information-panel
   ng-if="!applicationState.UI.dismissedInfoPanels['home-info-01']"
-  title-text="Information"
+  title-text="{{ 'Information' | translate }}"
   dismiss-action="dismissInformationPanel('home-info-01')">
   <span class="small text-muted">
     <p ng-if="endpoints.length > 0">
-      Welcome to Portainer ! Click on any endpoint in the list below to access management features.
+      {{ 'Welcome_to_Portainer' | translate }}
     </p>
     <p ng-if="!isAdmin && endpoints.length === 0">
       <i class="fa fa-exclamation-circle orange-icon" aria-hidden="true" style="margin-right: 2px;"></i>
-      You do not have access to any environment. Please contact your administrator.
+      {{ 'You_do_not_have_access_to_any_environment_Please_contact_your_administrator' | translate }}
+      
     </p>
 
     <p ng-if="isAdmin && !applicationState.application.snapshot">
       <i class="fa fa-exclamation-circle orange-icon" aria-hidden="true" style="margin-right: 2px;"></i>
-      Endpoint snapshot is disabled.
+      {{ 'Endpoint_snapshot_is_disabled' | translate }}
+      <!-- Endpoint snapshot is disabled. -->
     </p>
   </span>
 </information-panel>
@@ -39,7 +41,7 @@
 <div class="row" ng-if="endpoints.length > 0">
   <div class="col-sm-12">
     <endpoint-list
-      title-text="Endpoints" title-icon="fa-plug"
+      title-text="{{ 'ENDPOINTS' | translate }}" title-icon="fa-plug"
       endpoints="endpoints"
       dashboard-action="goToDashboard"
       show-snapshot-action="!applicationState.application.authentication || isAdmin"

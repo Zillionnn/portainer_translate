@@ -1,5 +1,23 @@
 {
   "CAT": "cat",
   "HOME":"home",
-  "STORIDGE": "Storidge"
+  "STORIDGE": "Storidge",
+  "HOST_JOBS":"Host jobs",
+  "SCHEDULER":"scheduler",
+  "MONITOR":"Monitor",
+  "PROFILES":"Profiles",
+  "SETTINGS":"Settings",
+  "USERS":"Users",
+  "TEAMS":"Teams",
+  "ENDPOINTS":"Endpoints",
+  "GROUPS":"Groups",
+  "TAGS":"Tags",
+  "REGISTRIES":"Registries",
+  "AUTHENTICATION":"Authentication",
+  "About":"About",
+  "Important_message":"Important message",
+  "Information": "Information",
+  "Welcome_to_Portainer":"Welcome to Portainer ! Click on any endpoint in the list below to access management features.",
+  "You_do_not_have_access_to_any_environment_Please_contact_your_administrator":"You do not have access to any environment. Please contact your administrator.",
+  "Endpoint_snapshot_is_disabled":"Endpoint snapshot is disabled."
 }
