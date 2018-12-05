@@ -45,5 +45,14 @@
   "consulting_and_commercial_support_plans":"咨询和商业支持计划",
   "We_also_propose_a_fund":"我们还提出了一项基金特色计划，请与我们联系",
   "Limitations":"限制",
-  "Portainer_has_full_support_for_Docker":"Portainer完全支持Docker> = 1.10和对Docker 1.9的部分支持（某些功能可能不可用）。"
+  "Portainer_has_full_support_for_Docker":"Portainer完全支持Docker> = 1.10和对Docker 1.9的部分支持（某些功能可能不可用）。",
+  "User_settings":"用户设置",
+  "Change_user_password":"修改用户密码",
+  "Current_password":"当前密码",
+  "New_password":"新密码",
+  "at_least_8_characters_long":"您的新密码长度必须至少为8个字符",
+  "Confirm_password":"确认密码",
+  "Update_password":"更新密码",
+  "cannot_change_pwd_when_using_LDAP":"使用LDAP身份验证时，无法更改密码。",
+  "Login":"登陆"
 }

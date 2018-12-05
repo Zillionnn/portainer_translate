@@ -45,5 +45,14 @@
   "consulting_and_commercial_support_plans":"consulting and commercial support plans",
   "We_also_propose_a_fund":"We also propose a fund-a-feature plan, reach out to us at ",
   "Limitations":"Limitations",
-  "Portainer_has_full_support_for_Docker":"Portainer has full support for Docker >=1.10 and partial support for Docker 1.9 (some features may not be available)."
+  "Portainer_has_full_support_for_Docker":"Portainer has full support for Docker >=1.10 and partial support for Docker 1.9 (some features may not be available).",
+  "User_settings":"User settings",
+  "Change_user_password":"Change user password",
+  "Current_password":"Current password",
+  "New_password":"New password",
+  "at_least_8_characters_long":"Your new password must be at least 8 characters long",
+  "Confirm_password":"Confirm password",
+  "Update_password":"Update password",
+  "cannot_change_pwd_when_using_LDAP":"You cannot change your password when using LDAP authentication.",
+  "Login":"Login"
 }
