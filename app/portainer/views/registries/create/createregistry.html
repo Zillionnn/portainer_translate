@@ -1,7 +1,7 @@
 <rd-header>
-  <rd-header-title title-text="Create registry"></rd-header-title>
+  <rd-header-title title-text="{{ 'Create_registry' | translate }}"></rd-header-title>
   <rd-header-content>
-    <a ui-sref="portainer.registries">Registries</a> &gt; Add registry
+    <a ui-sref="portainer.registries">{{ 'Registries' | translate }}</a> &gt; {{ 'Add_registry' | translate }}
   </rd-header-content>
 </rd-header>
 
@@ -11,7 +11,7 @@
       <rd-widget-body>
         <form class="form-horizontal">
           <div class="col-sm-12 form-section-title">
-            Registry provider
+            {{ 'Registry_provider' | translate }}
           </div>
           <div class="form-group"></div>
           <div class="form-group" style="margin-bottom: 0">
@@ -23,7 +23,7 @@
                     <i class="fa fa-database" aria-hidden="true" style="margin-right: 2px;"></i>
                     Quay.io
                   </div>
-                  <p>Quay container registry</p>
+                  <p> {{ 'Quay_container_registry' | translate }}</p>
                 </label>
               </div>
               <div ng-click="selectCustomRegistry()">
@@ -31,28 +31,30 @@
                 <label for="registry_custom">
                   <div class="boxselector_header">
                     <i class="fa fa-database" aria-hidden="true" style="margin-right: 2px;"></i>
-                    Custom registry
+                    {{ 'Custom_registry' | translate }}
                   </div>
-                  <p>Define your own registry</p>
+                  <p> {{ 'Define_your_own_registry' | translate }}</p>
                 </label>
               </div>
             </div>
           </div>
           <div class="col-sm-12 form-section-title" ng-if="state.RegistryType === 'custom'">
-            Important notice
+            {{ 'Important_notice' | translate }}
           </div>
           <div class="form-group" ng-if="state.RegistryType === 'custom'">
             <span class="col-sm-12 text-muted small">
-              Docker requires you to connect to a <a href="https://docs.docker.com/registry/deploying/#running-a-domain-registry" target="_blank">secure registry</a>.
-              You can find more information about how to connect to an insecure registry <a href="https://docs.docker.com/registry/insecure/" target="_blank">in the Docker documentation</a>.
+              {{ 'Docker_requires_you_to_connect_to_a' | translate }} <a href="https://docs.docker.com/registry/deploying/#running-a-domain-registry" target="_blank">{{ 'secure_registry' | translate }}</a>.
+              <!-- You can find more information about how to connect to an insecure registry -->
+              {{ 'You_can_find_more_about_secure_registry' | translate }}
+               <a href="https://docs.docker.com/registry/insecure/" target="_blank">{{ 'in_the_Docker_documentation' | translate }}</a>.
             </span>
           </div>
           <div class="col-sm-12 form-section-title">
-            Registry details
+            {{ 'Registry_details' | translate }}
           </div>
           <!-- name-input -->
           <div class="form-group" ng-if="state.RegistryType === 'custom'">
-            <label for="registry_name" class="col-sm-3 col-lg-2 control-label text-left">Name</label>
+            <label for="registry_name" class="col-sm-3 col-lg-2 control-label text-left">{{ 'Name' | translate }}</label>
             <div class="col-sm-9 col-lg-10">
               <input type="text" class="form-control" id="registry_name" ng-model="formValues.Name" placeholder="e.g. my-registry">
             </div>
@@ -61,8 +63,8 @@
           <!-- registry-url-input -->
           <div class="form-group" ng-if="state.RegistryType === 'custom'">
             <label for="registry_url" class="col-sm-3 col-lg-2 control-label text-left">
-              Registry URL
-              <portainer-tooltip position="bottom" message="URL or IP address of a Docker registry. Any protocol will be stripped."></portainer-tooltip>
+              {{ 'Registry' | translate }} URL
+              <portainer-tooltip position="bottom" message="{{ 'URL_or_IP_address_of_a_Docker_registry_Any_protocol_will_be_stripped' | translate }} "></portainer-tooltip>
             </label>
             <div class="col-sm-9 col-lg-10">
               <input type="text" class="form-control" id="registry_url" ng-model="formValues.URL" placeholder="e.g. 10.0.0.10:5000 or myregistry.domain.tld">
@@ -73,8 +75,8 @@
           <div class="form-group" ng-if="state.RegistryType === 'custom'">
             <div class="col-sm-12">
               <label for="registry_auth" class="control-label text-left">
-                Authentication
-                <portainer-tooltip position="bottom" message="Enable this option if you need to specify credentials to connect to this registry."></portainer-tooltip>
+                {{ 'Authentication' | translate }}
+                <portainer-tooltip position="bottom" message="{{ 'Enable_this_option_if_you_need_to_specify_credentials_connect_registry' | translate }}"></portainer-tooltip>
               </label>
               <label class="switch" style="margin-left: 20px;">
                 <input type="checkbox" ng-model="formValues.Authentication"><i></i>
@@ -86,7 +88,7 @@
           <div ng-if="formValues.Authentication || state.RegistryType === 'quay'">
             <!-- credentials-user -->
             <div class="form-group">
-              <label for="credentials_username" class="col-sm-3 col-lg-2 control-label text-left">Username</label>
+              <label for="credentials_username" class="col-sm-3 col-lg-2 control-label text-left">{{ 'Username' | translate }}</label>
               <div class="col-sm-9 col-lg-10">
                 <input type="text" class="form-control" id="credentials_username" ng-model="formValues.Username">
               </div>
@@ -94,7 +96,7 @@
             <!-- !credentials-user -->
             <!-- credentials-password -->
             <div class="form-group">
-              <label for="credentials_password" class="col-sm-3 col-lg-2 control-label text-left">Password</label>
+              <label for="credentials_password" class="col-sm-3 col-lg-2 control-label text-left">{{ 'Password' | translate }}</label>
               <div class="col-sm-9 col-lg-10">
                 <input type="password" class="form-control" id="credentials_password" ng-model="formValues.Password">
               </div>
@@ -103,13 +105,13 @@
           </div>
           <!-- !authentication-credentials -->
           <div class="col-sm-12 form-section-title">
-            Actions
+            {{ 'Actions' | translate }}
           </div>
           <div class="form-group">
             <div class="col-sm-12">
               <button type="button" class="btn btn-primary btn-sm" ng-disabled="state.actionInProgress || !formValues.Name || !formValues.URL || (formValues.Authentication && (!formValues.Username || !formValues.Password))" ng-click="addRegistry()" button-spinner="state.actionInProgress">
-                <span ng-hide="state.actionInProgress">Add registry</span>
-                <span ng-show="state.actionInProgress">Adding registry...</span>
+                <span ng-hide="state.actionInProgress">{{ 'Add_registry' | translate }}Add registry</span>
+                <span ng-show="state.actionInProgress">{{ 'Adding_registry' | translate }}...</span>
               </button>
             </div>
           </div>

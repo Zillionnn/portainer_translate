@@ -130,6 +130,21 @@
   "Registry_access":"Registry access",
   "Registries":"Registries",
   "Registry":"Registry",
-  "You_can_select_which_user_or_team_can_access__other.":"  You can select which user or team can access this registry by moving them to the authorized accesses table. Simply click on a user or team entry to move it from one table to the other."
+  "You_can_select_which_user_or_team_can_access__other.":"  You can select which user or team can access this registry by moving them to the authorized accesses table. Simply click on a user or team entry to move it from one table to the other.",
+
+  "Create_registry":"Create registry",
+  "Add_registry":"Add registry",
+  "Adding_registry":"Adding registry",
+  "Registry_provider":"Registry provider",
+  "Quay_container_registry":"Quay container registry",
+  "Custom_registry":"Custom registry",
+  "Define_your_own_registry":"Define your own registry",
+  "Docker_requires_you_to_connect_to_a":" Docker requires you to connect to a",
+  "secure_registry":"secure registry",
+  "You_can_find_more_about_secure_registry":"You can find more information about how to connect to an insecure registry",
+  "Registry_details":" Registry details",
+  "URL_or_IP_address_of_a_Docker_registry_Any_protocol_will_be_stripped":"URL or IP address of a Docker registry. Any protocol will be stripped.",
+  "Authentication":"Authentication",
+  "Enable_this_option_if_you_need_to_specify_credentials_connect_registry":"Enable this option if you need to specify credentials to connect to this registry."
 
 }
