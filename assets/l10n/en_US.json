@@ -220,7 +220,11 @@
   "Disable_bind_mounts_for_non_administrators":"Disable bind mounts for non-administrators",
   "When_enabled_regular_users_will_not_be_able_to_containers.":"When enabled, regular users will not be able to use bind mounts when creating containers.",
   "Disable_privileged_mode_for_non_administrators":"Disable privileged mode for non-administrators",
-  "When_enabled_regular_users_privileged_mode":"When enabled, regular users will not be able to use privileged mode when creating containers."
+  "When_enabled_regular_users_privileged_mode":"When enabled, regular users will not be able to use privileged mode when creating containers.",
+  "You_can_hide_containers_with_specific_labels":"You can hide containers with specific labels from Portainer UI. You need to specify the label name and value.",
+  "Hidden_containers":"Hidden containers",
+  "Value":"Value",
+  "No_filter_available":"No filter available."
   
 
   
