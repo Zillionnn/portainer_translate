@@ -126,5 +126,11 @@
   "Required_TLS_files":"必需的TLS文件",
   "TLS_CA_certificate":"TLS CA证书",
   "Select_file":"选择文件",
-  "TLScertificate":"TLS证书"
+  "TLScertificate":"TLS证书",
+
+  "Registry_access":"Registry access",
+  "Registries":"Registries",
+  "Registry":"Registry",
+  "You_can_select_which_user_or_team_can_access__other.":"  You can select which user or team can access this registry by moving them to the authorized accesses table. Simply click on a user or team entry to move it from one table to the other."
+
 }

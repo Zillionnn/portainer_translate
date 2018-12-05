@@ -125,6 +125,11 @@
   "Required_TLS_files":"Required TLS files",
   "TLS_CA_certificate":"TLS CA certificate",
   "Select_file":"Select file",
-  "TLScertificate":"TLS certificate"
+  "TLScertificate":"TLS certificate",
+
+  "Registry_access":"Registry access",
+  "Registries":"Registries",
+  "Registry":"Registry",
+  "You_can_select_which_user_or_team_can_access__other.":"  You can select which user or team can access this registry by moving them to the authorized accesses table. Simply click on a user or team entry to move it from one table to the other."
 
 }
