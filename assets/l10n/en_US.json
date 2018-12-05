@@ -145,6 +145,12 @@
   "Registry_details":" Registry details",
   "URL_or_IP_address_of_a_Docker_registry_Any_protocol_will_be_stripped":"URL or IP address of a Docker registry. Any protocol will be stripped.",
   "Authentication":"Authentication",
-  "Enable_this_option_if_you_need_to_specify_credentials_connect_registry":"Enable this option if you need to specify credentials to connect to this registry."
+  "Enable_this_option_if_you_need_to_specify_credentials_connect_registry":"Enable this option if you need to specify credentials to connect to this registry.",
+
+  "URL_or_IP_address_of_a_Docker_registry":"URL or IP address of a Docker registry.",
+  "Enable_this_option_if_you_specify_credentials_connect_registry.":"Enable this option if you need to specify credentials to connect to this registry.",
+  "Update_registry":"Update registry",
+  "Updating_registry":"Updating registry"
+
 
 }
