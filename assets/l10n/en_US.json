@@ -94,10 +94,37 @@
   "Endpoint_groups":"Endpoint groups",
   "Add_group":"Add group",
   "Endpoint_group_management":"Endpoint group management",
-  
+
   "Please_create_the_initial_administrator_user":"Please create the initial administrator user.",
   "Username":"Username",
   "Password":"Password",
   "Create_user":"Create user",
-  "Creating_user":"Creating user"
+  "Creating_user":"Creating user",
+
+  "Connect_Portainer_to_the_Docker_environment":"Connect Portainer to the Docker environment you want to manage.",
+  "Local":"Local",
+  "Manage_the_local_Docker_environment":"Manage the local Docker environment",
+  "Remote":"Remote",
+  "Manage_a_remote_Docker_environment":"Manage a remote Docker environment",
+  "Connect_to_a_Portainer_agent":"Connect to a Portainer agent",
+  "Manage_the_Docker_environment_where_Portainer_running.":"Manage the Docker environment where Portainer is running.",
+  "Ensure_started_the_Portainer_container":"Ensure that you have started the Portainer container with the following Docker flag:",
+  "Connecting":"Connecting",
+  "Connectdirectly_Portainer_agent_running_inside_Swarm":"Connect directly to a Portainer agent running inside a Swarm cluster.",
+  "URLFORMAT":"If you have started Portainer in the same overlay network as the agent, you can use tasks.AGENT_SERVICE_NAME:AGENT_SERVICE_PORT as the endpoint URL format.",
+  "Environment":"Environment",
+  "Connect":"Connect",
+  "Tenant_ID":"Tenant ID",
+  "ConnectPtaRDockerEUDockerAPIoverTCP.":"Connect Portainer to a remote Docker environment using the Docker API over TCP.",
+  "URLorIPaddressofaDockerhostwithAPIexposedoverTCP":"URL or IP address of a Docker host with API exposed over TCP.",
+  "Enable_this_option_if_you_needto_specify_TLS_certi":"Enable this option if you need to specify TLS certificates to connect to the Docker endpoint.",
+  "Skip_server_verification":" Skip server verification",
+  "Enable_this_option_if_you_need_to_authenticate_server_CA.":"Enable this option if you need to authenticate server based on given CA.",
+  "Skip_client_verification":" Skip client verification",
+  "Enable_this_option_if_you_need_to_authenticate_client_certi":"Enable this option if you need to authenticate with a client certificate.",
+  "Required_TLS_files":"Required TLS files",
+  "TLS_CA_certificate":"TLS CA certificate",
+  "Select_file":"Select file",
+  "TLScertificate":"TLS certificate"
+
 }
