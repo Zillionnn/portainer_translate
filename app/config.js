@@ -7,19 +7,24 @@ angular.module('portainer')
     if (environment === 'production') {
       $compileProvider.debugInfoEnabled(false);
     }
-
+    // var translations = {
+    //   CAT: 'cat',
+    //   PARAGRAPH: 'Srsly!'
+    // };
+    // var translationsZH = {
+    //   CAT: '猫',
+    //   PARAGRAPH: 'Srsly!'
+    // };
     ////////////////////
-    $translateProvider.translations('en', {
-      'CAT': 'cat',
-      'FOO': 'This is a paragraph'
-    });
+    // $translateProvider.translations('en', translations);
    
-    $translateProvider.translations('zh', {
-      'CAT': '猫',
-      'FOO': 'Dies ist ein Absatz'
+    // $translateProvider.translations('zh', translationsZH);
+    $translateProvider.useStaticFilesLoader({
+      prefix: 'l10n/',
+      suffix: '.json'
     });
-   
-    $translateProvider.preferredLanguage('en');
+
+    $translateProvider.preferredLanguage('en_US');
     /////////////////////
 
 

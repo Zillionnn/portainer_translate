@@ -44,6 +44,7 @@ angular:
   - 'angular-resource/angular-resource.js'
   - 'angular-sanitize/angular-sanitize.js'
   - 'angular-translate/dist/angular-translate.js'
+  - 'angular-translate-loader-static-files/angular-translate-loader-static-files.js'
   - '@uirouter/angularjs/release/angular-ui-router.js'
   - 'angular-utils-pagination/dirPagination.js'
   - 'ng-file-upload/dist/ng-file-upload.js'

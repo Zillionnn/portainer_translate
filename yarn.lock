@@ -144,7 +144,13 @@ angular-sanitize@~1.5.0:
   version "1.5.11"
   resolved "https://registry.yarnpkg.com/angular-sanitize/-/angular-sanitize-1.5.11.tgz#ebfb3f343e543f9b2ef050fb4c2e9ee048d1772f"
 
-angular-translate@^2.18.1:
+angular-translate-loader-static-files@^2.18.1:
+  version "2.18.1"
+  resolved "https://registry.npmjs.org/angular-translate-loader-static-files/-/angular-translate-loader-static-files-2.18.1.tgz#ad0c3c883b18b089bdb8db02bbd366d903f857cc"
+  dependencies:
+    angular-translate "~2.18.1"
+
+angular-translate@^2.18.1, angular-translate@~2.18.1:
   version "2.18.1"
   resolved "https://registry.npmjs.org/angular-translate/-/angular-translate-2.18.1.tgz#b29ed0d2f9bac44075e7aad3284166c59e150791"
   dependencies:

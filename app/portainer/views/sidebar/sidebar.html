@@ -10,7 +10,7 @@
   <div class="sidebar-content">
   <ul class="sidebar">
     <li class="sidebar-list">
-      <a ui-sref="portainer.home" ui-sref-active="active">Home <span class="menu-icon fa fa-home fa-fw"></span></a>
+      <a ui-sref="portainer.home" ui-sref-active="active">{{ 'HOME' | translate }} <span class="menu-icon fa fa-home fa-fw"></span></a>
     </li>
     <li class="sidebar-title endpoint-name" ng-if="applicationState.endpoint.name">
       <span class="fa fa-plug space-right"></span>{{ applicationState.endpoint.name }}
@@ -74,7 +74,7 @@
   </ul>
   <div class="sidebar-footer-content">
       <div style="color: #cccccc;">
-          <span ng-click="changeLanguage('en')" class="changeLan">EN</span>|<span ng-click="changeLanguage('zh')" class="changeLan">中</span>
+          <span ng-click="changeLanguage('en_US')" class="changeLan">EN</span>|<span ng-click="changeLanguage('cn_ZH')" class="changeLan">中</span>
       </div>
       
     <img src="images/logo_small.png" class="img-responsive logo" alt="Portainer">
