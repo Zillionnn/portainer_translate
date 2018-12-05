@@ -204,7 +204,24 @@
   "LDAP_search_filter_select_group_elements":"The LDAP search filter used to select group elements, optional.",
   "add_group_search_configuration":"add group search configuration",
   "Save_settings":"Save settings",
-  "Saving":"Saving"
+  "Saving":"Saving",
+
+  "Application_settings":"Application settings",
+  "Snapshot_interval":"Snapshot interval",
+  "Use_custom_logo":"Use custom logo",
+  "specify_URL_logo_For_an_optimal_display_by_55px":"You can specify the URL to your logo here. For an optimal display, logo dimensions should be 155px by 55px.",
+  "Use_external_templates":"Use external templates",
+  "App_Templates":"App Templates",
+  "When_using_external_templates_something_will_disabled.":"When using external templates, in-app template management will be disabled.",
+  "specify_the_URL_to_your_own_template_definitions":"You can specify the URL to your own template definitions file here.",
+  "See":"See",
+  "documentation":"documentation",
+  "for_more_details":"for more details.",
+  "Disable_bind_mounts_for_non_administrators":"Disable bind mounts for non-administrators",
+  "When_enabled_regular_users_will_not_be_able_to_containers.":"When enabled, regular users will not be able to use bind mounts when creating containers.",
+  "Disable_privileged_mode_for_non_administrators":"Disable privileged mode for non-administrators",
+  "When_enabled_regular_users_privileged_mode":"When enabled, regular users will not be able to use privileged mode when creating containers."
+  
 
   
 

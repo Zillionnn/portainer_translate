@@ -1,17 +1,17 @@
 <rd-header>
-  <rd-header-title title-text="Settings"></rd-header-title>
-  <rd-header-content>Settings</rd-header-content>
+  <rd-header-title title-text=" {{ 'Settings' | translate }}"></rd-header-title>
+  <rd-header-content>{{ 'Settings' | translate }}</rd-header-content>
 </rd-header>
 
 <div class="row">
   <div class="col-sm-12">
     <rd-widget>
-      <rd-widget-header icon="fa-cogs" title-text="Application settings"></rd-widget-header>
+      <rd-widget-header icon="fa-cogs" title-text="{{ 'Application_settings' | translate }}"></rd-widget-header>
       <rd-widget-body>
         <form class="form-horizontal">
           <!-- snapshot-interval -->
           <div class="form-group">
-            <label for="snapshot_interval" class="col-sm-2 control-label text-left">Snapshot interval</label>
+            <label for="snapshot_interval" class="col-sm-2 control-label text-left">{{ 'Snapshot_interval' | translate }}</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" ng-model="settings.SnapshotInterval" id="snapshot_interval" placeholder="e.g. 15m">
             </div>
@@ -21,7 +21,7 @@
           <div class="form-group">
             <div class="col-sm-12">
               <label for="toggle_logo" class="control-label text-left">
-                Use custom logo
+                  {{ 'Use_custom_logo' | translate }}
               </label>
               <label class="switch" style="margin-left: 20px;">
                 <input type="checkbox" name="toggle_logo" ng-model="formValues.customLogo"><i></i>
@@ -31,7 +31,8 @@
           <div ng-if="formValues.customLogo">
             <div class="form-group">
               <span class="col-sm-12 text-muted small">
-                You can specify the URL to your logo here. For an optimal display, logo dimensions should be 155px by 55px.
+                <!-- You can specify the URL to your logo here. For an optimal display, logo dimensions should be 155px by 55px. -->
+                {{ 'specify_URL_logo_For_an_optimal_display_by_55px' | translate }}
               </span>
             </div>
             <div class="form-group">
@@ -46,13 +47,13 @@
           <!-- !logo -->
           <!-- templates -->
           <div class="col-sm-12 form-section-title">
-            App Templates
+              {{ 'App_Templates' | translate }}
           </div>
           <div class="form-group">
             <div class="col-sm-12">
               <label for="toggle_templates" class="control-label text-left">
-                Use external templates
-                <portainer-tooltip position="bottom" message="When using external templates, in-app template management will be disabled."></portainer-tooltip>
+                  {{ 'Use_external_templates' | translate }}
+                <portainer-tooltip position="bottom" message=" {{ 'When_using_external_templates_something_will_disabled' | translate }}"></portainer-tooltip>
               </label>
               <label class="switch" style="margin-left: 20px;">
                 <input type="checkbox" name="toggle_templates" ng-model="formValues.externalTemplates"><i></i>
@@ -62,7 +63,7 @@
           <div ng-if="formValues.externalTemplates">
             <div class="form-group">
               <span class="col-sm-12 text-muted small">
-                You can specify the URL to your own template definitions file here. See <a href="https://portainer.readthedocs.io/en/stable/templates.html" target="_blank">Portainer documentation</a> for more details.
+                  {{ 'specify_the_URL_to_your_own_template_definitions' | translate }} {{ 'See' | translate }} <a href="https://portainer.readthedocs.io/en/stable/templates.html" target="_blank">Portainer {{ 'documentation' | translate }}</a> {{ 'for_more_details' | translate }}
               </span>
             </div>
             <div class="form-group" >
@@ -77,13 +78,13 @@
           <!-- !templates -->
           <!-- security -->
           <div class="col-sm-12 form-section-title">
-            Security
+              {{ 'Security' | translate }}
           </div>
           <div class="form-group">
             <div class="col-sm-12">
               <label for="toggle_allowbindmounts" class="control-label text-left">
-                Disable bind mounts for non-administrators
-                <portainer-tooltip position="bottom" message="When enabled, regular users will not be able to use bind mounts when creating containers."></portainer-tooltip>
+                  {{ 'Disable_bind_mounts_for_non_administrators' | translate }}
+                <portainer-tooltip position="bottom" message="{{ 'When_enabled_regular_users_will_not_be_able_to_containers' | translate }}"></portainer-tooltip>
               </label>
               <label class="switch" style="margin-left: 20px;">
                 <input type="checkbox" name="toggle_allowbindmounts" ng-model="formValues.restrictBindMounts"><i></i>
@@ -93,8 +94,8 @@
           <div class="form-group">
             <div class="col-sm-12">
               <label for="toggle_allowbindmounts" class="control-label text-left">
-                Disable privileged mode for non-administrators
-                <portainer-tooltip position="bottom" message="When enabled, regular users will not be able to use privileged mode when creating containers."></portainer-tooltip>
+                  {{ 'Disable_privileged_mode_for_non_administrators' | translate }}
+                <portainer-tooltip position="bottom" message="{{ 'When_enabled_regular_users_privileged_mode' | translate }}"></portainer-tooltip>
               </label>
               <label class="switch" style="margin-left: 20px;">
                 <input type="checkbox" name="toggle_allowbindmounts" ng-model="formValues.restrictPrivilegedMode"><i></i>
@@ -106,8 +107,8 @@
           <div class="form-group">
             <div class="col-sm-12">
               <button type="button" class="btn btn-primary btn-sm" ng-click="saveApplicationSettings()" ng-disabled="state.actionInProgress" button-spinner="state.actionInProgress">
-                <span ng-hide="state.actionInProgress">Save settings</span>
-                <span ng-show="state.actionInProgress">Saving...</span>
+                <span ng-hide="state.actionInProgress">{{ 'Save_settings' | translate }}</span>
+                <span ng-show="state.actionInProgress">{{ 'Saving' | translate }}...</span>
               </button>
             </div>
           </div>
@@ -117,7 +118,7 @@
     </rd-widget>
   </div>
 </div>
-
+<!-- TODO 20181205 -->
 <div class="row">
   <div class="col-sm-12">
     <rd-widget>
