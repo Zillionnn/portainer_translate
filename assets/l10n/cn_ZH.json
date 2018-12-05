@@ -91,6 +91,13 @@
   "Endpoint_management_via_the_UI_is_disabled":"Endpoint management via the UI is disabled.",
   "You_can_still_manage_endpoint_access":"You can still manage endpoint access.",
   "Endpoint_group_access":"Endpoint group access",
-  "Endpoint_groups":"Endpoint groups",
-  "Add_group":"Add group"
+  "Endpoint_groups":"终端组",
+  "Add_group":"添加组",
+  "Endpoint_group_management":"终端组管理",
+
+  "Please_create_the_initial_administrator_user":"Please create the initial administrator user.",
+  "Username":"Username",
+  "Password":"Password",
+  "Create_user":"Create user",
+  "Creating_user":"Creating user"
 }

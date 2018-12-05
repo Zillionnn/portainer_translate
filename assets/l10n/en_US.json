@@ -92,5 +92,12 @@
   "You_can_still_manage_endpoint_access":"You can still manage endpoint access.",
   "Endpoint_group_access":"Endpoint group access",
   "Endpoint_groups":"Endpoint groups",
-  "Add_group":"Add group"
+  "Add_group":"Add group",
+  "Endpoint_group_management":"Endpoint group management",
+  
+  "Please_create_the_initial_administrator_user":"Please create the initial administrator user.",
+  "Username":"Username",
+  "Password":"Password",
+  "Create_user":"Create user",
+  "Creating_user":"Creating user"
 }
