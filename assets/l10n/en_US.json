@@ -79,5 +79,10 @@
   "Authentication_key":"Authentication key",
   "Metadata":"Metadata",
   "Actions":"Actions",
-  "Creating_endpoint":"Creating endpoint"
+  "Creating_endpoint":"Creating endpoint",
+  "Configuration":"Configuration",
+  "Security":"Security",
+  "Update_endpoint":"Update endpoint",
+  "Updating_endpoint":"Updating endpoint",
+  "Cancel":"Cancel"
 }
