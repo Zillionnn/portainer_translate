@@ -144,6 +144,12 @@ angular-sanitize@~1.5.0:
   version "1.5.11"
   resolved "https://registry.yarnpkg.com/angular-sanitize/-/angular-sanitize-1.5.11.tgz#ebfb3f343e543f9b2ef050fb4c2e9ee048d1772f"
 
+angular-translate@^2.18.1:
+  version "2.18.1"
+  resolved "https://registry.npmjs.org/angular-translate/-/angular-translate-2.18.1.tgz#b29ed0d2f9bac44075e7aad3284166c59e150791"
+  dependencies:
+    angular ">=1.2.26 <=1.7"
+
 angular-ui-bootstrap@~2.5.0:
   version "2.5.6"
   resolved "https://registry.yarnpkg.com/angular-ui-bootstrap/-/angular-ui-bootstrap-2.5.6.tgz#23937322ec641a6fbee16498cc32452aa199e7c5"
@@ -155,6 +161,10 @@ angular-utils-pagination@~0.11.1:
 angular@1.x, angular@~1.5.0:
   version "1.5.11"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.5.11.tgz#8c5ba7386f15965c9acf3429f6881553aada30d6"
+
+"angular@>=1.2.26 <=1.7":
+  version "1.7.5"
+  resolved "https://registry.npmjs.org/angular/-/angular-1.7.5.tgz#d1c1c01c6f5dc835638f3f9aa51012857bdac49e"
 
 angularjs-scroll-glue@^2.2.0:
   version "2.2.0"
@@ -4509,7 +4519,6 @@ xtend@~3.0.0:
 xterm@^3.8.0:
   version "3.8.0"
   resolved "https://registry.yarnpkg.com/xterm/-/xterm-3.8.0.tgz#55d1de518bdc9c9793823f5e4e97d6898972938d"
-  integrity sha512-rS3HLryuMWbLsv98+jVVSUXCxmoyXPwqwJNC0ad0VSMdXgl65LefPztQVwfurkaF7kM7ZSgM8eJjnJ9kkdoR1w==
 
 yargs@~3.10.0:
   version "3.10.0"

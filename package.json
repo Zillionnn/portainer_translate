@@ -45,6 +45,7 @@
     "angular-mocks": "~1.5.0",
     "angular-resource": "~1.5.0",
     "angular-sanitize": "~1.5.0",
+    "angular-translate": "^2.18.1",
     "angular-ui-bootstrap": "~2.5.0",
     "angular-utils-pagination": "~0.11.1",
     "angularjs-scroll-glue": "^2.2.0",
