@@ -84,5 +84,9 @@
   "Security":"Security",
   "Update_endpoint":"Update endpoint",
   "Updating_endpoint":"Updating endpoint",
-  "Cancel":"Cancel"
+  "Cancel":"Cancel",
+  "Endpoint_management":"Endpoint management",
+  "Endpoint_management_is_not_available":"Endpoint management is not available",
+  "Endpoint_management_via_the_UI_is_disabled":"Endpoint management via the UI is disabled.",
+  "You_can_still_manage_endpoint_access":"You can still manage endpoint access."
 }
