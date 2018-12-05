@@ -54,5 +54,9 @@
   "Confirm_password":"确认密码",
   "Update_password":"更新密码",
   "cannot_change_pwd_when_using_LDAP":"使用LDAP身份验证时，无法更改密码。",
-  "Login":"登陆"
+  "Login":"登陆",
+  "Endpoint_access":"终端访问",
+  "Access_management":"访问管理",
+  "Name":"名称",
+  "Group":"组"
 }

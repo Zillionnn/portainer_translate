@@ -54,5 +54,9 @@
   "Confirm_password":"Confirm password",
   "Update_password":"Update password",
   "cannot_change_pwd_when_using_LDAP":"You cannot change your password when using LDAP authentication.",
-  "Login":"Login"
+  "Login":"Login",
+  "Endpoint_access":"Endpoint access",
+  "Access_management":"Access management",
+  "Name":"Name",
+  "Group":"Group"
 }
