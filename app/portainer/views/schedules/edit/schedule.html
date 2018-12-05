@@ -1,11 +1,11 @@
 <rd-header>
-  <rd-header-title title-text="Schedule details">
+  <rd-header-title title-text="{{ 'Schedule_details' | translate }}">
     <a data-toggle="tooltip" title-text="Refresh" ui-sref="portainer.schedules.schedule({id: schedule.Id})" ui-sref-opts="{reload: true}">
       <i class="fa fa-sync" aria-hidden="true"></i>
     </a>
   </rd-header-title>
   <rd-header-content>
-    <a ui-sref="portainer.schedules">Schedules</a> &gt; {{ ::schedule.Name }}</a>
+    <a ui-sref="portainer.schedules">{{ 'Schedules' | translate }}</a> &gt; {{ ::schedule.Name }}</a>
   </rd-header-content>
 </rd-header>
 
@@ -17,7 +17,7 @@
         <uib-tabset active="state.activeTab">
           <uib-tab index="0">
             <uib-tab-heading>
-              <i class="fa fa-wrench" aria-hidden="true"></i> Configuration
+              <i class="fa fa-wrench" aria-hidden="true"></i> {{ 'Configuration' | translate }}
             </uib-tab-heading>
 
             <schedule-form
@@ -34,20 +34,21 @@
 
           <uib-tab index="1">
             <uib-tab-heading>
-              <i class="fa fa-tasks" aria-hidden="true"></i> Tasks
+              <i class="fa fa-tasks" aria-hidden="true"></i> {{ 'Tasks' | translate }}
             </uib-tab-heading>
 
             <div class="col-sm-12 form-section-title">
-              Information
+              {{ 'Information' | translate }}
             </div>
             <div class="form-group">
               <span class="col-sm-12 text-muted small">
-                Tasks are retrieved across all endpoints via snapshots. Data available in this view might not be up-to-date.
+                <!-- Tasks are retrieved across all endpoints via snapshots. Data available in this view might not be up-to-date. -->
+                {{ 'Tasks_are_retrieved_across_all_endpoints_via_snapshots' | translate }}
               </span>
             </div>
 
             <div class="col-sm-12 form-section-title" style="margin-bottom: 20px;">
-              Tasks
+              {{ 'Tasks' | translate }}
             </div>
             <schedule-tasks-datatable
               ng-if="tasks"

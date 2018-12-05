@@ -157,5 +157,13 @@
   "The_DockerHub_registry_can_be_used_by_any_user":"The DockerHub registry can be used by any user. You can specify the credentials that will be used to push &amp; pull images here.",
   "Enable_this_option_if_you_need_to_specify_credentials_to_con":"Enable this option if you need to specify credentials to connect to push/pull private images.",
   "Update":"Update",
-  "Updating_DockerHub_settings":"Updating DockerHub settings"
+  "Updating_DockerHub_settings":"Updating DockerHub settings",
+
+  "Schedules":"Schedules",
+  "Add_schedule":"Add schedule",
+  "Schedule_details":"Schedule details",
+  "Tasks":"Tasks",
+  "Tasks_are_retrieved_across_all_endpoints_via_snapshots":"Tasks are retrieved across all endpoints via snapshots. Data available in this view might not be up-to-date.",
+  "Create_schedule":"Create schedule",
+  "Schedules_list":"Schedules list"
 }

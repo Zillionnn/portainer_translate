@@ -1,18 +1,18 @@
 <rd-header>
-  <rd-header-title title-text="Authentication settings"></rd-header-title>
+  <rd-header-title title-text="{{ 'Authentication_settings' | translate }}"></rd-header-title>
   <rd-header-content>
-    <a ui-sref="portainer.settings">Settings</a> &gt; Authentication
+    <a ui-sref="portainer.settings">{{ 'Settings' | translate }}</a> &gt; {{ 'Authentication' | translate }}
   </rd-header-content>
 </rd-header>
 
 <div class="row">
   <div class="col-sm-12">
     <rd-widget>
-      <rd-widget-header icon="fa-users" title-text="Authentication"></rd-widget-header>
+      <rd-widget-header icon="fa-users" title-text="{{ 'Authentication' | translate }}"></rd-widget-header>
       <rd-widget-body>
         <form class="form-horizontal">
           <div class="col-sm-12 form-section-title">
-            Authentication method
+            {{ 'Authentication_method' | translate }}
           </div>
           <div class="form-group"></div>
           <div class="form-group" style="margin-bottom: 0">
@@ -22,9 +22,9 @@
                 <label for="registry_quay">
                   <div class="boxselector_header">
                     <i class="fa fa-users" aria-hidden="true" style="margin-right: 2px;"></i>
-                    Internal
+                    {{ 'Internal' | translate }}
                   </div>
-                  <p>Internal authentication mechanism</p>
+                  <p>{{ 'Internal_authentication_mechanism' | translate }}</p>
                 </label>
               </div>
               <div>
@@ -34,34 +34,36 @@
                     <i class="fa fa-users" aria-hidden="true" style="margin-right: 2px;"></i>
                     LDAP
                   </div>
-                  <p>LDAP authentication</p>
+                  <p>LDAP  {{ 'authentication' | translate }}</p>
                 </label>
               </div>
             </div>
           </div>
           <div class="col-sm-12 form-section-title">
-            Information
+            {{ 'Information' | translate }}
           </div>
           <div class="form-group" ng-if="settings.AuthenticationMethod === 1">
             <span class="col-sm-12 text-muted small">
-              When using internal authentication, Portainer will encrypt user passwords and store credentials locally.
+              <!-- When using internal authentication, Portainer will encrypt user passwords and store credentials locally. -->
+              {{ 'When_using_internal_authentication_Portainer_will' | translate }}
             </span>
           </div>
           <div class="form-group" ng-if="settings.AuthenticationMethod === 2">
             <span class="col-sm-12 text-muted small">
-              When using LDAP authentication, Portainer will delegate user authentication to a LDAP server and fallback to internal authentication if LDAP authentication fails.
+              <!-- When using LDAP authentication, Portainer will delegate user authentication to a LDAP server and fallback to internal authentication if LDAP authentication fails. -->
+              {{ 'When_using_LDAP_authentication_Portainer_will_delegate' | translate }}
             </span>
           </div>
 
           <div ng-if="settings.AuthenticationMethod === 2">
             <div class="col-sm-12 form-section-title">
-              LDAP configuration
+              LDAP  {{ 'Configuration' | translate }}              
             </div>
 
             <div class="form-group">
               <label for="ldap_url" class="col-sm-3 col-lg-2 control-label text-left">
                 LDAP Server
-                <portainer-tooltip position="bottom" message="URL or IP address of the LDAP server."></portainer-tooltip>
+                <portainer-tooltip position="bottom" message="{{ 'URL_or_IP_address_of_the_LDAP_server' | translate }}"></portainer-tooltip>
               </label>
               <div class="col-sm-9 col-lg-10">
                 <input type="text" class="form-control" id="ldap_url" ng-model="LDAPSettings.URL" placeholder="e.g. 10.0.0.10:389 or myldap.domain.tld:389">
@@ -71,7 +73,7 @@
             <div class="form-group">
               <label for="ldap_username" class="col-sm-3 col-lg-2 control-label text-left">
                 Reader DN
-                <portainer-tooltip position="bottom" message="Account that will be used to search for users."></portainer-tooltip>
+                <portainer-tooltip position="bottom" message="{{ 'Account_that_will_be_used_to_search_for_users' | translate }}"></portainer-tooltip>
               </label>
               <div class="col-sm-9 col-lg-10">
                 <input type="text" class="form-control" id="ldap_username" ng-model="LDAPSettings.ReaderDN" placeholder="cn=readonly-account,dc=ldap,dc=domain,dc=tld">
@@ -80,7 +82,7 @@
 
             <div class="form-group">
               <label for="ldap_password" class="col-sm-3 col-lg-2 control-label text-left">
-                Password
+                {{ 'Password' | translate }}
               </label>
               <div class="col-sm-9 col-lg-10">
                 <input type="password" class="form-control" id="ldap_password" ng-model="LDAPSettings.Password" placeholder="password">
@@ -89,28 +91,28 @@
 
             <div class="form-group" ng-if="!LDAPSettings.TLSConfig.TLS && !LDAPSettings.StartTLS">
               <label for="ldap_password" class="col-sm-3 col-lg-2 control-label text-left">
-                Connectivity check
+                {{ 'Connectivity_check' | translate }}
                 <i class="fa fa-check green-icon" style="margin-left: 5px;" ng-if="state.successfulConnectivityCheck"></i>
                 <i class="fa fa-times red-icon" style="margin-left: 5px;" ng-if="state.failedConnectivityCheck"></i>
               </label>
               <div class="col-sm-9 col-lg-10">
                 <button type="button" class="btn btn-primary btn-sm" ng-disabled="state.connectivityCheckInProgress || !LDAPSettings.URL || !LDAPSettings.ReaderDN || !LDAPSettings.Password" ng-click="LDAPConnectivityCheck()" button-spinner="state.connectivityCheckInProgress">
-                  <span ng-hide="state.connectivityCheckInProgress">Test connectivity</span>
-                  <span ng-show="state.connectivityCheckInProgress">Testing connectivity...</span>
+                  <span ng-hide="state.connectivityCheckInProgress">{{ 'Test_connectivity' | translate }}</span>
+                  <span ng-show="state.connectivityCheckInProgress">{{ 'Testing_connectivity' | translate }}...</span>
                 </button>
               </div>
             </div>
 
             <div class="col-sm-12 form-section-title">
-              LDAP security
+              LDAP  {{ 'security' | translate }}
             </div>
 
             <!-- starttls -->
             <div class="form-group" ng-if="!LDAPSettings.TLSConfig.TLS">
               <div class="col-sm-12">
                 <label for="tls" class="control-label text-left">
-                  Use StartTLS
-                  <portainer-tooltip position="bottom" message="Enable this option if want to use StartTLS to secure the connection to the server. Ignored if Use TLS is selected."></portainer-tooltip>
+                  {{ 'Use' | translate }} StartTLS
+                  <portainer-tooltip position="bottom" message="{{ 'Enable_this_option_if_want_to_use_StartTLS_secure' | translate }}"></portainer-tooltip>
                 </label>
                 <label class="switch" style="margin-left: 20px;">
                   <input type="checkbox" ng-model="LDAPSettings.StartTLS"><i></i>
@@ -123,8 +125,8 @@
             <div class="form-group" ng-if="!LDAPSettings.StartTLS">
               <div class="col-sm-12">
                 <label for="tls" class="control-label text-left">
-                  Use TLS
-                  <portainer-tooltip position="bottom" message="Enable this option if you need to specify TLS certificates to connect to the LDAP server."></portainer-tooltip>
+                  {{ 'Use' | translate }} TLS
+                  <portainer-tooltip position="bottom" message="{{ 'connect_to_the_LDAP_server' | translate }}"></portainer-tooltip>
                 </label>
                 <label class="switch" style="margin-left: 20px;">
                   <input type="checkbox" ng-model="LDAPSettings.TLSConfig.TLS"><i></i>
@@ -137,8 +139,8 @@
             <div class="form-group">
               <div class="col-sm-12">
                 <label for="tls" class="control-label text-left">
-                  Skip verification of server certificate
-                  <portainer-tooltip position="bottom" message="Skip the verification of the server TLS certificate. Not recommended on unsecured networks."></portainer-tooltip>
+                  {{ 'Skip_verification_of_server_certificate' | translate }}
+                  <portainer-tooltip position="bottom" message="{{ 'Skip_the_verification_of_the_server_TLS_certificate_Not_recommended' | translate }}"></portainer-tooltip>
                 </label>
                 <label class="switch" style="margin-left: 20px;">
                   <input type="checkbox" ng-model="LDAPSettings.TLSConfig.TLSSkipVerify"><i></i>
@@ -151,7 +153,7 @@
             <div ng-if="LDAPSettings.TLSConfig.TLS || LDAPSettings.StartTLS">
               <!-- ca-input -->
               <div class="form-group" ng-if="!LDAPSettings.TLSConfig.TLSSkipVerify">
-                <label class="col-sm-2 control-label text-left">TLS CA certificate</label>
+                <label class="col-sm-2 control-label text-left">{{ 'TLS_CA_certificate' | translate }}</label>
                 <div class="col-sm-10">
                   <button class="btn btn-sm btn-primary" ngf-select ng-model="formValues.TLSCACert">Select file</button>
                   <span style="margin-left: 5px;">
@@ -168,28 +170,31 @@
 
             <div class="form-group" ng-if="LDAPSettings.TLSConfig.TLS || LDAPSettings.StartTLS">
               <label for="ldap_password" class="col-sm-3 col-lg-2 control-label text-left">
-                Connectivity check
+                {{ 'Connectivity_check' | translate }}
                 <i class="fa fa-check green-icon" style="margin-left: 5px;" ng-if="state.successfulConnectivityCheck"></i>
                 <i class="fa fa-times red-icon" style="margin-left: 5px;" ng-if="state.failedConnectivityCheck"></i>
               </label>
               <div class="col-sm-9 col-lg-10">
-                <button type="button" class="btn btn-primary btn-sm" ng-click="LDAPConnectivityCheck()" ng-disabled="!LDAPSettings.URL || !LDAPSettings.ReaderDN || !LDAPSettings.Password || (!formValues.TLSCACert && !LDAPSettings.TLSConfig.TLSSkipVerify)">Test connectivity</button>
+                <button type="button" class="btn btn-primary btn-sm" ng-click="LDAPConnectivityCheck()" ng-disabled="!LDAPSettings.URL || !LDAPSettings.ReaderDN || !LDAPSettings.Password || (!formValues.TLSCACert && !LDAPSettings.TLSConfig.TLSSkipVerify)">
+                    {{ 'Test_connectivity' | translate }}
+                </button>
                 <i id="connectivityCheckSpinner" class="fa fa-cog fa-spin" style="margin-left: 5px; display: none;"></i>
               </div>
             </div>
 
             <div class="col-sm-12 form-section-title">
-              Automatic user provisioning
+                {{ 'Automatic_user_provisioning' | translate }}
             </div>
             <div class="form-group">
               <span class="col-sm-12 text-muted small">
-                With automatic user provisioning enabled, Portainer will create user(s) automatically with standard user role and assign them to team(s) which matches to LDAP group name(s). If disabled, users must be created in Portainer beforehand.
+                <!-- With automatic user provisioning enabled, Portainer will create user(s) automatically with standard user role and assign them to team(s) which matches to LDAP group name(s). If disabled, users must be created in Portainer beforehand. -->
+                {{ 'With_automatic_user_provisioning_enabled_Portainer_nd' | translate }}
               </span>
             </div>
             <div class="form-group">
               <div class="col-sm-12">
                 <label for="tls" class="control-label text-left">
-                  Automatic user provisioning
+                    {{ 'Automatic_user_provisioning' | translate }}
                 </label>
                 <label class="switch" style="margin-left: 20px;">
                   <input type="checkbox" ng-model="LDAPSettings.AutoCreateUsers"><i></i>
@@ -198,7 +203,7 @@
             </div>
 
             <div class="col-sm-12 form-section-title">
-              User search configurations
+                {{ 'User_search_configurations' | translate }}
             </div>
 
             <!-- search-settings -->
@@ -206,22 +211,22 @@
 
               <div class="form-group" ng-if="$index > 0">
                 <span class="col-sm-12 text-muted small">
-                  Extra search configuration
+                    {{ 'Extra_search_configuration' | translate }}
                 </span>
               </div>
 
               <div class="form-group">
                 <label for="ldap_basedn_{{$index}}" class="col-sm-4 col-md-2 control-label text-left">
                   Base DN
-                  <portainer-tooltip position="bottom" message="The distinguished name of the element from which the LDAP server will search for users."></portainer-tooltip>
+                  <portainer-tooltip position="bottom" message="{{ 'The_distinguished_name_of_the_element_from_which_the_LDAP' | translate }}"></portainer-tooltip>
                 </label>
                 <div class="col-sm-8 col-md-4">
                   <input type="text" class="form-control" id="ldap_basedn_{{$index}}" ng-model="config.BaseDN" placeholder="dc=ldap,dc=domain,dc=tld">
                 </div>
 
                 <label for="ldap_username_att_{{$index}}" class="col-sm-4 col-md-3 col-lg-2 margin-sm-top control-label text-left">
-                  Username attribute
-                  <portainer-tooltip position="bottom" message="LDAP attribute which denotes the username."></portainer-tooltip>
+                    {{ 'Username_attribute' | translate }}
+                  <portainer-tooltip position="bottom" message="{{ 'LDAP_attribute_which_denotes_the_username' | translate }}"></portainer-tooltip>
                 </label>
                 <div class="col-sm-8 col-md-3 col-lg-4 margin-sm-top">
                   <input type="text" class="form-control" id="ldap_username_att_{{$index}}" ng-model="config.UserNameAttribute" placeholder="uid">
@@ -229,8 +234,8 @@
               </div>
               <div class="form-group">
                 <label for="ldap_filter_{{$index}}" class="col-sm-4 col-md-2 control-label text-left">
-                  Filter
-                  <portainer-tooltip position="bottom" message="The LDAP search filter used to select user elements, optional."></portainer-tooltip>
+                    {{ 'Filter' | translate }}
+                  <portainer-tooltip position="bottom" message="{{ 'LDAP_search_filter_used_to_select_user_elements' | translate }}"></portainer-tooltip>
                 </label>
                 <div class="col-sm-7 col-md-9">
                   <input type="text" class="form-control" id="ldap_filter_{{$index}}" ng-model="config.Filter" placeholder="(objectClass=account)">
@@ -244,7 +249,7 @@
 
               <div class="form-group">
                 <span class="label label-default interactive" style="margin-left: 10px;" ng-click="addSearchConfiguration()">
-                  <i class="fa fa-plus-circle" aria-hidden="true"></i> add user search configuration
+                  <i class="fa fa-plus-circle" aria-hidden="true"></i>{{ 'add_user_search_configuration' | translate }}
                 </span>
               </div>
 
@@ -252,7 +257,7 @@
             <!-- !search-settings -->
 
             <div class="col-sm-12 form-section-title">
-              Group search configurations
+                {{ 'Group_search_configurations' | translate }}
             </div>
 
             <!-- group-search-settings -->
@@ -260,22 +265,22 @@
 
               <div class="form-group" ng-if="$index > 0">
                 <span class="col-sm-12 text-muted small">
-                  Extra search configuration
+                   {{ 'Extra_search_configuration' | translate }}
                 </span>
               </div>
 
               <div class="form-group">
                 <label for="ldap_group_basedn_{{$index}}" class="col-sm-4 col-md-2 control-label text-left">
-                  Group Base DN
-                  <portainer-tooltip position="bottom" message="The distinguished name of the element from which the LDAP server will search for groups."></portainer-tooltip>
+                    {{ 'Group_Base_DN' | translate }}
+                  <portainer-tooltip position="bottom" message="{{ 'The_distinguished_name_of_the_element_from_LDAP' | translate }}"></portainer-tooltip>
                 </label>
                 <div class="col-sm-8 col-md-4">
                   <input type="text" class="form-control" id="ldap_group_basedn_{{$index}}" ng-model="groupConfig.GroupBaseDN" placeholder="dc=ldap,dc=domain,dc=tld">
                 </div>
 
                 <label for="ldap_group_att_{{$index}}" class="col-sm-4 col-md-3 col-lg-2 margin-sm-top control-label text-left">
-                  Group Membership Attribute
-                  <portainer-tooltip position="bottom" message="LDAP attribute which denotes the group membership."></portainer-tooltip>
+                    {{ 'Group_Membership_Attribute' | translate }}
+                  <portainer-tooltip position="bottom" message="{{ 'LDAP_attribute_which_denotes_the_group_membership' | translate }}"></portainer-tooltip>
                 </label>
                 <div class="col-sm-8 col-md-3 col-lg-4 margin-sm-top">
                   <input type="text" class="form-control" id="ldap_group_att_{{$index}}" ng-model="groupConfig.GroupAttribute" placeholder="member">
@@ -283,8 +288,8 @@
               </div>
               <div class="form-group">
                 <label for="ldap_group_filter_{{$index}}" class="col-sm-4 col-md-2 control-label text-left">
-                  Group Filter
-                  <portainer-tooltip position="bottom" message="The LDAP search filter used to select group elements, optional."></portainer-tooltip>
+                    {{ 'Group_Filter' | translate }}
+                  <portainer-tooltip position="bottom" message="{{ 'LDAP_search_filter_select_group_elements' | translate }}"></portainer-tooltip>
                 </label>
                 <div class="col-sm-7 col-md-9">
                   <input type="text" class="form-control" id="ldap_group_filter_{{$index}}" ng-model="groupConfig.GroupFilter" placeholder="(objectClass=account)">
@@ -298,7 +303,7 @@
 
               <div class="form-group">
                 <span class="label label-default interactive" style="margin-left: 10px;" ng-click="addGroupSearchConfiguration()">
-                  <i class="fa fa-plus-circle" aria-hidden="true"></i> add group search configuration
+                  <i class="fa fa-plus-circle" aria-hidden="true"></i> {{ 'add_group_search_configuration' | translate }}
                 </span>
               </div>
 
@@ -310,8 +315,8 @@
           <div class="form-group">
             <div class="col-sm-12">
               <button type="button" class="btn btn-primary btn-sm" ng-click="saveSettings()" ng-disabled="state.actionInProgress" button-spinner="state.actionInProgress">
-                <span ng-hide="state.actionInProgress">Save settings</span>
-                <span ng-show="state.actionInProgress">Saving...</span>
+                <span ng-hide="state.actionInProgress">{{ 'Save_settings' | translate }}</span>
+                <span ng-show="state.actionInProgress">{{ 'Saving' | translate }}...</span>
               </button>
             </div>
           </div>
