@@ -36,8 +36,8 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'config:dev',
     'clean:app',
-    'shell:buildBinary:linux:' + arch,
-    'shell:downloadDockerBinary:linux:' + arch,
+    // 'shell:buildBinary:linux:' + arch,
+    // 'shell:downloadDockerBinary:linux:' + arch,
     'vendor',
     'html2js',
     'useminPrepare:dev',

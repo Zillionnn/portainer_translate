@@ -868,4 +868,7 @@ json-tree .branch-preview {
   font-size: 11px;
   opacity: .5;
 }
+.changeLan{
+  cursor: pointer;
+}
 /* !json-tree override */

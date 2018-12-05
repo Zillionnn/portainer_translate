@@ -35,6 +35,9 @@ angular.module('portainer.app')
       deferred.resolve();
     })
     .catch(function error() {
+      user.username = 'demo';
+      user.ID = 'fakeId';
+      user.role = 0;
       deferred.reject();
     });
 

@@ -21,20 +21,23 @@ function ($q, $scope, $state, $transition$, $sanitize, Authentication, UserServi
     .then(function success() {
       checkForEndpoints();
     })
-    .catch(function error() {
-      SettingsService.publicSettings()
-      .then(function success(settings) {
-        if (settings.AuthenticationMethod === 1) {
-          return Authentication.login($sanitize(username), $sanitize(password));
-        }
-        return $q.reject();
-      })
-      .then(function success() {
-        $state.go('portainer.updatePassword');
-      })
-      .catch(function error() {
-        $scope.state.AuthenticationError = 'Invalid credentials';
-      });
+    .catch(function error(err) {
+      console.error('err', err);
+      $state.go('portainer.home');
+      //checkForEndpoints();
+      // SettingsService.publicSettings()
+      // .then(function success(settings) {
+      //   if (settings.AuthenticationMethod === 1) {
+      //     return Authentication.login($sanitize(username), $sanitize(password));
+      //   }
+      //   return $q.reject();
+      // })
+      // .then(function success() {
+      //   $state.go('portainer.updatePassword');
+      // })
+      // .catch(function error() {
+      //   $scope.state.AuthenticationError = 'Invalid credentials';
+      // });
     });
   };
 
