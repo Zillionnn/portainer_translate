@@ -9,20 +9,21 @@
   <div class="form-group" ng-show="executeJobForm.job_image.$invalid">
     <div class="col-sm-12 small text-warning">
       <div ng-messages="executeJobForm.job_image.$error">
-        <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> This field is required.</p>
+        <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>{{ 'This_field_is_required' | translate }}</p>
       </div>
     </div>
   </div>
   <!-- !image-input -->
   <div class="form-group">
     <span class="col-sm-12 text-muted small">
-      This job will run inside a privileged container on the host. You can access the host filesystem under the
+      <!-- This job will run inside a privileged container on the host. You can access the host filesystem under the -->
+      {{ 'job_run_inside_privileged' | translate }}
       <code>/host</code> folder.
     </span>
   </div>
   <!-- execution-method -->
   <div class="col-sm-12 form-section-title">
-    Job creation
+      {{ 'Job_creation' | translate }}
   </div>
   <div class="form-group"></div>
   <div class="form-group" style="margin-bottom: 0">
@@ -32,9 +33,9 @@
         <label for="method_editor">
           <div class="boxselector_header">
             <i class="fa fa-edit" aria-hidden="true" style="margin-right: 2px;"></i>
-            Web editor
+            {{ 'Web_editor' | translate }}
           </div>
-          <p>Use our Web editor</p>
+          <p>{{ 'Use_our_Web_editor' | translate }}</p>
         </label>
       </div>
       <div>
@@ -42,9 +43,11 @@
         <label for="method_upload">
           <div class="boxselector_header">
             <i class="fa fa-upload" aria-hidden="true" style="margin-right: 2px;"></i>
-            Upload
+            {{ 'Upload' | translate }}
           </div>
-          <p>Upload from your computer</p>
+          <p>
+              {{ 'Upload_from_your_computer' | translate }}
+          </p>
         </label>
       </div>
     </div>
@@ -53,7 +56,7 @@
   <!-- web-editor -->
   <div ng-show="$ctrl.state.Method === 'editor'">
     <div class="col-sm-12 form-section-title">
-      Web editor
+        {{ 'Web_editor' | translate }}
     </div>
     <div class="form-group">
       <div class="col-sm-12">
@@ -69,16 +72,16 @@
   <!-- upload -->
   <div ng-show="$ctrl.state.Method === 'upload'">
     <div class="col-sm-12 form-section-title">
-      Upload
+        {{ 'Upload' | translate }}
     </div>
     <div class="form-group">
       <span class="col-sm-12 text-muted small">
-        You can upload a script file from your computer.
+          {{ 'upload_script_file_from_computer' | translate }}
       </span>
     </div>
     <div class="form-group">
       <div class="col-sm-12">
-        <button class="btn btn-sm btn-primary" ngf-select ng-model="$ctrl.formValues.JobFile">Select file</button>
+        <button class="btn btn-sm btn-primary" ngf-select ng-model="$ctrl.formValues.JobFile">{{ 'Select_file' | translate }}</button>
         <span style="margin-left: 5px;">
           {{ $ctrl.formValues.JobFile.name }}
           <i class="fa fa-times red-icon" ng-if="!$ctrl.formValues.JobFile" aria-hidden="true"></i>
@@ -89,7 +92,7 @@
   <!-- !upload -->
   <!-- actions -->
   <div class="col-sm-12 form-section-title">
-    Actions
+      {{ 'Actions' | translate }}
   </div>
   <div class="form-group">
     <div class="col-sm-12">
@@ -98,8 +101,8 @@
         || ($ctrl.state.Method === 'upload' && !$ctrl.formValues.JobFile)"
         ng-click="$ctrl.executeJob()"
         button-spinner="$ctrl.state.actionInProgress">
-        <span ng-hide="$ctrl.state.actionInProgress">Execute</span>
-        <span ng-show="$ctrl.state.actionInProgress">Starting job...</span>
+        <span ng-hide="$ctrl.state.actionInProgress">{{ 'Execute' | translate }}</span>
+        <span ng-show="$ctrl.state.actionInProgress">{{ 'Starting_job' | translate }}...</span>
       </button>
       <span class="text-danger" ng-if="$ctrl.state.formValidationError" style="margin-left: 5px;">
         {{ $ctrl.state.formValidationError }}

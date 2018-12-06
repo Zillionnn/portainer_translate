@@ -13,13 +13,14 @@
   </div>
   <!-- !tls-checkbox -->
   <div class="col-sm-12 form-section-title" ng-if="$ctrl.formData.TLS">
-    TLS mode
+    TLS {{ 'mode' | translate }}
   </div>
   <!-- note -->
   <div class="form-group" ng-if="$ctrl.formData.TLS">
     <div class="col-sm-12">
       <span class="small text-muted">
-        You can find out more information about how to protect a Docker environment with TLS in the <a href="https://docs.docker.com/engine/security/https/" target="_blank">Docker documentation</a>.
+        <!-- You can find out more information about how to protect a Docker environment with TLS in the <a href="https://docs.docker.com/engine/security/https/" target="_blank">Docker documentation</a>. -->
+        {{ 'more_information_protect_Docker_with_TLS' | translate }}<a href="https://docs.docker.com/engine/security/https/" target="_blank">Docker {{ 'documentation' | translate }}</a>.
       </span>
     </div>
   </div>
@@ -32,9 +33,10 @@
         <label for="tls_client_ca">
           <div class="boxselector_header">
             <i class="fa fa-shield-alt" aria-hidden="true" style="margin-right: 2px;"></i>
-            TLS with server and client verification
+            <!-- TLS with server and client verification -->
+            {{ 'TLS_with_server_and_client_verification' | translate }}
           </div>
-          <p>Use client certificates and server verification</p>
+          <p>{{ 'Use_client_certificates_and_server_verification' | translate }}</p>
         </label>
       </div>
       <div>
@@ -42,9 +44,9 @@
         <label for="tls_client_noca">
           <div class="boxselector_header">
             <i class="fa fa-shield-alt" aria-hidden="true" style="margin-right: 2px;"></i>
-            TLS with client verification only
+            {{ 'TLS_with_client_verification_only' | translate }}
           </div>
-          <p>Use client certificates without server verification</p>
+          <p>{{ 'Use_client_certificates_without_server_verification' | translate }}</p>
         </label>
       </div>
       <div>
@@ -52,9 +54,9 @@
         <label for="tls_ca">
           <div class="boxselector_header">
             <i class="fa fa-shield-alt" aria-hidden="true" style="margin-right: 2px;"></i>
-            TLS with server verification only
+            {{ 'TLS_with_server_verification_only' | translate }}
           </div>
-          <p>Only verify the server certificate</p>
+          <p>{{ 'Only_verify_the_server_certificate' | translate }}</p>
         </label>
       </div>
       <div>
@@ -62,24 +64,26 @@
         <label for="tls_only">
           <div class="boxselector_header">
             <i class="fa fa-shield-alt" aria-hidden="true" style="margin-right: 2px;"></i>
-            TLS only
+            {{ 'TLS_only' | translate }}
           </div>
-          <p>No server/client verification</p>
+          <p> {{ 'No_serverclient_verification' | translate }}</p>
         </label>
       </div>
     </div>
   </div>
   <!-- !endpoint-tls-mode -->
   <div class="col-sm-12 form-section-title" ng-if="$ctrl.formData.TLS && $ctrl.formData.TLSMode !== 'tls_only'">
-    Required TLS files
+      {{ 'Required_TLS_files' | translate }}
   </div>
   <!-- tls-file-upload -->
   <div ng-if="$ctrl.formData.TLS">
     <!-- tls-file-ca -->
     <div class="form-group" ng-if="$ctrl.formData.TLSMode === 'tls_client_ca' || $ctrl.formData.TLSMode === 'tls_ca'">
-      <label class="col-sm-3 col-lg-2 control-label text-left">TLS CA certificate</label>
+      <label class="col-sm-3 col-lg-2 control-label text-left">
+         {{ 'TLS_CA_certificate' | translate }}
+      </label>
       <div class="col-sm-9 col-lg-10">
-        <button class="btn btn-sm btn-primary" ngf-select ng-model="$ctrl.formData.TLSCACert">Select file</button>
+        <button class="btn btn-sm btn-primary" ngf-select ng-model="$ctrl.formData.TLSCACert">{{ 'Select_file' | translate }}</button>
         <span style="margin-left: 5px;">
           {{ $ctrl.formData.TLSCACert.name }}
           <i class="fa fa-check green-icon" ng-if="$ctrl.formData.TLSCACert && $ctrl.formData.TLSCACert === $ctrl.endpoint.TLSConfig.TLSCACert" aria-hidden="true"></i>
@@ -92,9 +96,9 @@
     <div ng-if="$ctrl.formData.TLSMode === 'tls_client_ca' || $ctrl.formData.TLSMode === 'tls_client_noca'">
       <!-- tls-file-cert -->
       <div class="form-group">
-        <label for="tls_cert" class="col-sm-3 col-lg-2 control-label text-left">TLS certificate</label>
+        <label for="tls_cert" class="col-sm-3 col-lg-2 control-label text-left">{{ 'TLScertificate' | translate }}</label>
         <div class="col-sm-9 col-lg-10">
-          <button class="btn btn-sm btn-primary" ngf-select ng-model="$ctrl.formData.TLSCert">Select file</button>
+          <button class="btn btn-sm btn-primary" ngf-select ng-model="$ctrl.formData.TLSCert">{{ 'Select_file' | translate }}</button>
           <span style="margin-left: 5px;">
             {{ $ctrl.formData.TLSCert.name }}
             <i class="fa fa-check green-icon" ng-if="$ctrl.formData.TLSCert && $ctrl.formData.TLSCert === $ctrl.endpoint.TLSConfig.TLSCert" aria-hidden="true"></i>
@@ -105,9 +109,9 @@
       <!-- !tls-file-cert -->
       <!-- tls-file-key -->
       <div class="form-group">
-        <label class="col-sm-3 col-lg-2 control-label text-left">TLS key</label>
+        <label class="col-sm-3 col-lg-2 control-label text-left">{{ 'TLS_key' | translate }}</label>
         <div class="col-sm-9 col-lg-10">
-          <button class="btn btn-sm btn-primary" ngf-select ng-model="$ctrl.formData.TLSKey">Select file</button>
+          <button class="btn btn-sm btn-primary" ngf-select ng-model="$ctrl.formData.TLSKey">{{ 'Select_file' | translate }}</button>
           <span style="margin-left: 5px;">
             {{ $ctrl.formData.TLSKey.name }}
             <i class="fa fa-check green-icon" ng-if="$ctrl.formData.TLSKey && $ctrl.formData.TLSKey === $ctrl.endpoint.TLSConfig.TLSKey" aria-hidden="true"></i>

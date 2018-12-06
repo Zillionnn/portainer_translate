@@ -21,7 +21,7 @@
                     <a ng-click="$ctrl.changeOrderBy('Endpoint')">
                       <i class="fa fa-sort-alpha-down" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Endpoint' && !$ctrl.state.reverseOrder"></i>
                       <i class="fa fa-sort-alpha-up" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Endpoint' && $ctrl.state.reverseOrder"></i>
-                      Endpoint
+                      {{ 'Endpoint' | translate }}
                     </a>
                   </th>
                   <th>
@@ -33,7 +33,7 @@
                   </th>
                   <th>
                     <a ng-click="$ctrl.changeOrderBy('Status')">
-                      State
+                        {{ 'State' | translate }}
                       <i class="fa fa-sort-alpha-down" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Status' && !$ctrl.state.reverseOrder"></i>
                       <i class="fa fa-sort-alpha-up" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Status' && $ctrl.state.reverseOrder"></i>
                     </a>
@@ -42,7 +42,7 @@
                     <a ng-click="$ctrl.changeOrderBy('Created')">
                       <i class="fa fa-sort-alpha-down" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Created' && !$ctrl.state.reverseOrder"></i>
                       <i class="fa fa-sort-alpha-up" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Created' && $ctrl.state.reverseOrder"></i>
-                      Created
+                      {{ 'Created' | translate }}
                     </a>
                   </th>
                 </tr>
@@ -66,7 +66,7 @@
                   <td colspan="9" class="text-center text-muted">Loading...</td>
                 </tr>
                 <tr ng-if="$ctrl.state.filteredDataSet.length === 0">
-                  <td colspan="9" class="text-center text-muted">No tasks available.</td>
+                  <td colspan="9" class="text-center text-muted">{{ 'No_tasks_available' | translate }}</td>
                 </tr>
               </tbody>
             </table>
@@ -76,10 +76,10 @@
               <form class="form-inline">
                 <span class="limitSelector">
                   <span style="margin-right: 5px;">
-                    Items per page
+                      {{ 'Items_per_page' | translate }}
                   </span>
                   <select class="form-control" ng-model="$ctrl.state.paginatedItemLimit" ng-change="$ctrl.changePaginationLimit()">
-                    <option value="0">All</option>
+                    <option value="0"> {{ 'All' | translate }}</option>
                     <option value="10">10</option>
                     <option value="25">25</option>
                     <option value="50">50</option>

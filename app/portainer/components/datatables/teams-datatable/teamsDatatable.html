@@ -9,7 +9,7 @@
       <div class="actionBar">
         <button type="button" class="btn btn-sm btn-danger"
           ng-disabled="$ctrl.state.selectedItemCount === 0" ng-click="$ctrl.removeAction($ctrl.state.selectedItems)">
-          <i class="fa fa-trash-alt space-right" aria-hidden="true"></i>Remove
+          <i class="fa fa-trash-alt space-right" aria-hidden="true"></i>{{ 'Remove' | translate }}
         </button>
       </div>
       <div class="searchBar">
@@ -26,7 +26,7 @@
                   <label for="select_all"></label>
                 </span>
                 <a ng-click="$ctrl.changeOrderBy('Name')">
-                  Name
+                    {{ 'Name' | translate }}
                   <i class="fa fa-sort-alpha-down" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Name' && !$ctrl.state.reverseOrder"></i>
                   <i class="fa fa-sort-alpha-up" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Name' && $ctrl.state.reverseOrder"></i>
                 </a>
@@ -47,23 +47,23 @@
               <td class="text-center text-muted">Loading...</td>
             </tr>
             <tr ng-if="$ctrl.state.filteredDataSet.length === 0">
-              <td class="text-center text-muted">No team available.</td>
+              <td class="text-center text-muted">{{ 'No_team_available' | translate }}</td>
             </tr>
           </tbody>
         </table>
       </div>
       <div class="footer" ng-if="$ctrl.dataset">
         <div class="infoBar" ng-if="$ctrl.state.selectedItemCount !== 0">
-          {{ $ctrl.state.selectedItemCount }} item(s) selected
+          {{ $ctrl.state.selectedItemCount }} {{ 'item_selected' | translate }}
         </div>
         <div class="paginationControls">
           <form class="form-inline">
             <span class="limitSelector">
               <span style="margin-right: 5px;">
-                Items per page
+                  {{ 'Items_per_page' | translate }}
               </span>
               <select class="form-control" ng-model="$ctrl.state.paginatedItemLimit" ng-change="$ctrl.changePaginationLimit()">
-                <option value="0">All</option>
+                <option value="0">{{ 'All' | translate }}</option>
                 <option value="10">10</option>
                 <option value="25">25</option>
                 <option value="50">50</option>

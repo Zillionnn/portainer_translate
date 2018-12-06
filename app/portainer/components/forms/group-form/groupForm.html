@@ -1,7 +1,7 @@
 <form class="form-horizontal" name="endpointGroupForm">
   <!-- name-input -->
   <div class="form-group" ng-class="{ 'has-error': endpointGroupForm.group_name.$invalid }">
-    <label for="group_name" class="col-sm-3 col-lg-2 control-label text-left">Name</label>
+    <label for="group_name" class="col-sm-3 col-lg-2 control-label text-left">{{ 'Name' | translate }}</label>
     <div class="col-sm-9 col-lg-10">
       <input type="text" class="form-control" name="group_name" ng-model="$ctrl.model.Name" placeholder="e.g. my-group" required auto-focus>
     </div>
@@ -9,21 +9,23 @@
   <div class="form-group" ng-show="endpointGroupForm.group_name.$invalid">
     <div class="col-sm-12 small text-warning">
       <div ng-messages="endpointGroupForm.group_name.$error">
-        <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> This field is required.</p>
+        <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+           {{ 'This_field_is_required' | translate }}
+          </p>
       </div>
     </div>
   </div>
   <!-- !name-input -->
   <!-- description-input -->
   <div class="form-group">
-    <label for="group_description" class="col-sm-3 col-lg-2 control-label text-left">Description</label>
+    <label for="group_description" class="col-sm-3 col-lg-2 control-label text-left">{{ 'Description' | translate }}</label>
     <div class="col-sm-9 col-lg-10">
       <input type="text" class="form-control" id="group_description" ng-model="$ctrl.model.Description" placeholder="e.g. production environments...">
     </div>
   </div>
   <!-- !description-input -->
   <div class="col-sm-12 form-section-title">
-    Metadata
+      {{ 'Metadata' | translate }}
   </div>
   <!-- tags -->
   <div class="form-group">
@@ -36,17 +38,18 @@
   <!-- endpoints -->
   <div ng-if="$ctrl.model.Id !== 1">
     <div class="col-sm-12 form-section-title">
-      Associated endpoints
+        {{ 'Associated_endpoints' | translate }}
     </div>
     <div class="form-group">
       <div class="col-sm-12 small text-muted">
-        You can select which endpoint should be part of this group by moving them to the associated endpoints table. Simply click
-        on any endpoint entry to move it from one table to the other.
+        <!-- You can select which endpoint should be part of this group by moving them to the associated endpoints table. Simply click
+        on any endpoint entry to move it from one table to the other. -->
+        {{ 'You_can_select_which_endpoint_should_be_part_ndpoihe_other' | translate }}
       </div>
       <div class="col-sm-12" style="margin-top: 20px;">
         <!-- available-endpoints -->
         <div class="col-sm-6">
-          <div class="text-center small text-muted">Available endpoints</div>
+          <div class="text-center small text-muted">{{ 'Available_endpoints' | translate }}</div>
           <div style="margin-top: 10px;">
             <group-association-table
               dataset="$ctrl.availableEndpoints"
@@ -58,7 +61,7 @@
         <!-- !available-endpoints -->
         <!-- associated-endpoints -->
         <div class="col-sm-6">
-          <div class="text-center small text-muted">Associated endpoints</div>
+          <div class="text-center small text-muted">{{ 'Associated_endpoints' | translate }}</div>
           <div style="margin-top: 10px;">
             <group-association-table
               dataset="$ctrl.associatedEndpoints"
@@ -73,7 +76,7 @@
   </div>
   <div ng-if="$ctrl.model.Id === 1">
     <div class="col-sm-12 form-section-title">
-      Unassociated endpoints
+        {{ 'Unassociated_endpoints' | translate }}
     </div>
     <div ng-if="$ctrl.associatedEndpoints.length > 0">
       <div style="margin-top: 10px;">
@@ -84,19 +87,21 @@
       </div>
     </div>
     <div class="col-sm-12" ng-if="$ctrl.associatedEndpoints.length ===  0">
-      <span class="text-muted small">All the endpoints are assigned to a group.</span>
+      <span class="text-muted small">
+          {{ 'All_the_endpoints_are_assigned_to_a_group' | translate }}
+      </span>
     </div>
   </div>
   <!-- !endpoints -->
   <!-- actions -->
   <div class="col-sm-12 form-section-title">
-    Actions
+      {{ 'Actions' | translate }}
   </div>
   <div class="form-group">
     <div class="col-sm-12">
       <button type="button" class="btn btn-primary btn-sm" ng-click="$ctrl.formAction()" ng-disabled="$ctrl.actionInProgress || !endpointGroupForm.$valid" button-spinner="$ctrl.actionInProgress">
         <span ng-hide="$ctrl.actionInProgress">{{ $ctrl.formActionLabel }}</span>
-        <span ng-show="$ctrl.actionInProgress">In progress...</span>
+        <span ng-show="$ctrl.actionInProgress">{{ 'In_progress' | translate }}...</span>
       </button>
     </div>
   </div>

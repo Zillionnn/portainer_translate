@@ -392,7 +392,66 @@
   "restrict_management_resource_to_one_or_more":"I want to restrict the management of this resource to one or more of my teams",
   "Public":"Public",
   "user_with_manage_resource":"I want any user with access to this endpoint to be able to manage this resource",
-  "You have not yet created any team.":"You have not yet created any team."
+  
+  "select_which_user_or_team_can_access":"You can select which user or team can access this",
+  "Note":"Note",
+  "Users_and_teams":"Users and teams",
+  "Authorize_all":"Authorize all",
+  "Authorized_users_and_teams":"Authorized users and teams",
+  "Deny_all":"Deny all",
+  
+  "Type":"Type",
+  "Manage_access":"Manage access",
+  "No_endpoint_available":"No endpoint available.",
+  "item_selected":"item(s) selected",
+
+  "No_group_available":"No group available.",
+  "authentication_enabled":"authentication-enabled",
+  "No_registry_available":"No registry available",
+
+  "Endpoint":"Endpoint",
+  "State":"State",
+  "Created":"Created",
+  "No_tasks_available":"No tasks available.",
+  "Cron_expression":"Cron expression",
+  "No_schedule_available":"No schedule available.",
+  "Limited":"Limited",
+  "Total":"Total",
+  "No_stack_available":"No stack available.",
+  "No_tag_available":"No tag available.",
+  "No_team_available":"No team available.",
+  "No_user_available":"No user available.",
+
+  "No_tags":"No tags",
+
+  "mode":"mode",
+  "more_information_protect_Docker_with_TLS":"You can find out more information about how to protect a Docker environment with TLS in the",
+  "TLS_with_server_and_client_verification":"TLS with server and client verification",
+  "Use_client_certificates_and_server_verification":"Use client certificates and server verification",
+  "TLS_with_client_verification_only":"TLS with client verification only",
+  "Use_client_certificates_without_server_verification":"Use client certificates without server verification",
+  "TLS_with_server_verification_only":"TLS with server verification only",
+  "Only_verify_the_server_certificate":"Only verify the server certificate",
+  "TLS_only":"TLS only",
+  "No_serverclient_verification":"No server/client verification",
+  "TLS_key":"TLS key",
+
+  "Image":"Image",
+  "job_run_inside_privileged":"This job will run inside a privileged container on the host. You can access the host filesystem under the",
+  "Job_creation":"Job creation",
+  "upload_script_file_from_computer":"You can upload a script file from your computer.",
+  "Execute":"Execute",
+  "Starting_job":"Starting job",
+  "Description":"Description",
+  "Associated_endpoints":"Associated endpoints",
+  "You_can_select_which_endpoint_should_be_part_ndpoihe_other":"You can select which endpoint should be part of this group by moving them to the associated endpoints table. Simply click on any endpoint entry to move it from one table to the other.",
+  "Available_endpoints":"Available endpoints",
+  "Unassociated_endpoints":"Unassociated endpoints",
+  "All_the_endpoints_are_assigned_to_a_group":"All the endpoints are assigned to a group.",
+  "In_progress":"In progress"
+  
+  
+   
   
 
   

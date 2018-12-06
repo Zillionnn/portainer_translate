@@ -24,7 +24,7 @@
         <span>
 
           <span class="small">
-            Group: {{ $ctrl.model.GroupName }}
+              {{ 'Group' | translate }}: {{ $ctrl.model.GroupName }}
           </span>
           <button
             ng-if="$ctrl.isAdmin" 
@@ -73,7 +73,7 @@
             <span class="space-left space-right">-</span>
           </span>
           <span ng-if="$ctrl.model.Tags.length === 0">
-            <i class="fa fa-tags" aria-hidden="true"></i> No tags
+            <i class="fa fa-tags" aria-hidden="true"></i> {{ 'No_tags' | translate }}
           </span>
           <span ng-if="$ctrl.model.Tags.length > 0">
             <i class="fa fa-tags" aria-hidden="true"></i>
