@@ -1,7 +1,7 @@
 <form class="form-horizontal" name="templateForm">
   <!-- title-input -->
   <div class="form-group" ng-class="{ 'has-error': templateForm.template_title.$invalid }">
-    <label for="template_title" class="col-sm-3 col-lg-2 control-label text-left">Title</label>
+    <label for="template_title" class="col-sm-3 col-lg-2 control-label text-left">{{ 'Title' | translate }}</label>
     <div class="col-sm-9 col-lg-10">
       <input type="text" class="form-control" name="template_title" ng-model="$ctrl.model.Title" placeholder="e.g. my-template" required auto-focus>
     </div>
@@ -9,14 +9,14 @@
   <div class="form-group" ng-show="templateForm.template_title.$invalid">
     <div class="col-sm-12 small text-warning">
       <div ng-messages="templateForm.template_title.$error">
-        <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> This field is required.</p>
+        <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>{{ 'This_field_is_required' | translate }}</p>
       </div>
     </div>
   </div>
   <!-- !title-input -->
   <!-- description-input -->
   <div class="form-group" ng-class="{ 'has-error': templateForm.template_description.$invalid }">
-    <label for="template_description" class="col-sm-3 col-lg-2 control-label text-left">Description</label>
+    <label for="template_description" class="col-sm-3 col-lg-2 control-label text-left">{{ 'Description' | translate }}</label>
     <div class="col-sm-9 col-lg-10">
       <input type="text" class="form-control" name="template_description" ng-model="$ctrl.model.Description" placeholder="e.g. template description..." required>
     </div>
@@ -24,16 +24,16 @@
   <div class="form-group" ng-show="templateForm.template_description.$invalid">
     <div class="col-sm-12 small text-warning">
       <div ng-messages="templateForm.template_description.$error">
-        <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> This field is required.</p>
+        <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>{{ 'This_field_is_required' | translate }}</p>
       </div>
     </div>
   </div>
   <!-- !description-input -->
   <div class="col-sm-12 form-section-title interactive" ng-click="$ctrl.state.collapseTemplate = !$ctrl.state.collapseTemplate">
-    Template
+      {{ 'Template' | translate }}
     <span class="small space-left">
-      <a ng-if="$ctrl.state.collapseTemplate"><i class="fa fa-plus" aria-hidden="true"></i> expand</a>
-      <a ng-if="!$ctrl.state.collapseTemplate"><i class="fa fa-minus" aria-hidden="true"></i> collapse</a>
+      <a ng-if="$ctrl.state.collapseTemplate"><i class="fa fa-plus" aria-hidden="true"></i>{{ 'expand' | translate }} </a>
+      <a ng-if="!$ctrl.state.collapseTemplate"><i class="fa fa-minus" aria-hidden="true"></i> {{ 'collapse' | translate }} </a>
     </span>
   </div>
   <!-- template-details -->
@@ -50,7 +50,7 @@
                 <i class="fa fa-server" aria-hidden="true" style="margin-right: 2px;"></i>
                 Container
               </div>
-              <p>Container template</p>
+              <p>{{ 'Container_template' | translate }}</p>
             </label>
           </div>
           <div>
@@ -58,9 +58,9 @@
             <label for="template_swarm_stack">
               <div class="boxselector_header">
                 <i class="fa fa-th-list" aria-hidden="true" style="margin-right: 2px;"></i>
-                Swarm stack
+                {{ 'Swarm_stack' | translate }}
               </div>
-              <p>Stack template (Swarm)</p>
+              <p> {{ 'Stack_template_Swarm' | translate }}</p>
             </label>
           </div>
           <div>
@@ -68,9 +68,9 @@
             <label for="template_compose_stack">
               <div class="boxselector_header">
                 <i class="fa fa-th-list" aria-hidden="true" style="margin-right: 2px;"></i>
-                Compose stack
+                {{ 'Compose_stack' | translate }}
               </div>
-              <p>Stack template (Compose)</p>
+              <p> {{ 'Stack_template_Compose' | translate }}</p>
             </label>
           </div>
         </div>
@@ -80,8 +80,8 @@
     <!-- name -->
     <div class="form-group">
       <label for="template_name" class="col-sm-3 col-lg-2 control-label text-left">
-        Name
-        <portainer-tooltip position="bottom" message="Default name that will be associated to the template"></portainer-tooltip>
+          {{ 'Name' | translate }}
+        <portainer-tooltip position="bottom" message="{{ 'Default_name_associated_template' | translate }}"></portainer-tooltip>
       </label>
       <div class="col-sm-9 col-lg-10">
         <input type="text" class="form-control" name="template_name" ng-model="$ctrl.model.Name" placeholder="e.g. myApp">
@@ -92,7 +92,7 @@
     <div class="form-group">
       <label for="template_logo" class="col-sm-3 col-lg-2 control-label text-left">
         Logo URL
-        <portainer-tooltip position="bottom" message="Recommended size: 60x60"></portainer-tooltip>
+        <portainer-tooltip position="bottom" message="  {{ 'Recommended_size_60_60' | translate }}"></portainer-tooltip>
       </label>
       <div class="col-sm-9 col-lg-10">
         <input type="text" class="form-control" name="template_logo" ng-model="$ctrl.model.Logo" placeholder="e.g. https://portainer.io/images/logos/nginx.png">
@@ -102,8 +102,8 @@
     <!-- note -->
     <div class="form-group">
       <label for="template_note" class="col-sm-3 col-lg-2 control-label text-left">
-        Note
-        <portainer-tooltip position="bottom" message="Usage / extra information about the template. Supports HTML."></portainer-tooltip>
+          {{ 'Note' | translate }}
+        <portainer-tooltip position="bottom" message=" {{ 'Usage_information_template_Supports_HTML' | translate }}"></portainer-tooltip>
       </label>
       <div class="col-sm-9 col-lg-10">
         <textarea class="form-control" name="template_note" ng-model="$ctrl.model.Note" placeholder='You can use this field to specify extra information. <br/> It supports <b>HTML</b>.'></textarea>
@@ -113,11 +113,11 @@
     <!-- platform -->
     <div class="form-group">
       <label for="template_platform" class="col-sm-3 col-lg-2 control-label text-left">
-        Platform
+          {{ 'Platform' | translate }}
       </label>
       <div class="col-sm-9 col-lg-10">
         <select class="form-control" name="template_platform" ng-model="$ctrl.model.Platform">
-          <option value="">Multi-platform</option>
+          <option value="">{{ 'Multi_platform' | translate }}</option>
           <option value="linux">Linux</option>
           <option value="windows">Windows</option>
         </select>
@@ -127,7 +127,7 @@
     <!-- categories -->
     <div class="form-group">
       <label for="template_categories" class="col-sm-3 col-lg-2 control-label text-left">
-        Categories
+          {{ 'Categories' | translate }}
       </label>
       <div class="col-sm-9 col-lg-10">
         <ui-select multiple tagging tagging-label="(new category)" ng-model="$ctrl.model.Categories" sortable="true" style="width: 300px;" title="Choose a category">
@@ -143,8 +143,8 @@
     <div class="form-group">
       <div class="col-sm-12">
         <label for="tls" class="control-label text-left">
-          Administrator template
-          <portainer-tooltip position="bottom" message="Should this template be only available to administrator users."></portainer-tooltip>
+            {{ 'Administrator_template' | translate }}
+          <portainer-tooltip position="bottom" message=" {{ 'template_only_available_administrator_users' | translate }}"></portainer-tooltip>
         </label>
         <label class="switch" style="margin-left: 20px;">
           <input type="checkbox" ng-model="$ctrl.model.AdministratorOnly"><i></i>
@@ -152,6 +152,7 @@
       </div>
     </div>
     <!-- administrator-only -->
+    <!-- TODO -->
   </div>
   <!-- !template-details -->
   <div ng-if="$ctrl.model.Type === 2 || $ctrl.model.Type === 3">

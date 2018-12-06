@@ -443,7 +443,34 @@
   "Available_endpoints":"Available endpoints",
   "Unassociated_endpoints":"Unassociated endpoints",
   "All_the_endpoints_are_assigned_to_a_group":"All the endpoints are assigned to a group.",
-  "In_progress":"In progress"
+  "In_progress":"In progress",
+  
+  "Schedule_configuration":"Schedule configuration",
+  "Cron_rule":"Cron rule",
+
+  "Retry_count":"Retry count",
+  "No_retries_endpoint_acoint.":"Number of retries when it's not possible to reach the endpoint.",
+  "Retry_interval":"Retry interval",
+  "Job_content":"Job content",
+  "This_schedule_executed_via":"This schedule will be executed via a privileged container on the target hosts. You can access the host filesystem under the",
+  "Target_endpoints":"Target endpoints",
+  "Title":"Title",
+  "Template":"Template",
+  "expand":"expand",
+  "collapse":"collapse",
+  "Container_template":"Container template",
+  "Swarm_stack":"Swarm stack",
+  "Stack_template_Swarm":"Stack template (Swarm)",
+  "Compose_stack":"Compose stack",
+  "Stack_template_Compose":"Stack template (Compose)",
+  "Default_name_associated_template":"Default name that will be associated to the template",
+  "Recommended_size_60_60":"Recommended size: 60x60",
+  "Usage_information_template_Supports_HTML":"Usage / extra information about the template. Supports HTML.",
+  "Platform":"Platform",
+  "Multi_platform":"Multi-platform",
+  "Categories":"Categories",
+  "Administrator_template":" Administrator template",
+  "template_only_available_administrator_users":"Should this template be only available to administrator users."
   
   
    

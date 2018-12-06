@@ -1,10 +1,10 @@
 <form class="form-horizontal" name="scheduleForm">
   <div class="col-sm-12 form-section-title">
-    Schedule configuration
+      {{ 'Schedule_configuration' | translate }}
   </div>
   <!-- name-input -->
   <div class="form-group">
-    <label for="schedule_name" class="col-sm-1 control-label text-left">Name</label>
+    <label for="schedule_name" class="col-sm-1 control-label text-left"> {{ 'Name' | translate }}</label>
     <div class="col-sm-11">
       <input type="text" class="form-control" ng-model="$ctrl.model.Name" id="schedule_name" name="schedule_name" placeholder="backup-app-prod" required auto-focus>
     </div>
@@ -12,14 +12,14 @@
   <div class="form-group" ng-show="scheduleForm.schedule_name.$invalid">
     <div class="col-sm-12 small text-warning">
       <div ng-messages="scheduleForm.schedule_name.$error">
-        <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> This field is required.</p>
+        <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  {{ 'This_field_is_required' | translate }}</p>
       </div>
     </div>
   </div>
   <!-- !name-input -->
   <!-- cron-input -->
   <div class="form-group">
-    <label for="schedule_cron" class="col-sm-1 control-label text-left">Cron rule</label>
+    <label for="schedule_cron" class="col-sm-1 control-label text-left">{{ 'Cron_rule' | translate }}</label>
     <div class="col-sm-11">
       <input type="text" class="form-control" ng-model="$ctrl.model.CronExpression" id="schedule_cron" name="schedule_cron" placeholder="0 2 * * *" required>
     </div>
@@ -50,7 +50,7 @@
   <div class="form-group" ng-show="scheduleForm.schedule_image.$invalid">
     <div class="col-sm-12 small text-warning">
       <div ng-messages="scheduleForm.schedule_image.$error">
-        <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> This field is required.</p>
+        <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  {{ 'This_field_is_required' | translate }}</p>
       </div>
     </div>
   </div>
@@ -58,14 +58,14 @@
   <!-- retry-policy -->
   <div class="form-group">
     <label for="retrycount" class="col-sm-2 control-label text-left">
-      Retry count
-      <portainer-tooltip position="bottom" message="Number of retries when it's not possible to reach the endpoint."></portainer-tooltip>
+        {{ 'Retry_count' | translate }}
+      <portainer-tooltip position="bottom" message="{{ 'No_retries_endpoint_acoint' | translate }}"></portainer-tooltip>
     </label>
     <div class="col-sm-10 col-md-4">
       <input type="number" class="form-control" ng-model="$ctrl.model.Job.RetryCount" id="retrycount" name="retrycount" placeholder="3">
     </div>
     <label for="retryinterval" class="col-sm-2 control-label text-left">
-      Retry interval
+        {{ 'Retry_interval' | translate }}
       <portainer-tooltip position="bottom" message="Retry interval in seconds."></portainer-tooltip>
     </label>
     <div class="col-sm-10 col-md-4">
@@ -76,7 +76,7 @@
   <!-- execution-method -->
   <div ng-if="!$ctrl.model.Id">
     <div class="col-sm-12 form-section-title">
-      Job content
+        {{ 'Job_content' | translate }}
     </div>
     <div class="form-group"></div>
     <div class="form-group" style="margin-bottom: 0">
@@ -86,9 +86,9 @@
           <label for="method_editor">
             <div class="boxselector_header">
               <i class="fa fa-edit" aria-hidden="true" style="margin-right: 2px;"></i>
-              Web editor
+              {{ 'Web_editor' | translate }}
             </div>
-            <p>Use our Web editor</p>
+            <p>{{ 'Use_our_Web_editor' | translate }}</p>
           </label>
         </div>
         <div>
@@ -96,9 +96,9 @@
           <label for="method_upload">
             <div class="boxselector_header">
               <i class="fa fa-upload" aria-hidden="true" style="margin-right: 2px;"></i>
-              Upload
+              {{ 'Upload' | translate }}
             </div>
-            <p>Upload from your computer</p>
+            <p>{{ 'Upload_from_your_computer' | translate }}</p>
           </label>
         </div>
       </div>
@@ -108,11 +108,12 @@
   <!-- web-editor -->
   <div ng-show="$ctrl.model.Job.Method === 'editor'">
     <div class="col-sm-12 form-section-title">
-      Web editor
+        {{ 'Web_editor' | translate }}
     </div>
     <div class="form-group">
       <span class="col-sm-12 text-muted small">
-        This schedule will be executed via a privileged container on the target hosts. You can access the host filesystem under the
+        <!-- This schedule will be executed via a privileged container on the target hosts. You can access the host filesystem under the -->
+        {{ 'This_schedule_executed_via' | translate }}
         <code>/host</code> folder.
       </span>
     </div>
@@ -131,11 +132,11 @@
   <!-- upload -->
   <div ng-show="$ctrl.model.Job.Method === 'upload'">
     <div class="col-sm-12 form-section-title">
-      Upload
+        {{ 'Upload' | translate }}
     </div>
     <div class="form-group">
       <span class="col-sm-12 text-muted small">
-        You can upload a script file from your computer.
+        {{ 'upload_script_file_from_computer' | translate }}
       </span>
     </div>
     <div class="form-group">
@@ -150,7 +151,7 @@
   </div>
   <!-- !upload -->
   <div class="col-sm-12 form-section-title">
-    Target endpoints
+      {{ 'Target_endpoints' | translate }}
   </div>
   <!-- node-selection -->
   <multi-endpoint-selector
@@ -161,7 +162,7 @@
   <!-- !node-selection -->
   <!-- actions -->
   <div class="col-sm-12 form-section-title">
-    Actions
+      {{ 'Actions' | translate }}
   </div>
   <div class="form-group">
     <div class="col-sm-12">
@@ -172,7 +173,7 @@
         ng-click="$ctrl.action()" button-spinner="$ctrl.actionInProgress"
       >
         <span ng-hide="$ctrl.actionInProgress">{{ $ctrl.formActionLabel }}</span>
-        <span ng-show="$ctrl.actionInProgress">In progress...</span>
+        <span ng-show="$ctrl.actionInProgress">{{ 'In_progress' | translate }}...</span>
       </button>
       <span class="text-danger" ng-if="$ctrl.state.formValidationError" style="margin-left: 5px;">
         {{ $ctrl.state.formValidationError }}
