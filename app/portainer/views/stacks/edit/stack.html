@@ -1,11 +1,11 @@
 <rd-header>
-  <rd-header-title title-text="Stack details">
-    <a data-toggle="tooltip" title-text="Refresh" ui-sref="portainer.stacks.stack({id: stack.Id})" ui-sref-opts="{reload: true}">
+  <rd-header-title title-text="{{ 'Stack_details' | translate }}">
+    <a data-toggle="tooltip" title-text="{{ 'Refresh' | translate }}" ui-sref="portainer.stacks.stack({id: stack.Id})" ui-sref-opts="{reload: true}">
       <i class="fa fa-sync" aria-hidden="true"></i>
     </a>
   </rd-header-title>
   <rd-header-content>
-    <a ui-sref="portainer.stacks">Stacks</a> &gt; {{ stackName }}</a>
+    <a ui-sref="portainer.stacks">{{ 'Stacks' | translate }}</a> &gt; {{ stackName }}</a>
   </rd-header-content>
 </rd-header>
 
@@ -17,19 +17,20 @@
           <!-- tab-info -->
           <uib-tab index="0">
             <uib-tab-heading>
-              <i class="fa fa-th-list" aria-hidden="true"></i> Stack
+              <i class="fa fa-th-list" aria-hidden="true"></i> {{ 'Stacks' | translate }}
             </uib-tab-heading>
             <div style="margin-top: 10px;">
               <!-- stack-information -->
               <div ng-if="state.externalStack">
                 <div class="col-sm-12 form-section-title">
-                  Information
+                    {{ 'Information' | translate }}
                 </div>
                 <div class="form-group">
                   <span class="small">
                     <p class="text-muted">
                       <i class="fa fa-exclamation-circle orange-icon" aria-hidden="true" style="margin-right: 2px;"></i>
-                      This stack was created outside of Portainer. Control over this stack is limited.
+                      <!-- This stack was created outside of Portainer. Control over this stack is limited. -->
+                      {{ 'stack_created_outside_Portainer_Control_over_limited' | translate }}
                     </p>
                   </span>
                 </div>
@@ -38,11 +39,13 @@
               <!-- stack-details -->
               <div>
                 <div class="col-sm-12 form-section-title">
-                  Stack details
+                    {{ 'Stack_details' | translate }}
                 </div>
                 <div class="form-group">
                   {{ stackName }}
-                  <button class="btn btn-xs btn-danger" ng-click="removeStack()" ng-if="!state.externalStack || stack.Type === 1"><i class="fa fa-trash-alt space-right" aria-hidden="true"></i>Delete this stack</button>
+                  <button class="btn btn-xs btn-danger" ng-click="removeStack()" ng-if="!state.externalStack || stack.Type === 1"><i class="fa fa-trash-alt space-right" aria-hidden="true"></i>
+                    {{ 'Delete_this_stack' | translate }}
+                  </button>
                 </div>
               </div>
               <!-- !stack-details -->
@@ -61,12 +64,16 @@
           <!-- tab-file -->
           <uib-tab index="1" ng-if="stackFileContent" select="showEditor()">
             <uib-tab-heading>
-              <i class="fa fa-pencil-alt space-right" aria-hidden="true"></i> Editor
+              <i class="fa fa-pencil-alt space-right" aria-hidden="true"></i> {{ 'Editor' | translate }}
             </uib-tab-heading>
             <form class="form-horizontal" ng-if="state.showEditorTab" style="margin-top: 10px;">
               <div class="form-group">
                 <span class="col-sm-12 text-muted small">
-                  You can get more information about Compose file format in the <a href="https://docs.docker.com/compose/compose-file/" target="_blank">official documentation</a>.
+                  <!-- You can get more information about Compose file format in the  -->
+                  {{ 'more_information_about_Compose_file' | translate }}
+                  <a href="https://docs.docker.com/compose/compose-file/" target="_blank">
+                    {{ 'official_documentation' | translate }}
+                  </a>.
                 </span>
               </div>
               <div class="form-group">
@@ -83,24 +90,24 @@
               <!-- environment-variables -->
               <div ng-if="stack && stack.Type === 1">
                 <div class="col-sm-12 form-section-title">
-                  Environment
+                    {{ 'Environment' | translate }}
                 </div>
                 <div class="form-group">
                   <div class="col-sm-12" style="margin-top: 5px;">
-                    <label class="control-label text-left">Environment variables</label>
+                    <label class="control-label text-left"> {{ 'Environment_variables' | translate }}</label>
                     <span class="label label-default interactive" style="margin-left: 10px;" ng-click="addEnvironmentVariable()">
-                      <i class="fa fa-plus-circle" aria-hidden="true"></i> add environment variable
+                      <i class="fa fa-plus-circle" aria-hidden="true"></i> {{ 'add_environment_variable' | translate }}
                     </span>
                   </div>
                   <!-- environment-variable-input-list -->
                   <div class="col-sm-12 form-inline" style="margin-top: 10px;">
                     <div ng-repeat="variable in stack.Env" style="margin-top: 2px;">
                       <div class="input-group col-sm-5 input-group-sm">
-                        <span class="input-group-addon">name</span>
+                        <span class="input-group-addon">{{ 'name' | translate }}</span>
                         <input type="text" class="form-control" ng-model="variable.name" placeholder="e.g. FOO">
                       </div>
                       <div class="input-group col-sm-5 input-group-sm">
-                        <span class="input-group-addon">value</span>
+                        <span class="input-group-addon">{{ 'value' | translate }}</span>
                         <input type="text" class="form-control" ng-model="variable.value" placeholder="e.g. bar">
                       </div>
                       <button class="btn btn-sm btn-danger" type="button" ng-click="removeEnvironmentVariable($index)">
@@ -115,13 +122,13 @@
               <!-- options -->
               <div ng-if="stack.Type === 1 && applicationState.endpoint.apiVersion >= 1.27">
                 <div class="col-sm-12 form-section-title">
-                Options
+                    {{ 'Options' | translate }}
                 </div>
                 <div class="form-group">
                   <div class="col-sm-12">
                     <label for="prune" class="control-label text-left">
-                      Prune services
-                      <portainer-tooltip position="bottom" message="Prune services that are no longer referenced."></portainer-tooltip>
+                        {{ 'Prune_services' | translate }}
+                      <portainer-tooltip position="bottom" message="{{ 'Prune_services_that_no_longer_referenced' | translate }}"></portainer-tooltip>
                     </label>
                     <label class="switch" style="margin-left: 20px;">
                       <input name="prune" type="checkbox" ng-model="formValues.Prune"><i></i>
@@ -131,13 +138,13 @@
               </div>
               <!-- !options -->
               <div class="col-sm-12 form-section-title">
-                Actions
+                  {{ 'Actions' | translate }}
               </div>
               <div class="form-group">
                 <div class="col-sm-12">
                   <button type="button" class="btn btn-sm btn-primary" ng-disabled="state.actionInProgress" ng-click="deployStack()" button-spinner="state.actionInProgress">
-                    <span ng-hide="state.actionInProgress">Update the stack</span>
-                    <span ng-show="state.actionInProgress">Deployment in progress...</span>
+                    <span ng-hide="state.actionInProgress"> {{ 'Update_the_stack' | translate }}</span>
+                    <span ng-show="state.actionInProgress">{{ 'Deployment_in_progress' | translate }}...</span>
                   </button>
                 </div>
               </div>

@@ -258,7 +258,20 @@
   "name":"name",
   "value":"value",
   "Deploy_the_stack":"Deploy the stack",
-  "Deployment_in_progress":"Deployment in progress"
+  "Deployment_in_progress":"Deployment in progress",
+  
+  "Options":"Options",
+  "Prune_services":"Prune services",
+  "Prune_services_that_no_longer_referenced":"Prune services that are no longer referenced.",
+
+  "Stack_details":"Stack details",
+  "Refresh":"Refresh",
+  "stack_created_outside_Portainer_Control_over_limited":"This stack was created outside of Portainer. Control over this stack is limited.",
+  "Delete_this_stack":"Delete this stack",
+  "Editor":"Editor",
+  "more_information_about_Compose_file":"You can get more information about Compose file format in the ",
+  "Update_the_stack":"Update the stack",
+  
 
 
   
