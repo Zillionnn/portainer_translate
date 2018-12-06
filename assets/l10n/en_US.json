@@ -224,7 +224,43 @@
   "You_can_hide_containers_with_specific_labels":"You can hide containers with specific labels from Portainer UI. You need to specify the label name and value.",
   "Hidden_containers":"Hidden containers",
   "Value":"Value",
-  "No_filter_available":"No filter available."
+  "No_filter_available":"No filter available.",
+
+  "Create_stack":"Create stack",
+  "Stacks":"Stacks",
+  "Add_stack":"Add stack",
+  "This_stack_will_be_deployed_using_the_equivalent":"This stack will be deployed using the equivalent of the",
+  "docker_stack_deploy":"docker stack deploy",
+  "command":"command.",
+  "Only_Compose_file_format_version":"Only Compose file format version",
+  "is_supported_at_the_moment":"is supported at the moment.",
+  "Build_method":"Build method",
+  "Web_editor":"Web editor",
+  "Use_our_Web_editor":"Use our Web editor",
+  "Upload":"Upload",
+  "Upload_from_your_computer":"Upload from your computer",
+  "Repository":"Repository",
+  "Use_a_git_repository":"Use a git repository",
+  "You_can_get_more_information_about_Compose_file":"You can get more information about Compose file format in the",
+  "official_documentation":"official documentation",
+  "Define_or_paste_the_content_dockercompose":"# Define or paste the content of your docker-compose file here",
+  "You_can_upload_Compose_file":"You can upload a Compose file from your computer.",
+  "Git_repository":"Git repository",
+  "use_URL_git_repository":"You can use the URL of a git repository.",
+  "Repository_URL":"Repository URL",
+  "Specify_reference_repository_using_following_syntax":"Specify a reference of the repository using the following syntax: branches with",
+  "not_specified_will_use_default":"If not specified, will use the default ",
+  "reference_normally":"reference normally the ",
+  "Repository_reference":"Repository reference",
+  "Indicate_path_Compose_file_from_repository":"Indicate the path to the Compose file from the root of your repository.",
+  "Environment_variables":"Environment variables",
+  "add_environment_variable":"add environment variable",
+  "name":"name",
+  "value":"value",
+  "Deploy_the_stack":"Deploy the stack",
+  "Deployment_in_progress":"Deployment in progress"
+
+
   
 
   

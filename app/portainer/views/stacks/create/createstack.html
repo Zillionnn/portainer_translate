@@ -1,7 +1,7 @@
 <rd-header>
-  <rd-header-title title-text="Create stack"></rd-header-title>
+  <rd-header-title title-text="{{ 'Create_stack' | translate }}"></rd-header-title>
   <rd-header-content>
-    <a ui-sref="portainer.stacks">Stacks</a> &gt; Add stack
+    <a ui-sref="portainer.stacks">{{ 'Stacks' | translate }}</a> &gt; {{ 'Add_stack' | translate }}
   </rd-header-content>
 </rd-header>
 
@@ -12,7 +12,7 @@
         <form class="form-horizontal">
           <!-- name-input -->
           <div class="form-group">
-            <label for="stack_name" class="col-sm-1 control-label text-left">Name</label>
+            <label for="stack_name" class="col-sm-1 control-label text-left">{{ 'Name' | translate }}</label>
             <div class="col-sm-11">
               <input type="text" class="form-control" ng-model="formValues.Name" id="stack_name" placeholder="e.g. myStack" auto-focus>
             </div>
@@ -20,15 +20,18 @@
           <!-- !name-input -->
           <div class="form-group">
             <span class="col-sm-12 text-muted small" ng-if="state.StackType === 1">
-              This stack will be deployed using the equivalent of the <code>docker stack deploy</code> command.
+              <!-- This stack will be deployed using the equivalent of the -->
+              {{ 'This_stack_will_be_deployed_using_the_equivalent' | translate }}
+               <code>{{ 'docker_stack_deploy' | translate }}</code> {{ 'command' | translate }}
             </span>
             <span class="col-sm-12 text-muted small" ng-if="state.StackType === 2">
-              This stack will be deployed using the equivalent of <code>docker-compose</code>. Only Compose file format version <b>2</b> is supported at the moment.
+                {{ 'This_stack_will_be_deployed_using_the_equivalent' | translate }}
+                 <code>docker-compose</code>. {{ 'Only_Compose_file_format_version' | translate }} <b>2</b> {{ 'is_supported_at_the_moment' | translate }}
             </span>
           </div>
           <!-- build-method -->
           <div class="col-sm-12 form-section-title">
-            Build method
+              {{ 'Build_method' | translate }}
           </div>
           <div class="form-group"></div>
           <div class="form-group" style="margin-bottom: 0">
@@ -38,9 +41,9 @@
                 <label for="method_editor">
                   <div class="boxselector_header">
                     <i class="fa fa-edit" aria-hidden="true" style="margin-right: 2px;"></i>
-                    Web editor
+                    {{ 'Web_editor' | translate }}
                   </div>
-                  <p>Use our Web editor</p>
+                  <p>{{ 'Use_our_Web_editor' | translate }}</p>
                 </label>
               </div>
               <div>
@@ -48,9 +51,9 @@
                 <label for="method_upload">
                   <div class="boxselector_header">
                     <i class="fa fa-upload" aria-hidden="true" style="margin-right: 2px;"></i>
-                    Upload
+                    {{ 'Upload' | translate }}
                   </div>
-                  <p>Upload from your computer</p>
+                  <p>{{ 'Upload_from_your_computer' | translate }}</p>
                 </label>
               </div>
               <div>
@@ -58,9 +61,9 @@
                 <label for="method_repository">
                   <div class="boxselector_header">
                     <i class="fab fa-git" aria-hidden="true" style="margin-right: 2px;"></i>
-                    Repository
+                    {{ 'Repository' | translate }}
                   </div>
-                  <p>Use a git repository</p>
+                  <p>{{ 'Use_a_git_repository' | translate }}</p>
                 </label>
               </div>
             </div>
@@ -69,18 +72,18 @@
           <!-- web-editor -->
           <div ng-show="state.Method === 'editor'">
             <div class="col-sm-12 form-section-title">
-              Web editor
+                {{ 'Web_editor' | translate }}
             </div>
             <div class="form-group">
               <span class="col-sm-12 text-muted small">
-                You can get more information about Compose file format in the <a href="https://docs.docker.com/compose/compose-file/" target="_blank">official documentation</a>.
+                  {{ 'You_can_get_more_information_about_Compose_file' | translate }} <a href="https://docs.docker.com/compose/compose-file/" target="_blank">{{ 'official_documentation' | translate }}</a>.
               </span>
             </div>
             <div class="form-group">
               <div class="col-sm-12">
                 <code-editor
                   identifier="stack-creation-editor"
-                  placeholder="# Define or paste the content of your docker-compose file here"
+                  placeholder="{{ 'Define_or_paste_the_content_dockercompose' | translate }}"
                   yml="true"
                   on-change="editorUpdate"
                 ></code-editor>
@@ -91,16 +94,16 @@
           <!-- upload -->
           <div ng-show="state.Method === 'upload'">
             <div class="col-sm-12 form-section-title">
-              Upload
+                {{ 'Upload' | translate }}
             </div>
             <div class="form-group">
               <span class="col-sm-12 text-muted small">
-                You can upload a Compose file from your computer.
+                  {{ 'You_can_upload_Compose_file' | translate }}
               </span>
             </div>
             <div class="form-group">
               <div class="col-sm-12">
-                <button class="btn btn-sm btn-primary" ngf-select ng-model="formValues.StackFile">Select file</button>
+                <button class="btn btn-sm btn-primary" ngf-select ng-model="formValues.StackFile">{{ 'Select_file' | translate }}</button>
                 <span style="margin-left: 5px;">
                   {{ formValues.StackFile.name }}
                   <i class="fa fa-times red-icon" ng-if="!formValues.StackFile" aria-hidden="true"></i>
@@ -112,33 +115,47 @@
           <!-- repository -->
           <div ng-show="state.Method === 'repository'">
             <div class="col-sm-12 form-section-title">
-              Git repository
+                {{ 'Git_repository' | translate }}
             </div>
             <div class="form-group">
               <span class="col-sm-12 text-muted small">
-                You can use the URL of a git repository.
+                  {{ 'use_URL_git_repository' | translate }}
               </span>
             </div>
             <div class="form-group">
-              <label for="stack_repository_url" class="col-sm-2 control-label text-left">Repository URL</label>
+              <label for="stack_repository_url" class="col-sm-2 control-label text-left">{{ 'Repository_URL' | translate }}</label>
               <div class="col-sm-10">
                 <input type="text" class="form-control" ng-model="formValues.RepositoryURL" id="stack_repository_url" placeholder="https://github.com/portainer/portainer-compose">
               </div>
             </div>
             <div class="form-group">
               <span class="col-sm-12 text-muted small">
-                Specify a reference of the repository using the following syntax: branches with <code>refs/heads/branch_name</code> or tags with <code>refs/tags/tag_name</code>. If not specified, will use the default <code>HEAD</code> reference normally the <code>master</code> branch.
+                <!-- Specify a reference of the repository using the following syntax: branches with -->
+                {{ 'Specify_reference_repository_using_following_syntax' | translate }}
+                 <code>refs/heads/branch_name</code>
+                  or tags with 
+                  <code>refs/tags/tag_name</code>. 
+                  <!-- If not specified, will use the default  -->
+                  {{ 'not_specified_will_use_default' | translate }}
+                  <code>HEAD</code> 
+                  <!-- reference normally the  -->
+                  {{ 'reference_normally' | translate }}
+                  <code>master</code> 
+                  branch.
               </span>
             </div>
             <div class="form-group">
-              <label for="stack_repository_url" class="col-sm-2 control-label text-left">Repository reference</label>
+              <label for="stack_repository_url" class="col-sm-2 control-label text-left">
+                  {{ 'Repository_reference' | translate }}
+              </label>
               <div class="col-sm-10">
                 <input type="text" class="form-control" ng-model="formValues.RepositoryReferenceName" id="stack_repository_reference_name" placeholder="refs/heads/master">
               </div>
             </div>
             <div class="form-group">
               <span class="col-sm-12 text-muted small">
-                Indicate the path to the Compose file from the root of your repository.
+                <!-- Indicate the path to the Compose file from the root of your repository. -->
+                {{ 'Indicate_path_Compose_file_from_repository' | translate }}
               </span>
             </div>
             <div class="form-group">
@@ -150,7 +167,7 @@
             <div class="form-group">
               <div class="col-sm-12">
                 <label class="control-label text-left">
-                  Authentication
+                    {{ 'Authentication' | translate }}
                 </label>
                 <label class="switch" style="margin-left: 20px;">
                   <input type="checkbox" ng-model="formValues.RepositoryAuthentication"><i></i>
@@ -158,12 +175,12 @@
               </div>
             </div>
             <div class="form-group" ng-if="formValues.RepositoryAuthentication">
-              <label for="repository_username" class="col-sm-1 control-label text-left">Username</label>
+              <label for="repository_username" class="col-sm-1 control-label text-left">{{ 'Username' | translate }}</label>
               <div class="col-sm-11 col-md-5">
                 <input type="text" class="form-control" ng-model="formValues.RepositoryUsername" name="repository_username" placeholder="myGitUser">
               </div>
               <label for="repository_password" class="col-sm-1 margin-sm-top control-label text-left">
-                Password
+                  {{ 'Password' | translate }}
               </label>
               <div class="col-sm-11 col-md-5 margin-sm-top">
                 <input type="password" class="form-control" ng-model="formValues.RepositoryPassword" name="repository_password" placeholder="myPassword">
@@ -173,24 +190,24 @@
           <!-- environment-variables -->
           <div>
             <div class="col-sm-12 form-section-title">
-              Environment
+                {{ 'Environment' | translate }}
             </div>
             <div class="form-group">
               <div class="col-sm-12" style="margin-top: 5px;">
-                <label class="control-label text-left">Environment variables</label>
+                <label class="control-label text-left">{{ 'Environment_variables' | translate }}</label>
                 <span class="label label-default interactive" style="margin-left: 10px;" ng-click="addEnvironmentVariable()">
-                  <i class="fa fa-plus-circle" aria-hidden="true"></i> add environment variable
+                  <i class="fa fa-plus-circle" aria-hidden="true"></i> {{ 'add_environment_variable' | translate }}
                 </span>
               </div>
               <!-- environment-variable-input-list -->
               <div class="col-sm-12 form-inline" style="margin-top: 10px;">
                 <div ng-repeat="variable in formValues.Env" style="margin-top: 2px;">
                   <div class="input-group col-sm-5 input-group-sm">
-                    <span class="input-group-addon">name</span>
+                    <span class="input-group-addon">{{ 'name' | translate }}name</span>
                     <input type="text" class="form-control" ng-model="variable.name" placeholder="e.g. FOO">
                   </div>
                   <div class="input-group col-sm-5 input-group-sm">
-                    <span class="input-group-addon">value</span>
+                    <span class="input-group-addon">{{ 'value' | translate }}</span>
                     <input type="text" class="form-control" ng-model="variable.value" placeholder="e.g. bar">
                   </div>
                   <button class="btn btn-sm btn-danger" type="button" ng-click="removeEnvironmentVariable($index)">
@@ -206,7 +223,7 @@
           <por-access-control-form form-data="formValues.AccessControlData" ng-if="applicationState.application.authentication"></por-access-control-form>
           <!-- actions -->
           <div class="col-sm-12 form-section-title">
-            Actions
+              {{ 'Actions' | translate }}
           </div>
           <div class="form-group">
             <div class="col-sm-12">
@@ -214,8 +231,8 @@
               || (state.Method === 'upload' && !formValues.StackFile)
               || (state.Method === 'repository' && ((!formValues.RepositoryURL || !formValues.ComposeFilePathInRepository) || (formValues.RepositoryAuthentication && (!formValues.RepositoryUsername || !formValues.RepositoryPassword))))
               || !formValues.Name" ng-click="deployStack()" button-spinner="state.actionInProgress">
-                <span ng-hide="state.actionInProgress">Deploy the stack</span>
-                <span ng-show="state.actionInProgress">Deployment in progress...</span>
+                <span ng-hide="state.actionInProgress">{{ 'Deploy_the_stack' | translate }}</span>
+                <span ng-show="state.actionInProgress">{{ 'Deployment_in_progress' | translate }}Deployment in progress...</span>
               </button>
               <span class="text-danger" ng-if="state.formValidationError" style="margin-left: 5px;">{{ state.formValidationError }}</span>
             </div>
