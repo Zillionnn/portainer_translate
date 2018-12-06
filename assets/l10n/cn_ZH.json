@@ -219,7 +219,7 @@
   "documentation":"文档",
   "for_more_details":"更多细节",
   "Disable_bind_mounts_for_non_administrators":"禁用非管理员的绑定挂载",
-  "When_enabled_regular_users_will_not_be_able_to_containers.":"启用后，常规用户在创建容器时将无法使用绑定装入。",
+  "When_enabled_regular_users_will_not_be_able_to_containers":"启用后，常规用户在创建容器时将无法使用绑定装入。",
   "Disable_privileged_mode_for_non_administrators":"禁用非管理员的特权模式",
   "When_enabled_regular_users_privileged_mode":"启用后，常规用户在创建容器时将无法使用特权模式。",
   "You_can_hide_containers_with_specific_labels":"您可以使用Portainer UI隐藏具有特定标签的容器。 您需要指定标签名称和值。",
