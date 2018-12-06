@@ -1,10 +1,10 @@
 <rd-header id="view-top">
-  <rd-header-title title-text="Application templates list">
+  <rd-header-title title-text="{{ 'Application_templates_list' | translate }}">
     <a data-toggle="tooltip" title="Refresh" ui-sref="portainer.templates" ui-sref-opts="{reload: true}">
       <i class="fa fa-sync" aria-hidden="true"></i>
     </a>
   </rd-header-title>
-  <rd-header-content>Templates</rd-header-content>
+  <rd-header-content>{{ 'Templates' | translate }}</rd-header-content>
 </rd-header>
 
 <div class="row">
@@ -18,7 +18,7 @@
           <!-- description -->
           <div ng-if="state.selectedTemplate.Note">
             <div class="col-sm-12 form-section-title">
-              Information
+                {{ 'Information' | translate }}
             </div>
             <div class="form-group">
               <div class="col-sm-12">
@@ -28,11 +28,11 @@
           </div>
           <!-- !description -->
           <div class="col-sm-12 form-section-title">
-            Configuration
+              {{ 'Configuration' | translate }}
           </div>
           <!-- name-input -->
           <div class="form-group">
-            <label for="container_name" class="col-sm-2 control-label text-left">Name</label>
+            <label for="container_name" class="col-sm-2 control-label text-left">{{ 'Name' | translate }}</label>
             <div class="col-sm-10">
               <input type="text" name="container_name" class="form-control" ng-model="formValues.name" placeholder="e.g. myStack" required>
             </div>
@@ -47,7 +47,7 @@
             <div class="col-sm-10">
               <input type="text" class="form-control" ng-if="!var.select" ng-model="var.value" id="field_{{ $index }}">
               <select class="form-control" ng-if="var.select" ng-model="var.value" id="field_{{ $index }}">
-                <option selected disabled hidden value="">Select value</option>
+                <option selected disabled hidden value="">{{ 'Select_value' | translate }}</option>
                 <option ng-repeat="choice in var.select" value="{{ choice.value }}">{{ choice.text }}</option>
               </select>
             </div>
@@ -58,15 +58,15 @@
           <!-- !access-control -->
           <!-- actions -->
           <div class="col-sm-12 form-section-title">
-            Actions
+              {{ 'Actions' | translate }}
           </div>
           <div class="form-group">
             <div class="col-sm-12">
               <button type="button" class="btn btn-primary btn-sm" ng-disabled="state.actionInProgress || !formValues.name" ng-click="createTemplate()" button-spinner="state.actionInProgress">
-                <span ng-hide="state.actionInProgress">Deploy the stack</span>
-                <span ng-show="state.actionInProgress">Deployment in progress...</span>
+                <span ng-hide="state.actionInProgress">{{ 'Deploy_the_stack' | translate }}</span>
+                <span ng-show="state.actionInProgress">{{ 'Deployment_in_progress' | translate }}...</span>
               </button>
-              <button type="button" class="btn btn-sm btn-default" ng-click="unselectTemplate(state.selectedTemplate)">Hide</button>
+              <button type="button" class="btn btn-sm btn-default" ng-click="unselectTemplate(state.selectedTemplate)">{{ 'Hide' | translate }}</button>
               <span class="text-danger" ng-if="state.formValidationError" style="margin-left: 5px;">{{ state.formValidationError }}</span>
             </div>
           </div>
@@ -87,7 +87,7 @@
           <!-- description -->
           <div ng-if="state.selectedTemplate.Note">
             <div class="col-sm-12 form-section-title">
-              Information
+                {{ 'Information' | translate }}
             </div>
             <div class="form-group">
               <div class="col-sm-12">
@@ -97,11 +97,11 @@
           </div>
           <!-- !description -->
           <div class="col-sm-12 form-section-title">
-            Configuration
+              {{ 'Configuration' | translate }}
           </div>
           <!-- name-input -->
           <div class="form-group">
-            <label for="container_name" class="col-sm-2 control-label text-left">Name</label>
+            <label for="container_name" class="col-sm-2 control-label text-left">{{ 'Name' | translate }}</label>
             <div class="col-sm-10">
               <input type="text" name="container_name" class="form-control" ng-model="formValues.name" placeholder="e.g. web (optional)">
             </div>
@@ -109,10 +109,10 @@
           <!-- !name-input -->
           <!-- network-input -->
           <div class="form-group">
-            <label for="container_network" class="col-sm-2 control-label text-left">Network</label>
+            <label for="container_network" class="col-sm-2 control-label text-left">{{ 'Network' | translate }}</label>
             <div class="col-sm-10">
               <select class="form-control" ng-options="net.Name for net in availableNetworks | orderBy: 'Name'" ng-model="formValues.network">
-                <option disabled hidden value="">Select a network</option>
+                <option disabled hidden value="">{{ 'Select_a_network' | translate }}</option>
               </select>
             </div>
           </div>
@@ -126,7 +126,7 @@
             <div class="col-sm-10">
               <input type="text" class="form-control" ng-if="!var.select" ng-model="var.value" id="field_{{ $index }}">
               <select class="form-control" ng-if="var.select" ng-model="var.value" id="field_{{ $index }}">
-                <option selected disabled hidden value="">Select value</option>
+                <option selected disabled hidden value="">{{ 'Select_value' | translate }}</option>
                 <option ng-repeat="choice in var.select" value="{{ choice.value }}">{{ choice.text }}</option>
               </select>
             </div>
@@ -138,10 +138,10 @@
           <div class="form-group">
             <div class="col-sm-12">
               <a class="small interactive" ng-if="!state.showAdvancedOptions" ng-click="state.showAdvancedOptions = true;">
-                <i class="fa fa-plus space-right" aria-hidden="true"></i> Show advanced options
+                <i class="fa fa-plus space-right" aria-hidden="true"></i> {{ 'Show_advanced_options' | translate }}
               </a>
               <a class="small interactive" ng-if="state.showAdvancedOptions" ng-click="state.showAdvancedOptions = false;">
-                <i class="fa fa-minus space-right" aria-hidden="true"></i> Hide advanced options
+                <i class="fa fa-minus space-right" aria-hidden="true"></i> {{ 'Hide_advanced_options' | translate }}
               </a>
             </div>
           </div>
@@ -149,13 +149,16 @@
             <!-- port-mapping -->
             <div class="form-group" >
               <div class="col-sm-12" style="margin-top: 5px;">
-                <label class="control-label text-left">Port mapping</label>
+                <label class="control-label text-left">{{ 'Port_mapping' | translate }}</label>
                 <span class="label label-default interactive" style="margin-left: 10px;" ng-click="addPortBinding()">
-                  <i class="fa fa-plus-circle" aria-hidden="true"></i> map additional port
+                  <i class="fa fa-plus-circle" aria-hidden="true"></i> {{ 'map_additional_port' | translate }}
                 </span>
               </div>
               <div class="col-sm-12" style="margin-top: 10px" ng-if="state.selectedTemplate.Ports.length > 0">
-                <span class="small text-muted">Portainer will automatically assign a port if you leave the host port empty.</span>
+                <span class="small text-muted">
+                  <!-- Portainer will automatically assign a port if you leave the host port empty. -->
+                  {{ 'Portainer_assign_a_port_if_it_empty' | translate }}
+                </span>
               </div>
               <!-- !port-mapping -->
               <!-- port-mapping-input-list -->
@@ -164,7 +167,7 @@
                   <div ng-repeat="portBinding in state.selectedTemplate.Ports" style="margin-top: 2px;">
                     <!-- host-port -->
                     <div class="input-group col-sm-4 input-group-sm">
-                      <span class="input-group-addon">host</span>
+                      <span class="input-group-addon">{{ 'host' | translate }}</span>
                       <input type="text" class="form-control" ng-model="portBinding.hostPort" placeholder="e.g. 80 or 1.2.3.4:80 (optional)">
                     </div>
                     <!-- !host-port -->
@@ -173,7 +176,7 @@
                     </span>
                     <!-- container-port -->
                     <div class="input-group col-sm-4 input-group-sm">
-                      <span class="input-group-addon">container</span>
+                      <span class="input-group-addon">{{ 'container' | translate }}</span>
                       <input type="text" class="form-control" ng-model="portBinding.containerPort" placeholder="e.g. 80">
                     </div>
                     <!-- !container-port -->
@@ -196,13 +199,15 @@
             <!-- volume-mapping -->
             <div class="form-group" >
               <div class="col-sm-12" style="margin-top: 5px;">
-                <label class="control-label text-left">Volume mapping</label>
+                <label class="control-label text-left">{{ 'Volume_mapping' | translate }}</label>
                 <span class="label label-default interactive" style="margin-left: 10px;" ng-click="addVolume()">
-                  <i class="fa fa-plus-circle" aria-hidden="true"></i> map additional volume
+                  <i class="fa fa-plus-circle" aria-hidden="true"></i> {{ 'map_additional_volume' | translate }}
                 </span>
               </div>
               <div class="col-sm-12" style="margin-top: 10px" ng-if="state.selectedTemplate.Volumes.length > 0">
-                <span class="small text-muted">Portainer will automatically create and map a local volume when using the <b>auto</b> option.</span>
+                <span class="small text-muted">
+                  <!-- Portainer will automatically create and map a local volume when using the <b>auto</b> option.</span> -->
+                  {{ 'Portainer_automatically_create_and_map' | translate }} <b>{{ 'auto' | translate }}</b> {{ 'option' | translate }}.</span>
               </div>
               <div ng-repeat="volume in state.selectedTemplate.Volumes">
                 <div class="col-sm-12" style="margin-top: 10px;">
@@ -210,16 +215,16 @@
                   <div class="col-sm-12 form-inline">
                     <!-- container-path -->
                     <div class="input-group input-group-sm col-sm-6">
-                      <span class="input-group-addon">container</span>
+                      <span class="input-group-addon">{{ 'container' | translate }}</span>
                       <input type="text" class="form-control" ng-model="volume.container" placeholder="e.g. /path/in/container">
                     </div>
                     <!-- !container-path -->
                     <!-- volume-type -->
                     <div class="input-group col-sm-5" style="margin-left: 5px;">
                       <div class="btn-group btn-group-sm">
-                        <label class="btn btn-primary" ng-model="volume.type" uib-btn-radio="'auto'" ng-click="volume.bind = ''">Auto</label>
-                        <label class="btn btn-primary" ng-model="volume.type" uib-btn-radio="'volume'" ng-click="volume.bind = ''">Volume</label>
-                        <label class="btn btn-primary" ng-model="volume.type" uib-btn-radio="'bind'" ng-click="volume.bind = ''" ng-if="isAdmin || allowBindMounts">Bind</label>
+                        <label class="btn btn-primary" ng-model="volume.type" uib-btn-radio="'auto'" ng-click="volume.bind = ''">{{ 'Auto' | translate }}</label>
+                        <label class="btn btn-primary" ng-model="volume.type" uib-btn-radio="'volume'" ng-click="volume.bind = ''">{{ 'Volume' | translate }}</label>
+                        <label class="btn btn-primary" ng-model="volume.type" uib-btn-radio="'bind'" ng-click="volume.bind = ''" ng-if="isAdmin || allowBindMounts">{{ 'Bind' | translate }}</label>
                       </div>
                       <button class="btn btn-sm btn-danger" type="button" ng-click="removeVolume($index)">
                         <i class="fa fa-trash" aria-hidden="true"></i>
@@ -235,22 +240,22 @@
                     <div class="input-group input-group-sm col-sm-6" ng-if="volume.type === 'volume'">
                       <span class="input-group-addon">volume</span>
                       <select class="form-control" ng-model="volume.bind">
-                        <option selected disabled hidden value="">Select a volume</option>
+                        <option selected disabled hidden value="">{{ 'Select_a_volume' | translate }}</option>
                         <option ng-repeat="vol in availableVolumes" ng-value="vol.Name">{{ vol.Name|truncate:30}}</option>
                       </select>
                     </div>
                     <!-- !volume -->
                     <!-- bind -->
                     <div class="input-group input-group-sm col-sm-6" ng-if="volume.type === 'bind'">
-                      <span class="input-group-addon">host</span>
+                      <span class="input-group-addon">{{ 'host' | translate }}</span>
                       <input type="text" class="form-control" ng-model="volume.bind" placeholder="e.g. /path/on/host">
                     </div>
                     <!-- !bind -->
                     <!-- read-only -->
                     <div class="input-group input-group-sm col-sm-5" style="margin-left: 5px;">
                       <div class="btn-group btn-group-sm">
-                        <label class="btn btn-primary" ng-model="volume.readonly" uib-btn-radio="false">Writable</label>
-                        <label class="btn btn-primary" ng-model="volume.readonly" uib-btn-radio="true">Read-only</label>
+                        <label class="btn btn-primary" ng-model="volume.readonly" uib-btn-radio="false">{{ 'Writable' | translate }}</label>
+                        <label class="btn btn-primary" ng-model="volume.readonly" uib-btn-radio="true">{{ 'Read_only' | translate }}</label>
                       </div>
                     </div>
                     <!-- !read-only -->
@@ -263,9 +268,9 @@
             <!-- extra-host -->
             <div class="form-group" >
               <div class="col-sm-12" style="margin-top: 5px;">
-                <label class="control-label text-left">Hosts file entries</label>
+                <label class="control-label text-left">{{ 'Hosts_file_entries' | translate }}</label>
                 <span class="label label-default interactive" style="margin-left: 10px;" ng-click="addExtraHost()">
-                  <i class="fa fa-plus-circle" aria-hidden="true"></i> add additional entry
+                  <i class="fa fa-plus-circle" aria-hidden="true"></i> {{ 'add_additional_entry' | translate }}
                 </span>
               </div>
               <!-- extra-host-input-list -->
@@ -273,7 +278,7 @@
                 <div class="col-sm-12 form-inline" style="margin-top: 10px;">
                   <div ng-repeat="(idx, host) in state.selectedTemplate.Hosts track by $index" style="margin-top: 2px;">
                     <div class="input-group col-sm-5 input-group-sm">
-                      <span class="input-group-addon">value</span>
+                      <span class="input-group-addon">{{ 'value' | translate }}</span>
                       <input type="text" class="form-control" ng-model="state.selectedTemplate.Hosts[idx]" placeholder="e.g. host:IP">
                     </div>
                     <button class="btn btn-sm btn-danger" type="button" ng-click="removeExtraHost($index)">
@@ -287,9 +292,9 @@
             <!-- labels -->
             <div class="form-group" >
               <div class="col-sm-12" style="margin-top: 5px;">
-                <label class="control-label text-left">Labels</label>
+                <label class="control-label text-left">{{ 'Labels' | translate }}</label>
                 <span class="label label-default interactive" style="margin-left: 10px;" ng-click="addLabel()">
-                  <i class="fa fa-plus-circle" aria-hidden="true"></i> add label
+                  <i class="fa fa-plus-circle" aria-hidden="true"></i> {{ 'add_label' | translate }}
                 </span>
               </div>
                 <!-- labels-input-list -->
@@ -297,11 +302,11 @@
                 <div class="col-sm-12 form-inline" style="margin-top: 10px;">
                   <div ng-repeat="label in state.selectedTemplate.Labels" style="margin-top: 2px;">
                     <div class="input-group col-sm-5 input-group-sm">
-                      <span class="input-group-addon">name</span>
+                      <span class="input-group-addon">{{ 'name' | translate }}</span>
                       <input type="text" class="form-control" ng-model="label.name" placeholder="e.g. com.example.foo">
                     </div>
                     <div class="input-group col-sm-5 input-group-sm">
-                      <span class="input-group-addon">value</span>
+                      <span class="input-group-addon">{{ 'value' | translate }}</span>
                       <input type="text" class="form-control" ng-model="label.value" placeholder="e.g. bar">
                     </div>
                     <button class="btn btn-sm btn-danger" type="button" ng-click="removeLabel($index)">
@@ -315,7 +320,7 @@
             <!-- !labels -->
             <!-- hostname -->
             <div class="form-group">
-              <label for="container_hostname" class="col-sm-2 control-label text-left">Hostname</label>
+              <label for="container_hostname" class="col-sm-2 control-label text-left">{{ 'Hostname' | translate }}</label>
               <div class="col-sm-10">
                 <input type="text" name="container_hostname" class="form-control" ng-model="state.selectedTemplate.Hostname" placeholder="leave empty to use docker default">
               </div>
@@ -325,15 +330,15 @@
           <!-- !advanced-options -->
           <!-- actions -->
           <div class="col-sm-12 form-section-title">
-            Actions
+              {{ 'Actions' | translate }}
           </div>
           <div class="form-group">
             <div class="col-sm-12">
               <button type="button" class="btn btn-primary btn-sm" ng-disabled="state.actionInProgress || !formValues.network" ng-click="createTemplate()" button-spinner="state.actionInProgress">
-                <span ng-hide="state.actionInProgress">Deploy the container</span>
-                <span ng-show="state.actionInProgress">Deployment in progress...</span>
+                <span ng-hide="state.actionInProgress">{{ 'Deploy_the_container' | translate }}</span>
+                <span ng-show="state.actionInProgress">{{ 'Deployment_in_progress' | translate }}...</span>
               </button>
-              <button type="button" class="btn btn-sm btn-default" ng-click="unselectTemplate(state.selectedTemplate)">Hide</button>
+              <button type="button" class="btn btn-sm btn-default" ng-click="unselectTemplate(state.selectedTemplate)">{{ 'Hide' | translate }}</button>
               <span class="text-danger" ng-if="state.formValidationError" style="margin-left: 5px;">{{ state.formValidationError }}</span>
             </div>
           </div>
@@ -349,7 +354,7 @@
 <div class="row">
   <div class="col-sm-12">
     <template-list ng-if="templates"
-      title-text="Templates" title-icon="fa-rocket"
+      title-text="{{ 'Templates' | translate }}" title-icon="fa-rocket"
       templates="templates"
       select-action="selectTemplate"
       delete-action="deleteTemplate"

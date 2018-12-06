@@ -1,22 +1,22 @@
 <rd-header>
-  <rd-header-title title-text="Teams">
+  <rd-header-title title-text="{{ 'Teams' | translate }}">
     <a data-toggle="tooltip" title="Refresh" ui-sref="portainer.teams" ui-sref-opts="{reload: true}">
       <i class="fa fa-sync" aria-hidden="true"></i>
     </a>
   </rd-header-title>
-  <rd-header-content>Teams management</rd-header-content>
+  <rd-header-content>{{ 'Teams_management' | translate }}</rd-header-content>
 </rd-header>
 
 <div class="row" ng-if="isAdmin">
   <div class="col-lg-12 col-md-12 col-xs-12">
     <rd-widget>
-      <rd-widget-header icon="fa-plus" title-text="Add a new team">
+      <rd-widget-header icon="fa-plus" title-text="{{ 'Add_a_new_team' | translate }}">
       </rd-widget-header>
       <rd-widget-body>
         <form class="form-horizontal" name="teamCreationForm" ng-submit="addTeam()">
           <!-- name-input -->
           <div class="form-group">
-            <label for="team_name" class="col-sm-2 control-label text-left">Name</label>
+            <label for="team_name" class="col-sm-2 control-label text-left">{{ 'Name' | translate }}</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" id="team_name" name="team_name" ng-model="formValues.Name" ng-change="checkNameValidity(teamCreationForm)" placeholder="e.g. development" auto-focus required>
             </div>
@@ -24,8 +24,12 @@
           <div class="form-group" ng-show="teamCreationForm.team_name.$invalid">
             <div class="col-sm-12 small text-warning">
               <div ng-messages="teamCreationForm.team_name.$error">
-                <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> This field is required.</p>
-                <p ng-message="validName"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> This team already exists.</p>
+                <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> 
+                  {{ 'This_field_is_required' | translate }}
+                </p>
+                <p ng-message="validName"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> 
+                  {{ 'This_team_already_exists' | translate }}
+                </p>
               </div>
             </div>
           </div>
@@ -34,8 +38,8 @@
           <div class="form-group" ng-if="users.length > 0">
             <div class="col-sm-12" >
               <label class="control-label text-left">
-                Select team leader(s)
-                <portainer-tooltip position="bottom" message="You can assign one or more leaders to this team. Team leaders can manage their teams users and resources."></portainer-tooltip>
+                  {{ 'Select_team_leader' | translate }}
+                <portainer-tooltip position="bottom" message="{{ 'assign_one_or_more_leaders_and_sth' | translate }}"></portainer-tooltip>
               </label>
               <span isteven-multi-select
                ng-if="users.length > 0"
@@ -55,8 +59,10 @@
           <div class="form-group">
             <div class="col-sm-12">
               <button type="button" class="btn btn-primary btn-sm" ng-disabled="state.actionInProgress || !teamCreationForm.$valid" ng-click="addTeam()" button-spinner="state.actionInProgress">
-                <span ng-hide="state.actionInProgress"><i class="fa fa-plus" aria-hidden="true"></i> Create team</span>
-                <span ng-show="state.actionInProgress">Creating team...</span>
+                <span ng-hide="state.actionInProgress"><i class="fa fa-plus" aria-hidden="true"></i>
+                  {{ 'Create_team' | translate }}
+                  </span>
+                <span ng-show="state.actionInProgress">{{ 'Creating_team' | translate }}...</span>
               </button>
             </div>
           </div>
