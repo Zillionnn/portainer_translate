@@ -1,10 +1,10 @@
 <rd-header>
-  <rd-header-title title-text="Stacks list">
+  <rd-header-title title-text="{{ 'Stacks_list' | translate }}">
     <a data-toggle="tooltip" title="Refresh" ui-sref="portainer.stacks" ui-sref-opts="{reload: true}">
       <i class="fa fa-sync" aria-hidden="true"></i>
     </a>
   </rd-header-title>
-  <rd-header-content>Stacks</rd-header-content>
+  <rd-header-content>{{ 'Stacks' | translate }}</rd-header-content>
 </rd-header>
 <information-panel-offline ng-if="offlineMode"></information-panel-offline>
 <div class="row">

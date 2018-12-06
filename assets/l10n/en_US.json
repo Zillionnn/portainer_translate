@@ -259,7 +259,7 @@
   "value":"value",
   "Deploy_the_stack":"Deploy the stack",
   "Deployment_in_progress":"Deployment in progress",
-  
+
   "Options":"Options",
   "Prune_services":"Prune services",
   "Prune_services_that_no_longer_referenced":"Prune services that are no longer referenced.",
@@ -271,6 +271,29 @@
   "Editor":"Editor",
   "more_information_about_Compose_file":"You can get more information about Compose file format in the ",
   "Update_the_stack":"Update the stack",
+
+  "Stacks_list":"Stacks list",
+  "Tags":"Tags",
+  "Tag_management":"Tag management",
+  "Add_a_new_tag":"Add a new tag",
+  "This_tag_already_exists":"This tag already exists.",
+  "Create_tag":"Create tag",
+  "Creating_tag":"Creating tag",
+
+  "Team_details":"Team details",
+  "Teams":"Teams",
+  "Leaders":"Leaders",
+  "Total_users_in_team":"Total users in team",
+  "Items_per_page":"Items per page",
+  "All":"All",
+  "Add_all_users":"Add all users",
+  "No_users":"No users",
+  "Remove_all_users":"Remove all users",
+  "Team_Role":"Team Role",
+  "Remove":"Remove",
+  "Leader":"Leader",
+  "Member":"Member",
+  "No_team_members":"No team members"
   
 
 

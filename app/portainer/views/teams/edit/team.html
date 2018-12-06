@@ -1,30 +1,31 @@
 <rd-header>
-  <rd-header-title title-text="Team details"></rd-header-title>
+  <rd-header-title title-text="{{ 'Team_details' | translate }}"></rd-header-title>
   <rd-header-content>
-    <a ui-sref="portainer.teams">Teams</a> &gt; <a ui-sref="portainer.teams.team({id: team.Id})">{{ team.Name }}</a>
+    <a ui-sref="portainer.teams">{{ 'Teams' | translate }}</a> &gt; 
+    <a ui-sref="portainer.teams.team({id: team.Id})">{{ team.Name }}</a>
   </rd-header-content>
 </rd-header>
 
 <div class="row">
   <div class="col-lg-12 col-md-12 col-xs-12">
     <rd-widget>
-      <rd-widget-header icon="fa-users" title-text="Team details"></rd-widget-header>
+      <rd-widget-header icon="fa-users" title-text="{{ 'Team_details' | translate }}"></rd-widget-header>
       <rd-widget-body classes="no-padding">
         <table class="table">
           <tbody>
             <tr>
-              <td>Name</td>
+              <td>{{ 'Name' | translate }}Name</td>
               <td>
                 {{ team.Name }}
                 <button class="btn btn-xs btn-danger" ng-if="isAdmin" ng-click="deleteTeam()"><i class="fa fa-trash-alt space-right" aria-hidden="true"></i>Delete this team</button>
               </td>
             </tr>
             <tr>
-              <td>Leaders</td>
+              <td>{{ 'Leaders' | translate }}</td>
               <td>{{ leaderCount }}</td>
             </tr>
             <tr>
-              <td>Total users in team</td>
+              <td>{{ 'Total_users_in_team' | translate }}</td>
               <td>{{ teamMembers.length }}</td>
             </tr>
           </tbody>
@@ -37,11 +38,11 @@
 <div class="row" ng-if="team">
   <div class="col-sm-6">
     <rd-widget>
-      <rd-widget-header classes="col-sm-12 col-md-6 nopadding" icon="fa-users" title-text="Users">
+      <rd-widget-header classes="col-sm-12 col-md-6 nopadding" icon="fa-users" title-text="{{ 'Users' | translate }}">
         <div class="pull-md-right pull-lg-right">
-          Items per page:
+            {{ 'Items_per_page' | translate }}:
           <select ng-model="state.pagination_count_users" ng-change="changePaginationCountUsers()">
-            <option value="0">All</option>
+            <option value="0">{{ 'All' | translate }}</option>
             <option value="10">10</option>
             <option value="25">25</option>
             <option value="50">50</option>
@@ -51,7 +52,10 @@
       </rd-widget-header>
       <rd-widget-taskbar classes="col-sm-12 nopadding">
         <div class="col-sm-12 col-md-6 nopadding">
-          <button class="btn btn-primary btn-sm" ng-click="addAllUsers()" ng-if="isAdmin" ng-disabled="users.length ===  0 || filteredUsers.length === 0"><i class="fa fa-user-plus space-right" aria-hidden="true"></i>Add all users</button>
+          <button class="btn btn-primary btn-sm" ng-click="addAllUsers()" ng-if="isAdmin" ng-disabled="users.length ===  0 || filteredUsers.length === 0">
+            <i class="fa fa-user-plus space-right" aria-hidden="true"></i>
+            {{ 'Add_all_users' | translate }}
+          </button>
         </div>
         <div class="col-sm-12 col-md-6 nopadding">
           <input type="text" id="filter" ng-model="state.filterUsers" placeholder="Filter..." class="form-control input-sm" />
@@ -64,7 +68,7 @@
               <tr>
                 <th>
                   <a ng-click="orderUsers('Username')">
-                    Name
+                      {{ 'Name' | translate }}
                     <span ng-show="sortTypeUsers == 'Username' && !sortReverseUsers" class="glyphicon glyphicon-chevron-down"></span>
                     <span ng-show="sortTypeUsers == 'Username' && sortReverseUsers" class="glyphicon glyphicon-chevron-up"></span>
                   </a>
@@ -84,7 +88,7 @@
                 <td colspan="2" class="text-center text-muted">Loading...</td>
               </tr>
               <tr ng-if="users.length === 0 || (users | filter:state.filterUsers).length === 0">
-                <td colspan="2" class="text-center text-muted">No users.</td>
+                <td colspan="2" class="text-center text-muted">{{ 'No_users' | translate }}.</td>
               </tr>
             </tbody>
           </table>
@@ -99,9 +103,9 @@
     <rd-widget>
       <rd-widget-header classes="col-sm-12 col-md-6 nopadding" icon="fa-users" title-text="Team members">
         <div class="pull-md-right pull-lg-right">
-          Items per page:
+            {{ 'Items_per_page' | translate }}:
           <select ng-model="state.pagination_count_members" ng-change="changePaginationCountGroupMembers()">
-            <option value="0">All</option>
+            <option value="0">{{ 'All' | translate }}</option>
             <option value="10">10</option>
             <option value="25">25</option>
             <option value="50">50</option>
@@ -111,7 +115,10 @@
       </rd-widget-header>
       <rd-widget-taskbar classes="col-sm-12 nopadding">
         <div class="col-sm-12 col-md-6 nopadding">
-          <button class="btn btn-primary btn-sm" ng-click="removeAllUsers()" ng-if="isAdmin" ng-disabled="teamMembers.length ===  0 || filteredGroupMembers.length === 0"><i class="fa fa-user-times space-right" aria-hidden="true"></i>Remove all users</button>
+          <button class="btn btn-primary btn-sm" ng-click="removeAllUsers()" ng-if="isAdmin" ng-disabled="teamMembers.length ===  0 || filteredGroupMembers.length === 0">
+            <i class="fa fa-user-times space-right" aria-hidden="true"></i>
+            {{ 'Remove_all_users' | translate }}
+          </button>
         </div>
         <div class="col-sm-12 col-md-6 nopadding">
           <input type="text" id="filter" ng-model="state.filterGroupMembers" placeholder="Filter..." class="form-control input-sm" />
@@ -124,14 +131,14 @@
               <tr>
                 <th>
                   <a ng-click="orderGroupMembers('Username')">
-                    Name
+                      {{ 'Name' | translate }}
                     <span ng-show="sortTypeGroupMembers == 'Username' && !sortReverseGroupMembers" class="glyphicon glyphicon-chevron-down"></span>
                     <span ng-show="sortTypeGroupMembers == 'Username' && sortReverseGroupMembers" class="glyphicon glyphicon-chevron-up"></span>
                   </a>
                 </th>
                 <th>
                   <a ng-click="orderGroupMembers('TeamRole')">
-                    Team Role
+                      {{ 'Team_Role' | translate }}
                     <span ng-show="sortTypeGroupMembers == 'TeamRole' && !sortReverseGroupMembers" class="glyphicon glyphicon-chevron-down"></span>
                     <span ng-show="sortTypeGroupMembers == 'TeamRole' && sortReverseGroupMembers" class="glyphicon glyphicon-chevron-up"></span>
                   </a>
@@ -143,7 +150,9 @@
                 <td>
                   {{ user.Username }}
                   <span style="margin-left: 5px;" ng-if="isAdmin || user.TeamRole === 'Member'">
-                    <a ng-click="removeUser(user)"><i class="fa fa-minus-circle space-right" aria-hidden="true"></i>Remove</a>
+                    <a ng-click="removeUser(user)"><i class="fa fa-minus-circle space-right" aria-hidden="true"></i>
+                      {{ 'Remove' | translate }}
+                    </a>
                   </span>
                 </td>
                 <td>
@@ -151,8 +160,12 @@
                   <i ng-if="user.TeamRole === 'Member'" class="fa fa-user" aria-hidden="true" style="margin-right: 2px;"></i>
                   {{ user.TeamRole }}
                   <span style="margin-left: 5px;" ng-if="isAdmin">
-                    <a style="margin-left: 5px;" ng-click="promoteToLeader(user)" ng-if="user.TeamRole === 'Member'"><i class="fa fa-user-plus space-right" aria-hidden="true"></i>Leader</a>
-                    <a style="margin-left: 5px;" ng-click="demoteToMember(user)" ng-if="user.TeamRole === 'Leader'"><i class="fa fa-user-times space-right" aria-hidden="true"></i>Member</a>
+                    <a style="margin-left: 5px;" ng-click="promoteToLeader(user)" ng-if="user.TeamRole === 'Member'"><i class="fa fa-user-plus space-right" aria-hidden="true"></i>
+                      {{ 'Leader' | translate }}
+                    </a>
+                    <a style="margin-left: 5px;" ng-click="demoteToMember(user)" ng-if="user.TeamRole === 'Leader'"><i class="fa fa-user-times space-right" aria-hidden="true"></i>
+                      {{ 'Member' | translate }}
+                    </a>
                   </span>
                 </td>
               </tr>
@@ -160,7 +173,7 @@
                 <td colspan="2" class="text-center text-muted">Loading...</td>
               </tr>
               <tr ng-if="teamMembers.length === 0 || (teamMembers | filter:state.filterGroupMembers).length === 0">
-                <td colspan="2" class="text-center text-muted">No team members.</td>
+                <td colspan="2" class="text-center text-muted">{{ 'No_team_members' | translate }}.</td>
               </tr>
             </tbody>
           </table>
