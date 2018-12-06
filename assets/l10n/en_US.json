@@ -343,6 +343,14 @@
   "Delete_this_user":"Delete this user",
   "Administrator":"Administrator",
   "Administrators_access_settings_full_control":"Administrators have access to Portainer settings management as well as full control over all defined endpoints and their resources.",
+
+  "User_management":"User management",
+  "Add_a_new_user":"Add a new user",
+  "Username_match_username_defined_LDAP_source":"Username must exactly match username defined in external LDAP source.",
+  "Add_to_team":"Add to team(s)",
+  "have_not_created_team":"You have not yet created any team.",
+  "Note_non_administrator_with_no_team_have_access_to_endpoint":"Note: non-administrator users with no team do not have access to any endpoint by default",
+ 
   
 
 
