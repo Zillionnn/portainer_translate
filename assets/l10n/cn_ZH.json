@@ -336,7 +336,12 @@
   "add_additional_entry":"add additional entry",
   "Labels":"Labels",
   "add_label":"add label",
-  "Deploy_the_container":"Deploy the container"
+  "Deploy_the_container":"Deploy the container",
+  
+  "Your_password_must_be_updated":"Your password must be updated",
+  "8characterspwd":"The password must be at least 8 characters long",
+  "Updating_password":"Updating password"
+  
 
   
 

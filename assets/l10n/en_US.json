@@ -294,7 +294,7 @@
   "Leader":"Leader",
   "Member":"Member",
   "No_team_members":"No team members",
-  
+
   "Teams_management":"Teams management",
   "Add_a_new_team":"Add a new team",
   "This_team_already_exists":"This team already exists",
@@ -333,7 +333,12 @@
   "add_additional_entry":"add additional entry",
   "Labels":"Labels",
   "add_label":"add label",
-  "Deploy_the_container":"Deploy the container"
+  "Deploy_the_container":"Deploy the container",
+
+  "Your_password_must_be_updated":"Your password must be updated",
+  "8characterspwd":"The password must be at least 8 characters long",
+  "Updating_password":"Updating password"
+  
 
   
 
