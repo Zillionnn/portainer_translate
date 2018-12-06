@@ -340,9 +340,13 @@
   
   "Your_password_must_be_updated":"Your password must be updated",
   "8characterspwd":"The password must be at least 8 characters long",
-  "Updating_password":"Updating password"
+  "Updating_password":"Updating password",
   
-
+  "User_details":"User details",
+  "Delete_this_user":"Delete this user",
+  "Administrator":"Administrator",
+  "Administrators_access_settings_full_control":"Administrators have access to Portainer settings management as well as full control over all defined endpoints and their resources.",
+  
   
 
 
