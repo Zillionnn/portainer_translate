@@ -350,7 +350,47 @@
   "Add_to_team":"Add to team(s)",
   "have_not_created_team":"You have not yet created any team.",
   "Note_non_administrator_with_no_team_have_access_to_endpoint":"Note: non-administrator users with no team do not have access to any endpoint by default",
- 
+
+  "Access_control":"Access control",
+  "Enable_access_control":" Enable access control",
+  "restrict_access_management_resource.":"When enabled, you can restrict the access and management of this resource.",
+  "restrict _management_resource_to_administrators":"I want to restrict the management of this resource to administrators only",
+  "Restricted":"Restricted",
+  "restrict_management_resource_users_teams":"I want to restrict the management of this resource to a set of users and/or teams",
+  "Private":"Private",
+  "resource_manageable_by_myself_only":"I want to this resource to be manageable by myself only",
+  "want_member_of_team" :"I want any member of my team",
+  "able_to_manage_resource":"to be able to manage this resource",
+  "restrict_management_resource_my_teams":"I want to restrict the management of this resource to one or more of my teams",
+  "Authorized_teams":"Authorized teams",
+  "select_teams_manage_resource":"You can select which teams(s) will be able to manage this resource.",
+  "as_a_member_select_teams_manage_this_resource":"As you are a member of multiple teams, you can select which teams(s) will be able to manage this resource.",
+  "have_not_yet_created_any_team":"You have not yet created any team.",
+  "Authorized_users":"Authorized users",
+  "have_not_yet_created_any_user":"You have not yet created any user.",
+
+  "Ownership":"Ownership",
+  "administrators":"administrators",
+  "resource_be_managed_by_any_user_this_endpoint":"This resource can be managed by any user with access to this endpoint.",
+  "Management_resource_restricted_to_single_user":"Management of this resource is restricted to a single user.",
+  "resource_managed_by_restricted_users_and_or_teams":"This resource can be managed by a restricted set of users and/or teams.",
+  "Access_control_on_resource_inherited_following_service":" Access control on this resource is inherited from the following service",
+  "Access_control_applied_on_service_applied_on_each_container":"Access control applied on a service is also applied on each container of that service.",
+  "Access_control_resource_is_inherited_following_container":" Access control on this resource is inherited from the following container",
+  "Access_control_applied_container":"Access control applied on a container created using a template is also applied on each volume associated to the container.",
+  "Access_following stack":" Access control on this resource is inherited from the following stack",
+  "Access_applied_the_stack.":"Access control applied on a stack is also applied on each resource in the stack.",
+  "Change_ownership":"Change ownership",
+  "restrict_resource_administrators_only":"I want to restrict the management of this resource to administrators only",
+  "restrict_management_resource_users_and_or_teams":" I want to restrict the management of this resource to a set of users and/or teams",
+  "want_any_member_my_team":"I want any member of my team",
+  "manage_this_resource":"to be able to manage this resource",
+  "restrict_management_resource_to_one_or_more":"I want to restrict the management of this resource to one or more of my teams",
+  "Public":"Public",
+  "user_with_manage_resource":"I want any user with access to this endpoint to be able to manage this resource",
+  "You have not yet created any team.":"You have not yet created any team.",
+
+  
   
 
 
