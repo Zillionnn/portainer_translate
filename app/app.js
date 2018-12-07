@@ -6,7 +6,9 @@ function ($translate, $rootScope, $state, Authentication, authManager, StateMana
 
   EndpointProvider.initialize();
   $rootScope.last_name = 'Cat';
+  $rootScope.language = '';
   $rootScope.changeLanguage = function (key) {
+    $rootScope.language = key;
     $translate.use(key);
   };
 

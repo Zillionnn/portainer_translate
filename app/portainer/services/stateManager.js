@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.factory('StateManager', ['$q', 'SystemService', 'InfoHelper', 'LocalStorage', 'SettingsService', 'StatusService', 'APPLICATION_CACHE_VALIDITY', 'AgentPingService',
-function StateManagerFactory($q, SystemService, InfoHelper, LocalStorage, SettingsService, StatusService, APPLICATION_CACHE_VALIDITY, AgentPingService) {
+.factory('StateManager', ['$rootScope', '$q', 'SystemService', 'InfoHelper', 'LocalStorage', 'SettingsService', 'StatusService', 'APPLICATION_CACHE_VALIDITY', 'AgentPingService',
+function StateManagerFactory($rootScope, $q, SystemService, InfoHelper, LocalStorage, SettingsService, StatusService, APPLICATION_CACHE_VALIDITY, AgentPingService) {
   'use strict';
 
   var manager = {};
@@ -69,7 +69,12 @@ function StateManagerFactory($q, SystemService, InfoHelper, LocalStorage, Settin
       deferred.resolve(state);
     })
     .catch(function error(err) {
-      deferred.reject({msg: 'Unable to retrieve server settings and status', err: err});
+      if($rootScope.language === 'en_US'){
+        deferred.reject({msg: 'Unable to retrieve server settings and status', err: err});
+      } else {
+        deferred.reject({msg: '无法检索服务器设置和状态', err: err});
+      }
+      
     })
     .finally(function final() {
       state.loading = false;
