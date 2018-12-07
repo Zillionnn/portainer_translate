@@ -1,6 +1,6 @@
 <div ng-show="$ctrl.model.length > 0" class="col-sm-12" style="padding: 0; margin-bottom: 15px;">
   <label class="col-sm-3 col-lg-2 control-label text-left">
-    Selected tags
+      {{ 'Selected_tags' | translate }}
   </label>
   <div class="col-sm-9 col-lg-10" style="padding-top: 4px;">
     <span class="tag space-right interactive" ng-repeat="tag in $ctrl.model" ng-click="$ctrl.removeTag(tag)">
@@ -13,7 +13,7 @@
 </div>
 <div class="col-sm-12" style="padding: 0">
   <label for="tags" class="col-sm-3 col-lg-2 control-label text-left">
-    Tags
+      {{ 'Tags' | translate }}
   </label>
   <div class="col-sm-9 col-lg-10" ng-if="$ctrl.tags.length > 0">
     <input
@@ -27,12 +27,12 @@
   </div>
   <div class="col-sm-9 col-lg-10" ng-if="$ctrl.tags.length === 0">
     <span class="small text-muted">
-      No tags available.
+        {{ 'No_tags_available' | translate }}
     </span>
   </div>
 </div>
 <div class="col-sm-offset-3 col-lg-offset-2 col-sm-12" ng-if="$ctrl.state.noResult" style="margin-top: 2px;">
   <span class="small text-muted">
-    No tags matching your filter.
+      {{ 'No_tags_matching_your_filter' | translate }}
   </span>
 </div>

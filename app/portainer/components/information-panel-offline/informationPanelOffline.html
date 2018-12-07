@@ -2,14 +2,15 @@
   <span class="small">
     <p class="text-muted">
       <i class="fa fa-exclamation-circle orange-icon" aria-hidden="true" style="margin-right: 2px;"></i>
-      This endpoint is currently offline (read-only). Data shown is based on the latest available snapshot.
+      <!-- This endpoint is currently offline (read-only). Data shown is based on the latest available snapshot. -->
+      {{ 'This_endpoint_is_currently_offline' | translate }}
     </p>
     <p class="text-muted">
       <i class="fa fa-clock" aria-hidden="true" style="margin-right: 2px;"></i>
-      Last snapshot: {{ $ctrl.snapshotTime | getisodatefromtimestamp }}
+      {{ 'Last_snapshot' | translate }}: {{ $ctrl.snapshotTime | getisodatefromtimestamp }}
     </p>
     <button type="button" class="btn btn-xs btn-primary" ng-click="$ctrl.triggerSnapshot()" ng-if="$ctrl.showRefreshButton">
-      <i class="fa fa-sync space-right" aria-hidden="true"></i>Refresh
+      <i class="fa fa-sync space-right" aria-hidden="true"></i>{{ 'Refresh' | translate }}
     </button>
   </span>
 </information-panel>

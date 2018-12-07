@@ -11,7 +11,7 @@
       <div class="actionBar">
         <div>
           <button type="button" class="btn btn-sm btn-primary" ui-sref="portainer.templates.new" ng-if="$ctrl.showAddAction">
-            <i class="fa fa-plus space-right" aria-hidden="true"></i>Add template
+            <i class="fa fa-plus space-right" aria-hidden="true"></i>{{ 'Add_template' | translate }}
           </button>
           <span ng-class="{ 'pull-right': $ctrl.showAddAction }" style="width: 25%;">
             <ui-select ng-model="$ctrl.state.selectedCategory">
@@ -27,7 +27,7 @@
 
         <div class="small text-muted" style="margin: 15px 0 0 5px;">
           <label for="show_stacks" class="control-label text-left">
-            Show container templates
+              {{ 'Show_container_templates' | translate }}
           </label>
           <label class="switch" style="margin-left: 20px;">
             <input type="checkbox" name="show_stacks" ng-model="$ctrl.state.showContainerTemplates" ng-change="$ctrl.updateCategories()"><i></i>
@@ -53,7 +53,7 @@
           Loading...
         </div>
         <div ng-if="($ctrl.templates | filter: $ctrl.filterByType | filter:$ctrl.filterByCategory | filter:$ctrl.state.textFilter).length === 0" class="text-center text-muted">
-          No templates available.
+            {{ 'No_templates_available' | translate }}
         </div>
       </div>
 
