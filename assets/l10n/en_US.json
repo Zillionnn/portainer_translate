@@ -498,7 +498,7 @@
   "Values":"Values",
   "add_allowed_value":"add allowed value",
   "Default":"Default",
-  
+
   "dismiss":"dismiss",
   "This_endpoint_is_currently_offline":"This endpoint is currently offline (read-only). Data shown is based on the latest available snapshot.",
   "Last_snapshot":"Last snapshot",
@@ -511,7 +511,25 @@
   "No_tags_available":"No tags available.",
   "No_tags_matching_your_filter":"No tags matching your filter.",
   "Show_container_templates":" Show container templates",
-  "No_templates_available":"No templates available."
+  "No_templates_available":"No templates available.",
+  
+  "Size":"Size",
+  "Last_modification":"Last modification",
+  "Go_to_parent":"Go to parent",
+  "Download":"Download",
+  "Delete":"Delete",
+  "No_files_found":"No files found.",
+  "Node":"Node",
+
+  "Azure_configuration":"Azure configuration",
+  "Tenant":"Tenant",
+  "Application":"Application",
+
+  "Dashboard":"Dashboard",
+  "Container_instances":"Container instances",
+  "Add_container":"Add container",
+  "Location":"Location",
+  "Published_Ports":"Published Ports"
   
   
     
