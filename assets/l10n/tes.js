@@ -1,1 +1,1 @@
-{{ 'HOME' | translate }}
+{{ '' | translate }}

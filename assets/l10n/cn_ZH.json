@@ -475,7 +475,37 @@
   "Multi_platform":"多平台",
   "Categories":"分类",
   "Administrator_template":"管理员模板",
-  "template_only_available_administrator_users":"此模板是否仅供管理员用户使用。"
+  "template_only_available_administrator_users":"此模板是否仅供管理员用户使用。",
+
+  
+  "Compose_file_path":"Compose file path",
+  "Command":"Command",
+  "The_command_to_run_in_the_container":"The command to run in the container. If not specified, the container will use the default command specified in its Dockerfile.",
+  "Hostname":"Hostname",
+  "Set_the_hostname_of_the_container":"Set the hostname of the container. Will use Docker default if not specified.",
+  "Network":"Network",
+  "Portainer_will_automatically_assign_a_port":"Portainer will automatically assign a port if you leave the host port empty.",
+  "Portainer_will_automatically_create_and_map":"Portainer will automatically create and map a local volume when using the",
+  "Restart_policy":"Restart policy",
+  "Always":"Always",
+  "Unless_stopped":"Unless stopped",
+  "On_failure":"On failure",
+  "Privileged_mode":"Privileged mode",
+  "Start_the_container_in_privileged_mode":"Start the container in privileged mode.",
+  "Interactive_mode":"Interactive mode",
+  "Start_the_container_in_foreground":"Start the container in foreground (equivalent of -i -t flags).",
+  "add_variable":"add variable",
+  "Preset_variable":"Preset variable",
+  "Text":"Text",
+  "Free_text_value":"Free text value",
+  "Select":"Select",
+  "Choose_value_from_list":"Choose value from list",
+  "Default_value":"Default value",
+  "Values":"Values",
+  "add_allowed_value":"add allowed value",
+  "Default":"Default",
+  
+
   
   
   

@@ -152,15 +152,14 @@
       </div>
     </div>
     <!-- administrator-only -->
-    <!-- TODO -->
   </div>
   <!-- !template-details -->
   <div ng-if="$ctrl.model.Type === 2 || $ctrl.model.Type === 3">
     <div class="col-sm-12 form-section-title interactive" ng-click="$ctrl.state.collapseStack = !$ctrl.state.collapseStack">
-      Stack
+      {{ 'Stack' | translate }}
       <span class="small space-left">
-        <a ng-if="$ctrl.state.collapseStack"><i class="fa fa-plus" aria-hidden="true"></i> expand</a>
-        <a ng-if="!$ctrl.state.collapseStack"><i class="fa fa-minus" aria-hidden="true"></i> collapse</a>
+        <a ng-if="$ctrl.state.collapseStack"><i class="fa fa-plus" aria-hidden="true"></i> {{ 'expand' | translate }}</a>
+        <a ng-if="!$ctrl.state.collapseStack"><i class="fa fa-minus" aria-hidden="true"></i>{{ 'collapse' | translate }} </a>
       </span>
     </div>
     <!-- stack-details -->
@@ -175,7 +174,7 @@
       <div class="form-group" ng-show="templateForm.template_repository_url.$invalid">
         <div class="col-sm-12 small text-warning">
           <div ng-messages="templateForm.template_repository_url.$error">
-            <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> This field is required.</p>
+            <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>{{ 'This_field_is_required' | translate }}</p>
           </div>
         </div>
       </div>
@@ -183,7 +182,7 @@
       <!-- composefile-path -->
       <div class="form-group">
         <label for="template_repository_path" class="col-sm-3 col-lg-2 control-label text-left">
-          Compose file path
+          {{ 'Compose_file_path' | translate }}
         </label>
         <div class="col-sm-9 col-lg-10">
           <input type="text" class="form-control" name="template_repository_path" ng-model="$ctrl.model.Repository.stackfile" placeholder='docker-compose.yml'>
@@ -195,10 +194,10 @@
   </div>
   <div ng-if="$ctrl.model.Type === 1">
     <div class="col-sm-12 form-section-title interactive" ng-click="$ctrl.state.collapseContainer = !$ctrl.state.collapseContainer">
-      Container
+      {{ 'Container' | translate }}
       <span class="small space-left">
-        <a ng-if="$ctrl.state.collapseContainer"><i class="fa fa-plus" aria-hidden="true"></i> expand</a>
-        <a ng-if="!$ctrl.state.collapseContainer"><i class="fa fa-minus" aria-hidden="true"></i> collapse</a>
+        <a ng-if="$ctrl.state.collapseContainer"><i class="fa fa-plus" aria-hidden="true"></i> {{ 'expand' | translate }}</a>
+        <a ng-if="!$ctrl.state.collapseContainer"><i class="fa fa-minus" aria-hidden="true"></i> {{ 'collapse' | translate }}</a>
       </span>
     </div>
     <!-- container-details -->
@@ -212,8 +211,8 @@
       <!-- command -->
       <div class="form-group">
         <label for="template_command" class="col-sm-3 col-lg-2 control-label text-left">
-          Command
-          <portainer-tooltip position="bottom" message="The command to run in the container. If not specified, the container will use the default command specified in its Dockerfile."></portainer-tooltip>
+          {{ 'Command' | translate }}
+          <portainer-tooltip position="bottom" message="{{ 'The_command_to_run_in_the_container' | translate }}"></portainer-tooltip>
         </label>
         <div class="col-sm-9 col-lg-10">
           <input type="text" class="form-control" name="template_command" ng-model="$ctrl.model.Command" placeholder='/bin/bash -c \"echo hello\" && exit 777'>
@@ -223,8 +222,8 @@
       <!-- hostname -->
       <div class="form-group">
         <label for="template_hostname" class="col-sm-3 col-lg-2 control-label text-left">
-          Hostname
-          <portainer-tooltip position="bottom" message="Set the hostname of the container. Will use Docker default if not specified."></portainer-tooltip>
+          {{ 'Hostname' | translate }}
+          <portainer-tooltip position="bottom" message="{{ 'Set_the_hostname_of_the_container' | translate }}"></portainer-tooltip>
         </label>
         <div class="col-sm-9 col-lg-10">
           <input type="text" class="form-control" name="template_hostname" ng-model="$ctrl.model.Hostname" placeholder='mycontainername'>
@@ -234,7 +233,7 @@
       <!-- network -->
       <div class="form-group">
         <label for="template_network" class="col-sm-3 col-lg-2 control-label text-left">
-          Network
+          {{ 'Network' | translate }}
         </label>
         <div class="col-sm-10">
           <select class="form-control" ng-options="net.Name for net in $ctrl.networks" ng-model="$ctrl.model.Network">
@@ -246,13 +245,16 @@
       <!-- port-mapping -->
       <div class="form-group" >
         <div class="col-sm-12" style="margin-top: 5px;">
-          <label class="control-label text-left">Port mapping</label>
+          <label class="control-label text-left">{{ 'Port_mapping' | translate }}</label>
           <span class="label label-default interactive" style="margin-left: 10px;" ng-click="$ctrl.addPortBinding()">
-            <i class="fa fa-plus-circle" aria-hidden="true"></i> map additional port
+            <i class="fa fa-plus-circle" aria-hidden="true"></i> {{ 'map_additional_port' | translate }}
           </span>
         </div>
         <div class="col-sm-12" style="margin-top: 10px" ng-if="$ctrl.model.Ports.length > 0">
-          <span class="small text-muted">Portainer will automatically assign a port if you leave the host port empty.</span>
+          <span class="small text-muted">
+            <!-- Portainer will automatically assign a port if you leave the host port empty. -->
+            {{ 'Portainer_will_automatically_assign_a_port' | translate }}
+          </span>
         </div>
         <!-- port-mapping-input-list -->
         <div class="col-sm-12">
@@ -260,7 +262,7 @@
             <div ng-repeat="portBinding in $ctrl.model.Ports" style="margin-top: 2px;">
               <!-- host-port -->
               <div class="input-group col-sm-4 input-group-sm">
-                <span class="input-group-addon">host</span>
+                <span class="input-group-addon">{{ 'host' | translate }}</span>
                 <input type="text" class="form-control" ng-model="portBinding.hostPort" placeholder="e.g. 80 or 1.2.3.4:80 (optional)">
               </div>
               <!-- !host-port -->
@@ -269,7 +271,7 @@
               </span>
               <!-- container-port -->
               <div class="input-group col-sm-4 input-group-sm">
-                <span class="input-group-addon">container</span>
+                <span class="input-group-addon">{{ 'container' | translate }}</span>
                 <input type="text" class="form-control" ng-model="portBinding.containerPort" placeholder="e.g. 80">
               </div>
               <!-- !container-port -->
@@ -293,13 +295,16 @@
       <!-- volumes -->
       <div class="form-group" >
         <div class="col-sm-12" style="margin-top: 5px;">
-          <label class="control-label text-left">Volume mapping</label>
+          <label class="control-label text-left">{{ 'Volume_mapping' | translate }}</label>
           <span class="label label-default interactive" style="margin-left: 10px;" ng-click="$ctrl.addVolume()">
-            <i class="fa fa-plus-circle" aria-hidden="true"></i> map additional volume
+            <i class="fa fa-plus-circle" aria-hidden="true"></i> {{ 'map_additional_volume' | translate }}
           </span>
         </div>
         <div class="col-sm-12" style="margin-top: 10px" ng-if="$ctrl.model.Volumes.length > 0">
-          <span class="small text-muted">Portainer will automatically create and map a local volume when using the <b>auto</b> option.</span>
+          <span class="small text-muted">
+            <!-- Portainer will automatically create and map a local volume when using the <b>auto</b> option. -->
+            {{ 'Portainer_will_automatically_create_and_map' | translate }} <b>{{ 'auto' | translate }}</b> {{ 'option' | translate }}.
+          </span>
         </div>
         <div ng-repeat="volume in $ctrl.model.Volumes">
           <div class="col-sm-12" style="margin-top: 10px;">
@@ -307,15 +312,15 @@
             <div class="col-sm-12 form-inline">
               <!-- container-path -->
               <div class="input-group input-group-sm col-sm-6">
-                <span class="input-group-addon">container</span>
+                <span class="input-group-addon">{{ 'container' | translate }}</span>
                 <input type="text" class="form-control" ng-model="volume.container" placeholder="e.g. /path/in/container">
               </div>
               <!-- !container-path -->
               <!-- volume-type -->
               <div class="input-group col-sm-5" style="margin-left: 5px;">
                 <div class="btn-group btn-group-sm">
-                  <label class="btn btn-primary" ng-model="volume.type" uib-btn-radio="'auto'" ng-click="volume.bind = ''">Auto</label>
-                  <label class="btn btn-primary" ng-model="volume.type" uib-btn-radio="'bind'" ng-click="volume.bind = ''">Bind</label>
+                  <label class="btn btn-primary" ng-model="volume.type" uib-btn-radio="'auto'" ng-click="volume.bind = ''">{{ 'Auto' | translate }}</label>
+                  <label class="btn btn-primary" ng-model="volume.type" uib-btn-radio="'bind'" ng-click="volume.bind = ''">{{ 'Bind' | translate }}</label>
                 </div>
                 <button class="btn btn-sm btn-danger" type="button" ng-click="$ctrl.removeVolume($index)">
                   <i class="fa fa-trash" aria-hidden="true"></i>
@@ -336,8 +341,8 @@
               <!-- read-only -->
               <div class="input-group input-group-sm col-sm-5" style="margin-left: 5px;">
                 <div class="btn-group btn-group-sm">
-                  <label class="btn btn-primary" ng-model="volume.readonly" uib-btn-radio="false">Writable</label>
-                  <label class="btn btn-primary" ng-model="volume.readonly" uib-btn-radio="true">Read-only</label>
+                  <label class="btn btn-primary" ng-model="volume.readonly" uib-btn-radio="false">{{ 'Writable' | translate }}</label>
+                  <label class="btn btn-primary" ng-model="volume.readonly" uib-btn-radio="true">{{ 'Read_only' | translate }}</label>
                 </div>
               </div>
               <!-- !read-only -->
@@ -350,9 +355,9 @@
       <!-- labels -->
       <div class="form-group" >
         <div class="col-sm-12" style="margin-top: 5px;">
-          <label class="control-label text-left">Labels</label>
+          <label class="control-label text-left">{{ 'Labels' | translate }}</label>
           <span class="label label-default interactive" style="margin-left: 10px;" ng-click="$ctrl.addLabel()">
-            <i class="fa fa-plus-circle" aria-hidden="true"></i> add label
+            <i class="fa fa-plus-circle" aria-hidden="true"></i> {{ 'add_label' | translate }}
           </span>
         </div>
         <!-- labels-input-list -->
@@ -360,11 +365,11 @@
           <div class="col-sm-12 form-inline" style="margin-top: 10px;">
             <div ng-repeat="label in $ctrl.model.Labels" style="margin-top: 2px;">
               <div class="input-group col-sm-5 input-group-sm">
-                <span class="input-group-addon">name</span>
+                <span class="input-group-addon">{{ 'name' | translate }}</span>
                 <input type="text" class="form-control" ng-model="label.name" placeholder="e.g. com.example.foo">
               </div>
               <div class="input-group col-sm-5 input-group-sm">
-                <span class="input-group-addon">value</span>
+                <span class="input-group-addon">{{ 'value' | translate }}</span>
                 <input type="text" class="form-control" ng-model="label.value" placeholder="e.g. bar">
               </div>
               <button class="btn btn-sm btn-danger" type="button" ng-click="$ctrl.removeLabel($index)">
@@ -379,14 +384,14 @@
       <!-- restart_policy -->
       <div class="form-group">
         <label for="template_restart_policy" class="col-sm-3 col-lg-2 control-label text-left">
-          Restart policy
+            {{ 'Restart_policy' | translate }}
         </label>
         <div class="col-sm-9 col-lg-10">
           <select class="form-control" name="template_platform" ng-model="$ctrl.model.RestartPolicy">
-            <option value="always">Always</option>
-            <option value="unless-stopped">Unless stopped</option>
-            <option value="on-failure">On failure</option>
-            <option value="no">None</option>
+            <option value="always">{{ 'Always' | translate }}</option>
+            <option value="unless-stopped"> {{ 'Unless_stopped' | translate }}</option>
+            <option value="on-failure">{{ 'On_failure' | translate }}</option>
+            <option value="no">{{ 'None' | translate }}</option>
           </select>
         </div>
       </div>
@@ -395,8 +400,8 @@
       <div class="form-group">
         <div class="col-sm-12">
           <label for="tls" class="control-label text-left">
-            Privileged mode
-            <portainer-tooltip position="bottom" message="Start the container in privileged mode."></portainer-tooltip>
+              {{ 'Privileged_mode' | translate }}
+            <portainer-tooltip position="bottom" message="{{ 'Start_the_container_in_privileged_mode' | translate }}"></portainer-tooltip>
           </label>
           <label class="switch" style="margin-left: 20px;">
             <input type="checkbox" ng-model="$ctrl.model.Privileged"><i></i>
@@ -408,8 +413,8 @@
       <div class="form-group">
         <div class="col-sm-12">
           <label for="tls" class="control-label text-left">
-            Interactive mode
-            <portainer-tooltip position="bottom" message="Start the container in foreground (equivalent of -i -t flags)."></portainer-tooltip>
+              {{ 'Interactive_mode' | translate }}
+            <portainer-tooltip position="bottom" message="{{ 'Start_the_container_in_foreground' | translate }}"></portainer-tooltip>
           </label>
           <label class="switch" style="margin-left: 20px;">
             <input type="checkbox" ng-model="$ctrl.model.Interactive"><i></i>
@@ -421,10 +426,10 @@
     <!-- !container-details -->
   </div>
   <div class="col-sm-12 form-section-title interactive" ng-click="$ctrl.state.collapseEnv = !$ctrl.state.collapseEnv">
-    Environment
+      {{ 'Environment' | translate }}
     <span class="small space-left">
-      <a ng-if="$ctrl.state.collapseEnv"><i class="fa fa-plus" aria-hidden="true"></i> expand</a>
-      <a ng-if="!$ctrl.state.collapseEnv"><i class="fa fa-minus" aria-hidden="true"></i> collapse</a>
+      <a ng-if="$ctrl.state.collapseEnv"><i class="fa fa-plus" aria-hidden="true"></i>{{ 'expand' | translate }} </a>
+      <a ng-if="!$ctrl.state.collapseEnv"><i class="fa fa-minus" aria-hidden="true"></i>{{ 'collapse' | translate }} </a>
     </span>
   </div>
   <!-- environment-details -->
@@ -432,9 +437,9 @@
     <!-- env -->
     <div class="form-group" >
       <div class="col-sm-12" style="margin-top: 5px;">
-        <label class="control-label text-left">Environment variables</label>
+        <label class="control-label text-left">{{ 'Environment_variables' | translate }}</label>
         <span class="label label-default interactive" style="margin-left: 10px;" ng-click="$ctrl.addEnvVar()">
-          <i class="fa fa-plus-circle" aria-hidden="true"></i> add variable
+          <i class="fa fa-plus-circle" aria-hidden="true"></i> {{ 'add_variable' | translate }}
         </span>
       </div>
       <!-- env-var-list -->
@@ -450,7 +455,7 @@
                     <i class="fa fa-user-slash" aria-hidden="true" style="margin-right: 2px;"></i>
                     Preset
                   </div>
-                  <p>Preset variable</p>
+                  <p>{{ 'Preset_variable' | translate }}</p>
                 </label>
               </div>
               <div>
@@ -458,9 +463,9 @@
                 <label for="text_var_{{$index}}">
                   <div class="boxselector_header">
                     <i class="fa fa-edit" aria-hidden="true" style="margin-right: 2px;"></i>
-                    Text
+                    {{ 'Text' | translate }}
                   </div>
-                  <p>Free text value</p>
+                  <p>{{ 'Free_text_value' | translate }}Free text value</p>
                 </label>
               </div>
               <div>
@@ -468,16 +473,16 @@
                 <label for="select_var_{{$index}}">
                   <div class="boxselector_header">
                     <i class="fa fa-list-ol" aria-hidden="true" style="margin-right: 2px;"></i>
-                    Select
+                    {{ 'Select' | translate }}
                   </div>
-                  <p>Choose value from list</p>
+                  <p>{{ 'Choose_value_from_list' | translate }}</p>
                 </label>
               </div>
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label text-left">
-              Name
+                {{ 'Name' | translate }}
             </label>
             <div class="col-sm-8">
               <input type="text" class="form-control" ng-model="var.name" placeholder="env_var">
@@ -491,7 +496,7 @@
           <div ng-if="var.type == 2 || var.type == 3">
             <div  class="form-group">
               <label class="col-sm-2 control-label text-left">
-                Label
+                  {{ 'Label' | translate }}
               </label>
               <div class="col-sm-10">
                 <input type="text" class="form-control" ng-model="var.label" placeholder="Choose a label">
@@ -499,7 +504,7 @@
             </div>
             <div  class="form-group">
               <label class="col-sm-2 control-label text-left" style="margin-top: 2px;">
-                Description
+                  {{ 'Description' | translate }} 
               </label>
               <div class="col-sm-10" style="margin-top: 2px;">
                 <input type="text" class="form-control" ng-model="var.description" placeholder="Tooltip">
@@ -508,7 +513,7 @@
           </div>
           <div class="form-group" ng-if="var.type === 1 || var.type === 2">
             <label class="col-sm-2 control-label text-left">
-              Default value
+                {{ 'Default_value' | translate }}
             </label>
             <div class="col-sm-10">
               <input type="text" class="form-control" ng-model="var.default" placeholder="default_value">
@@ -516,9 +521,9 @@
           </div>
           <div ng-if="var.type === 3" style="margin-bottom: 5px;" class="form-group">
             <div class="col-sm-12" style="margin-top: 5px;">
-              <label class="control-label text-left">Values</label>
+              <label class="control-label text-left">{{ 'Values' | translate }}</label>
               <span class="label label-default interactive" style="margin-left: 10px;" ng-click="$ctrl.addEnvVarValue(var)">
-                <i class="fa fa-plus-circle" aria-hidden="true"></i> add allowed value
+                <i class="fa fa-plus-circle" aria-hidden="true"></i> {{ 'add_allowed_value' | translate }}
               </span>
             </div>
             <!-- envvar-values-list -->
@@ -526,18 +531,21 @@
               <div class="col-sm-12 form-inline" style="margin-top: 10px;">
                 <div ng-repeat="val in var.select" style="margin-top: 2px;">
                   <div class="input-group col-sm-5 input-group-sm">
-                    <span class="input-group-addon">name</span>
+                    <span class="input-group-addon">{{ 'name' | translate }}</span>
                     <input type="text" class="form-control" ng-model="val.text" placeholder="Yes, I agree">
                   </div>
                   <div class="input-group col-sm-5 input-group-sm">
-                    <span class="input-group-addon">value</span>
+                    <span class="input-group-addon">{{ 'value' | translate }}</span>
                     <input type="text" class="form-control" ng-model="val.value" placeholder="Y">
                   </div>
                   <div class="input-group col-sm-1 input-group-sm">
                     <button class="btn btn-sm btn-danger" type="button" ng-click="$ctrl.removeEnvVarValue(var, $index)">
                       <i class="fa fa-trash" aria-hidden="true"></i>
                     </button>
-                    <input style="margin-left: 5px;" type="checkbox" ng-model="val.default" id="val_default_{{$index}}"><label for="val_default_{{$index}}" class="space-left">Default</label>
+                    <input style="margin-left: 5px;" type="checkbox" ng-model="val.default" id="val_default_{{$index}}">
+                    <label for="val_default_{{$index}}" class="space-left">
+                        {{ 'Default' | translate }}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -556,13 +564,13 @@
   <!-- !environment-details -->
   <!-- actions -->
   <div class="col-sm-12 form-section-title">
-    Actions
+      {{ 'Actions' | translate }}
   </div>
   <div class="form-group">
     <div class="col-sm-12">
       <button type="button" class="btn btn-primary btn-sm" ng-click="$ctrl.formAction()" ng-disabled="$ctrl.actionInProgress || !templateForm.$valid" button-spinner="$ctrl.actionInProgress">
         <span ng-hide="$ctrl.actionInProgress">{{ $ctrl.formActionLabel }}</span>
-        <span ng-show="$ctrl.actionInProgress">In progress...</span>
+        <span ng-show="$ctrl.actionInProgress">{{ 'In_progress' | translate }}...</span>
       </button>
     </div>
   </div>
