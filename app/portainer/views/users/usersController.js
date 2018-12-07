@@ -114,7 +114,7 @@ function ($q, $scope, $state, UserService, TeamService, TeamMembershipService, M
       $scope.AuthenticationMethod = data.settings.AuthenticationMethod;
     })
     .catch(function error(err) {
-      Notifications.error('Failure', err, 'Unable to retrieve users and teams');
+      Notifications.error('', err, 'Unable to retrieve users and teams');
       $scope.users = [];
       $scope.teams = [];
     });

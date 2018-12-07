@@ -20,11 +20,11 @@ angular.module('portainer')
    
     // $translateProvider.translations('zh', translationsZH);
     $translateProvider.useStaticFilesLoader({
-      prefix: 'l10n/',
+      prefix: 'i18n/',
       suffix: '.json'
     });
 
-    $translateProvider.preferredLanguage('en_US');
+    $translateProvider.preferredLanguage('cn_ZH');
     /////////////////////
 
 

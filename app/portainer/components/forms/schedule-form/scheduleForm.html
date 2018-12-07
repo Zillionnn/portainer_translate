@@ -27,7 +27,7 @@
   <div class="form-group" ng-show="scheduleForm.schedule_cron.$invalid">
     <div class="col-sm-12 small text-warning">
       <div ng-messages="scheduleForm.schedule_cron.$error">
-        <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> This field is required.</p>
+        <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>{{ 'This_field_is_required' | translate }}</p>
       </div>
     </div>
   </div>
