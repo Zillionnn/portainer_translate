@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('GroupController', ['$q', '$scope', '$state', '$transition$', 'GroupService', 'EndpointService', 'TagService', 'Notifications',
-function ($q, $scope, $state, $transition$, GroupService, EndpointService, TagService, Notifications) {
+.controller('GroupController', ['$rootScope', '$q', '$scope', '$state', '$transition$', 'GroupService', 'EndpointService', 'TagService', 'Notifications',
+function ($rootScope, $q, $scope, $state, $transition$, GroupService, EndpointService, TagService, Notifications) {
 
   $scope.state = {
     actionInProgress: false
@@ -18,11 +18,21 @@ function ($q, $scope, $state, $transition$, GroupService, EndpointService, TagSe
     $scope.state.actionInProgress = true;
     GroupService.updateGroup(model, associatedEndpoints)
     .then(function success() {
-      Notifications.success('Group successfully updated');
+      if($rootScope.language==='en_US'){
+        Notifications.success('Group successfully updated');
+      } else {
+        Notifications.success('组已成功更新');
+      }
+      
       $state.go('portainer.groups', {}, {reload: true});
     })
     .catch(function error(err) {
-      Notifications.error('Failure', err, 'Unable to update group');
+      if($rootScope.language==='en_US'){
+Notifications.error('Failure', err, 'Unable to update group');
+      } else {
+      Notifications.error('失败', err, '无法更新群组');
+      }
+      
     })
     .finally(function final() {
       $scope.state.actionInProgress = false;
@@ -56,7 +66,13 @@ function ($q, $scope, $state, $transition$, GroupService, EndpointService, TagSe
       $scope.availableTags = data.tags;
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to load view');
+
+      } else {
+          Notifications.error('失败', err, '无法加载视图');
+  
+      }
     });
   }
 
