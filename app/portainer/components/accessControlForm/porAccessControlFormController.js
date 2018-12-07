@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('porAccessControlFormController', ['$q', 'UserService', 'TeamService', 'Notifications', 'Authentication', 'ResourceControlService',
-function ($q, UserService, TeamService, Notifications, Authentication, ResourceControlService) {
+.controller('porAccessControlFormController', ['$rootScope', '$q', 'UserService', 'TeamService', 'Notifications', 'Authentication', 'ResourceControlService',
+function ($rootScope, $q, UserService, TeamService, Notifications, Authentication, ResourceControlService) {
   var ctrl = this;
 
   ctrl.availableTeams = [];
@@ -63,7 +63,13 @@ function ($q, UserService, TeamService, Notifications, Authentication, ResourceC
       }
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve access control information');
+
+      } else {
+       Notifications.error('失败', err, '无法检索访问控制信息');
+   
+      }
     });
   }
 

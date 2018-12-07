@@ -1,6 +1,6 @@
 angular.module('extension.storidge')
-.controller('StoridgeMonitorController', ['$q', '$scope', '$interval', '$document', 'Notifications', 'StoridgeClusterService', 'StoridgeChartService',
-function ($q, $scope, $interval, $document, Notifications, StoridgeClusterService, StoridgeChartService) {
+.controller('StoridgeMonitorController', ['$rootScope', '$q', '$scope', '$interval', '$document', 'Notifications', 'StoridgeClusterService', 'StoridgeChartService',
+function ($rootScope, $q, $scope, $interval, $document, Notifications, StoridgeClusterService, StoridgeChartService) {
 
   $scope.$on('$destroy', function() {
     stopRepeater();
@@ -53,7 +53,13 @@ function ($q, $scope, $interval, $document, Notifications, StoridgeClusterServic
       })
       .catch(function error(err) {
         stopRepeater();
+        if($rootScope.language==='en_US'){
         Notifications.error('Failure', err, 'Unable to retrieve cluster information');
+
+        } else {
+           Notifications.error('失败', err, '无法检索群集信息');
+   
+        }
       });
     }, refreshRate);
   }
@@ -74,7 +80,13 @@ function ($q, $scope, $interval, $document, Notifications, StoridgeClusterServic
     })
     .catch(function error(err) {
       stopRepeater();
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve cluster information');
+
+      } else {
+          Notifications.error('失败', err, '无法检索群集信息');
+
+      }
     });
   }
 

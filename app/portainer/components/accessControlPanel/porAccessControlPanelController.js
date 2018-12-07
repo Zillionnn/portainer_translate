@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('porAccessControlPanelController', ['$q', '$state', 'UserService', 'TeamService', 'ResourceControlService', 'Notifications', 'Authentication', 'ModalService', 'FormValidator',
-function ($q, $state, UserService, TeamService, ResourceControlService, Notifications, Authentication, ModalService, FormValidator) {
+.controller('porAccessControlPanelController', ['$rootScope', '$q', '$state', 'UserService', 'TeamService', 'ResourceControlService', 'Notifications', 'Authentication', 'ModalService', 'FormValidator',
+function ($rootScope, $q, $state, UserService, TeamService, ResourceControlService, Notifications, Authentication, ModalService, FormValidator) {
 
   var ctrl = this;
 
@@ -78,11 +78,23 @@ function ($q, $state, UserService, TeamService, ResourceControlService, Notifica
     ResourceControlService.applyResourceControlChange(ctrl.resourceType, resourceId,
       ctrl.resourceControl, ownershipParameters)
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Access control successfully updated');
+
+      } else {
+          Notifications.success('访问控制已成功更新');
+
+      }
       $state.reload();
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to update access control');
+
+      } else {
+       Notifications.error('失败', err, '无法更新访问控制');
+   
+      }
     });
   }
 
@@ -140,7 +152,13 @@ function ($q, $state, UserService, TeamService, ResourceControlService, Notifica
       ctrl.state.displayAccessControlPanel = true;
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve access control information');
+
+      } else {
+        Notifications.error('失败', err, '无法检索访问控制信息');
+  
+      }
     });
   }
 

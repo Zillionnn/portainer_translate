@@ -1,5 +1,5 @@
-angular.module('portainer.app').controller('InformationPanelOfflineController', ['$state', 'EndpointProvider', 'EndpointService', 'Authentication', 'Notifications',
-function StackDuplicationFormController($state, EndpointProvider, EndpointService, Authentication, Notifications) {
+angular.module('portainer.app').controller('InformationPanelOfflineController', ['$rootScope', '$state', 'EndpointProvider', 'EndpointService', 'Authentication', 'Notifications',
+function StackDuplicationFormController($rootScope, $state, EndpointProvider, EndpointService, Authentication, Notifications) {
   var ctrl = this;
 
   this.$onInit = onInit;
@@ -13,7 +13,13 @@ function StackDuplicationFormController($state, EndpointProvider, EndpointServic
       $state.reload();
     })
     .catch(function onError(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'An error occured during endpoint snapshot');
+
+      } else {
+        Notifications.error('失败', err, '终端快照期间发生错误');
+  
+      }
     });
   }
 
@@ -27,7 +33,13 @@ function StackDuplicationFormController($state, EndpointProvider, EndpointServic
       ctrl.snapshotTime = data.Snapshots[0].Time;
     })
     .catch(function onError(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve endpoint information');
+
+      } else {
+      Notifications.error('失败', err, '无法检索终端信息');
+
+      }
     });
   }
 

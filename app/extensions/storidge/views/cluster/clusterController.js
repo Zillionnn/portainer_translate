@@ -1,6 +1,6 @@
 angular.module('extension.storidge')
-.controller('StoridgeClusterController', ['$q', '$scope', '$state', 'Notifications', 'StoridgeClusterService', 'StoridgeNodeService', 'ModalService',
-function ($q, $scope, $state, Notifications, StoridgeClusterService, StoridgeNodeService, ModalService) {
+.controller('StoridgeClusterController', ['$rootScope', '$q', '$scope', '$state', 'Notifications', 'StoridgeClusterService', 'StoridgeNodeService', 'ModalService',
+function ($rootScope, $q, $scope, $state, Notifications, StoridgeClusterService, StoridgeNodeService, ModalService) {
 
   $scope.state = {
     shutdownInProgress: false,
@@ -46,7 +46,13 @@ function ($q, $scope, $state, Notifications, StoridgeClusterService, StoridgeNod
     StoridgeClusterService.shutdown()
     .finally(function final() {
       $scope.state.shutdownInProgress = false;
+      if($rootScope.language==='en_US'){
       Notifications.success('Cluster successfully shutdown');
+
+      } else {
+          Notifications.success('群集成功关闭');
+
+      }
       $state.go('docker.dashboard');
     });
   }
@@ -56,7 +62,13 @@ function ($q, $scope, $state, Notifications, StoridgeClusterService, StoridgeNod
     StoridgeClusterService.reboot()
     .finally(function final() {
       $scope.state.rebootInProgress = false;
+      if($rootScope.language==='en_US'){
       Notifications.success('Cluster successfully rebooted');
+
+      } else {
+      Notifications.success('群集已成功重新启动');
+
+      }
       $state.reload();
     });
   }
@@ -73,7 +85,13 @@ function ($q, $scope, $state, Notifications, StoridgeClusterService, StoridgeNod
       $scope.clusterNodes = data.nodes;
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve cluster information');
+
+      } else {
+          Notifications.error('失败', err, '无法检索群集信息');
+
+      }
     });
   }
 

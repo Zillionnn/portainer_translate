@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('AuthenticationController', ['$q', '$scope', '$state', '$transition$', '$sanitize', 'Authentication', 'UserService', 'EndpointService', 'StateManager', 'Notifications', 'SettingsService',
-function ($q, $scope, $state, $transition$, $sanitize, Authentication, UserService, EndpointService, StateManager, Notifications, SettingsService) {
+.controller('AuthenticationController', ['$rootScope', '$q', '$scope', '$state', '$transition$', '$sanitize', 'Authentication', 'UserService', 'EndpointService', 'StateManager', 'Notifications', 'SettingsService',
+function ($rootScope, $q, $scope, $state, $transition$, $sanitize, Authentication, UserService, EndpointService, StateManager, Notifications, SettingsService) {
 
   $scope.logo = StateManager.getState().application.logo;
 
@@ -51,7 +51,13 @@ function ($q, $scope, $state, $transition$, $sanitize, Authentication, UserServi
       }
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve endpoints');
+
+      } else {
+        Notifications.error('失败', err, '无法检索端点');
+    
+      }
     });
   }
 
@@ -63,7 +69,13 @@ function ($q, $scope, $state, $transition$, $sanitize, Authentication, UserServi
       }
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to verify administrator account existence');
+
+      } else {
+        Notifications.error('失败', err, '无法验证管理员帐户是否存在');
+    
+      }
     });
   }
 
@@ -80,7 +92,13 @@ function ($q, $scope, $state, $transition$, $sanitize, Authentication, UserServi
       }
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve endpoints');
+
+      } else {
+      Notifications.error('失败', err, '无法检索端点');
+      
+      }
     });
   }
 

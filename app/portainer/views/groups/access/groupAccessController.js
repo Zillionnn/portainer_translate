@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('GroupAccessController', ['$scope', '$transition$', 'GroupService', 'Notifications',
-function ($scope, $transition$, GroupService, Notifications) {
+.controller('GroupAccessController', ['$rootScope', '$scope', '$transition$', 'GroupService', 'Notifications',
+function ($rootScope, $scope, $transition$, GroupService, Notifications) {
 
   $scope.updateAccess = function(authorizedUsers, authorizedTeams) {
     return GroupService.updateAccess($transition$.params().id, authorizedUsers, authorizedTeams);
@@ -14,7 +14,12 @@ function ($scope, $transition$, GroupService, Notifications) {
       $scope.group = data;
     })
     .catch(function error(err) {
-      Notifications.error('Failure', err, 'Unable to load view');
+      if($rootScope.language==='en_US'){
+        Notifications.error('Failure', err, 'Unable to load view');
+      } else {
+        Notifications.error('Failure', err, '无法加载视图');
+      }
+      
     });
   }
 

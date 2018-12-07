@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('porAccessManagementController', ['AccessService', 'Notifications',
-function (AccessService, Notifications) {
+.controller('porAccessManagementController', ['$rootScope', 'AccessService', 'Notifications',
+function ($rootScope, AccessService, Notifications) {
   var ctrl = this;
 
   function dispatchUserAndTeamIDs(accesses, users, teams) {
@@ -55,10 +55,22 @@ function (AccessService, Notifications) {
     .then(function success() {
       removeFromAccesses(access, ctrl.accesses);
       ctrl.authorizedAccesses.push(access);
+      if($rootScope.language==='en_US'){
       Notifications.success('Accesses successfully updated');
+
+      } else {
+          Notifications.success('访问成功更新');
+
+      }
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to update accesses');
+
+      } else {
+         Notifications.error('失败', err, '无法更新访问权限');
+ 
+      }
     });
   };
 
@@ -77,10 +89,22 @@ function (AccessService, Notifications) {
     .then(function success() {
       removeFromAccesses(access, ctrl.authorizedAccesses);
       ctrl.accesses.push(access);
+      if($rootScope.language==='en_US'){
       Notifications.success('Accesses successfully updated');
+
+      } else {
+          Notifications.success('访问成功更新');
+
+      }
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to update accesses');
+
+      } else {
+          Notifications.error('失败', err, '无法更新访问权限');
+
+      }
     });
   };
 
@@ -98,10 +122,22 @@ function (AccessService, Notifications) {
     ctrl.updateAccess({ userAccesses: [], teamAccesses: [] })
     .then(function success() {
       moveAccesses(ctrl.authorizedAccesses, ctrl.accesses);
+      if($rootScope.language==='en_US'){
       Notifications.success('Accesses successfully updated');
+
+      } else {
+          Notifications.success('访问成功更新');
+
+      }
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to update accesses');
+
+      } else {
+          Notifications.error('失败', err, '无法更新访问权限');
+
+      }
     });
   };
 
@@ -113,10 +149,22 @@ function (AccessService, Notifications) {
     ctrl.updateAccess({ userAccesses: authorizedUserIDs, teamAccesses: authorizedTeamIDs })
     .then(function success() {
       moveAccesses(ctrl.accesses, ctrl.authorizedAccesses);
+      if($rootScope.language==='en_US'){
       Notifications.success('Accesses successfully updated');
+
+      } else {
+       Notifications.success('访问成功更新');
+   
+      }
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to update accesses');
+
+      } else {
+          Notifications.error('失败', err, '无法更新访问权限');
+
+      }
     });
   };
 
@@ -131,7 +179,13 @@ function (AccessService, Notifications) {
     .catch(function error(err) {
       ctrl.accesses = [];
       ctrl.authorizedAccesses = [];
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve accesses');
+
+      } else {
+          Notifications.error('失败', err, '无法检索访问');
+
+      }
     });
   }
 

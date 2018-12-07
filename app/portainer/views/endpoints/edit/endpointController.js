@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('EndpointController', ['$q', '$scope', '$state', '$transition$', '$filter', 'EndpointService', 'GroupService', 'TagService', 'EndpointProvider', 'Notifications',
-function ($q, $scope, $state, $transition$, $filter, EndpointService, GroupService, TagService, EndpointProvider, Notifications) {
+.controller('EndpointController', ['$rootScope', '$q', '$scope', '$state', '$transition$', '$filter', 'EndpointService', 'GroupService', 'TagService', 'EndpointProvider', 'Notifications',
+function ($rootScope, $q, $scope, $state, $transition$, $filter, EndpointService, GroupService, TagService, EndpointProvider, Notifications) {
 
   if (!$scope.applicationState.application.endpointManagement) {
     $state.go('portainer.endpoints');
@@ -46,11 +46,23 @@ function ($q, $scope, $state, $transition$, $filter, EndpointService, GroupServi
     $scope.state.actionInProgress = true;
     EndpointService.updateEndpoint(endpoint.Id, payload)
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Endpoint updated', $scope.endpoint.Name);
+
+      } else {
+       Notifications.success('终端已更新', $scope.endpoint.Name);
+
+      }
       EndpointProvider.setEndpointPublicURL(endpoint.PublicURL);
       $state.go('portainer.endpoints', {}, {reload: true});
     }, function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to update endpoint');
+
+      } else {
+      Notifications.error('失败', err, '无法更新终端');
+ 
+      }
       $scope.state.actionInProgress = false;
     }, function update(evt) {
       if (evt.upload) {
@@ -78,7 +90,13 @@ function ($q, $scope, $state, $transition$, $filter, EndpointService, GroupServi
       $scope.availableTags = data.tags;
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve endpoint details');
+
+      } else {
+        Notifications.error('失败', err, '无法检索端点详细信息');
+    
+      }
     });
   }
 

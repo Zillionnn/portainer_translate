@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('EndpointAccessController', ['$scope', '$transition$', 'EndpointService', 'GroupService', 'Notifications',
-function ($scope, $transition$, EndpointService, GroupService, Notifications) {
+.controller('EndpointAccessController', ['$rootScope', '$scope', '$transition$', 'EndpointService', 'GroupService', 'Notifications',
+function ($rootScope, $scope, $transition$, EndpointService, GroupService, Notifications) {
 
   $scope.updateAccess = function(authorizedUsers, authorizedTeams) {
     return EndpointService.updateAccess($transition$.params().id, authorizedUsers, authorizedTeams);
@@ -17,7 +17,13 @@ function ($scope, $transition$, EndpointService, GroupService, Notifications) {
       $scope.group = data;
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve endpoint details');
+
+      } else {
+          Notifications.error('失败', err, '无法检索端点详细信息');
+  
+      }
     });
   }
 

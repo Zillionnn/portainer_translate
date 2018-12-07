@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('JobFormController', ['$state', 'LocalStorage', 'EndpointService', 'EndpointProvider', 'Notifications',
-function ($state, LocalStorage, EndpointService, EndpointProvider, Notifications) {
+.controller('JobFormController', ['$rootScope', '$state', 'LocalStorage', 'EndpointService', 'EndpointProvider', 'Notifications',
+function ($rootScope, $state, LocalStorage, EndpointService, EndpointProvider, Notifications) {
   var ctrl = this;
 
   ctrl.$onInit = onInit;
@@ -56,11 +56,23 @@ function ($state, LocalStorage, EndpointService, EndpointProvider, Notifications
     ctrl.state.actionInProgress = true;
     createJob(image, method)
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Job successfully created');
+
+      } else {
+          Notifications.success('作业成功创建');
+
+      }
       $state.go('^');
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Job execution failure', err);
+
+      } else {
+          Notifications.error('工作执行失败', err);
+
+      }
     })
     .finally(function final() {
       ctrl.state.actionInProgress = false;

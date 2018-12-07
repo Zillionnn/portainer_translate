@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('CreateEndpointController', ['$q', '$scope', '$state', '$filter', 'clipboard', 'EndpointService', 'GroupService', 'TagService', 'Notifications',
-function ($q, $scope, $state, $filter, clipboard, EndpointService, GroupService, TagService, Notifications) {
+.controller('CreateEndpointController', ['$rootScope', '$q', '$scope', '$state', '$filter', 'clipboard', 'EndpointService', 'GroupService', 'TagService', 'Notifications',
+function ($rootScope, $q, $scope, $state, $filter, clipboard, EndpointService, GroupService, TagService, Notifications) {
 
   $scope.state = {
     EnvironmentType: 'docker',
@@ -69,11 +69,23 @@ function ($q, $scope, $state, $filter, clipboard, EndpointService, GroupService,
     $scope.state.actionInProgress = true;
     EndpointService.createAzureEndpoint(name, applicationId, tenantId, authenticationKey, groupId, tags)
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Endpoint created', name);
+
+      } else {
+        Notifications.success('已创建终端', name);
+    
+      }
       $state.go('portainer.endpoints', {}, {reload: true});
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to create endpoint');
+
+      } else {
+            Notifications.error('失败', err, '无法创建终端');
+
+      }
     })
     .finally(function final() {
       $scope.state.actionInProgress = false;
@@ -84,11 +96,23 @@ function ($q, $scope, $state, $filter, clipboard, EndpointService, GroupService,
     $scope.state.actionInProgress = true;
     EndpointService.createRemoteEndpoint(name, type, URL, PublicURL, groupId, tags, TLS, TLSSkipVerify, TLSSkipClientVerify, TLSCAFile, TLSCertFile, TLSKeyFile)
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Endpoint created', name);
+
+      } else {
+      Notifications.success('已创建终端', name);
+      
+      }
       $state.go('portainer.endpoints', {}, {reload: true});
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to create endpoint');
+
+      } else {
+        Notifications.error('失败', err, '无法创建终端');
+    
+      }
     })
     .finally(function final() {
       $scope.state.actionInProgress = false;
@@ -105,7 +129,13 @@ function ($q, $scope, $state, $filter, clipboard, EndpointService, GroupService,
       $scope.availableTags = data.tags;
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to load groups');
+
+      } else {
+           Notifications.error('失败', err, '无法加载组');
+ 
+      }
     });
   }
 

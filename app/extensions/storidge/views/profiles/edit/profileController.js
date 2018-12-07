@@ -1,6 +1,6 @@
 angular.module('extension.storidge')
-.controller('StoridgeProfileController', ['$scope', '$state', '$transition$', 'Notifications', 'StoridgeProfileService', 'ModalService',
-function ($scope, $state, $transition$, Notifications, StoridgeProfileService, ModalService) {
+.controller('StoridgeProfileController', ['$rootScope', '$scope', '$state', '$transition$', 'Notifications', 'StoridgeProfileService', 'ModalService',
+function ($rootScope, $scope, $state, $transition$, Notifications, StoridgeProfileService, ModalService) {
 
   $scope.state = {
     NoLimit: false,
@@ -32,11 +32,23 @@ function ($scope, $state, $transition$, Notifications, StoridgeProfileService, M
     $scope.state.updateInProgress = true;
     StoridgeProfileService.update(profile)
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Profile successfully updated');
+
+      } else {
+          Notifications.success('档案已成功更新');
+
+      }
       $state.go('storidge.profiles');
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to update profile');
+
+      } else {
+          Notifications.error('失败', err, '无法更新资料');
+
+      }
     })
     .finally(function final() {
       $scope.state.updateInProgress = false;
@@ -59,11 +71,23 @@ function ($scope, $state, $transition$, Notifications, StoridgeProfileService, M
     $scope.state.deleteInProgress = true;
     StoridgeProfileService.delete(profile.Name)
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Profile successfully deleted');
+
+      } else {
+          Notifications.success('配置文件已成功删除');
+
+      }
       $state.go('storidge.profiles');
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to delete profile');
+
+      } else {
+          Notifications.error('失败', err, '无法删除个人资料');
+
+      }
     })
     .finally(function final() {
       $scope.state.deleteInProgress = false;
@@ -84,7 +108,13 @@ function ($scope, $state, $transition$, Notifications, StoridgeProfileService, M
       $scope.profile = profile;
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve profile details');
+
+      } else {
+          Notifications.error('失败', err, '无法检索个人资料详细信息');
+
+      }
     });
   }
 

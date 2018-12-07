@@ -1,6 +1,6 @@
-angular.module('portainer.app').controller('StackDuplicationFormController', [
+angular.module('portainer.app').controller('StackDuplicationFormController', ['$rootScope',
   'Notifications',
-  function StackDuplicationFormController(Notifications) {
+  function StackDuplicationFormController($rootScope, Notifications) {
     var ctrl = this;
 
     ctrl.state = {
@@ -29,11 +29,13 @@ angular.module('portainer.app').controller('StackDuplicationFormController', [
 
     function duplicateStack() {
       if (!ctrl.formValues.newName) {
-        Notifications.error(
-          'Failure',
-          null,
-          'Stack name is required for duplication'
-        );
+        if($rootScope.language==='en_US'){
+        Notifications.error('Failure',null,'Stack name is required for duplication');
+
+        } else {
+       Notifications.error('失败',null,'堆栈名称是复制所必需的');
+ 
+        }
         return;
       }
       ctrl.state.duplicationInProgress = true;
