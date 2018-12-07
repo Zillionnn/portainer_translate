@@ -1,6 +1,7 @@
 angular.module('portainer.azure')
-.controller('AzureDashboardController', ['$scope', 'AzureService', 'Notifications',
-function ($scope, AzureService, Notifications) {
+.controller('AzureDashboardController', ['$rootScope', '$scope', 'AzureService', 'Notifications',
+function ($rootScope, $scope, AzureService, Notifications) {
+  var language = $rootScope.language;
 
   function initView() {
     AzureService.subscriptions()
@@ -13,7 +14,13 @@ function ($scope, AzureService, Notifications) {
       $scope.resourceGroups = AzureService.aggregate(data);
     })
     .catch(function error(err) {
-      Notifications.error('Failure', err, 'Unable to load dashboard data');
+      if(language==='en_US'){
+        Notifications.error('Failure', err, 'Unable to load dashboard data');
+
+      } else {
+         Notifications.error('失败', err, '无法加载仪表板数据');
+
+      }
     });
   }
 

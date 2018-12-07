@@ -1,15 +1,27 @@
 angular.module('portainer.docker')
-.controller('NetworkController', ['$scope', '$state', '$transition$', '$filter', 'NetworkService', 'Container', 'Notifications', 'HttpRequestHelper',
-function ($scope, $state, $transition$, $filter, NetworkService, Container, Notifications, HttpRequestHelper) {
+.controller('NetworkController', ['$rootScope', '$scope', '$state', '$transition$', '$filter', 'NetworkService', 'Container', 'Notifications', 'HttpRequestHelper',
+function ($rootScope, $scope, $state, $transition$, $filter, NetworkService, Container, Notifications, HttpRequestHelper) {
 
   $scope.removeNetwork = function removeNetwork() {
     NetworkService.remove($transition$.params().id, $transition$.params().id)
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Network removed', $transition$.params().id);
+
+      } else {
+          Notifications.success('网络已删除', $transition$.params().id);
+
+      }
       $state.go('docker.networks', {});
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to remove network');
+
+      } else {
+         Notifications.error('失败', err, '无法删除网络');
+ 
+      }
     });
   };
 
@@ -17,11 +29,23 @@ function ($scope, $state, $transition$, $filter, NetworkService, Container, Noti
     HttpRequestHelper.setPortainerAgentTargetHeader(container.NodeName);
     NetworkService.disconnectContainer($transition$.params().id, container.Id, false)
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Container left network', $transition$.params().id);
+
+      } else {
+          Notifications.success('容器离开网络', $transition$.params().id);
+
+      }
       $state.go('docker.networks.network', { id: network.Id }, { reload: true });
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to disconnect container from network');
+
+      } else {
+          Notifications.error('失败', err, '无法从网络断开容器');
+
+      }
     });
   };
 
@@ -53,7 +77,12 @@ function ($scope, $state, $transition$, $filter, NetworkService, Container, Noti
           });
           filterContainersInNetwork(network, containersInNetwork);
         }, function error(err) {
-          Notifications.error('Failure', err, 'Unable to retrieve containers in network');
+          
+          if($rootScope.language==='en_US'){
+        Notifications.error('Failure', err, 'Unable to retrieve containers in network');
+          } else {
+        Notifications.error('失败', err, '无法检索网络中的容器');
+          }
         });
       } else {
         Container.query({
@@ -61,7 +90,13 @@ function ($scope, $state, $transition$, $filter, NetworkService, Container, Noti
         }, function success(data) {
           filterContainersInNetwork(network, data);
         }, function error(err) {
+          if($rootScope.language==='en_US'){
           Notifications.error('Failure', err, 'Unable to retrieve containers in network');
+
+          } else {
+         Notifications.error('失败', err, '无法检索网络中的容器');
+ 
+          }
         });
       }
     }
@@ -80,7 +115,13 @@ function ($scope, $state, $transition$, $filter, NetworkService, Container, Noti
       }
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve network info');
+
+      } else {
+         Notifications.error('失败', err, '无法检索网络信息');
+ 
+      }
     });
   }
 

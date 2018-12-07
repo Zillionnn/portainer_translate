@@ -24,7 +24,7 @@ angular.module('portainer')
       suffix: '.json'
     });
 
-    $translateProvider.preferredLanguage('cn_ZH');
+    $translateProvider.preferredLanguage('zh_CN');
     /////////////////////
 
 

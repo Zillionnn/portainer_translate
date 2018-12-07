@@ -22,7 +22,13 @@ function ($translate, $rootScope, $state, Authentication, authManager, StateMana
     }
   })
   .catch(function error(err) {
-    Notifications.error('Failure', err, 'Unable to retrieve application settings');
+    if($rootScope.language==='en_US'){
+      Notifications.error('Failure', err, 'Unable to retrieve application settings');
+
+    } else {
+      Notifications.error('失败', err, '无法检索应用程序设置');
+
+    }
   });
 
   $rootScope.$state = $state;

@@ -1,7 +1,8 @@
 angular.module('portainer.docker')
-  .controller('JobsDatatableController', ['$q', '$state', 'PaginationService', 'DatatableService', 'ContainerService', 'ModalService', 'Notifications',
-    function ($q, $state, PaginationService, DatatableService, ContainerService, ModalService, Notifications) {
+  .controller('JobsDatatableController', ['$rootScope', '$q', '$state', 'PaginationService', 'DatatableService', 'ContainerService', 'ModalService', 'Notifications',
+    function ($rootScope, $q, $state, PaginationService, DatatableService, ContainerService, ModalService, Notifications) {
       var ctrl = this;
+      var language = $rootScope.language;
 
       this.state = {
         orderBy: this.orderBy,
@@ -107,10 +108,22 @@ angular.module('portainer.docker')
             return $q.when();
           }
           ContainerService.prune({ label: ['io.portainer.job.endpoint'] }).then(function success() {
+            if(language==='en_US'){
             Notifications.success('Success', 'Job history cleared');
+
+            } else {
+            Notifications.success('成功', '工作历史清除');
+                
+            }
             $state.reload();
           }).catch(function error(err) {
+            if(language==='en_US'){
             Notifications.error('Failure', err.message, 'Unable to clear job history');
+
+            } else {
+         Notifications.error('失败', err.message, '无法清理工作历史');
+       
+            }
           });
         });
       };

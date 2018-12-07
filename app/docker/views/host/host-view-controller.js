@@ -1,6 +1,6 @@
-angular.module('portainer.docker').controller('HostViewController', [
+angular.module('portainer.docker').controller('HostViewController', ['$rootScope',
   '$q', 'SystemService', 'Notifications', 'StateManager', 'AgentService', 'ContainerService', 'Authentication', 'EndpointProvider',
-  function HostViewController($q, SystemService, Notifications, StateManager, AgentService, ContainerService, Authentication, EndpointProvider) {
+  function HostViewController($rootScope, $q, SystemService, Notifications, StateManager, AgentService, ContainerService, Authentication, EndpointProvider) {
     var ctrl = this;
 
     this.$onInit = initView;
@@ -42,11 +42,13 @@ angular.module('portainer.docker').controller('HostViewController', [
         }
       })
       .catch(function error(err) {
-        Notifications.error(
-          'Failure',
-          err,
-          'Unable to retrieve engine details'
-        );
+        if($rootScope.language==='en_US'){
+   Notifications.error('Failure',err,'Unable to retrieve engine details'        );
+        } else {
+          
+       Notifications.error('失败', err, '无法检索引擎详细信息');  
+        }
+     
       });
     }
 

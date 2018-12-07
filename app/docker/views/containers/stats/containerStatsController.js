@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('ContainerStatsController', ['$q', '$scope', '$transition$', '$document', '$interval', 'ContainerService', 'ChartService', 'Notifications', 'HttpRequestHelper',
-function ($q, $scope, $transition$, $document, $interval, ContainerService, ChartService, Notifications, HttpRequestHelper) {
+.controller('ContainerStatsController', ['$rootScope', '$q', '$scope', '$transition$', '$document', '$interval', 'ContainerService', 'ChartService', 'Notifications', 'HttpRequestHelper',
+function ($rootScope, $q, $scope, $transition$, $document, $interval, ContainerService, ChartService, Notifications, HttpRequestHelper) {
 
   $scope.state = {
     refreshRate: '5',
@@ -94,7 +94,13 @@ function ($q, $scope, $transition$, $document, $interval, ContainerService, Char
     })
     .catch(function error(err) {
       stopRepeater();
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve container statistics');
+
+      } else {
+        Notifications.error('失败', err, '无法检索容器统计信息');
+  
+      }
     });
   }
 
@@ -114,7 +120,13 @@ function ($q, $scope, $transition$, $document, $interval, ContainerService, Char
       })
       .catch(function error(err) {
         stopRepeater();
+        if($rootScope.language==='en_US'){
         Notifications.error('Failure', err, 'Unable to retrieve container statistics');
+
+        } else {
+             Notifications.error('失败', err, '无法检索容器统计信息');
+ 
+        }
       });
     }, refreshRate * 1000);
   }
@@ -142,7 +154,13 @@ function ($q, $scope, $transition$, $document, $interval, ContainerService, Char
       $scope.container = data;
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve container information');
+
+      } else {
+        Notifications.error('失败', err, '无法检索容器信息');
+  
+      }
     });
 
     $document.ready(function() {

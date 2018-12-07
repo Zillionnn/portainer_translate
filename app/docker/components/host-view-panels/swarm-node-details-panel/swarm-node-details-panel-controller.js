@@ -1,9 +1,11 @@
 angular
   .module('portainer.docker')
-  .controller('SwarmNodeDetailsPanelController', [
+  .controller('SwarmNodeDetailsPanelController', ['$rootScope',
     'NodeService', 'LabelHelper', 'Notifications', '$state',
-    function SwarmNodeDetailsPanelController(NodeService, LabelHelper, Notifications, $state) {
+    function SwarmNodeDetailsPanelController($rootScope, NodeService, LabelHelper, Notifications, $state) {
       var ctrl = this;
+      var language = $rootScope.language;
+
       ctrl.state = {
         managerAddress: '',
         hasChanges: false
@@ -61,7 +63,13 @@ angular
           .catch(notifyOnError);
 
         function onUpdateSuccess() {
+          if(language==='en_US'){
           Notifications.success('Node successfully updated', 'Node updated');
+
+          } else {
+          Notifications.success('节点已成功更新', '节点已更新');
+              
+          }
           $state.go(
             'docker.nodes.node',
             { id: originalNode.Id },
@@ -70,7 +78,13 @@ angular
         }
 
         function notifyOnError(error) {
+          if(language==='en_US'){
           Notifications.error('Failure', error, 'Failed to update node');
+
+          } else {
+          Notifications.error('失败', error, '无法更新节点');
+              
+          }
         }
       }
 

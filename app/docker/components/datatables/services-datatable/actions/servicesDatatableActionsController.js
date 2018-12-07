@@ -1,17 +1,30 @@
 angular.module('portainer.docker')
-.controller('ServicesDatatableActionsController', ['$q', '$state', 'ServiceService', 'ServiceHelper', 'Notifications', 'ModalService', 'ImageHelper','WebhookService','EndpointProvider',
-function ($q, $state, ServiceService, ServiceHelper, Notifications, ModalService, ImageHelper, WebhookService, EndpointProvider) {
+.controller('ServicesDatatableActionsController', ['$rootScope', '$q', '$state', 'ServiceService', 'ServiceHelper', 'Notifications', 'ModalService', 'ImageHelper','WebhookService','EndpointProvider',
+function ($rootScope, $q, $state, ServiceService, ServiceHelper, Notifications, ModalService, ImageHelper, WebhookService, EndpointProvider) {
+  var language = $rootScope.language;
 
   this.scaleAction = function scaleService(service) {
     var config = ServiceHelper.serviceToConfig(service.Model);
     config.Mode.Replicated.Replicas = service.Replicas;
     ServiceService.update(service, config)
     .then(function success() {
+      if(language==='en_US'){
       Notifications.success('Service successfully scaled', 'New replica count: ' + service.Replicas);
+
+      } else {
+      Notifications.success('服务成功扩展', '新复制计数： ' + service.Replicas);
+          
+      }
       $state.reload();
     })
     .catch(function error(err) {
+      if(language==='en_US'){
       Notifications.error('Failure', err, 'Unable to scale service');
+
+      } else {
+       Notifications.error('失败', err, '无法扩展服务');
+       
+      }
       service.Scale = false;
       service.Replicas = service.ReplicaCount;
     });
@@ -54,10 +67,22 @@ function ($q, $state, ServiceService, ServiceHelper, Notifications, ModalService
       config.TaskTemplate.ForceUpdate++;
       ServiceService.update(service, config)
       .then(function success() {
+        if(language==='en_US'){
         Notifications.success('Service successfully updated', service.Name);
+
+        } else {
+        Notifications.success('服务已成功更新', service.Name);
+            
+        }
       })
       .catch(function error(err) {
-        Notifications.error('Failure', err, 'Unable to force update service', service.Name);
+        if(language==='en_US'){
+          Notifications.error('Failure', err, 'Unable to force update service', service.Name);
+
+        } else {
+          Notifications.error('失败', err, '无法强制更新服务', service.Name);
+         
+        }
       })
       .finally(function final() {
         --actionCount;
@@ -80,10 +105,22 @@ function ($q, $state, ServiceService, ServiceHelper, Notifications, ModalService
         return $q.when(data.length !== 0 && WebhookService.deleteWebhook(data[0].Id));
       })
       .then(function success() {
+        if(language==='en_US'){
         Notifications.success('Service successfully removed', service.Name);
+
+        } else {
+        Notifications.success('服务已成功删除', service.Name);
+    
+        }
       })
       .catch(function error(err) {
+        if(language==='en_US'){
         Notifications.error('Failure', err, 'Unable to remove service');
+
+        } else {
+        Notifications.error('失败', err, '无法删除服务');
+ 
+        }
       })
       .finally(function final() {
         --actionCount;

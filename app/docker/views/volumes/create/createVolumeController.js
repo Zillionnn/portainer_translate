@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('CreateVolumeController', ['$q', '$scope', '$state', 'VolumeService', 'PluginService', 'ResourceControlService', 'Authentication', 'Notifications', 'FormValidator', 'HttpRequestHelper',
-function ($q, $scope, $state, VolumeService, PluginService, ResourceControlService, Authentication, Notifications, FormValidator, HttpRequestHelper) {
+.controller('CreateVolumeController', ['$rootScope', '$q', '$scope', '$state', 'VolumeService', 'PluginService', 'ResourceControlService', 'Authentication', 'Notifications', 'FormValidator', 'HttpRequestHelper',
+function ($rootScope, $q, $scope, $state, VolumeService, PluginService, ResourceControlService, Authentication, Notifications, FormValidator, HttpRequestHelper) {
 
   $scope.formValues = {
     Driver: 'local',
@@ -83,11 +83,23 @@ function ($q, $scope, $state, VolumeService, PluginService, ResourceControlServi
       return ResourceControlService.applyResourceControl('volume', volumeIdentifier, userId, accessControlData, []);
     })
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Volume successfully created');
+
+      } else {
+      Notifications.success('创建Volume成功');
+    
+      }
       $state.go('docker.volumes', {}, {reload: true});
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'An error occured during volume creation');
+
+      } else {
+          Notifications.error('失败', err, '在创建volume期间发生错误');
+
+      }
     })
     .finally(function final() {
       $scope.state.actionInProgress = false;
@@ -103,7 +115,13 @@ function ($q, $scope, $state, VolumeService, PluginService, ResourceControlServi
       $scope.availableVolumeDrivers = data;
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve volume drivers');
+
+      } else {
+        Notifications.error('失败', err, '无法检索volume驱动程序');
+  
+      }
     });
   }
 

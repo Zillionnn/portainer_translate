@@ -1,6 +1,6 @@
  angular.module('portainer.docker')
-.controller('CreateServiceController', ['$q', '$scope', '$state', '$timeout', 'Service', 'ServiceHelper', 'ConfigService', 'ConfigHelper', 'SecretHelper', 'SecretService', 'VolumeService', 'NetworkService', 'ImageHelper', 'LabelHelper', 'Authentication', 'ResourceControlService', 'Notifications', 'FormValidator', 'PluginService', 'RegistryService', 'HttpRequestHelper', 'NodeService', 'SettingsService', 'WebhookService','EndpointProvider',
-function ($q, $scope, $state, $timeout, Service, ServiceHelper, ConfigService, ConfigHelper, SecretHelper, SecretService, VolumeService, NetworkService, ImageHelper, LabelHelper, Authentication, ResourceControlService, Notifications, FormValidator, PluginService, RegistryService, HttpRequestHelper, NodeService, SettingsService, WebhookService,EndpointProvider) {
+.controller('CreateServiceController', ['$rootScope', '$q', '$scope', '$state', '$timeout', 'Service', 'ServiceHelper', 'ConfigService', 'ConfigHelper', 'SecretHelper', 'SecretService', 'VolumeService', 'NetworkService', 'ImageHelper', 'LabelHelper', 'Authentication', 'ResourceControlService', 'Notifications', 'FormValidator', 'PluginService', 'RegistryService', 'HttpRequestHelper', 'NodeService', 'SettingsService', 'WebhookService','EndpointProvider',
+function ($rootScope, $q, $scope, $state, $timeout, Service, ServiceHelper, ConfigService, ConfigHelper, SecretHelper, SecretService, VolumeService, NetworkService, ImageHelper, LabelHelper, Authentication, ResourceControlService, Notifications, FormValidator, PluginService, RegistryService, HttpRequestHelper, NodeService, SettingsService, WebhookService,EndpointProvider) {
 
   $scope.formValues = {
     Name: '',
@@ -435,11 +435,23 @@ function ($q, $scope, $state, $timeout, Service, ServiceHelper, ConfigService, C
       return ResourceControlService.applyResourceControl('service', serviceIdentifier, userId, accessControlData, []);
     })
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Service successfully created');
+
+      } else {
+          Notifications.success('服务已成功创建');
+
+      }
       $state.go('docker.services', {}, {reload: true});
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to create service');
+
+      } else {
+          Notifications.error('失败', err, '无法创建服务');
+
+      }
     })
     .finally(function final() {
       $scope.state.actionInProgress = false;
@@ -520,7 +532,13 @@ function ($q, $scope, $state, $timeout, Service, ServiceHelper, ConfigService, C
       $scope.isAdmin = userDetails.role === 1;
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to initialize view');
+
+      } else {
+          Notifications.error('失败', err, '无法初始化视图');
+
+      }
     });
   }
 

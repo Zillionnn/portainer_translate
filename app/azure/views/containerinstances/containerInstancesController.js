@@ -1,7 +1,7 @@
 angular.module('portainer.azure')
-.controller('AzureContainerInstancesController', ['$scope', '$state', 'AzureService', 'Notifications',
-function ($scope, $state, AzureService, Notifications) {
-
+.controller('AzureContainerInstancesController', ['$rootScope', '$scope', '$state', 'AzureService', 'Notifications',
+function ($rootScope, $scope, $state, AzureService, Notifications) {
+  var language = $rootScope.language
   function initView() {
     AzureService.subscriptions()
     .then(function success(data) {
@@ -12,7 +12,13 @@ function ($scope, $state, AzureService, Notifications) {
       $scope.containerGroups = AzureService.aggregate(data);
     })
     .catch(function error(err) {
+      if(language==='en_US'){
       Notifications.error('Failure', err, 'Unable to load container groups');
+
+      } else {
+        Notifications.error('失败', err, '无法加载容器组');
+
+      }
     });
   }
 
@@ -21,12 +27,21 @@ function ($scope, $state, AzureService, Notifications) {
     angular.forEach(selectedItems, function (item) {
       AzureService.deleteContainerGroup(item.Id)
       .then(function success() {
-        Notifications.success('Container group successfully removed', item.Name);
+        if(language==='en_US'){
+          Notifications.success('Container group successfully removed', item.Name);
+        } else {
+          Notifications.success('容器组已成功删除', item.Name);
+        }
         var index = $scope.containerGroups.indexOf(item);
         $scope.containerGroups.splice(index, 1);
       })
       .catch(function error(err) {
-        Notifications.error('Failure', err, 'Unable to remove container group');
+        if(language==='en_US'){
+          Notifications.error('Failure', err, 'Unable to remove container group');
+        } else {
+          Notifications.error('失败', err, '无法删除容器组');
+        }
+        
       })
       .finally(function final() {
         --actionCount;

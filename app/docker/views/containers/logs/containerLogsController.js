@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('ContainerLogsController', ['$scope', '$transition$', '$interval', 'ContainerService', 'Notifications', 'HttpRequestHelper',
-function ($scope, $transition$, $interval, ContainerService, Notifications, HttpRequestHelper) {
+.controller('ContainerLogsController', ['$rootScope', '$scope', '$transition$', '$interval', 'ContainerService', 'Notifications', 'HttpRequestHelper',
+function ($rootScope, $scope, $transition$, $interval, ContainerService, Notifications, HttpRequestHelper) {
   $scope.state = {
     refreshRate: 3,
     lineCount: 100,
@@ -37,7 +37,13 @@ function ($scope, $transition$, $interval, ContainerService, Notifications, Http
       })
       .catch(function error(err) {
         stopRepeater();
+        if($rootScope.language==='en_US'){
         Notifications.error('Failure', err, 'Unable to retrieve container logs');
+
+        } else {
+              Notifications.error('失败', err, '无法检索容器日志');
+
+        }
       });
     }, refreshRate * 1000);
   }
@@ -50,7 +56,13 @@ function ($scope, $transition$, $interval, ContainerService, Notifications, Http
     })
     .catch(function error(err) {
       stopRepeater();
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve container logs');
+
+      } else {
+       Notifications.error('失败', err, '无法检索容器日志');
+   
+      }
     });
   }
 
@@ -63,7 +75,13 @@ function ($scope, $transition$, $interval, ContainerService, Notifications, Http
       startLogPolling(!container.Config.Tty);
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve container information');
+
+      } else {
+          Notifications.error('失败', err, '无法检索容器信息');
+
+      }
     });
   }
 

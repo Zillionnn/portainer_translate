@@ -1,6 +1,8 @@
 angular.module('portainer.agent')
-.controller('NodeSelectorController', ['AgentService', 'Notifications', function (AgentService, Notifications) {
+.controller('NodeSelectorController', ['$rootScope', 'AgentService', 'Notifications', function (AgentService, Notifications) {
   var ctrl = this;
+  var language = $rootScope.language
+
 
   this.$onInit = function() {
     AgentService.agents()
@@ -11,7 +13,12 @@ angular.module('portainer.agent')
       }
     })
     .catch(function error(err) {
-      Notifications.error('Failure', err, 'Unable to load agents');
+      if(language==='en_US'){
+        Notifications.error('Failure', err, 'Unable to load agents');
+      } else {
+        Notifications.error('失败', err, '无法加载代理');
+      }
+      
     });
   };
 

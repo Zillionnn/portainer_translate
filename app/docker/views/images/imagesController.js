@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('ImagesController', ['$scope', '$state', 'ImageService', 'Notifications', 'ModalService', 'HttpRequestHelper', 'FileSaver', 'Blob', 'EndpointProvider',
-function ($scope, $state, ImageService, Notifications, ModalService, HttpRequestHelper, FileSaver, Blob, EndpointProvider) {
+.controller('ImagesController', ['$rootScope', '$scope', '$state', 'ImageService', 'Notifications', 'ModalService', 'HttpRequestHelper', 'FileSaver', 'Blob', 'EndpointProvider',
+function ($rootScope, $scope, $state, ImageService, Notifications, ModalService, HttpRequestHelper, FileSaver, Blob, EndpointProvider) {
   $scope.state = {
     actionInProgress: false,
     exportInProgress: false
@@ -22,11 +22,23 @@ function ($scope, $state, ImageService, Notifications, ModalService, HttpRequest
     $scope.state.actionInProgress = true;
     ImageService.pullImage(image, registry, false)
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Image successfully pulled', image);
+
+      } else {
+        Notifications.success('镜像下载成功', image);
+  
+      }
       $state.reload();
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to pull image');
+
+      } else {
+          Notifications.error('失败', err, '无法下载镜像');
+
+      }
     })
     .finally(function final() {
       $scope.state.actionInProgress = false;
@@ -50,13 +62,24 @@ function ($scope, $state, ImageService, Notifications, ModalService, HttpRequest
       });
 
       if (untagged) {
+        if($rootScope.language==='en_US'){
         Notifications.warning('', 'Cannot download a untagged image');
+
+        } else {
+           Notifications.warning('', '无法下载未标记的图像');
+   
+        }
   			return false;
       }
     }
 
     if (_.uniqBy(selectedItems, 'NodeName').length > 1) {
-      Notifications.warning('', 'Cannot download images from different nodes at the same time');
+      if($rootScope.language==='en_US'){
+Notifications.warning('', 'Cannot download images from different nodes at the same time');
+      } else {
+    Notifications.warning('', '无法同时从不同节点下载图像');
+      }
+      
        return false;
     }
 
@@ -70,10 +93,22 @@ function ($scope, $state, ImageService, Notifications, ModalService, HttpRequest
     .then(function success(data) {
       var downloadData = new Blob([data.file], { type: 'application/x-tar' });
       FileSaver.saveAs(downloadData, 'images.tar');
+      if($rootScope.language==='en_US'){
       Notifications.success('Image(s) successfully downloaded');
+
+      } else {
+          Notifications.success('镜像已成功下载');
+
+      }
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to download image(s)');
+
+      } else {
+        Notifications.error('失败', err, '无法下载镜像');
+  
+      }
     })
     .finally(function final() {
       $scope.state.exportInProgress = false;
@@ -97,12 +132,24 @@ function ($scope, $state, ImageService, Notifications, ModalService, HttpRequest
       HttpRequestHelper.setPortainerAgentTargetHeader(image.NodeName);
       ImageService.deleteImage(image.Id, force)
       .then(function success() {
+        if($rootScope.language==='en_US'){
         Notifications.success('Image successfully removed', image.Id);
+
+        } else {
+            Notifications.success('镜像已成功删除', image.Id);
+  
+        }
         var index = $scope.images.indexOf(image);
         $scope.images.splice(index, 1);
       })
       .catch(function error(err) {
+        if($rootScope.language==='en_US'){
         Notifications.error('Failure', err, 'Unable to remove image');
+
+        } else {
+           Notifications.error('失败', err, '无法删除镜像');
+   
+        }
       })
       .finally(function final() {
         --actionCount;
@@ -122,7 +169,13 @@ function ($scope, $state, ImageService, Notifications, ModalService, HttpRequest
       $scope.offlineMode = EndpointProvider.offlineMode();
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve images');
+
+      } else {
+          Notifications.error('失败', err, '无法检索图像');
+
+      }
       $scope.images = [];
     });
   }

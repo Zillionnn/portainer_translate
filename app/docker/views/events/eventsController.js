@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('EventsController', ['$scope', 'Notifications', 'SystemService',
-function ($scope, Notifications, SystemService) {
+.controller('EventsController', ['$rootScope', '$scope', 'Notifications', 'SystemService',
+function ($rootScope, $scope, Notifications, SystemService) {
 
   function initView() {
     var from = moment().subtract(24, 'hour').unix();
@@ -11,7 +11,13 @@ function ($scope, Notifications, SystemService) {
       $scope.events = data;
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to load events');
+
+      } else {
+         Notifications.error('失败', err, '无法加载事件');
+ 
+      }
     });
   }
 

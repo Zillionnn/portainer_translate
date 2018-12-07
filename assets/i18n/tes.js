@@ -1,1 +1,5 @@
-{{ '' | translate }}
+if($rootScope.language==='en_US'){
+
+  } else {
+
+  }

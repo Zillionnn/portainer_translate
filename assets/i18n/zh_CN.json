@@ -154,7 +154,7 @@
   "Updating_registry":"正在更新registry",
 
   "Registry_management":"Registry管理",
-  "The_DockerHub_registry_can_be_used_by_any_user":"Docker Hub注册表可供任何用户使用。 您可以指定将用于推送的凭据; 在这里拉图像。",
+  "The_DockerHub_registry_can_be_used_by_any_user":"Docker Hub注册表可供任何用户使用。 您可以指定将用于推送的凭据; 在这里拉镜像。",
   "Enable_this_option_if_you_need_to_specify_credentials_to_con":"如果需要指定连接到推/拉私有映像的凭据，请启用此选项。",
   "Update":"更新",
   "Updating_DockerHub_settings":"正在更新DockerHub设置",
@@ -436,7 +436,7 @@
   "No_serverclient_verification":"没有服务器/客户端验证",
   "TLS_key":"TLS密钥",
 
-  "Image":"图像",
+  "Image":"镜像",
   "job_run_inside_privileged":"此作业将在主机上的特权容器内运行。 您可以访问主机文件系统",
   "Job_creation":"创造就业机会",
   "upload_script_file_from_computer":"您可以从计算机上传脚本文件。",

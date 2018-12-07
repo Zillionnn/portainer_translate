@@ -1,6 +1,8 @@
 angular.module('portainer.docker')
-.controller('ContainersDatatableActionsController', ['$state', 'ContainerService', 'ModalService', 'Notifications', 'HttpRequestHelper',
-function ($state, ContainerService, ModalService, Notifications, HttpRequestHelper) {
+.controller('ContainersDatatableActionsController', ['$rootScope', '$state', 'ContainerService', 'ModalService', 'Notifications', 'HttpRequestHelper',
+function ($rootScope, $state, ContainerService, ModalService, Notifications, HttpRequestHelper) {
+  var language = $rootScope.language;
+
   this.startAction = function(selectedItems) {
     var successMessage = 'Container successfully started';
     var errorMessage = 'Unable to start container';
@@ -73,7 +75,13 @@ function ($state, ContainerService, ModalService, Notifications, HttpRequestHelp
       })
       .catch(function error(err) {
         errorMessage = errorMessage + ':' + container.Names[0];
+        if(language==='en_US'){
         Notifications.error('Failure', err, errorMessage);
+
+        } else {
+          Notifications.error('失败', err, errorMessage);
+
+        }
       })
       .finally(function final() {
         --actionCount;
@@ -90,10 +98,22 @@ function ($state, ContainerService, ModalService, Notifications, HttpRequestHelp
       HttpRequestHelper.setPortainerAgentTargetHeader(container.NodeName);
       ContainerService.remove(container, cleanVolumes)
       .then(function success() {
+        if(language==='en_US'){
         Notifications.success('Container successfully removed', container.Names[0]);
+
+        } else {
+        Notifications.success('容器已成功删除', container.Names[0]);
+
+        }
       })
       .catch(function error(err) {
+        if(language==='en_US'){
         Notifications.error('Failure', err, 'Unable to remove container');
+
+        } else {
+         Notifications.error('失败', err, '无法移除容器');
+   
+        }
       })
       .finally(function final() {
         --actionCount;

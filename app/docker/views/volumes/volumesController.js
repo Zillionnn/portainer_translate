@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('VolumesController', ['$q', '$scope', '$state', 'VolumeService', 'ServiceService', 'VolumeHelper', 'Notifications', 'HttpRequestHelper', 'EndpointProvider',
-function ($q, $scope, $state, VolumeService, ServiceService, VolumeHelper, Notifications, HttpRequestHelper, EndpointProvider) {
+.controller('VolumesController', ['$rootScope', '$q', '$scope', '$state', 'VolumeService', 'ServiceService', 'VolumeHelper', 'Notifications', 'HttpRequestHelper', 'EndpointProvider',
+function ($rootScope, $q, $scope, $state, VolumeService, ServiceService, VolumeHelper, Notifications, HttpRequestHelper, EndpointProvider) {
 
   $scope.removeAction = function (selectedItems) {
     var actionCount = selectedItems.length;
@@ -8,12 +8,24 @@ function ($q, $scope, $state, VolumeService, ServiceService, VolumeHelper, Notif
       HttpRequestHelper.setPortainerAgentTargetHeader(volume.NodeName);
       VolumeService.remove(volume)
       .then(function success() {
+        if($rootScope.language==='en_US'){
         Notifications.success('Volume successfully removed', volume.Id);
+
+        } else {
+        Notifications.success('删除Volume成功', volume.Id);
+
+        }
         var index = $scope.volumes.indexOf(volume);
         $scope.volumes.splice(index, 1);
       })
       .catch(function error(err) {
+        if($rootScope.language==='en_US'){
         Notifications.error('Failure', err, 'Unable to remove volume');
+
+        } else {
+      Notifications.error('失败', err, '无法删除volume');
+
+        }
       })
       .finally(function final() {
         --actionCount;
@@ -49,7 +61,13 @@ function ($q, $scope, $state, VolumeService, ServiceService, VolumeHelper, Notif
         return volume;
       }));
     }).catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve volumes');
+
+      } else {
+          Notifications.error('失败', err, '无法检索volumes');
+
+      }
     });
   }
 

@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('CreateConfigController', ['$scope', '$state', '$transition$', 'Notifications', 'ConfigService', 'Authentication', 'FormValidator', 'ResourceControlService',
-function ($scope, $state, $transition$, Notifications, ConfigService, Authentication, FormValidator, ResourceControlService) {
+.controller('CreateConfigController', ['$rootScope', '$scope', '$state', '$transition$', 'Notifications', 'ConfigService', 'Authentication', 'FormValidator', 'ResourceControlService',
+function ($rootScope, $scope, $state, $transition$, Notifications, ConfigService, Authentication, FormValidator, ResourceControlService) {
   $scope.formValues = {
     Name: '',
     Labels: [],
@@ -78,11 +78,22 @@ function ($scope, $state, $transition$, Notifications, ConfigService, Authentica
       return ResourceControlService.applyResourceControl('config', configIdentifier, userId, accessControlData, []);
     })
     .then(function success() {
-      Notifications.success('Config successfully created');
+      if($rootScope.language==='en_US'){
+          Notifications.success('Config successfully created');
+      } else {
+          Notifications.success('配置成功创建');    
+      }
+      
       $state.go('docker.configs', {}, {reload: true});
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to create config');
+
+      } else {
+          Notifications.error('失败', err, '无法创建配置');
+
+      }
     });
   };
 
@@ -110,7 +121,13 @@ function ($scope, $state, $transition$, Notifications, ConfigService, Authentica
     })
     .catch(function error(err) {
       $scope.formValues.displayCodeEditor = true;
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to clone config');
+
+      } else {
+          Notifications.error('失败', err, '无法复制配置');
+
+      }
     });
   }
 

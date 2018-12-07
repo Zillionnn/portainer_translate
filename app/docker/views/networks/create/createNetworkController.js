@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-  .controller('CreateNetworkController', ['$q', '$scope', '$state', 'PluginService', 'Notifications', 'NetworkService', 'LabelHelper', 'Authentication', 'ResourceControlService', 'FormValidator', 'HttpRequestHelper',
-    function ($q, $scope, $state, PluginService, Notifications, NetworkService, LabelHelper, Authentication, ResourceControlService, FormValidator, HttpRequestHelper) {
+  .controller('CreateNetworkController', ['$rootScope', '$q', '$scope', '$state', 'PluginService', 'Notifications', 'NetworkService', 'LabelHelper', 'Authentication', 'ResourceControlService', 'FormValidator', 'HttpRequestHelper',
+    function ($rootScope, $q, $scope, $state, PluginService, Notifications, NetworkService, LabelHelper, Authentication, ResourceControlService, FormValidator, HttpRequestHelper) {
 
       $scope.formValues = {
         DriverOptions: [],
@@ -135,7 +135,13 @@ angular.module('portainer.docker')
             return ResourceControlService.applyResourceControl('network', networkIdentifier, userId, context.accessControlData, []);
           })
           .then(function success() {
+            if($rootScope.language==='en_US'){
             Notifications.success('Network successfully created');
+
+            } else {
+            Notifications.success('网络成功创建');
+
+            }
             if (context.reload) {
               $state.go('docker.networks', {}, {
                 reload: true
@@ -143,7 +149,13 @@ angular.module('portainer.docker')
             }
           })
           .catch(function error(err) {
+            if($rootScope.language==='en_US'){
             Notifications.error('Failure', err, 'An error occured during network creation');
+
+            } else {
+         Notifications.error('失败', err, '网络创建期间发生错误');
+
+            }
           })
           .finally(function final() {
             $scope.state.actionInProgress = false;
@@ -199,7 +211,13 @@ angular.module('portainer.docker')
             $scope.availableNetworkDrivers = data;
           })
           .catch(function error(err) {
+            if($rootScope.language==='en_US'){
             Notifications.error('Failure', err, 'Unable to retrieve network drivers');
+
+            } else {
+      Notifications.error('失败', err, '无法检索网络驱动程序');
+
+            }
           });
       }
 

@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('GroupsController', ['$scope', '$state', '$filter',  'GroupService', 'Notifications',
-function ($scope, $state, $filter, GroupService, Notifications) {
+.controller('GroupsController', ['$rootScope','$scope', '$state', '$filter',  'GroupService', 'Notifications',
+function ($rootScope, $scope, $state, $filter, GroupService, Notifications) {
 
   $scope.removeAction = function (selectedItems) {
     var actionCount = selectedItems.length;
@@ -29,7 +29,12 @@ function ($scope, $state, $filter, GroupService, Notifications) {
       $scope.groups = data;
     })
     .catch(function error(err) {
-      Notifications.error('Failure', err, 'Unable to retrieve endpoint groups');
+      if($rootScope.language==='en_US'){
+        Notifications.error('Failure', err, 'Unable to retrieve endpoint groups');
+      } else {
+        Notifications.error('失败', err, '无法检索终端组');
+      }
+      
       $scope.groups = [];
     });
   }

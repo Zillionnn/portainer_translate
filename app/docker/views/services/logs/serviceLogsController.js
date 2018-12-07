@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('ServiceLogsController', ['$scope', '$transition$', '$interval', 'ServiceService', 'Notifications',
-function ($scope, $transition$, $interval, ServiceService, Notifications) {
+.controller('ServiceLogsController', ['$rootScope', '$scope', '$transition$', '$interval', 'ServiceService', 'Notifications',
+function ($rootScope, $scope, $transition$, $interval, ServiceService, Notifications) {
   $scope.state = {
     refreshRate: 3,
     lineCount: 100,
@@ -37,7 +37,13 @@ function ($scope, $transition$, $interval, ServiceService, Notifications) {
       })
       .catch(function error(err) {
         stopRepeater();
+        if($rootScope.language==='en_US'){
         Notifications.error('Failure', err, 'Unable to retrieve service logs');
+
+        } else {
+          Notifications.error('失败', err, '无法检索服务日志');
+    
+        }
       });
     }, refreshRate * 1000);
   }
@@ -50,7 +56,13 @@ function ($scope, $transition$, $interval, ServiceService, Notifications) {
     })
     .catch(function error(err) {
       stopRepeater();
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve service logs');
+
+      } else {
+        Notifications.error('失败', err, '无法检索服务日志');
+  
+      }
     });
   }
 
@@ -61,7 +73,13 @@ function ($scope, $transition$, $interval, ServiceService, Notifications) {
       startLogPolling();
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve service information');
+
+      } else {
+       Notifications.error('失败', err, '无法检索服务信息');
+
+      }
     });
 
   }

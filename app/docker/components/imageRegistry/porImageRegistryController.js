@@ -1,5 +1,5 @@
 angular.module('portainer.docker')
-.controller('porImageRegistryController', ['$q', 'RegistryService', 'DockerHubService', 'ImageService', 'Notifications',
+.controller('$rootScope', 'porImageRegistryController', ['$q', 'RegistryService', 'DockerHubService', 'ImageService', 'Notifications',
 function ($q, RegistryService, DockerHubService, ImageService, Notifications) {
   var ctrl = this;
 
@@ -21,7 +21,13 @@ function ($q, RegistryService, DockerHubService, ImageService, Notifications) {
       }
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve registries');
+
+      } else {
+      Notifications.error('失败', err, '无法检索registries');
+    
+      }
     });
   }
 

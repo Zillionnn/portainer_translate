@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('ImageController', ['$q', '$scope', '$transition$', '$state', '$timeout', 'ImageService', 'RegistryService', 'Notifications', 'HttpRequestHelper', 'ModalService', 'FileSaver', 'Blob',
-function ($q, $scope, $transition$, $state, $timeout, ImageService, RegistryService, Notifications, HttpRequestHelper, ModalService, FileSaver, Blob) {
+.controller('ImageController', ['$rootScope', '$q', '$scope', '$transition$', '$state', '$timeout', 'ImageService', 'RegistryService', 'Notifications', 'HttpRequestHelper', 'ModalService', 'FileSaver', 'Blob',
+function ($rootScope, $q, $scope, $transition$, $state, $timeout, ImageService, RegistryService, Notifications, HttpRequestHelper, ModalService, FileSaver, Blob) {
 	$scope.formValues = {
 		Image: '',
 		Registry: ''
@@ -30,11 +30,23 @@ function ($q, $scope, $transition$, $state, $timeout, ImageService, RegistryServ
 
 		ImageService.tagImage($transition$.params().id, image, registry.URL)
 		.then(function success() {
+			if($rootScope.language==='en_US'){
 			Notifications.success('Image successfully tagged');
+
+			} else {
+		 Notifications.success('图像已成功标记');
+ 
+			}
 			$state.go('docker.images.image', {id: $transition$.params().id}, {reload: true});
 		})
 		.catch(function error(err) {
+			if($rootScope.language==='en_US'){
 			Notifications.error('Failure', err, 'Unable to tag image');
+
+			} else {
+		 	Notifications.error('失败', err, '无法标记图片');
+ 
+			}
 		});
 	};
 
@@ -46,10 +58,22 @@ function ($q, $scope, $transition$, $state, $timeout, ImageService, RegistryServ
 			return ImageService.pushImage(repository, registry);
 		})
 		.then(function success() {
+			if($rootScope.language==='en_US'){
 			Notifications.success('Image successfully pushed', repository);
+
+			} else {
+				Notifications.success('图像成功推送', repository);
+	  
+			}
 		})
 		.catch(function error(err) {
+			if($rootScope.language==='en_US'){
 			Notifications.error('Failure', err, 'Unable to push image to repository');
+
+			} else {
+					Notifications.error('失败', err, '无法将图像推送到存储库');
+  
+			}
 		})
 		.finally(function final() {
 			$('#uploadResourceHint').hide();
@@ -67,7 +91,13 @@ function ($q, $scope, $transition$, $state, $timeout, ImageService, RegistryServ
 			Notifications.success('Image successfully pulled', repository);
 		})
 		.catch(function error(err) {
+			if($rootScope.language==='en_US'){
 			Notifications.error('Failure', err, 'Unable to pull image');
+
+			} else {
+		  	Notifications.error('失败', err, '无法获取图像');
+
+			}
 		})
 		.finally(function final() {
 			$('#downloadResourceHint').hide();
@@ -78,26 +108,56 @@ function ($q, $scope, $transition$, $state, $timeout, ImageService, RegistryServ
 		ImageService.deleteImage(repository, false)
 		.then(function success() {
 			if ($scope.image.RepoTags.length === 1) {
+				if($rootScope.language==='en_US'){
 				Notifications.success('Image successfully deleted', repository);
+
+				} else {
+			Notifications.success('镜像删除成功', repository);
+
+				}
 				$state.go('docker.images', {}, {reload: true});
 			} else {
+				if($rootScope.language==='en_US'){
 				Notifications.success('Tag successfully deleted', repository);
+
+				} else {
+			Notifications.success('标签删除成功', repository);
+
+				}
 				$state.go('docker.images.image', {id: $transition$.params().id}, {reload: true});
 			}
 		})
 		.catch(function error(err) {
+			if($rootScope.language==='en_US'){
 			Notifications.error('Failure', err, 'Unable to remove image');
+
+			} else {
+			Notifications.error('失败', err, '无法移除镜像');
+		  
+			}
 		});
 	};
 
 	$scope.removeImage = function (id) {
 		ImageService.deleteImage(id, false)
 		.then(function success() {
+			if($rootScope.language==='en_US'){
 			Notifications.success('Image successfully deleted', id);
+
+			} else {
+			Notifications.success('镜像已成功删除', id);
+
+			}
 			$state.go('docker.images', {}, {reload: true});
 		})
 		.catch(function error(err) {
+			if($rootScope.language==='en_US'){
 			Notifications.error('Failure', err, 'Unable to remove image');
+
+			} else {
+		 			Notifications.error('失败', err, '无法移除镜像');
+ 
+			}
 		});
 	};
 
@@ -108,10 +168,22 @@ function ($q, $scope, $transition$, $state, $timeout, ImageService, RegistryServ
 		.then(function success(data) {
 			var downloadData = new Blob([data.file], { type: 'application/x-tar' });
 			FileSaver.saveAs(downloadData, 'images.tar');
+			if($rootScope.language==='en_US'){
 			Notifications.success('Image successfully downloaded');
+
+			} else {
+		  	Notifications.success('镜像下载成功');
+
+			}
 		})
 		.catch(function error(err) {
+			if($rootScope.language==='en_US'){
 			Notifications.error('Failure', err, 'Unable to download image');
+
+			} else {
+			Notifications.error('失败', err, '无法下载镜像');
+	  
+			}
 		})
 		.finally(function final() {
 			$scope.state.exportInProgress = false;
@@ -120,7 +192,13 @@ function ($q, $scope, $transition$, $state, $timeout, ImageService, RegistryServ
 
 	$scope.exportImage = function (image) {
 		if (image.RepoTags.length === 0 || _.includes(image.RepoTags, '<none>')) {
+			if($rootScope.language==='en_US'){
 			Notifications.warning('', 'Cannot download a untagged image');
+
+			} else {
+		  Notifications.warning('', '无法下载未标记的镜像');
+
+			}
 			return;
 		}
 
@@ -142,7 +220,13 @@ function ($q, $scope, $transition$, $state, $timeout, ImageService, RegistryServ
 			$scope.history = data.history;
 		})
 		.catch(function error(err) {
+			if($rootScope.language==='en_US'){
 			Notifications.error('Failure', err, 'Unable to retrieve image details');
+
+			} else {
+			Notifications.error('失败', err, '无法检索图像详细信息');
+  
+			}
 			$state.go('docker.images');
 		});
 	}

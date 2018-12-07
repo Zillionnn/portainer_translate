@@ -1,8 +1,11 @@
-angular.module('portainer.agent').controller('HostBrowserController', [
+angular.module('portainer.agent').controller('HostBrowserController', ['$rootScope',
   'HostBrowserService', 'Notifications', 'FileSaver', 'ModalService',
-  function HostBrowserController(HostBrowserService, Notifications, FileSaver, ModalService) {
+  function HostBrowserController($rootScope, HostBrowserService, Notifications, FileSaver, ModalService) {
     var ctrl = this;
     var ROOT_PATH = '/host';
+    
+    var language = $rootScope.language
+
     ctrl.state = {
       path: ROOT_PATH
     };
@@ -43,7 +46,11 @@ angular.module('portainer.agent').controller('HostBrowserController', [
           ctrl.files = files;
         })
         .catch(function onLoadingFailed(err) {
-          Notifications.error('Failure', err, 'Unable to browse');
+          if(language==='en_US'){
+            Notifications.error('Failure', err, 'Unable to browse');
+          } else {
+            Notifications.error('失败', err, '无法浏览');
+          }
         });
     }
 
@@ -53,14 +60,24 @@ angular.module('portainer.agent').controller('HostBrowserController', [
 
       HostBrowserService.rename(filePath, newFilePath)
         .then(function onRenameSuccess() {
-          Notifications.success('File successfully renamed', getRelativePath(newFilePath));
+          if(language==='en_US'){
+            Notifications.success('File successfully renamed', getRelativePath(newFilePath));
+
+          } else {
+            Notifications.success('文件重命名成功', getRelativePath(newFilePath));
+          }
           return HostBrowserService.ls(ctrl.state.path);
         })
         .then(function onFilesLoaded(files) {
           ctrl.files = files;
         })
         .catch(function notifyOnError(err) {
-          Notifications.error('Failure', err, 'Unable to rename file');
+          if(language==='en_US'){
+            Notifications.error('Failure', err, 'Unable to rename file');
+          } else {
+            Notifications.error('失败', err, '无法重命名文件');
+          }
+          
         });
     }
 
@@ -74,7 +91,12 @@ angular.module('portainer.agent').controller('HostBrowserController', [
           FileSaver.saveAs(downloadData, file);
         })
         .catch(function notifyOnError(err) {
-          Notifications.error('Failure', err, 'Unable to download file');
+          if(language==='en_US'){
+            Notifications.error('Failure', err, 'Unable to download file');
+          } else {
+            Notifications.error('失败', err, '无法下载文件');
+          }
+          
         });
     }
 
@@ -95,14 +117,24 @@ angular.module('portainer.agent').controller('HostBrowserController', [
     function deleteFile(path) {
       HostBrowserService.delete(path)
         .then(function onDeleteSuccess() {
-          Notifications.success('File successfully deleted', getRelativePath(path));
+          if(language==='en_US'){
+            Notifications.success('File successfully deleted', getRelativePath(path));
+
+          } else {
+            Notifications.success('文件删除成功', getRelativePath(path));
+          }
           return HostBrowserService.ls(ctrl.state.path);
         })
         .then(function onFilesLoaded(data) {
           ctrl.files = data;
         })
         .catch(function notifyOnError(err) {
-          Notifications.error('Failure', err, 'Unable to delete file');
+          if(language==='en_US'){
+            Notifications.error('Failure', err, 'Unable to delete file');
+          } else {
+            Notifications.error('失败', err, '无法删除文件');
+          }
+          
         });
     }
 

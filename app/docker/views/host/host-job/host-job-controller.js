@@ -1,6 +1,6 @@
-angular.module('portainer.docker').controller('HostJobController', [
+angular.module('portainer.docker').controller('HostJobController', ['$rootScope',
   'SystemService', 'Notifications',
-  function HostJobController(SystemService, Notifications) {
+  function HostJobController($rootScope, SystemService, Notifications) {
     var ctrl = this;
     ctrl.$onInit = $onInit;
 
@@ -10,7 +10,13 @@ angular.module('portainer.docker').controller('HostJobController', [
         ctrl.host = host;
       })
       .catch(function onError(err) {
+        if($rootScope.language==='en_US'){
         Notifications.error('Unable to retrieve host information', err);
+
+        } else {
+            Notifications.error('无法检索主机信息', err);
+  
+        }
       });
     }
   }

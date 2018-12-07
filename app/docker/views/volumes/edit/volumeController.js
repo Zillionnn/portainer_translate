@@ -1,15 +1,27 @@
 angular.module('portainer.docker')
-.controller('VolumeController', ['$scope', '$state', '$transition$', 'VolumeService', 'ContainerService', 'Notifications', 'HttpRequestHelper',
-function ($scope, $state, $transition$, VolumeService, ContainerService, Notifications, HttpRequestHelper) {
+.controller('VolumeController', ['$rootScope', '$scope', '$state', '$transition$', 'VolumeService', 'ContainerService', 'Notifications', 'HttpRequestHelper',
+function ($rootScope, $scope, $state, $transition$, VolumeService, ContainerService, Notifications, HttpRequestHelper) {
 
   $scope.removeVolume = function removeVolume() {
     VolumeService.remove($scope.volume)
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Volume successfully removed', $transition$.params().id);
+
+      } else {
+       Notifications.success('删除Volume成功', $transition$.params().id);
+   
+      }
       $state.go('docker.volumes', {});
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to remove volume');
+
+      } else {
+          Notifications.error('失败', err, '无法删除volume');
+
+      }
     });
   };
 
@@ -36,7 +48,13 @@ function ($scope, $state, $transition$, VolumeService, ContainerService, Notific
       $scope.containersUsingVolume = containers;
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve volume details');
+
+      } else {
+       Notifications.error('失败', err, '无法检索volume详细信息');
+   
+      }
     });
   }
 

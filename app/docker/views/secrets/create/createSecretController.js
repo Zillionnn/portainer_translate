@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('CreateSecretController', ['$scope', '$state', 'Notifications', 'SecretService', 'LabelHelper', 'Authentication', 'ResourceControlService', 'FormValidator',
-function ($scope, $state, Notifications, SecretService, LabelHelper, Authentication, ResourceControlService, FormValidator) {
+.controller('CreateSecretController', ['$rootScope', '$scope', '$state', 'Notifications', 'SecretService', 'LabelHelper', 'Authentication', 'ResourceControlService', 'FormValidator',
+function ($rootScope, $scope, $state, Notifications, SecretService, LabelHelper, Authentication, ResourceControlService, FormValidator) {
 
   $scope.formValues = {
     Name: '',
@@ -74,11 +74,23 @@ function ($scope, $state, Notifications, SecretService, LabelHelper, Authenticat
       return ResourceControlService.applyResourceControl('secret', secretIdentifier, userId, accessControlData, []);
     })
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Secret successfully created');
+
+      } else {
+          Notifications.success('secret成功创造');
+
+      }
       $state.go('docker.secrets', {}, {reload: true});
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to create secret');
+
+      } else {
+      Notifications.error('失败', err, '无法创建secret');
+    
+      }
     })
     .finally(function final() {
       $scope.state.actionInProgress = false;

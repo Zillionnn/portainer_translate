@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('CreateContainerController', ['$q', '$scope', '$state', '$timeout', '$transition$', '$filter', 'Container', 'ContainerHelper', 'Image', 'ImageHelper', 'Volume', 'NetworkService', 'ResourceControlService', 'Authentication', 'Notifications', 'ContainerService', 'ImageService', 'FormValidator', 'ModalService', 'RegistryService', 'SystemService', 'SettingsService', 'PluginService', 'HttpRequestHelper',
-function ($q, $scope, $state, $timeout, $transition$, $filter, Container, ContainerHelper, Image, ImageHelper, Volume, NetworkService, ResourceControlService, Authentication, Notifications, ContainerService, ImageService, FormValidator, ModalService, RegistryService, SystemService, SettingsService, PluginService, HttpRequestHelper) {
+.controller('CreateContainerController', ['$rootScope', '$q', '$scope', '$state', '$timeout', '$transition$', '$filter', 'Container', 'ContainerHelper', 'Image', 'ImageHelper', 'Volume', 'NetworkService', 'ResourceControlService', 'Authentication', 'Notifications', 'ContainerService', 'ImageService', 'FormValidator', 'ModalService', 'RegistryService', 'SystemService', 'SettingsService', 'PluginService', 'HttpRequestHelper',
+function ($rootScope, $q, $scope, $state, $timeout, $transition$, $filter, Container, ContainerHelper, Image, ImageHelper, Volume, NetworkService, ResourceControlService, Authentication, Notifications, ContainerService, ImageService, FormValidator, ModalService, RegistryService, SystemService, SettingsService, PluginService, HttpRequestHelper) {
 
   $scope.create = create;
 
@@ -466,7 +466,13 @@ function ($q, $scope, $state, $timeout, $transition$, $filter, Container, Contai
       }
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrive registry');
+
+      } else {
+          Notifications.error('失败', err, '无法检索注册表');
+
+      }
     });
   }
 
@@ -521,7 +527,13 @@ function ($q, $scope, $state, $timeout, $transition$, $filter, Container, Contai
       loadFromContainerCapabilities(d);
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve container');
+
+      } else {
+          Notifications.error('失败', err, '无法检索容器');
+
+      }
     });
   }
 
@@ -533,7 +545,13 @@ function ($q, $scope, $state, $timeout, $transition$, $filter, Container, Contai
     Volume.query({}, function (d) {
       $scope.availableVolumes = d.Volumes;
     }, function (e) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', e, 'Unable to retrieve volumes');
+
+      } else {
+          Notifications.error('失败', e, '无法检索volumes');
+
+      }
     });
 
     var provider = $scope.applicationState.endpoint.mode.provider;
@@ -553,7 +571,13 @@ function ($q, $scope, $state, $timeout, $transition$, $filter, Container, Contai
       }
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve networks');
+
+      } else {
+        Notifications.error('失败', err, '无法检索网络');
+  
+      }
     });
 
     Container.query({}, function (d) {
@@ -567,7 +591,13 @@ function ($q, $scope, $state, $timeout, $transition$, $filter, Container, Contai
         $scope.formValues.capabilities = new ContainerCapabilities();
       }
     }, function(e) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', e, 'Unable to retrieve running containers');
+
+      } else {
+      Notifications.error('失败', e, '无法检索正在运行的容器');
+    
+      }
     });
 
     SystemService.info()
@@ -584,7 +614,13 @@ function ($q, $scope, $state, $timeout, $transition$, $filter, Container, Contai
       }
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve engine details');
+
+      } else {
+      Notifications.error('失败', err, '无法检索引擎详细信息');
+    
+      }
     });
 
     SettingsService.publicSettings()
@@ -593,7 +629,13 @@ function ($q, $scope, $state, $timeout, $transition$, $filter, Container, Contai
       $scope.allowPrivilegedMode = data.AllowPrivilegedModeForRegularUsers;
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve application settings');
+
+      } else {
+          Notifications.error('失败', err, '无法检索应用程序设置');
+
+      }
     });
 
     PluginService.loggingPlugins(apiVersion < 1.25)
@@ -646,7 +688,13 @@ function ($q, $scope, $state, $timeout, $transition$, $filter, Container, Contai
         .catch(notifyOnError);
 
       function notifyOnError(err) {
+        if($rootScope.language==='en_US'){
         Notifications.error('Failure', err, 'Unable to retrieve containers');
+
+        } else {
+         Notifications.error('失败', err, '无法检索容器');
+     
+        }
       }
     }
 
@@ -765,7 +813,13 @@ function ($q, $scope, $state, $timeout, $transition$, $filter, Container, Contai
       return deferred.promise;
 
       function notifyOnRemoval() {
+        if($rootScope.language==='en_US'){
         Notifications.success('Container Removed', oldContainer.Id);
+
+        } else {
+              Notifications.success('容器已删除', oldContainer.Id);
+
+        }
         deferred.resolve();
       }
 
@@ -775,7 +829,13 @@ function ($q, $scope, $state, $timeout, $transition$, $filter, Container, Contai
     }
 
     function notifyOnError(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to create container');
+
+      } else {
+          Notifications.error('失败', err, '无法创建容器');
+
+      }
     }
 
     function validateAccessControl() {
@@ -787,7 +847,13 @@ function ($q, $scope, $state, $timeout, $transition$, $filter, Container, Contai
     }
 
     function onSuccess() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Container successfully created');
+
+      } else {
+          Notifications.success('容器已成功创建');
+
+      }
       $state.go('docker.containers', {}, { reload: true });
     }
   }

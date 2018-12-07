@@ -1,9 +1,10 @@
 angular.module('portainer.azure')
-.controller('AzureCreateContainerInstanceController', ['$q', '$scope', '$state', 'AzureService', 'Notifications',
-function ($q, $scope, $state, AzureService, Notifications) {
+.controller('AzureCreateContainerInstanceController', ['$rootScope', '$q', '$scope', '$state', 'AzureService', 'Notifications',
+function ($q, $rootScope, $scope, $state, AzureService, Notifications) {
 
   var allResourceGroups = [];
   var allProviders = [];
+  var language = $rootScope.language;
 
   $scope.state = {
     actionInProgress: false,
@@ -32,11 +33,23 @@ function ($q, $scope, $state, AzureService, Notifications) {
     $scope.state.actionInProgress = true;
     AzureService.createContainerGroup(model, subscriptionId, resourceGroupName)
     .then(function success() {
-      Notifications.success('Container successfully created', model.Name);
+      if(language==='en_US'){
+        Notifications.success('Container successfully created', model.Name);
+
+      } else {
+         Notifications.success('容器已成功创建', model.Name);
+
+      }
       $state.go('azure.containerinstances');
     })
     .catch(function error(err) {
-      Notifications.error('Failure', err, 'Unable to create container');
+      if(language==='en_US'){
+        Notifications.error('Failure', err, 'Unable to create container');
+
+      } else {
+         Notifications.error('失败', err, '无法创建容器');
+
+      }
     })
     .finally(function final() {
       $scope.state.actionInProgress = false;
@@ -79,7 +92,12 @@ function ($q, $scope, $state, AzureService, Notifications) {
       updateResourceGroupsAndLocations(selectedSubscription, resourceGroups, containerInstancesProviders);
     })
     .catch(function error(err) {
-      Notifications.error('Failure', err, 'Unable to retrieve Azure resources');
+      if(language==='en_US'){
+Notifications.error('Failure', err, 'Unable to retrieve Azure resources');
+      } else {
+          Notifications.error('失败', err, '无法检索Azure资源');
+      }
+      
     });
   }
 

@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('BuildImageController', ['$scope', '$state', 'BuildService', 'Notifications', 'HttpRequestHelper',
-function ($scope, $state, BuildService, Notifications, HttpRequestHelper) {
+.controller('BuildImageController', ['$rootScope', '$scope', '$state', 'BuildService', 'Notifications', 'HttpRequestHelper',
+function ($rootScope, $scope, $state, BuildService, Notifications, HttpRequestHelper) {
 
 	$scope.state = {
 		BuildType: 'editor',
@@ -65,13 +65,30 @@ function ($scope, $state, BuildService, Notifications, HttpRequestHelper) {
 			$scope.buildLogs = data.buildLogs;
 			$scope.state.activeTab = 1;
 			if (data.hasError) {
+				if($rootScope.language==='en_US'){
 				Notifications.error('An error occured during build', { msg: 'Please check build logs output' });
+
+				} else {
+				Notifications.error('构建期间发生错误', { msg: '请检查构建日志输出' });
+
+				}
 			} else {
+				if($rootScope.language==='en_US'){
 				Notifications.success('Image successfully built');
+
+				} else {
+			  Notifications.success('图像成功构建');
+
+				}
 			}
 		})
 		.catch(function error(err) {
-			Notifications.error('Failure', err, 'Unable to build image');
+			if($rootScope.language==='en_US'){
+		Notifications.error('Failure', err, 'Unable to build image');
+			} else {
+		Notifications.error('失败', err, '无法构建图像');  
+			}
+			
 		})
 		.finally(function final() {
 			$scope.state.actionInProgress = false;

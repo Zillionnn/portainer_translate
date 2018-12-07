@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('SwarmController', ['$q', '$scope', 'SystemService', 'NodeService', 'Notifications', 'StateManager', 'Authentication',
-function ($q, $scope, SystemService, NodeService, Notifications, StateManager, Authentication) {
+.controller('SwarmController', ['$rootScope', '$q', '$scope', 'SystemService', 'NodeService', 'Notifications', 'StateManager', 'Authentication',
+function ($rootScope, $q, $scope, SystemService, NodeService, Notifications, StateManager, Authentication) {
   $scope.info = {};
   $scope.docker = {};
   $scope.swarm = {};
@@ -83,7 +83,13 @@ function ($q, $scope, SystemService, NodeService, Notifications, StateManager, A
       }
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve cluster details');
+
+      } else {
+      Notifications.error('失败', err, '无法检索群集详细信息');
+    
+      }
     });
   }
 

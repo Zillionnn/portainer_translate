@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('DashboardController', ['$scope', '$q', 'ContainerService', 'ImageService', 'NetworkService', 'VolumeService', 'SystemService', 'ServiceService', 'StackService', 'EndpointService', 'Notifications', 'EndpointProvider', 'StateManager',
-function ($scope, $q, ContainerService, ImageService, NetworkService, VolumeService, SystemService, ServiceService, StackService, EndpointService, Notifications, EndpointProvider, StateManager) {
+.controller('DashboardController', ['$rootScope', '$scope', '$q', 'ContainerService', 'ImageService', 'NetworkService', 'VolumeService', 'SystemService', 'ServiceService', 'StackService', 'EndpointService', 'Notifications', 'EndpointProvider', 'StateManager',
+function ($rootScope, $scope, $q, ContainerService, ImageService, NetworkService, VolumeService, SystemService, ServiceService, StackService, EndpointService, Notifications, EndpointProvider, StateManager) {
 
   $scope.dismissInformationPanel = function(id) {
     StateManager.dismissInformationPanel(id);
@@ -34,7 +34,13 @@ function ($scope, $q, ContainerService, ImageService, NetworkService, VolumeServ
       $scope.offlineMode = EndpointProvider.offlineMode();
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to load dashboard data');
+
+      } else {
+          Notifications.error('失败', err, '无法加载仪表板数据');
+
+      }
     });
   }
 

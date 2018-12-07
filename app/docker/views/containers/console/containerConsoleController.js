@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('ContainerConsoleController', ['$scope', '$transition$', 'ContainerService', 'ImageService', 'EndpointProvider', 'Notifications', 'ContainerHelper', 'ExecService', 'HttpRequestHelper', 'LocalStorage', 'CONSOLE_COMMANDS_LABEL_PREFIX',
-function ($scope, $transition$, ContainerService, ImageService, EndpointProvider, Notifications, ContainerHelper, ExecService, HttpRequestHelper, LocalStorage, CONSOLE_COMMANDS_LABEL_PREFIX) {
+.controller('ContainerConsoleController', ['$rootScope', '$scope', '$transition$', 'ContainerService', 'ImageService', 'EndpointProvider', 'Notifications', 'ContainerHelper', 'ExecService', 'HttpRequestHelper', 'LocalStorage', 'CONSOLE_COMMANDS_LABEL_PREFIX',
+function ($rootScope, $scope, $transition$, ContainerService, ImageService, EndpointProvider, Notifications, ContainerHelper, ExecService, HttpRequestHelper, LocalStorage, CONSOLE_COMMANDS_LABEL_PREFIX) {
   var socket, term;
 
   $scope.state = {
@@ -51,7 +51,13 @@ function ($scope, $transition$, ContainerService, ImageService, EndpointProvider
       return ExecService.resizeTTY(execId, termHeight, termWidth, 2000);
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to exec into container');
+
+      } else {
+          Notifications.error('失败', err, '无法进入容器');
+
+      }
     });
   };
 
@@ -120,7 +126,13 @@ function ($scope, $transition$, ContainerService, ImageService, EndpointProvider
       $scope.state.loaded = true;
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Error', err, 'Unable to retrieve container details');
+
+      } else {
+          Notifications.error('错误', err, '无法检索容器详细信息');
+
+      }
     });
   }
 

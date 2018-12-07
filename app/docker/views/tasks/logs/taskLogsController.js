@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('TaskLogsController', ['$scope', '$transition$', '$interval', 'TaskService', 'ServiceService', 'Notifications',
-function ($scope, $transition$, $interval, TaskService, ServiceService, Notifications) {
+.controller('TaskLogsController', ['$rootScope', '$scope', '$transition$', '$interval', 'TaskService', 'ServiceService', 'Notifications',
+function ($rootScope, $scope, $transition$, $interval, TaskService, ServiceService, Notifications) {
   $scope.state = {
     refreshRate: 3,
     lineCount: 100,
@@ -37,7 +37,13 @@ function ($scope, $transition$, $interval, TaskService, ServiceService, Notifica
       })
       .catch(function error(err) {
         stopRepeater();
+        if($rootScope.language==='en_US'){
         Notifications.error('Failure', err, 'Unable to retrieve task logs');
+
+        } else {
+        Notifications.error('失败', err, '无法检索任务日志');
+      
+        }
       });
     }, refreshRate * 1000);
   }
@@ -50,7 +56,13 @@ function ($scope, $transition$, $interval, TaskService, ServiceService, Notifica
     })
     .catch(function error(err) {
       stopRepeater();
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve task logs');
+
+      } else {
+      Notifications.error('失败', err, '无法检索任务日志');
+    
+      }
     });
   }
 
@@ -67,7 +79,13 @@ function ($scope, $transition$, $interval, TaskService, ServiceService, Notifica
       startLogPolling();
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve task details');
+
+      } else {
+       Notifications.error('失败', err, '无法检索任务详细信息');
+   
+      }
     });
   }
 

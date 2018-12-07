@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('ServiceController', ['$q', '$scope', '$transition$', '$state', '$location', '$timeout', '$anchorScroll', 'ServiceService', 'ConfigService', 'ConfigHelper', 'SecretService', 'ImageService', 'SecretHelper', 'Service', 'ServiceHelper', 'LabelHelper', 'TaskService', 'NodeService', 'ContainerService', 'TaskHelper', 'Notifications', 'ModalService', 'PluginService', 'Authentication', 'SettingsService', 'VolumeService', 'ImageHelper', 'WebhookService', 'EndpointProvider', 'clipboard','WebhookHelper',
-function ($q, $scope, $transition$, $state, $location, $timeout, $anchorScroll, ServiceService, ConfigService, ConfigHelper, SecretService, ImageService, SecretHelper, Service, ServiceHelper, LabelHelper, TaskService, NodeService, ContainerService, TaskHelper, Notifications, ModalService, PluginService, Authentication, SettingsService, VolumeService, ImageHelper, WebhookService, EndpointProvider, clipboard, WebhookHelper) {
+.controller('ServiceController', ['$rootScope', '$q', '$scope', '$transition$', '$state', '$location', '$timeout', '$anchorScroll', 'ServiceService', 'ConfigService', 'ConfigHelper', 'SecretService', 'ImageService', 'SecretHelper', 'Service', 'ServiceHelper', 'LabelHelper', 'TaskService', 'NodeService', 'ContainerService', 'TaskHelper', 'Notifications', 'ModalService', 'PluginService', 'Authentication', 'SettingsService', 'VolumeService', 'ImageHelper', 'WebhookService', 'EndpointProvider', 'clipboard','WebhookHelper',
+function ($rootScope, $q, $scope, $transition$, $state, $location, $timeout, $anchorScroll, ServiceService, ConfigService, ConfigHelper, SecretService, ImageService, SecretHelper, Service, ServiceHelper, LabelHelper, TaskService, NodeService, ContainerService, TaskHelper, Notifications, ModalService, PluginService, Authentication, SettingsService, VolumeService, ImageHelper, WebhookService, EndpointProvider, clipboard, WebhookHelper) {
 
   $scope.state = {
     updateInProgress: false,
@@ -216,7 +216,13 @@ function ($q, $scope, $transition$, $state, $location, $timeout, $anchorScroll, 
         $scope.WebhookExists = false;
       })
       .catch(function error(err) {
+        if($rootScope.language==='en_US'){
         Notifications.error('Failure', err, 'Unable to delete webhook');
+
+        } else {
+         Notifications.error('失败', err, '无法删除webhook');
+     
+        }
       });
     } else {
       WebhookService.createServiceWebhook(service.Id,EndpointProvider.endpointID())
@@ -226,7 +232,13 @@ function ($q, $scope, $transition$, $state, $location, $timeout, $anchorScroll, 
         $scope.webhookURL = WebhookHelper.returnWebhookUrl(data.Token);
       })
       .catch(function error(err) {
+        if($rootScope.language==='en_US'){
         Notifications.error('Failure', err, 'Unable to create webhook');
+
+        } else {
+       Notifications.error('失败', err, '无法创建webhook');
+
+        }
       });
     }
   };
@@ -348,12 +360,24 @@ function ($q, $scope, $transition$, $state, $location, $timeout, $anchorScroll, 
       if (data.message && data.message.match(/^rpc error:/)) {
         Notifications.error(data.message, 'Error');
       } else {
+        if($rootScope.language==='en_US'){
         Notifications.success('Service successfully updated', 'Service updated');
+
+        } else {
+         Notifications.success('服务已成功更新', '服务已更新');
+ 
+        }
       }
       $scope.cancelChanges({});
       initView();
     }, function (e) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', e, 'Unable to update service');
+
+      } else {
+          Notifications.error('失败', e, '无法更新服务');
+
+      }
     });
   };
 
@@ -374,11 +398,23 @@ function ($q, $scope, $transition$, $state, $location, $timeout, $anchorScroll, 
       return $q.when($scope.webhookID && WebhookService.deleteWebhook($scope.webhookID));
     })
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Service successfully deleted');
+
+      } else {
+          Notifications.success('服务已成功删除');
+
+      }
       $state.go('docker.services', {});
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to remove service');
+
+      } else {
+          Notifications.error('失败', err, '无法删除服务');
+
+      }
     })
     .finally(function final() {
       $scope.state.deletionInProgress = false;
@@ -411,12 +447,24 @@ function ($q, $scope, $transition$, $state, $location, $timeout, $anchorScroll, 
     $scope.state.updateInProgress = true;
     ServiceService.update(service, config)
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Service successfully updated', service.Name);
+
+      } else {
+       Notifications.success('服务已成功更新', service.Name);
+   
+      }
       $scope.cancelChanges({});
       initView();
     })
     .catch(function error(err) {
-      Notifications.error('Failure', err, 'Unable to force update service', service.Name);
+      if($rootScope.language==='en_US'){
+        Notifications.error('Failure', err, 'Unable to force update service', service.Name);
+
+      } else {
+       Notifications.error('失败', err, '无法强制更新服务', service.Name);
+ 
+      }
     })
     .finally(function final() {
       $scope.state.updateInProgress = false;
@@ -538,7 +586,13 @@ function ($q, $scope, $transition$, $state, $location, $timeout, $anchorScroll, 
     .catch(function error(err) {
       $scope.secrets = [];
       $scope.configs = [];
-      Notifications.error('Failure', err, 'Unable to retrieve service details');
+      if($rootScope.language==='en_US'){
+        Notifications.error('Failure', err, 'Unable to retrieve service details');
+
+      } else {
+        Notifications.error('失败', err, '无法检索服务详细信息');
+
+      }
     });
   }
 

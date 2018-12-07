@@ -1,7 +1,8 @@
 angular.module('portainer.agent')
-.controller('VolumeBrowserController', ['HttpRequestHelper', 'VolumeBrowserService', 'FileSaver', 'Blob', 'ModalService', 'Notifications',
+.controller('VolumeBrowserController', ['$rootScope', 'HttpRequestHelper', 'VolumeBrowserService', 'FileSaver', 'Blob', 'ModalService', 'Notifications',
 function (HttpRequestHelper, VolumeBrowserService, FileSaver, Blob, ModalService, Notifications) {
   var ctrl = this;
+  var language = $rootScope.language;
 
   this.state = {
     path: '/'
@@ -13,14 +14,24 @@ function (HttpRequestHelper, VolumeBrowserService, FileSaver, Blob, ModalService
 
     VolumeBrowserService.rename(this.volumeId, filePath, newFilePath)
     .then(function success() {
-      Notifications.success('File successfully renamed', newFilePath);
+      if(language==='en_US'){
+        Notifications.success('File successfully renamed', newFilePath);
+      } else {
+        Notifications.success('文件重命名成功', newFilePath);
+      }
+      
       return VolumeBrowserService.ls(ctrl.volumeId, ctrl.state.path);
     })
     .then(function success(data) {
       ctrl.files = data;
     })
     .catch(function error(err) {
-      Notifications.error('Failure', err, 'Unable to rename file');
+      if(language==='en_US'){
+        Notifications.error('Failure', err, 'Unable to rename file');
+      } else {
+        Notifications.error('失败', err, '不能重命名文件');
+      }
+      
     });
   };
 
@@ -61,14 +72,25 @@ function (HttpRequestHelper, VolumeBrowserService, FileSaver, Blob, ModalService
   function deleteFile(file) {
     VolumeBrowserService.delete(ctrl.volumeId, file)
     .then(function success() {
-      Notifications.success('File successfully deleted', file);
+      if(language==='en_US'){
+       Notifications.success('File successfully deleted', file);
+
+      } else {
+        Notifications.success('文件删除成功', file);
+
+      }
       return VolumeBrowserService.ls(ctrl.volumeId, ctrl.state.path);
     })
     .then(function success(data) {
       ctrl.files = data;
     })
     .catch(function error(err) {
-      Notifications.error('Failure', err, 'Unable to delete file');
+      if(language==='en_US'){
+        Notifications.error('Failure', err, 'Unable to delete file');
+      } else {
+          Notifications.error('失败', err, '无法删除文件');
+      }
+      
     });
   }
 
@@ -80,7 +102,13 @@ function (HttpRequestHelper, VolumeBrowserService, FileSaver, Blob, ModalService
       ctrl.files = data;
     })
     .catch(function error(err) {
-      Notifications.error('Failure', err, 'Unable to browse volume');
+      if(language==='en_US'){
+        Notifications.error('Failure', err, 'Unable to browse volume');
+
+      } else {
+        Notifications.error('失败', err, '无法浏览volume');
+
+      }
     });
   }
 
@@ -90,7 +118,12 @@ function (HttpRequestHelper, VolumeBrowserService, FileSaver, Blob, ModalService
         onFileUploaded();
       })
       .catch(function onFileUpload(err) {
-        Notifications.error('Failure', err, 'Unable to upload file');
+        if(language==='en_US'){
+Notifications.error('Failure', err, 'Unable to upload file');
+        } else {
+            Notifications.error('失败', err, '无法上传文件');
+        }
+        
       });
   };
 
@@ -118,7 +151,13 @@ function (HttpRequestHelper, VolumeBrowserService, FileSaver, Blob, ModalService
       ctrl.files = data;
     })
     .catch(function error(err) {
+      if(language==='en_US'){
       Notifications.error('Failure', err, 'Unable to browse volume');
+
+      } else {
+       Notifications.error('失败', err, '无法浏览volume');
+
+      }
     });
   };
 

@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-  .controller('NetworkMacvlanFormController', ['$q', 'NodeService', 'NetworkService', 'Notifications', 'StateManager', 'Authentication',
-    function ($q, NodeService, NetworkService, Notifications, StateManager, Authentication) {
+  .controller('NetworkMacvlanFormController', ['$rootScope', '$q', 'NodeService', 'NetworkService', 'Notifications', 'StateManager', 'Authentication',
+    function ($rootScope, $q, NodeService, NetworkService, Notifications, StateManager, Authentication) {
       var ctrl = this;
 
       ctrl.requiredNodeSelection = function () {
@@ -42,7 +42,13 @@ angular.module('portainer.docker')
             });
           })
           .catch(function error(err) {
+            if($rootScope.language==='en_US'){
             Notifications.error('Failure', err, 'Unable to retrieve informations for macvlan');
+
+            } else {
+            Notifications.error('失败', err, '无法检索macvlan的信息');
+   
+            }
           });
       }
 

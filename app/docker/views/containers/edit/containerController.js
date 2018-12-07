@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('ContainerController', ['$q', '$scope', '$state','$transition$', '$filter', 'Commit', 'ContainerHelper', 'ContainerService', 'ImageHelper', 'NetworkService', 'Notifications', 'ModalService', 'ResourceControlService', 'RegistryService', 'ImageService', 'HttpRequestHelper',
-function ($q, $scope, $state, $transition$, $filter, Commit, ContainerHelper, ContainerService, ImageHelper, NetworkService, Notifications, ModalService, ResourceControlService, RegistryService, ImageService, HttpRequestHelper) {
+.controller('ContainerController', ['$rootScope', '$q', '$scope', '$state','$transition$', '$filter', 'Commit', 'ContainerHelper', 'ContainerService', 'ImageHelper', 'NetworkService', 'Notifications', 'ModalService', 'ResourceControlService', 'RegistryService', 'ImageService', 'HttpRequestHelper',
+function ($rootScope, $q, $scope, $state, $transition$, $filter, Commit, ContainerHelper, ContainerService, ImageHelper, NetworkService, Notifications, ModalService, ResourceControlService, RegistryService, ImageService, HttpRequestHelper) {
   $scope.activityTime = 0;
   $scope.portBindings = [];
 
@@ -50,7 +50,13 @@ function ($q, $scope, $state, $transition$, $filter, Commit, ContainerHelper, Co
       }
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve container info');
+
+      } else {
+          Notifications.error('失败', err, '无法检索容器信息');
+
+      }
     });
   };
 
@@ -61,7 +67,13 @@ function ($q, $scope, $state, $transition$, $filter, Commit, ContainerHelper, Co
       update();
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, errorMessage);
+
+      } else {
+          Notifications.error('失败', err, errorMessage);
+
+      }
     });
   }
 
@@ -106,11 +118,23 @@ function ($q, $scope, $state, $transition$, $filter, Commit, ContainerHelper, Co
     ContainerService.renameContainer($transition$.params().id, container.newContainerName)
     .then(function success() {
       container.Name = container.newContainerName;
+      if($rootScope.language==='en_US'){
       Notifications.success('Container successfully renamed', container.Name);
+
+      } else {
+       Notifications.success('容器已成功重命名', container.Name);
+
+      }
     })
     .catch(function error(err) {
       container.newContainerName = container.Name;
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to rename container');
+
+      } else {
+          Notifications.error('失败', err, '无法重命名容器');
+
+      }
     })
     .finally(function final() {
       $scope.container.edit = false;
@@ -121,11 +145,23 @@ function ($q, $scope, $state, $transition$, $filter, Commit, ContainerHelper, Co
     $scope.state.leaveNetworkInProgress = true;
     NetworkService.disconnectContainer(networkId, container.Id, false)
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Container left network', container.Id);
+
+      } else {
+          Notifications.success('容器离开网络', container.Id);
+
+      }
       $state.reload();
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to disconnect container from network');
+
+      } else {
+          Notifications.error('失败', err, '无法从网络断开容器');
+
+      }
     })
     .finally(function final() {
       $scope.state.leaveNetworkInProgress = false;
@@ -136,11 +172,23 @@ function ($q, $scope, $state, $transition$, $filter, Commit, ContainerHelper, Co
     $scope.state.joinNetworkInProgress = true;
     NetworkService.connectContainer(networkId, container.Id)
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Container joined network', container.Id);
+
+      } else {
+      Notifications.success('容器加入网络', container.Id);
+
+      }
       $state.reload();
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to connect container to network');
+
+      } else {
+          Notifications.error('失败', err, '无法将容器连接到网络');
+
+      }
     })
     .finally(function final() {
       $scope.state.joinNetworkInProgress = false;
@@ -153,11 +201,23 @@ function ($q, $scope, $state, $transition$, $filter, Commit, ContainerHelper, Co
     var imageConfig = ImageHelper.createImageConfigForCommit(image, registry.URL);
     Commit.commitContainer({id: $transition$.params().id, tag: imageConfig.tag, repo: imageConfig.repo}, function () {
       update();
+      if($rootScope.language==='en_US'){
       Notifications.success('Container commited', $transition$.params().id);
+
+      } else {
+       Notifications.success('容器已提交', $transition$.params().id);
+   
+      }
       $scope.config.Image = '';
     }, function (e) {
       update();
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', e, 'Unable to commit container');
+
+      } else {
+          Notifications.error('失败', e, '无法提交容器');
+
+      }
     });
   };
 
@@ -183,11 +243,23 @@ function ($q, $scope, $state, $transition$, $filter, Commit, ContainerHelper, Co
   function removeContainer(cleanAssociatedVolumes) {
     ContainerService.remove($scope.container, cleanAssociatedVolumes)
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Container successfully removed');
+
+      } else {
+          Notifications.success('容器删除成功');
+
+      }
       $state.go('docker.containers', {}, {reload: true});
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to remove container');
+
+      } else {
+          Notifications.error('失败', err, '无法移除容器');
+
+      }
     });
   }
 
@@ -290,12 +362,24 @@ function ($q, $scope, $state, $transition$, $filter, Commit, ContainerHelper, Co
     }
 
     function notifyAndChangeView() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Container successfully re-created');
+
+      } else {
+          Notifications.success('容器成功重新创建');
+
+      }
       $state.go('docker.containers', {}, { reload: true });
     }
 
     function notifyOnError(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to re-create container');
+
+      } else {
+          Notifications.error('失败', err, '无法重新创建容器');
+
+      }
       $scope.state.recreateContainerInProgress = false;
     }
   }
@@ -324,11 +408,23 @@ function ($q, $scope, $state, $transition$, $filter, Commit, ContainerHelper, Co
         Name: restartPolicy,
         MaximumRetryCount: maximumRetryCount
       };
+      if($rootScope.language==='en_US'){
       Notifications.success('Restart policy updated');
+
+      } else {
+          Notifications.success('重启策略已更新');
+
+      }
     }
 
     function notifyOnError(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to update restart policy');
+
+      } else {
+          Notifications.error('失败', err, '无法更新重启策略');
+
+      }
       return $q.reject(err);
     }
   }
@@ -345,7 +441,13 @@ function ($q, $scope, $state, $transition$, $filter, Commit, ContainerHelper, Co
     $scope.availableNetworks = networks;
   })
   .catch(function error(err) {
+    if($rootScope.language==='en_US'){
     Notifications.error('Failure', err, 'Unable to retrieve networks');
+
+    } else {
+      Notifications.error('失败', err, '无法检索网络');
+
+    }
   });
 
   update();

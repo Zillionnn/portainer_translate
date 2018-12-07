@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('SwarmVisualizerController', ['$q', '$scope', '$document', '$interval', 'NodeService', 'ServiceService', 'TaskService', 'Notifications', 'LocalStorage',
-function ($q, $scope, $document, $interval, NodeService, ServiceService, TaskService, Notifications, LocalStorage) {
+.controller('SwarmVisualizerController', ['$rootScope', '$q', '$scope', '$document', '$interval', 'NodeService', 'ServiceService', 'TaskService', 'Notifications', 'LocalStorage',
+function ($rootScope, $q, $scope, $document, $interval, NodeService, ServiceService, TaskService, Notifications, LocalStorage) {
 
   $scope.state = {
     ShowInformationPanel: true,
@@ -57,7 +57,13 @@ function ($q, $scope, $document, $interval, NodeService, ServiceService, TaskSer
       })
       .catch(function error(err) {
         stopRepeater();
+        if($rootScope.language==='en_US'){
         Notifications.error('Failure', err, 'Unable to retrieve cluster information');
+
+        } else {
+            Notifications.error('失败', err, '无法检索群集信息');
+  
+        }
       });
     }, refreshRate * 1000);
   }
@@ -132,7 +138,13 @@ function ($q, $scope, $document, $interval, NodeService, ServiceService, TaskSer
       setUpdateRepeater();
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to initialize cluster visualizer');
+
+      } else {
+          Notifications.error('失败', err, '无法初始化群集可视化工具');
+
+      }
     });
 
     loadState();

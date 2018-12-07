@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('ServicesController', ['$q', '$scope', 'ServiceService', 'ServiceHelper', 'Notifications', 'TaskService', 'TaskHelper', 'NodeService', 'ContainerService',
-function ($q, $scope, ServiceService, ServiceHelper, Notifications, TaskService, TaskHelper, NodeService, ContainerService) {
+.controller('ServicesController', ['$rootScope', '$q', '$scope', 'ServiceService', 'ServiceHelper', 'Notifications', 'TaskService', 'TaskHelper', 'NodeService', 'ContainerService',
+function ($rootScope, $q, $scope, ServiceService, ServiceHelper, Notifications, TaskService, TaskHelper, NodeService, ContainerService) {
 
   function initView() {
     var agentProxy = $scope.applicationState.endpoint.mode.agentProxy;
@@ -34,7 +34,13 @@ function ($q, $scope, ServiceService, ServiceHelper, Notifications, TaskService,
     })
     .catch(function error(err) {
       $scope.services = [];
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve services');
+
+      } else {
+          Notifications.error('失败', err, '无法检索服务');
+
+      }
     });
   }
 
