@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('TagsController', ['$scope', '$state', 'TagService', 'Notifications',
-function ($scope, $state, TagService, Notifications) {
+.controller('TagsController', ['$rootScope', '$scope', '$state', 'TagService', 'Notifications',
+function ($rootScope, $scope, $state, TagService, Notifications) {
 
   $scope.state = {
     actionInProgress: false
@@ -26,12 +26,24 @@ function ($scope, $state, TagService, Notifications) {
     angular.forEach(selectedItems, function (tag) {
       TagService.deleteTag(tag.Id)
       .then(function success() {
+        if($rootScope.language==='en_US'){
         Notifications.success('Tag successfully removed', tag.Name);
+
+        } else {
+             Notifications.success('标记已成功删除', tag.Name);
+   
+        }
         var index = $scope.tags.indexOf(tag);
         $scope.tags.splice(index, 1);
       })
       .catch(function error(err) {
+        if($rootScope.language==='en_US'){
         Notifications.error('Failure', err, 'Unable to tag');
+
+        } else {
+         Notifications.error('失败', err, '无法标记');
+       
+        }
       })
       .finally(function final() {
         --actionCount;
@@ -46,11 +58,23 @@ function ($scope, $state, TagService, Notifications) {
     var tagName = $scope.formValues.Name;
     TagService.createTag(tagName)
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Tag successfully created', tagName);
+
+      } else {
+      Notifications.success('标签已成功创建', tagName);
+      
+      }
       $state.reload();
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to create tag');
+
+      } else {
+        Notifications.error('失败', err, '无法创建标记');
+    
+      }
     });
   };
 
@@ -60,7 +84,13 @@ function ($scope, $state, TagService, Notifications) {
       $scope.tags = data;
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve tags');
+
+      } else {
+        Notifications.error('失败', err, '无法检索标签');
+    
+      }
       $scope.tags = [];
     });
   }

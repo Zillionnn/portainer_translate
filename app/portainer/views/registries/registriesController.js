@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('RegistriesController', ['$q', '$scope', '$state', 'RegistryService', 'DockerHubService', 'ModalService', 'Notifications',
-function ($q, $scope, $state, RegistryService, DockerHubService, ModalService, Notifications) {
+.controller('RegistriesController', ['$rootScope', '$q', '$scope', '$state', 'RegistryService', 'DockerHubService', 'ModalService', 'Notifications',
+function ($rootScope,$q, $scope, $state, RegistryService, DockerHubService, ModalService, Notifications) {
 
   $scope.state = {
     actionInProgress: false
@@ -16,10 +16,22 @@ function ($q, $scope, $state, RegistryService, DockerHubService, ModalService, N
     $scope.state.actionInProgress = true;
     DockerHubService.update(dockerhub)
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('DockerHub registry updated');
+
+      } else {
+       Notifications.success('DockerHub registry已更新');
+     
+      }
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to update DockerHub details');
+
+      } else {
+      Notifications.error('失败', err, '无法更新DockerHub详细信息');
+   
+      }
     })
     .finally(function final() {
       $scope.state.actionInProgress = false;
@@ -41,12 +53,24 @@ function ($q, $scope, $state, RegistryService, DockerHubService, ModalService, N
     angular.forEach(selectedItems, function (registry) {
       RegistryService.deleteRegistry(registry.Id)
       .then(function success() {
+        if($rootScope.language==='en_US'){
         Notifications.success('Registry successfully removed', registry.Name);
+
+        } else {
+         Notifications.success('Registry已成功删除', registry.Name);
+       
+        }
         var index = $scope.registries.indexOf(registry);
         $scope.registries.splice(index, 1);
       })
       .catch(function error(err) {
+        if($rootScope.language==='en_US'){
         Notifications.error('Failure', err, 'Unable to remove registry');
+
+        } else {
+          Notifications.error('失败', err, '无法删除registry');
+      
+        }
       })
       .finally(function final() {
         --actionCount;
@@ -68,7 +92,13 @@ function ($q, $scope, $state, RegistryService, DockerHubService, ModalService, N
     })
     .catch(function error(err) {
       $scope.registries = [];
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve registries');
+
+      } else {
+       Notifications.error('失败', err, '无法检索registries');
+     
+      }
     });
   }
 

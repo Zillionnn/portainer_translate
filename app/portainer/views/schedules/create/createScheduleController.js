@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('CreateScheduleController', ['$q', '$scope', '$state', 'Notifications', 'EndpointService', 'GroupService', 'ScheduleService',
-function ($q, $scope, $state, Notifications, EndpointService, GroupService, ScheduleService) {
+.controller('CreateScheduleController', ['$rootScope', '$q', '$scope', '$state', 'Notifications', 'EndpointService', 'GroupService', 'ScheduleService',
+function ($rootScope, $q, $scope, $state, Notifications, EndpointService, GroupService, ScheduleService) {
 
   $scope.state = {
     actionInProgress: false
@@ -14,11 +14,23 @@ function ($q, $scope, $state, Notifications, EndpointService, GroupService, Sche
     $scope.state.actionInProgress = true;
     createSchedule(model)
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Schedule successfully created');
+
+      } else {
+      Notifications.success('计划成功创建');
+      
+      }
       $state.go('portainer.schedules', {}, {reload: true});
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to create schedule');
+
+      } else {
+       Notifications.error('失败', err, '无法创建计划');
+     
+      }
     })
     .finally(function final() {
       $scope.state.actionInProgress = false;
@@ -44,7 +56,13 @@ function ($q, $scope, $state, Notifications, EndpointService, GroupService, Sche
       $scope.groups = data.groups;
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve endpoint list');
+
+      } else {
+      Notifications.error('失败', err, '无法检索终端列表');
+      
+      }
     });
   }
 

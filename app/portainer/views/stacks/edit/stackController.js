@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('StackController', ['$q', '$scope', '$state', '$transition$', 'StackService', 'NodeService', 'ServiceService', 'TaskService', 'ContainerService', 'ServiceHelper', 'TaskHelper', 'Notifications', 'FormHelper', 'EndpointProvider', 'EndpointService', 'GroupService', 'ModalService',
-function ($q, $scope, $state, $transition$, StackService, NodeService, ServiceService, TaskService, ContainerService, ServiceHelper, TaskHelper, Notifications, FormHelper, EndpointProvider, EndpointService, GroupService, ModalService) {
+.controller('StackController', ['$rootScope', '$q', '$scope', '$state', '$transition$', 'StackService', 'NodeService', 'ServiceService', 'TaskService', 'ContainerService', 'ServiceHelper', 'TaskHelper', 'Notifications', 'FormHelper', 'EndpointProvider', 'EndpointService', 'GroupService', 'ModalService',
+function ($rootScope, $q, $scope, $state, $transition$, StackService, NodeService, ServiceService, TaskService, ContainerService, ServiceHelper, TaskHelper, Notifications, FormHelper, EndpointProvider, EndpointService, GroupService, ModalService) {
 
   $scope.state = {
     actionInProgress: false,
@@ -24,14 +24,26 @@ function ($q, $scope, $state, $transition$, StackService, NodeService, ServiceSe
       .catch(notifyOnError);
 
     function onDuplicationSuccess() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Stack successfully duplicated');
+
+      } else {
+       Notifications.success('堆栈成功复制');
+     
+      }
       $state.go('portainer.stacks', {}, { reload: true });
       EndpointProvider.setEndpointID(stack.EndpointId);
 
     }
 
     function notifyOnError(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to duplicate stack');
+
+      } else {
+      Notifications.error('失败', err, '无法复制堆栈');
+      
+      }
     }
   };
 
@@ -89,11 +101,23 @@ function ($q, $scope, $state, $transition$, StackService, NodeService, ServiceSe
     $scope.state.migrationInProgress = true;
     return migrateRequest(stack, targetEndpointId, name)
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Stack successfully migrated', stack.Name);
+
+      } else {
+       Notifications.success('堆栈已成功迁移', stack.Name);
+     
+      }
       $state.go('portainer.stacks', {}, {reload: true});
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to migrate stack');
+
+      } else {
+       Notifications.error('失败', err, '无法迁移堆栈');
+     
+      }
     })
     .finally(function final() {
       $scope.state.migrationInProgress = false;
@@ -106,11 +130,23 @@ function ($q, $scope, $state, $transition$, StackService, NodeService, ServiceSe
 
     StackService.remove(stack, $transition$.params().external, endpointId)
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Stack successfully removed', stack.Name);
+
+      } else {
+      Notifications.success('堆栈已成功删除', stack.Name);
+      
+      }
       $state.go('portainer.stacks');
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to remove stack ' + stack.Name);
+
+      } else {
+      Notifications.error('失败', err, '无法删除堆栈' + stack.Name);
+      
+      }
     });
   }
 
@@ -132,11 +168,24 @@ function ($q, $scope, $state, $transition$, StackService, NodeService, ServiceSe
     $scope.state.actionInProgress = true;
     StackService.updateStack(stack, stackFile, env, prune)
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Stack successfully deployed');
+
+      } else {
+         Notifications.success('堆栈已成功部署');
+   
+      }
       $state.reload();
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
+        
       Notifications.error('Failure', err, 'Unable to create stack');
+
+      } else {
+            Notifications.error('失败', err, '无法创建堆栈');
+
+      }
     })
     .finally(function final() {
       $scope.state.actionInProgress = false;
@@ -183,7 +232,13 @@ function ($q, $scope, $state, $transition$, StackService, NodeService, ServiceSe
       }
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve stack details');
+
+      } else {
+      Notifications.error('失败', err, '无法检索堆栈详细信息');
+      
+      }
     });
   }
 
@@ -239,7 +294,13 @@ function ($q, $scope, $state, $transition$, StackService, NodeService, ServiceSe
   function loadExternalStack(name) {
     var stackType = $transition$.params().type;
     if (!stackType || (stackType !== '1' && stackType !== '2')) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Invalid type URL parameter.');
+
+      } else {
+       Notifications.error('失败', err, '无效的类型URL参数。');
+     
+      }
       return;
     }
 
@@ -258,7 +319,13 @@ function ($q, $scope, $state, $transition$, StackService, NodeService, ServiceSe
       assignSwarmStackResources(data, agentProxy);
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve stack details');
+
+      } else {
+      Notifications.error('失败', err, '无法检索堆栈详细信息');
+      
+      }
     });
   }
 
@@ -268,7 +335,13 @@ function ($q, $scope, $state, $transition$, StackService, NodeService, ServiceSe
       assignComposeStackResources(data);
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve stack details');
+
+      } else {
+         Notifications.error('失败', err, '无法检索堆栈详细信息');
+   
+      }
     });
   }
 

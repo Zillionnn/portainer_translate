@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('UpdatePasswordController', ['$scope', '$state', '$transition$', '$sanitize', 'UserService', 'Authentication', 'Notifications',
-function UpdatePasswordController($scope, $state, $transition$, $sanitize, UserService, Authentication, Notifications) {
+.controller('UpdatePasswordController', ['$rootScope', '$scope', '$state', '$transition$', '$sanitize', 'UserService', 'Authentication', 'Notifications',
+function UpdatePasswordController($rootScope, $scope, $state, $transition$, $sanitize, UserService, Authentication, Notifications) {
 
   $scope.formValues = {
     CurrentPassword: '',
@@ -21,7 +21,13 @@ function UpdatePasswordController($scope, $state, $transition$, $sanitize, UserS
       $state.go('portainer.home');
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to update password');
+
+      } else {
+           Notifications.error('失败', err, '无法更新密码');
+ 
+      }
     })
     .finally(function final() {
       $scope.state.actionInProgress = false;

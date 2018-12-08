@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('HomeController', ['$q', '$scope', '$state', 'Authentication', 'EndpointService', 'EndpointHelper', 'GroupService', 'Notifications', 'EndpointProvider', 'StateManager', 'ExtensionManager', 'ModalService', 'MotdService', 'SystemService',
-function ($q, $scope, $state, Authentication, EndpointService, EndpointHelper, GroupService, Notifications, EndpointProvider, StateManager, ExtensionManager, ModalService, MotdService, SystemService) {
+.controller('HomeController', ['$rootScope',  '$q', '$scope', '$state', 'Authentication', 'EndpointService', 'EndpointHelper', 'GroupService', 'Notifications', 'EndpointProvider', 'StateManager', 'ExtensionManager', 'ModalService', 'MotdService', 'SystemService',
+function ($rootScope, $q, $scope, $state, Authentication, EndpointService, EndpointHelper, GroupService, Notifications, EndpointProvider, StateManager, ExtensionManager, ModalService, MotdService, SystemService) {
 
   $scope.goToEdit = function(id) {
     $state.go('portainer.endpoints.endpoint', { id: id });
@@ -15,7 +15,13 @@ function ($q, $scope, $state, Authentication, EndpointService, EndpointHelper, G
     .then(function sucess() {
       return switchToDockerEndpoint(endpoint);
     }).catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to verify endpoint status');
+
+      } else {
+      Notifications.error('失败', err, '无法验证终端状态');
+      
+      }
     });
   };
 
@@ -71,16 +77,34 @@ function ($q, $scope, $state, Authentication, EndpointService, EndpointHelper, G
       $state.go('azure.dashboard');
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to connect to the Azure endpoint');
+
+      } else {
+        Notifications.error('失败', err, '无法连接到Azure终端');
+    
+      }
     });
   }
 
   function switchToDockerEndpoint(endpoint) {
     if (endpoint.Status === 2 && endpoint.Snapshots[0] && endpoint.Snapshots[0].Swarm === true) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', '', 'Endpoint is unreachable. Connect to another swarm manager.');
+
+      } else {
+         Notifications.error('失败', '', '终端无法访问。 连接到另一个群管理器。');
+   
+      }
       return;
     } else if (endpoint.Status === 2 && !endpoint.Snapshots[0]) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', '', 'Endpoint is unreachable and there is no snapshot available for offline browsing.');
+
+      } else {
+      Notifications.error('失败', '', ' 终端无法访问，并且没有可用于脱机浏览的快照。');
+      
+      }
       return;
     }
 
@@ -96,18 +120,36 @@ function ($q, $scope, $state, Authentication, EndpointService, EndpointHelper, G
       $state.go('docker.dashboard');
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to connect to the Docker endpoint');
+
+      } else {
+        Notifications.error('失败', err, '无法连接到Docker终端');
+    
+      }
     });
   }
 
   function triggerSnapshot() {
     EndpointService.snapshotEndpoints()
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Success', 'Endpoints updated');
+
+      } else {
+       Notifications.success('成功', 'Endpoints updated');
+     
+      }
       $state.reload();
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'An error occured during endpoint snapshot');
+
+      } else {
+      Notifications.error('失败', err, '终端快照期间发生错误');
+      
+      }
     });
   }
 
@@ -131,7 +173,13 @@ function ($q, $scope, $state, Authentication, EndpointService, EndpointHelper, G
       EndpointProvider.setEndpoints(endpoints);
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve endpoint information');
+
+      } else {
+       Notifications.error('失败', err, '无法检索终端信息');
+     
+      }
     });
   }
 

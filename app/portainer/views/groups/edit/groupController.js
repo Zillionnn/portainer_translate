@@ -70,7 +70,7 @@ Notifications.error('Failure', err, 'Unable to update group');
       Notifications.error('Failure', err, 'Unable to load view');
 
       } else {
-          Notifications.error('失败', err, '无法加载视图');
+      Notifications.error('失败', err, '无法加载视图');
   
       }
     });

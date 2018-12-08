@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('SettingsAuthenticationController', ['$q', '$scope', 'Notifications', 'SettingsService', 'FileUploadService',
-function ($q, $scope, Notifications, SettingsService, FileUploadService) {
+.controller('SettingsAuthenticationController', ['$rootScope', '$q', '$scope', 'Notifications', 'SettingsService', 'FileUploadService',
+function ($rootScope, $q, $scope, Notifications, SettingsService, FileUploadService) {
 
   $scope.state = {
     successfulConnectivityCheck: false,
@@ -46,12 +46,24 @@ function ($q, $scope, Notifications, SettingsService, FileUploadService) {
     .then(function success() {
       $scope.state.failedConnectivityCheck = false;
       $scope.state.successfulConnectivityCheck = true;
+      if($rootScope.language==='en_US'){
       Notifications.success('Connection to LDAP successful');
+
+      } else {
+        Notifications.success('与LDAP的连接成功');
+    
+      }
     })
     .catch(function error(err) {
       $scope.state.failedConnectivityCheck = true;
       $scope.state.successfulConnectivityCheck = false;
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Connection to LDAP failed');
+
+      } else {
+       Notifications.error('失败', err, '与LDAP的连接失败');
+     
+      }
     })
     .finally(function final() {
       $scope.state.uploadInProgress = false;
@@ -73,10 +85,22 @@ function ($q, $scope, Notifications, SettingsService, FileUploadService) {
       return SettingsService.update(settings);
     })
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Authentication settings updated');
+
+      } else {
+       Notifications.success('验证设置已更新');
+     
+      }
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to update authentication settings');
+
+      } else {
+      Notifications.error('失败', err, '无法更新身份验证设置');
+      
+      }
     })
     .finally(function final() {
       $scope.state.uploadInProgress = false;
@@ -100,7 +124,13 @@ function ($q, $scope, Notifications, SettingsService, FileUploadService) {
       $scope.formValues.TLSCACert = settings.LDAPSettings.TLSConfig.TLSCACert;
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve application settings');
+
+      } else {
+      Notifications.error('失败', err, '无法检索应用程序设置');
+      
+      }
     });
   }
 

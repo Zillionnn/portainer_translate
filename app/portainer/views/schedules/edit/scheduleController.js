@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('ScheduleController', ['$q', '$scope', '$transition$', '$state', 'Notifications', 'EndpointService', 'GroupService', 'ScheduleService', 'EndpointProvider',
-function ($q, $scope, $transition$, $state, Notifications, EndpointService, GroupService, ScheduleService, EndpointProvider) {
+.controller('ScheduleController', ['$rootScope', '$q', '$scope', '$transition$', '$state', 'Notifications', 'EndpointService', 'GroupService', 'ScheduleService', 'EndpointProvider',
+function ($rootScope, $q, $scope, $transition$, $state, Notifications, EndpointService, GroupService, ScheduleService, EndpointProvider) {
 
   $scope.state = {
     actionInProgress: false
@@ -15,11 +15,23 @@ function ($q, $scope, $transition$, $state, Notifications, EndpointService, Grou
     $scope.state.actionInProgress = true;
     ScheduleService.updateSchedule(model)
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Schedule successfully updated');
+
+      } else {
+       Notifications.success('计划成功更新');
+     
+      }
       $state.go('portainer.schedules', {}, {reload: true});
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to update schedule');
+
+      } else {
+      Notifications.error('失败', err, '无法更新计划');
+      
+      }
     })
     .finally(function final() {
       $scope.state.actionInProgress = false;
@@ -70,7 +82,13 @@ function ($q, $scope, $transition$, $state, Notifications, EndpointService, Grou
       $scope.groups = data.groups;
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve endpoint list');
+
+      } else {
+      Notifications.error('失败', err, '无法检索终端列表');
+      
+      }
     });
   }
 

@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('TemplatesController', ['$scope', '$q', '$state', '$transition$', '$anchorScroll', 'ContainerService', 'ImageService', 'NetworkService', 'TemplateService', 'TemplateHelper', 'VolumeService', 'Notifications', 'ResourceControlService', 'Authentication', 'FormValidator', 'SettingsService', 'StackService', 'EndpointProvider', 'ModalService',
-function ($scope, $q, $state, $transition$, $anchorScroll, ContainerService, ImageService, NetworkService, TemplateService, TemplateHelper, VolumeService, Notifications, ResourceControlService, Authentication, FormValidator, SettingsService, StackService, EndpointProvider, ModalService) {
+.controller('TemplatesController', ['$rootScope', '$scope', '$q', '$state', '$transition$', '$anchorScroll', 'ContainerService', 'ImageService', 'NetworkService', 'TemplateService', 'TemplateHelper', 'VolumeService', 'Notifications', 'ResourceControlService', 'Authentication', 'FormValidator', 'SettingsService', 'StackService', 'EndpointProvider', 'ModalService',
+function ($rootScope, $scope, $q, $state, $transition$, $anchorScroll, ContainerService, ImageService, NetworkService, TemplateService, TemplateHelper, VolumeService, Notifications, ResourceControlService, Authentication, FormValidator, SettingsService, StackService, EndpointProvider, ModalService) {
   $scope.state = {
     selectedTemplate: null,
     showAdvancedOptions: false,
@@ -80,11 +80,23 @@ function ($scope, $q, $state, $transition$, $anchorScroll, ContainerService, Ima
       return ResourceControlService.applyResourceControl('container', containerIdentifier, userId, accessControlData, generatedVolumeIds);
     })
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Container successfully created');
+
+      } else {
+      Notifications.success('容器已成功创建');
+      
+      }
       $state.go('docker.containers', {}, {reload: true});
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, err.msg);
+
+      } else {
+      Notifications.error('失败', err, err.msg);
+      
+      }
     })
     .finally(function final() {
       $scope.state.actionInProgress = false;
@@ -112,11 +124,21 @@ function ($scope, $q, $state, $transition$, $anchorScroll, ContainerService, Ima
       return ResourceControlService.applyResourceControl('stack', stackName, userId, accessControlData, []);
     })
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Stack successfully deployed');
+      } else {   
+       Notifications.success('堆栈已成功部署');
+     }
       $state.go('portainer.stacks');
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.warning('Deployment error', err.data.err);
+
+      } else {
+       Notifications.warning('部署错误', err.data.err);
+     
+      }
     })
     .finally(function final() {
       $scope.state.actionInProgress = false;
@@ -144,11 +166,23 @@ function ($scope, $q, $state, $transition$, $anchorScroll, ContainerService, Ima
       return ResourceControlService.applyResourceControl('stack', stackName, userId, accessControlData, []);
     })
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Stack successfully deployed');
+
+      } else {
+        Notifications.success('堆栈已成功部署');
+    
+      }
       $state.go('portainer.stacks');
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.warning('Deployment error', err.err.data.err);
+
+      } else {
+       Notifications.warning('部署错误', err.err.data.err);
+     
+      }
     })
     .finally(function final() {
       $scope.state.actionInProgress = false;
@@ -218,12 +252,24 @@ function ($scope, $q, $state, $transition$, $anchorScroll, ContainerService, Ima
   function deleteTemplate(template) {
     TemplateService.delete(template.Id)
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Template successfully deleted');
+
+      } else {
+        Notifications.success('模板已成功删除');
+    
+      }
       var idx = $scope.templates.indexOf(template);
       $scope.templates.splice(idx, 1);
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to remove template');
+
+      } else {
+       Notifications.error('失败', err, '无法删除模板');
+     
+      }
     });
   }
 
@@ -256,7 +302,13 @@ function ($scope, $q, $state, $transition$, $anchorScroll, ContainerService, Ima
     })
     .catch(function error(err) {
       $scope.templates = [];
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'An error occured during apps initialization.');
+
+      } else {
+        Notifications.error('失败', err, '应用初始化期间发生错误。');
+    
+      }
     });
   }
 

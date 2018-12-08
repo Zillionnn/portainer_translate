@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('InitEndpointController', ['$scope', '$state', 'EndpointService', 'StateManager', 'Notifications',
-function ($scope, $state, EndpointService, StateManager, Notifications) {
+.controller('InitEndpointController', ['$rootScope', '$scope', '$state', 'EndpointService', 'StateManager', 'Notifications',
+function ($rootScope, $scope, $state, EndpointService, StateManager, Notifications) {
 
   if (!_.isEmpty($scope.applicationState.endpoint)) {
     $state.go('portainer.home');
@@ -35,7 +35,13 @@ function ($scope, $state, EndpointService, StateManager, Notifications) {
       $state.go('portainer.home');
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to connect to the Docker environment');
+
+      } else {
+         Notifications.error('失败', err, '无法连接到Docker环境');
+   
+      }
     })
     .finally(function final() {
       $scope.state.actionInProgress = false;
@@ -80,7 +86,13 @@ function ($scope, $state, EndpointService, StateManager, Notifications) {
       $state.go('portainer.home');
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to connect to the Azure environment');
+
+      } else {
+      Notifications.error('失败', err, '无法连接到Azure环境');
+      
+      }
     })
     .finally(function final() {
       $scope.state.actionInProgress = false;
@@ -94,7 +106,13 @@ function ($scope, $state, EndpointService, StateManager, Notifications) {
       $state.go('portainer.home');
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to connect to the Docker environment');
+
+      } else {
+       Notifications.error('失败', err, '无法连接到Docker环境');
+     
+      }
     })
     .finally(function final() {
       $scope.state.actionInProgress = false;

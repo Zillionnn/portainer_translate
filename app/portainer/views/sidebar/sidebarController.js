@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-  .controller('SidebarController', ['$q', '$scope', 'StateManager', 'Notifications', 'Authentication', 'UserService',
-    function ($q, $scope, StateManager, Notifications, Authentication, UserService) {
+  .controller('SidebarController', ['$rootScope', '$q', '$scope', 'StateManager', 'Notifications', 'Authentication', 'UserService',
+    function ($rootScope, $q, $scope, StateManager, Notifications, Authentication, UserService) {
 
       function checkPermissions(memberships) {
         var isLeader = false;
@@ -27,7 +27,13 @@ angular.module('portainer.app')
               checkPermissions(data);
             })
             .catch(function error(err) {
+              if($rootScope.language==='en_US'){
               Notifications.error('Failure', err, 'Unable to retrieve user memberships');
+
+              } else {
+             Notifications.error('失败', err, '无法检索用户成员身份');
+        
+              }
             });
         }
       }

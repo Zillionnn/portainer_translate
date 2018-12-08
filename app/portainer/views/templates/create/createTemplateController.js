@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('CreateTemplateController', ['$q', '$scope', '$state', 'TemplateService', 'TemplateHelper', 'NetworkService', 'Notifications',
-function ($q, $scope, $state, TemplateService, TemplateHelper, NetworkService, Notifications) {
+.controller('CreateTemplateController', ['$rootScope', '$q', '$scope', '$state', 'TemplateService', 'TemplateHelper', 'NetworkService', 'Notifications',
+function ($rootScope, $q, $scope, $state, TemplateService, TemplateHelper, NetworkService, Notifications) {
 
   $scope.state = {
     actionInProgress: false
@@ -12,11 +12,23 @@ function ($q, $scope, $state, TemplateService, TemplateHelper, NetworkService, N
     $scope.state.actionInProgress = true;
     TemplateService.create(model)
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Template successfully created', model.Title);
+
+      } else {
+       Notifications.success('模板已成功创建', model.Title);
+     
+      }
       $state.go('portainer.templates');
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to create template');
+
+      } else {
+        Notifications.error('失败', err, '无法创建模板');
+    
+      }
     })
     .finally(function final() {
       $scope.state.actionInProgress = false;
@@ -41,7 +53,13 @@ function ($q, $scope, $state, TemplateService, TemplateHelper, NetworkService, N
       $scope.networks = data.networks;
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve template details');
+
+      } else {
+      Notifications.error('失败', err, '无法检索模板详细信息');
+      
+      }
     });
   }
 

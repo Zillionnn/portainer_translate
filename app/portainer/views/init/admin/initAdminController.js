@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('InitAdminController', ['$scope', '$state', 'Notifications', 'Authentication', 'StateManager', 'UserService', 'EndpointService',
-function ($scope, $state, Notifications, Authentication, StateManager, UserService, EndpointService) {
+.controller('InitAdminController', ['$rootScope', '$scope', '$state', 'Notifications', 'Authentication', 'StateManager', 'UserService', 'EndpointService',
+function ($rootScope, $scope, $state, Notifications, Authentication, StateManager, UserService, EndpointService) {
 
   $scope.logo = StateManager.getState().application.logo;
 
@@ -34,7 +34,13 @@ function ($scope, $state, Notifications, Authentication, StateManager, UserServi
       }
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to create administrator user');
+
+      } else {
+        Notifications.error('失败', err, '无法创建管理员用户');
+    
+      }
     })
     .finally(function final() {
       $scope.state.actionInProgress = false;
@@ -49,7 +55,13 @@ function ($scope, $state, Notifications, Authentication, StateManager, UserServi
       }
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to verify administrator account existence');
+
+      } else {
+      Notifications.error('失败', err, '无法验证管理员帐户是否存在');
+      
+      }
     });
   }
   createAdministratorFlow();

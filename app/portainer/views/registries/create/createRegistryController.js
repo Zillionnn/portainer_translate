@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('CreateRegistryController', ['$scope', '$state', 'RegistryService', 'Notifications',
-function ($scope, $state, RegistryService, Notifications) {
+.controller('CreateRegistryController', ['$rootScope', '$scope', '$state', 'RegistryService', 'Notifications',
+function ($rootScope, $scope, $state, RegistryService, Notifications) {
 
   $scope.state = {
     RegistryType: 'quay',
@@ -37,11 +37,23 @@ function ($scope, $state, RegistryService, Notifications) {
     $scope.state.actionInProgress = true;
     RegistryService.createRegistry(registryName, registryURL, authentication, username, password)
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Registry successfully created');
+
+      } else {
+      Notifications.success('Registry成功创建');
+      
+      }
       $state.go('portainer.registries');
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to create registry');
+
+      } else {
+      Notifications.error('失败', err, '无法创建registry');
+      
+      }
     })
     .finally(function final() {
       $scope.state.actionInProgress = false;

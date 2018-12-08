@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('CreateStackController', ['$scope', '$state', 'StackService', 'Authentication', 'Notifications', 'FormValidator', 'ResourceControlService', 'FormHelper', 'EndpointProvider',
-function ($scope, $state, StackService, Authentication, Notifications, FormValidator, ResourceControlService, FormHelper, EndpointProvider) {
+.controller('CreateStackController', ['$rootScope', '$scope', '$state', 'StackService', 'Authentication', 'Notifications', 'FormValidator', 'ResourceControlService', 'FormHelper', 'EndpointProvider',
+function ($rootScope, $scope, $state, StackService, Authentication, Notifications, FormValidator, ResourceControlService, FormHelper, EndpointProvider) {
 
   $scope.formValues = {
     Name: '',
@@ -118,11 +118,23 @@ function ($scope, $state, StackService, Authentication, Notifications, FormValid
       return ResourceControlService.applyResourceControl('stack', name, userId, accessControlData, []);
     })
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Stack successfully deployed');
+
+      } else {
+       Notifications.success('堆栈已成功部署');
+     
+      }
       $state.go('portainer.stacks');
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.warning('Deployment error', type === 1 ? err.err.data.err : err.data.err);
+
+      } else {
+       Notifications.warning('部署错误', type === 1 ? err.err.data.err : err.data.err);
+     
+      }
     })
     .finally(function final() {
       $scope.state.actionInProgress = false;

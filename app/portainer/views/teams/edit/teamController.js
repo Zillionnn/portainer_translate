@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('TeamController', ['$q', '$scope', '$state', '$transition$', 'TeamService', 'UserService', 'TeamMembershipService', 'ModalService', 'Notifications', 'PaginationService', 'Authentication',
-function ($q, $scope, $state, $transition$, TeamService, UserService, TeamMembershipService, ModalService, Notifications, PaginationService, Authentication) {
+.controller('TeamController', ['$rootScope', '$q', '$scope', '$state', '$transition$', 'TeamService', 'UserService', 'TeamMembershipService', 'ModalService', 'Notifications', 'PaginationService', 'Authentication',
+function ($rootScope, $q, $scope, $state, $transition$, TeamService, UserService, TeamMembershipService, ModalService, Notifications, PaginationService, Authentication) {
 
   $scope.state = {
     pagination_count_users: PaginationService.getPaginationLimit('team_available_users'),
@@ -48,10 +48,23 @@ function ($q, $scope, $state, $transition$, TeamService, UserService, TeamMember
     .then(function success() {
       $scope.leaderCount++;
       user.TeamRole = 'Leader';
+      
+      if($rootScope.language==='en_US'){
       Notifications.success('User is now team leader', user.Username);
+
+      } else {
+        Notifications.success('用户现在是团队领导者', user.Username);
+    
+      }
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to update user role');
+
+      } else {
+        Notifications.error('失败', err, '无法更新用户角色');
+    
+      }
     });
   };
 
@@ -60,10 +73,22 @@ function ($q, $scope, $state, $transition$, TeamService, UserService, TeamMember
     .then(function success() {
       user.TeamRole = 'Member';
       $scope.leaderCount--;
+      if($rootScope.language==='en_US'){
       Notifications.success('User is now team member', user.Username);
+
+      } else {
+        Notifications.success('用户现在是团队成员', user.Username);
+    
+      }
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to update user role');
+
+      } else {
+        Notifications.error('失败', err, '无法更新用户角色');
+    
+      }
     });
   };
 
@@ -82,10 +107,22 @@ function ($q, $scope, $state, $transition$, TeamService, UserService, TeamMember
       }
       $scope.teamMembers = $scope.teamMembers.concat(users);
       $scope.users = [];
+      if($rootScope.language==='en_US'){
       Notifications.success('All users successfully added');
+
+      } else {
+        Notifications.success('所有用户都成功添加');
+    
+      }
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to update team members');
+
+      } else {
+       Notifications.error('失败', err, '无法更新团队成员');
+     
+      }
     });
   };
 
@@ -96,10 +133,22 @@ function ($q, $scope, $state, $transition$, TeamService, UserService, TeamMember
       user.TeamRole = 'Member';
       user.MembershipId = data.Id;
       $scope.teamMembers.push(user);
+      if($rootScope.language==='en_US'){
       Notifications.success('User added to team', user.Username);
+
+      } else {
+        Notifications.success('用户已添加到团队中', user.Username);
+    
+      }
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to update team members');
+
+      } else {
+      Notifications.error('失败', err, '无法更新团队成员');
+      
+      }
     });
   };
 
@@ -112,10 +161,21 @@ function ($q, $scope, $state, $transition$, TeamService, UserService, TeamMember
     .then(function success() {
       $scope.users = $scope.users.concat($scope.teamMembers);
       $scope.teamMembers = [];
+      if($rootScope.language==='en_US'){
       Notifications.success('All users successfully removed');
+
+      } else {
+        Notifications.success('已成功删除所有用户');
+    
+      }
     })
     .catch(function error(err) {
-      Notifications.error('Failure', err, 'Unable to update team members');
+      if($rootScope.language==='en_US'){
+Notifications.error('Failure', err, 'Unable to update team members');
+      } else {
+  Notifications.error('失败', err, '无法更新团队成员');    
+      }
+      
     });
   };
 
@@ -124,21 +184,45 @@ function ($q, $scope, $state, $transition$, TeamService, UserService, TeamMember
     .then(function success() {
       removeUserFromArray(user.Id, $scope.teamMembers);
       $scope.users.push(user);
+      if($rootScope.language==='en_US'){
       Notifications.success('User removed from team', user.Username);
+
+      } else {
+       Notifications.success('用户从团队中删除', user.Username);
+     
+      }
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to update team members');
+
+      } else {
+      Notifications.error('失败', err, '无法更新团队成员');
+      
+      }
     });
   };
 
   function deleteTeam() {
     TeamService.deleteTeam($scope.team.Id)
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Team successfully deleted', $scope.team.Name);
+
+      } else {
+       Notifications.success('团队成功删除', $scope.team.Name);
+     
+      }
       $state.go('portainer.teams');
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to remove team');
+
+      } else {
+         Notifications.error('失败', err, '无法删除团队');
+   
+      }
     });
   }
 
@@ -189,7 +273,13 @@ function ($q, $scope, $state, $transition$, TeamService, UserService, TeamMember
       assignUsersAndMembers(users, data.memberships);
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve team details');
+
+      } else {
+        Notifications.error('失败', err, '无法检索团队详细信息');
+    
+      }
     });
   }
 

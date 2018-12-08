@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('TemplateController', ['$q', '$scope', '$state', '$transition$', 'TemplateService', 'TemplateHelper', 'NetworkService', 'Notifications',
-function ($q, $scope, $state, $transition$, TemplateService, TemplateHelper, NetworkService, Notifications) {
+.controller('TemplateController', ['$rootScope', '$q', '$scope', '$state', '$transition$', 'TemplateService', 'TemplateHelper', 'NetworkService', 'Notifications',
+function ($rootScope, $q, $scope, $state, $transition$, TemplateService, TemplateHelper, NetworkService, Notifications) {
 
   $scope.state = {
     actionInProgress: false
@@ -12,11 +12,23 @@ function ($q, $scope, $state, $transition$, TemplateService, TemplateHelper, Net
     $scope.state.actionInProgress = true;
     TemplateService.update(model)
     .then(function success() {
+      if($rootScope.language==='en_US'){
       Notifications.success('Template successfully updated', model.Title);
+
+      } else {
+      Notifications.success('模板已成功更新', model.Title);
+      
+      }
       $state.go('portainer.templates');
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to update template');
+
+      } else {
+        Notifications.error('失败', err, '无法更新模板');
+    
+      }
     })
     .finally(function final() {
       $scope.state.actionInProgress = false;
@@ -49,7 +61,13 @@ function ($q, $scope, $state, $transition$, TemplateService, TemplateHelper, Net
       $scope.networks = data.networks;
     })
     .catch(function error(err) {
+      if($rootScope.language==='en_US'){
       Notifications.error('Failure', err, 'Unable to retrieve template details');
+
+      } else {
+         Notifications.error('失败', err, '无法检索模板详细信息');
+   
+      }
     });
   }
 
