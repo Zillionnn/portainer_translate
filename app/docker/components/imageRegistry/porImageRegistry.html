@@ -15,7 +15,9 @@
 <div class="form-group" ng-show="$ctrl.form.image_name.$invalid">
   <div class="col-sm-12 small text-warning">
     <div ng-messages="$ctrl.form.image_name.$error">
-      <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Image name is required.</p>
+      <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+        {{ 'Image_name_is_required' | translate }}
+        </p>
     </div>
   </div>
 </div>

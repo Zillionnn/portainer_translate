@@ -6,8 +6,8 @@
         <table class="table">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Vendor</th>
+              <th>{{ 'Name' | translate }}</th>
+              <th>{{ 'Vendor' | translate }}</th>
             </tr>
           </thead>
           <tbody>
@@ -20,7 +20,7 @@
             </tr>
             <tr ng-if="$ctrl.devices.length === 0">
               <td colspan="2" class="text-center text-muted">
-                No device available.
+                  {{ 'No_device_available' | translate }}
               </td>
             </tr>
           </tbody>

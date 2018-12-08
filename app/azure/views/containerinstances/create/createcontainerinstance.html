@@ -1,7 +1,9 @@
 <rd-header>
   <rd-header-title title-text="Create container instance"></rd-header-title>
   <rd-header-content>
-    <a ui-sref="azure.containerinstances">Container instances</a> &gt; Add container
+    <a ui-sref="azure.containerinstances">
+        {{ 'Container_instances' | translate }}
+    </a> &gt; {{ 'Add_container' | translate }}
   </rd-header-content>
 </rd-header>
 
@@ -11,11 +13,13 @@
       <rd-widget-body>
         <form class="form-horizontal" autocomplete="off">
           <div class="col-sm-12 form-section-title">
-            Azure settings
+              {{ 'Azure_settings' | translate }}
           </div>
           <!-- subscription-input -->
           <div class="form-group">
-            <label for="azure_subscription" class="col-sm-1 control-label text-left">Subscription</label>
+            <label for="azure_subscription" class="col-sm-1 control-label text-left">
+                {{ 'Subscription' | translate }}Subscription
+            </label>
             <div class="col-sm-11">
               <select class="form-control" name="azure_subscription" ng-model="state.selectedSubscription" ng-options="subscription.Name for subscription in subscriptions" ng-change="changeSubscription()"></select>
             </div>
@@ -31,18 +35,20 @@
           <!-- !resourcegroup-input -->
           <!-- location-input -->
           <div class="form-group">
-            <label for="azure_location" class="col-sm-1 control-label text-left">Location</label>
+            <label for="azure_location" class="col-sm-1 control-label text-left">
+                {{ 'Location' | translate }}
+            </label>
             <div class="col-sm-11">
               <select class="form-control" name="azure_location" ng-model="model.Location" ng-options="location for location in locations"></select>
             </div>
           </div>
           <!-- !location-input -->
           <div class="col-sm-12 form-section-title">
-            Container configuration
+              {{ 'Container_configuration' | translate }}
           </div>
           <!-- name-input -->
           <div class="form-group">
-            <label for="container_name" class="col-sm-1 control-label text-left">Name</label>
+            <label for="container_name" class="col-sm-1 control-label text-left">{{ 'Name' | translate }}</label>
             <div class="col-sm-11">
               <input type="text" class="form-control" ng-model="model.Name" name="container_name" placeholder="e.g. myContainer">
             </div>
@@ -50,7 +56,7 @@
           <!-- !name-input -->
           <!-- image-input -->
           <div class="form-group">
-            <label for="image_name" class="col-sm-1 control-label text-left">Image</label>
+            <label for="image_name" class="col-sm-1 control-label text-left">{{ 'Image' | translate }}</label>
             <div class="col-sm-11">
               <input type="text" class="form-control" ng-model="model.Image" name="image_name" placeholder="e.g. nginx:alpine">
             </div>
@@ -70,9 +76,9 @@
           <!-- port-mapping -->
           <div class="form-group">
             <div class="col-sm-12">
-              <label class="control-label text-left">Port mapping</label>
+              <label class="control-label text-left">{{ 'Port_mapping' | translate }}</label>
               <span class="label label-default interactive" style="margin-left: 10px;" ng-click="addPortBinding()">
-                <i class="fa fa-plus-circle" aria-hidden="true"></i> map additional port
+                <i class="fa fa-plus-circle" aria-hidden="true"></i>{{ 'map_additional_port' | translate }}
               </span>
             </div>
             <!-- port-mapping-input-list -->
@@ -89,7 +95,7 @@
                 </span>
                 <!-- container-port -->
                 <div class="input-group col-sm-4 input-group-sm">
-                  <span class="input-group-addon">container</span>
+                  <span class="input-group-addon">{{ 'container' | translate }}</span>
                   <input type="text" class="form-control" ng-model="binding.container" placeholder="e.g. 80">
                 </div>
                 <!-- !container-port -->
@@ -113,7 +119,7 @@
           <div class="form-group">
             <div class="col-sm-12">
               <label for="public_ip" class="control-label text-left">
-                Allocate public IP address
+                  {{ 'Allocate_public_IP_address' | translate }}
               </label>
               <label class="switch" style="margin-left: 20px;">
                 <input type="checkbox" name="public_ip" ng-model="model.AllocatePublicIP"><i></i>
@@ -122,7 +128,7 @@
           </div>
           <!-- public-ip -->
           <div class="col-sm-12 form-section-title">
-            Container resources
+              {{ 'Container_resources' | translate }}
           </div>
           <!-- cpu-input -->
           <div class="form-group">
@@ -134,7 +140,7 @@
           <!-- !cpu-input -->
           <!-- memory-input -->
           <div class="form-group">
-            <label for="container_memory" class="col-sm-1 control-label text-left">Memory</label>
+            <label for="container_memory" class="col-sm-1 control-label text-left">{{ 'Memory' | translate }}</label>
             <div class="col-sm-11">
               <input type="number" class="form-control" ng-model="model.Memory" name="container_memory" placeholder="1">
             </div>
@@ -142,13 +148,13 @@
           <!-- !memory-input -->
           <!-- actions -->
           <div class="col-sm-12 form-section-title">
-            Actions
+              {{ 'Actions' | translate }}
           </div>
           <div class="form-group">
             <div class="col-sm-12">
               <button type="button" class="btn btn-primary btn-sm" ng-disabled="state.actionInProgress" ng-click="create()" button-spinner="state.actionInProgress">
-                <span ng-hide="state.actionInProgress">Deploy the container</span>
-                <span ng-show="state.actionInProgress">Deployment in progress...</span>
+                <span ng-hide="state.actionInProgress">{{ 'Deploy_the_container' | translate }}</span>
+                <span ng-show="state.actionInProgress">{{ 'Deployment_in_progress' | translate }}...</span>
               </button>
             </div>
           </div>

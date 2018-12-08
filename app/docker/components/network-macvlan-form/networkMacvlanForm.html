@@ -1,12 +1,13 @@
 <div>
   <div class="col-sm-12 form-section-title">
-    Macvlan configuration
+      {{ 'Macvlan_configuration' | translate }}
   </div>
   <!-- selector -->
   <div class="form-group">
     <span class="col-sm-12 text-muted small">
       <i class="fa fa-info-circle blue-icon" aria-hidden="true" style="margin-right: 2px;"></i>
-      To create a MACVLAN network you need to create a configuration, then create the network from this configuration.
+      <!-- To create a MACVLAN network you need to create a configuration, then create the network from this configuration. -->
+      {{ 'MACVLAN_network_you_need_network' | translate }}
     </span>
   </div>
   <div class="col-sm-12">
@@ -17,9 +18,9 @@
           <label for="network_config">
             <div class="boxselector_header">
               <i class="fa fa-cog" aria-hidden="true" style="margin-right: 2px;"></i>
-              Configuration
+              {{ 'Configuration' | translate }}
             </div>
-            <p>I want to configure a network before deploying it</p>
+            <p>{{ 'configure_a_network_before_deploying' | translate }}</p>
           </label>
         </div>
         <div>
@@ -27,9 +28,9 @@
           <label for="network_deploy" ng-class="$ctrl.availableNetworks.length === 0 ? 'boxselector_disabled' : ''">
             <div class="boxselector_header">
               <i class="fa fa-sitemap" aria-hidden="true" style="margin-right: 2px;"></i>
-              Creation
+              {{ 'Creation' | translate }}
             </div>
-            <p>I want to create a network from a configuration</p>
+            <p>{{ 'create_a_network_from_configuration' | translate }}</p>
           </label>
         </div>
       </div>
@@ -42,7 +43,9 @@
     <div ng-show="$ctrl.data.Scope === 'local'">
       <!-- network-card-input -->
       <div class="form-group">
-        <label for="network_card" class="col-sm-3 col-lg-2 control-label text-left">Parent network card</label>
+        <label for="network_card" class="col-sm-3 col-lg-2 control-label text-left">
+            {{ 'Parent_network_card' | translate }}
+        </label>
         <div class="col-sm-9 col-lg-10">
           <input type="text" class="form-control" name="network_card" ng-model="$ctrl.data.ParentNetworkCard" placeholder="e.g. eth0 or ens160 ..."
             ng-required="$ctrl.data.Scope === 'local' && !$ctrl.data.ParentNetworkCard">
@@ -52,7 +55,9 @@
         <div class="col-sm-12 small text-warning">
           <div ng-messages="macvlanConfigurationForm.network_card.$error">
             <p ng-message="required">
-              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Parent network card must be specified.</p>
+              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+              {{ 'Parent_network_card_must_specified' | translate }}
+              </p>
           </div>
         </div>
       </div>
@@ -88,7 +93,9 @@
         <div class="col-sm-9">
           <select class="form-control" ng-options="net.Name for net in $ctrl.availableNetworks" ng-model="$ctrl.data.SelectedNetworkConfig"
             name="config_network" ng-required="$ctrl.requiredConfigSelection()">
-            <option selected disabled hidden value="">Select a network</option>
+            <option selected disabled hidden value="">
+                {{ 'Select_network' | translate }}
+            </option>
           </select>
         </div>
       </div>

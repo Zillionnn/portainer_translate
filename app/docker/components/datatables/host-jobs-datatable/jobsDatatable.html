@@ -11,7 +11,7 @@
           </div>
           <div class="actionBar">
             <button type="button" class="btn btn-sm btn-primary" ng-click="$ctrl.purgeAction()">
-              <i class="fa fa-trash-alt space-right" aria-hidden="true"></i>Clear job history
+              <i class="fa fa-trash-alt space-right" aria-hidden="true"></i>{{ 'Clear_job_history' | translate }}
             </button>
           </div>
           <div class="searchBar">
@@ -31,7 +31,7 @@
                   </th>
                   <th uib-dropdown dropdown-append-to-body auto-close="disabled" is-open="$ctrl.filters.state.open">
                     <a ng-click="$ctrl.changeOrderBy('Status')">
-                      State
+                        {{ 'State' | translate }}
                       <i class="fa fa-sort-alpha-down" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Status' && !$ctrl.state.reverseOrder"></i>
                       <i class="fa fa-sort-alpha-up" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Status' && $ctrl.state.reverseOrder"></i>
                     </a>
@@ -44,7 +44,7 @@
                     <div class="dropdown-menu" uib-dropdown-menu>
                       <div class="tableMenu">
                         <div class="menuHeader">
-                          Filter by state
+                            {{ 'Filter_by_state' | translate }}
                         </div>
                         <div class="menuContent">
                           <div class="md-checkbox" ng-repeat="filter in $ctrl.filters.state.values track by $index">
@@ -53,7 +53,9 @@
                           </div>
                         </div>
                         <div>
-                          <a type="button" class="btn btn-default btn-sm" ng-click="$ctrl.filters.state.open = false;">Close</a>
+                          <a type="button" class="btn btn-default btn-sm" ng-click="$ctrl.filters.state.open = false;">
+                              {{ 'Close' | translate }}
+                          </a>
                         </div>
                       </div>
                     </div>
@@ -62,7 +64,7 @@
                     <a ng-click="$ctrl.changeOrderBy('Created')">
                       <i class="fa fa-sort-alpha-down" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Created' && !$ctrl.state.reverseOrder"></i>
                       <i class="fa fa-sort-alpha-up" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Created' && $ctrl.state.reverseOrder"></i>
-                      Created
+                      {{ 'Created' | translate }}
                     </a>
                   </th>
                 </tr>
@@ -87,7 +89,9 @@
                   <td colspan="9" class="text-center text-muted">Loading...</td>
                 </tr>
                 <tr ng-if="$ctrl.state.filteredDataSet.length === 0">
-                  <td colspan="9" class="text-center text-muted">No jobs available.</td>
+                  <td colspan="9" class="text-center text-muted">
+                      {{ 'No_jobs_available' | translate }}
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -97,10 +101,10 @@
               <form class="form-inline">
                 <span class="limitSelector">
                   <span style="margin-right: 5px;">
-                    Items per page
+                      {{ 'Items_per_page' | translate }}
                   </span>
                   <select class="form-control" ng-model="$ctrl.state.paginatedItemLimit" ng-change="$ctrl.changePaginationLimit()">
-                    <option value="0">All</option>
+                    <option value="0">{{ 'All' | translate }}</option>
                     <option value="10">10</option>
                     <option value="25">25</option>
                     <option value="50">50</option>

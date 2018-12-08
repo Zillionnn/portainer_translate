@@ -6,7 +6,7 @@
         <table class="table">
           <tbody>
             <tr ng-if="$ctrl.details.name">
-              <td>Node name</td>
+              <td>{{ 'Node_name' | translate }}</td>
               <td>{{ $ctrl.details.name }}</td>
             </tr>
             <tr>
@@ -14,7 +14,7 @@
               <td>{{ $ctrl.details.role }} {{ $ctrl.state.managerAddress }}</td>
             </tr>
             <tr>
-              <td>Availability</td>
+              <td>{{ 'Availability' | translate }}</td>
               <td>
                 <node-availability-select on-save="$ctrl.updateNodeAvailability(availability)"
                   availability="$ctrl.details.availability" original-value="$ctrl.details.availability">
@@ -22,22 +22,22 @@
               </td>
             </tr>
             <tr>
-              <td>Status</td>
+              <td>{{ 'Status' | translate }}</td>
               <td><span class="label label-{{ $ctrl.details.status | nodestatusbadge }}">{{
                   $ctrl.details.status }}</span></td>
             </tr>
             <tr ng-if=" $ctrl.details.engineLabels.length">
-              <td>Engine Labels</td>
+              <td>{{ 'Engine_Labels' | translate }}Engine Labels</td>
               <td>{{ $ctrl.details.engineLabels | arraytostr:', ' }}</td>
             </tr>
             <tr>
               <td>
                 <div class="nopadding">
                   <a class="btn btn-default btn-sm pull-right" ng-click="$ctrl.addLabel(node)">
-                    <i class="fa fa-plus-circle" aria-hidden="true"></i> label
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i>{{ 'label' | translate }}
                   </a>
                 </div>
-                Node Labels
+                {{ 'Node_Labels' | translate }}
               </td>
               <td></td>
             </tr>
@@ -53,14 +53,14 @@
                   <div class="btn-group" role="group">
                     <button type="button" class="btn btn-primary btn-sm"
                       ng-disabled="!$ctrl.state.hasChanges" ng-click="$ctrl.saveChanges()">
-                      Apply changes
+                      {{ 'Apply_changes' | translate }}
                     </button>
                     <button type="button" class="btn btn-default btn-sm dropdown-toggle"
                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                      <li><a ng-click="$ctrl.cancelChanges()">Reset changes</a></li>
+                      <li><a ng-click="$ctrl.cancelChanges()">{{ 'Reset_changes' | translate }}</a></li>
                     </ul>
                   </div>
                 </div>

@@ -7,11 +7,13 @@
         </div>
         <div class="settings">
           <span class="setting" ng-class="{ 'setting-active': $ctrl.columnVisibility.state.open }" uib-dropdown dropdown-append-to-body auto-close="disabled" is-open="$ctrl.columnVisibility.state.open">
-              <span uib-dropdown-toggle ><i class="fa fa-columns space-right" aria-hidden="true"></i>Columns</span>
+              <span uib-dropdown-toggle ><i class="fa fa-columns space-right" aria-hidden="true"></i>
+                {{ 'Columns' | translate }}
+              </span>
               <div class="dropdown-menu dropdown-menu-right" uib-dropdown-menu>
                 <div class="tableMenu">
                   <div class="menuHeader">
-                    Show / Hide Columns
+                      {{ 'Show_Hide_Columns' | translate }}
                   </div>
                   <div class="menuContent">
                     <div class="md-checkbox">
@@ -58,41 +60,49 @@
               </div>
           </span>
           <span class="setting" ng-class="{ 'setting-active': $ctrl.settings.open }" uib-dropdown dropdown-append-to-body auto-close="disabled" is-open="$ctrl.settings.open">
-            <span uib-dropdown-toggle><i class="fa fa-cog" aria-hidden="true"></i> Settings</span>
+            <span uib-dropdown-toggle><i class="fa fa-cog" aria-hidden="true"></i>
+              {{ 'Settings' | translate }} </span>
             <div class="dropdown-menu dropdown-menu-right" uib-dropdown-menu>
               <div class="tableMenu">
                 <div class="menuHeader">
-                  Table settings
+                    {{ 'Table_settings' | translate }}Table settings
                 </div>
                 <div class="menuContent">
                   <div class="md-checkbox">
                     <input id="setting_container_trunc" type="checkbox" ng-model="$ctrl.settings.truncateContainerName" ng-change="$ctrl.onSettingsContainerNameTruncateChange()"/>
-                    <label for="setting_container_trunc">Truncate container name</label>
+                    <label for="setting_container_trunc">
+                        {{ 'Truncate_container_name' | translate }}
+                    </label>
                   </div>
                 </div>
                 <div class="menuHeader">
-                  Quick actions
+                    {{ 'Quick_actions' | translate }}
                 </div>
                 <div class="menuContent">
                   <div class="md-checkbox">
                     <input id="setting_show_stats" type="checkbox" ng-model="$ctrl.settings.showQuickActionStats" ng-change="$ctrl.onSettingsQuickActionChange()"/>
-                    <label for="setting_show_stats">Stats</label>
+                    <label for="setting_show_stats">
+                        {{ 'Stats' | translate }}</label>
                   </div>
                   <div class="md-checkbox">
                     <input id="setting_show_logs" type="checkbox" ng-model="$ctrl.settings.showQuickActionLogs" ng-change="$ctrl.onSettingsQuickActionChange()"/>
-                    <label for="setting_show_logs">Logs</label>
+                    <label for="setting_show_logs">
+                        {{ 'Logs' | translate }}
+                    </label>
                   </div>
                   <div class="md-checkbox">
                     <input id="setting_show_console" type="checkbox" ng-model="$ctrl.settings.showQuickActionConsole" ng-change="$ctrl.onSettingsQuickActionChange()"/>
-                    <label for="setting_show_console">Console</label>
+                    <label for="setting_show_console">
+                        {{ 'Console' | translate }}</label>
                   </div>
                   <div class="md-checkbox">
                     <input id="setting_show_inspect" type="checkbox" ng-model="$ctrl.settings.showQuickActionInspect" ng-change="$ctrl.onSettingsQuickActionChange()"/>
-                    <label for="setting_show_inspect">Inspect</label>
+                    <label for="setting_show_inspect"> {{ 'Inspect' | translate }}</label>
                   </div>
                 </div>
                 <div>
-                  <a type="button" class="btn btn-default btn-sm" ng-click="$ctrl.settings.open = false;">Close</a>
+                  <a type="button" class="btn btn-default btn-sm" ng-click="$ctrl.settings.open = false;">
+                      {{ 'Close' | translate }}</a>
                 </div>
               </div>
             </div>
@@ -121,14 +131,14 @@
                   <label for="select_all"></label>
                 </span>
                 <a ng-click="$ctrl.changeOrderBy('Names')">
-                  Name
+                    {{ 'Name' | translate }}
                   <i class="fa fa-sort-alpha-down" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Names' && !$ctrl.state.reverseOrder"></i>
                   <i class="fa fa-sort-alpha-up" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Names' && $ctrl.state.reverseOrder"></i>
                 </a>
               </th>
               <th uib-dropdown dropdown-append-to-body auto-close="disabled" is-open="$ctrl.filters.state.open" ng-show="$ctrl.columnVisibility.columns.state.display">
                 <a ng-click="$ctrl.changeOrderBy('Status')">
-                  State
+                    {{ 'State' | translate }}
                   <i class="fa fa-sort-alpha-down" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Status' && !$ctrl.state.reverseOrder"></i>
                   <i class="fa fa-sort-alpha-up" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Status' && $ctrl.state.reverseOrder"></i>
                 </a>
@@ -139,7 +149,7 @@
                 <div class="dropdown-menu" uib-dropdown-menu>
                   <div class="tableMenu">
                     <div class="menuHeader">
-                      Filter by state
+                        {{ 'Filter_by_state' | translate }}
                     </div>
                     <div class="menuContent">
                       <div class="md-checkbox" ng-repeat="filter in $ctrl.filters.state.values track by $index">
@@ -148,24 +158,27 @@
                       </div>
                     </div>
                     <div>
-                      <a type="button" class="btn btn-default btn-sm" ng-click="$ctrl.filters.state.open = false;">Close</a>
+                      <a type="button" class="btn btn-default btn-sm" ng-click="$ctrl.filters.state.open = false;">
+                        
+                          {{ 'Close' | translate }}</a>
                     </div>
                   </div>
                 </div>
               </th>
               <th ng-if="$ctrl.settings.showQuickActionStats || $ctrl.settings.showQuickActionLogs || $ctrl.settings.showQuickActionConsole || $ctrl.settings.showQuickActionInspect" ng-show="$ctrl.columnVisibility.columns.actions.display">
-                Quick actions
+                  {{ 'Quick_actions' | translate }}
               </th>
               <th ng-show="$ctrl.columnVisibility.columns.stack.display">
                 <a ng-click="$ctrl.changeOrderBy('StackName')">
-                  Stack
+                    {{ 'Stack' | translate }}
+                    
                   <i class="fa fa-sort-alpha-down" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'StackName' && !$ctrl.state.reverseOrder"></i>
                   <i class="fa fa-sort-alpha-up" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'StackName' && $ctrl.state.reverseOrder"></i>
                 </a>
               </th>
               <th ng-show="$ctrl.columnVisibility.columns.image.display">
                 <a ng-click="$ctrl.changeOrderBy('Image')">
-                  Image
+                    {{ 'Image' | translate }}
                   <i class="fa fa-sort-alpha-down" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Image' && !$ctrl.state.reverseOrder"></i>
                   <i class="fa fa-sort-alpha-up" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Image' && $ctrl.state.reverseOrder"></i>
                 </a>
@@ -174,33 +187,33 @@
                 <a ng-click="$ctrl.changeOrderBy('Created')">
                     <i class="fa fa-sort-alpha-down" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Created' && !$ctrl.state.reverseOrder"></i>
                     <i class="fa fa-sort-alpha-up" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Created' && $ctrl.state.reverseOrder"></i>
-                  Created
+                    {{ 'Created' | translate }}
                 </a>
               </th>
               <th ng-show="$ctrl.columnVisibility.columns.ip.display">
                 <a ng-click="$ctrl.changeOrderBy('IP')">
-                  IP Address
+                    {{ 'IP_Address' | translate }}
                   <i class="fa fa-sort-alpha-down" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'IP' && !$ctrl.state.reverseOrder"></i>
                   <i class="fa fa-sort-alpha-up" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'IP' && $ctrl.state.reverseOrder"></i>
                 </a>
               </th>
               <th ng-if="$ctrl.showHostColumn" ng-show="$ctrl.columnVisibility.columns.host.display">
                 <a ng-click="$ctrl.changeOrderBy('NodeName')">
-                  Host
+                    {{ 'Host' | translate }}
                   <i class="fa fa-sort-alpha-down" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'NodeName' && !$ctrl.state.reverseOrder"></i>
                   <i class="fa fa-sort-alpha-up" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'NodeName' && $ctrl.state.reverseOrder"></i>
                 </a>
               </th>
               <th ng-show="$ctrl.columnVisibility.columns.ports.display">
                 <a ng-click="$ctrl.changeOrderBy('Ports')">
-                  Published Ports
+                    {{ 'Published_Ports' | translate }}
                   <i class="fa fa-sort-alpha-down" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Ports' && !$ctrl.state.reverseOrder"></i>
                   <i class="fa fa-sort-alpha-up" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Ports' && $ctrl.state.reverseOrder"></i>
                 </a>
               </th>
               <th ng-if="$ctrl.showOwnershipColumn" ng-show="$ctrl.columnVisibility.columns.ownership.display">
                 <a ng-click="$ctrl.changeOrderBy('ResourceControl.Ownership')">
-                  Ownership
+                    {{ 'Ownership' | translate }}
                   <i class="fa fa-sort-alpha-down" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'ResourceControl.Ownership' && !$ctrl.state.reverseOrder"></i>
                   <i class="fa fa-sort-alpha-up" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'ResourceControl.Ownership' && $ctrl.state.reverseOrder"></i>
                 </a>
@@ -253,23 +266,25 @@
               <td colspan="9" class="text-center text-muted">Loading...</td>
             </tr>
             <tr ng-if="$ctrl.state.filteredDataSet.length === 0">
-              <td colspan="9" class="text-center text-muted">No container available.</td>
+              <td colspan="9" class="text-center text-muted">
+                  {{ 'No_container_available' | translate }}
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
       <div class="footer" ng-if="$ctrl.dataset">
         <div class="infoBar" ng-if="$ctrl.state.selectedItemCount !== 0">
-          {{ $ctrl.state.selectedItemCount }} item(s) selected
+          {{ $ctrl.state.selectedItemCount }} {{ 'item_selected' | translate }}
         </div>
         <div class="paginationControls">
           <form class="form-inline">
             <span class="limitSelector">
               <span style="margin-right: 5px;">
-                Items per page
+                  {{ 'Items_per_page' | translate }}
               </span>
               <select class="form-control" ng-model="$ctrl.state.paginatedItemLimit" ng-change="$ctrl.changePaginationLimit()">
-                <option value="0">All</option>
+                <option value="0"> {{ 'All' | translate }}</option>
                 <option value="10">10</option>
                 <option value="25">25</option>
                 <option value="50">50</option>

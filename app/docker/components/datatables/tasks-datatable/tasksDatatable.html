@@ -16,7 +16,7 @@
             <tr>
               <th>
                 <a ng-click="$ctrl.changeOrderBy('Status')">
-                  Status
+                 {{ 'Status' | translate }} 
                   <i class="fa fa-sort-alpha-down" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Status' && !$ctrl.state.reverseOrder"></i>
                   <i class="fa fa-sort-alpha-up" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Status' && $ctrl.state.reverseOrder"></i>
                 </a>
@@ -28,7 +28,7 @@
                   <i class="fa fa-sort-alpha-up" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Id' && $ctrl.state.reverseOrder"></i>
                 </a>
               </th>
-              <th>Actions</th>
+              <th>{{ 'Actions' | translate }}</th>
               <th ng-if="$ctrl.showSlotColumn">
                 <a ng-click="$ctrl.changeOrderBy('Slot')">
                   Slot
@@ -38,14 +38,14 @@
               </th>
               <th>
                 <a ng-click="$ctrl.changeOrderBy('NodeId')">
-                  Node
+                    {{ 'Node' | translate }}
                   <i class="fa fa-sort-alpha-down" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'NodeId' && !$ctrl.state.reverseOrder"></i>
                   <i class="fa fa-sort-alpha-up" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'NodeId' && $ctrl.state.reverseOrder"></i>
                 </a>
               </th>
               <th>
                 <a ng-click="$ctrl.changeOrderBy('Updated')">
-                  Last Update
+                    {{ 'Last_Update' | translate }}
                   <i class="fa fa-sort-alpha-down" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Updated' && !$ctrl.state.reverseOrder"></i>
                   <i class="fa fa-sort-alpha-up" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Updated' && $ctrl.state.reverseOrder"></i>
                 </a>
@@ -71,7 +71,9 @@
               <td colspan="6" class="text-center text-muted">Loading...</td>
             </tr>
             <tr ng-if="$ctrl.state.filteredDataSet.length === 0">
-              <td colspan="6" class="text-center text-muted">No task available.</td>
+              <td colspan="6" class="text-center text-muted">
+                  {{ 'No_task_available' | translate }}
+              </td>
             </tr>
           </tbody>
         </table>
@@ -81,10 +83,10 @@
           <form class="form-inline">
             <span class="limitSelector">
               <span style="margin-right: 5px;">
-                Items per page
+                  {{ 'Items_per_page' | translate }}
               </span>
               <select class="form-control" ng-model="$ctrl.state.paginatedItemLimit" ng-change="$ctrl.changePaginationLimit()">
-                <option value="0">All</option>
+                <option value="0">{{ 'All' | translate }}</option>
                 <option value="10">10</option>
                 <option value="25">25</option>
                 <option value="50">50</option>

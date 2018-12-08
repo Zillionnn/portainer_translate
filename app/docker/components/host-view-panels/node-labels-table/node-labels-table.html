@@ -1,26 +1,26 @@
 <div ng-if="!$ctrl.labels.length">
-  There are no labels for this node.
+    {{ 'There_are_no_labels_for_this_node' | translate }}
 </div>
 
 <table class="table" ng-if="$ctrl.labels.length">
   <thead>
     <tr>
-      <th>Label</th>
-      <th>Value</th>
+      <th>{{ 'Label' | translate }}</th>
+      <th>{{ 'Value' | translate }}</th>
     </tr>
   </thead>
   <tbody>
     <tr ng-repeat="label in $ctrl.labels">
       <td>
         <div class="input-group input-group-sm">
-          <span class="input-group-addon fit-text-size">Name</span>
+          <span class="input-group-addon fit-text-size">{{ 'Name' | translate }}</span>
           <input type="text" class="form-control" ng-model="label.key" placeholder="e.g. com.example.foo"
             ng-change="$ctrl.updateLabel(label)">
         </div>
       </td>
       <td>
         <div class="input-group input-group-sm">
-          <span class="input-group-addon fit-text-size">Value</span>
+          <span class="input-group-addon fit-text-size">{{ 'Value' | translate }}</span>
           <input type="text" class="form-control" ng-model="label.value" placeholder="e.g. bar"
             ng-change="$ctrl.updateLabel(label)">
           <span class="input-group-btn">

@@ -6,8 +6,8 @@
         <table class="table">
           <thead>
             <tr>
-              <th>Vendor</th>
-              <th>Size</th>
+              <th>{{ 'Vendor' | translate }}</th>
+              <th>{{ 'Size' | translate }}</th>
             </tr>
           </thead>
           <tbody>
@@ -20,7 +20,7 @@
             </tr>
             <tr ng-if="$ctrl.disks.length === 0">
               <td colspan="2" class="text-center text-muted">
-                No disks available.
+                  {{ 'No_disks_available' | translate }}
               </td>
             </tr>
           </tbody>

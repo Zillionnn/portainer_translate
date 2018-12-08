@@ -2,22 +2,28 @@
   <table class="table table-bordered table-condensed">
     <tr>
       <td class="col-md-3">
-        <span>Name</span>
+        <span>
+            {{ 'Name' | translate }} 
+        </span>
       </td>
       <td>
         <select class="form-control" ng-model="$ctrl.state.editModel.name">
-          <option value="no">None</option>
-          <option value="on-failure">On Failure</option>
-          <option value="always">Always</option>
-          <option value="unless-stopped">Unless Stopped</option>
+          <option value="no">{{ 'None' | translate }}</option>
+          <option value="on-failure">{{ 'On_Failure' | translate }}</option>
+          <option value="always">{{ 'Always' | translate }}</option>
+          <option value="unless-stopped">{{ 'Unless_Stopped' | translate }}</option>
         </select>
       </td>
       <td class="col-md-2">
-        <button class="btn btn-sm btn-primary" ng-click="$ctrl.save()">Update</button>
+        <button class="btn btn-sm btn-primary" ng-click="$ctrl.save()">
+            {{ 'Update' | translate }}
+          </button>
       </td>
     </tr>
     <tr ng-if="$ctrl.state.editModel.name === 'on-failure'">
-      <td class="col-md-3">Maximum Retry Count</td>
+      <td class="col-md-3">
+          {{ 'Maximum_Retry_Count' | translate }}
+        </td>
       <td colspan="2">
         <input type="number" class="form-control" ng-model="$ctrl.state.editModel.maximumRetryCount" />
       </td>

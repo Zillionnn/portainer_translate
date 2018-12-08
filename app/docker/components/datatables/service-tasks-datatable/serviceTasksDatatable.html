@@ -4,7 +4,7 @@
       <tr>
         <th uib-dropdown dropdown-append-to-body auto-close="disabled" is-open="$ctrl.filters.state.open" style="width: 10%;">
           <a ng-click="$ctrl.changeOrderBy('Status.State')">
-            Status
+              {{ 'Status' | translate }}
             <i class="fa fa-sort-alpha-down" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Status.State' && !$ctrl.state.reverseOrder"></i>
             <i class="fa fa-sort-alpha-up" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Status.State' && $ctrl.state.reverseOrder"></i>
           </a>
@@ -15,7 +15,7 @@
           <div class="dropdown-menu" uib-dropdown-menu>
             <div class="tableMenu">
               <div class="menuHeader">
-                Filter by state
+                  {{ 'Filter_by_state' | translate }}
               </div>
               <div class="menuContent">
                 <div class="md-checkbox" ng-repeat="filter in $ctrl.filters.state.values track by $index">
@@ -24,30 +24,32 @@
                 </div>
               </div>
               <div>
-                <a type="button" class="btn btn-default btn-sm" ng-click="$ctrl.filters.state.open = false;">Close</a>
+                <a type="button" class="btn btn-default btn-sm" ng-click="$ctrl.filters.state.open = false;">
+                    {{ 'Close' | translate }}
+                </a>
               </div>
             </div>
           </div>
         </th>
-        <th style="width: 22%;">Task</th>
-        <th>Actions</th>
+        <th style="width: 22%;">{{ 'Task' | translate }}</th>
+        <th>{{ 'Actions' | translate }}</th>
         <th>
           <a ng-click="$ctrl.changeOrderBy('Slot')">
-            Slot
+              {{ 'Slot' | translate }}
             <i class="fa fa-sort-alpha-down" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Slot' && !$ctrl.state.reverseOrder"></i>
             <i class="fa fa-sort-alpha-up" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Slot' && $ctrl.state.reverseOrder"></i>
           </a>
         </th>
         <th>
           <a ng-click="$ctrl.changeOrderBy('NodeId')">
-            Node
+              {{ 'Node' | translate }}
             <i class="fa fa-sort-alpha-down" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'NodeId' && !$ctrl.state.reverseOrder"></i>
             <i class="fa fa-sort-alpha-up" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'NodeId' && $ctrl.state.reverseOrder"></i>
           </a>
         </th>
         <th>
           <a ng-click="$ctrl.changeOrderBy('Updated')">
-            Last Update
+              {{ 'Last_Update' | translate }}
             <i class="fa fa-sort-alpha-down" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Updated' && !$ctrl.state.reverseOrder"></i>
             <i class="fa fa-sort-alpha-up" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Updated' && $ctrl.state.reverseOrder"></i>
           </a>
@@ -72,7 +74,9 @@
         <td>{{ item.Updated | getisodate }}</td>
       </tr>
       <tr ng-if="$ctrl.state.filteredDataSet.length === 0">
-        <td colspan="5" class="text-center text-muted">No task matching filter.</td>
+        <td colspan="5" class="text-center text-muted">
+            {{ 'No_task_matching' | translate }}
+        </td>
       </tr>
     </tbody>
   </table>
