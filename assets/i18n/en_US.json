@@ -701,7 +701,35 @@
   "Portainer_will_let_Docker_sth":"When enabled, Portainer will let Docker automatically map a random port on the host to each one defined in the image Dockerfile.",
   "Deployment":"Deployment",
   "Command_logging":"Command & logging",
-  "Env":"Env"
+  "Env":"Env",
+  "Runtime_Resources":"Runtime & Resources",
+  "Capabilities":"Capabilities",
+  "Entry_Point":"Entry Point",
+  "Working_Dir":"Working Dir",
+  "Interactive_TTY":"Interactive & TTY",
+  "Interactive":"Interactive",
+  "Logging":"Logging",
+  "Default_logging_driver":"Default logging driver",
+  
+  "Logging_driver_that_sth_found":"Logging driver that will override the default docker daemon driver.Select Default logging driver if you don't want to override it.Supported logging drivers can be found",
+  "add_logging_driver_option":"add logging driver option",
+  "volume":"volume",
+  "have_any_shared_network_the":"You don't have any shared network. Head over the ",
+  "to_create_one":"to create one.",
+  "networks_view":"networks view",
+  "Select_a_container":"Select a container",
+  "Domain_Name":"Domain Name",
+  "Address":"Address",
+  "Runtime":"Runtime",
+  "Devices":"Devices",
+  "add_device":"add device",
+  "Resources":"Resources",
+  "Memory_reservation":"Memory reservation",
+  "Memory_soft_limit":"Memory soft limit",
+  "Memory_limit":"Memory limit",
+  "CPU_limit":"CPU limit",
+  "Maximum_CPU_usage":"Maximum CPU usage"
+  
   
   
   
