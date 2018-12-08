@@ -1,7 +1,8 @@
 <rd-header>
   <rd-header-title title-text="Container console"></rd-header-title>
   <rd-header-content ng-if="state.loaded">
-    <a ui-sref="docker.containers">Containers</a> &gt; <a ui-sref="docker.containers.container({id: container.Id})">{{ container.Name|trimcontainername }}</a> &gt; Console
+    <a ui-sref="docker.containers">
+        {{ 'Containers' | translate }}</a> &gt; <a ui-sref="docker.containers.container({id: container.Id})">{{ container.Name|trimcontainername }}</a> &gt; Console
   </rd-header-content>
 </rd-header>
 
@@ -35,14 +36,15 @@
               </div>
             <!-- !command-list -->
             <div class="form-group col-lg-12">
-              <label for="command" class="text-left control-label">Use custom command</label>
+              <label for="command" class="text-left control-label">
+                  {{ 'Use_custom_command' | translate }}</label>
               <label class="switch" style="margin-left: 20px;">
                 <input type="checkbox" ng-model="formValues.isCustomCommand"><i></i>
               </label>
             </div>
             <div class="form-group">
               <label for="username" class="col-lg-1 text-left col-sm-2 control-label">
-                User
+                  {{ 'User' | translate }}
                 <portainer-tooltip position="bottom" message="Format is one of: user, user:group, uid or uid:gid"></portainer-tooltip>
               </label>
               <div class="col-lg-11 col-sm-10">
@@ -52,15 +54,18 @@
             <div class="form-group">
               <div class="col-sm-12">
                 <button type="button" class="btn btn-primary" ng-disabled="state.connected" button-spinner="state.connected" ng-click="connect()">
-                  <span ng-hide="state.leaveNetworkInProgress">Connect</span>
-                  <span ng-show="state.leaveNetworkInProgress">Connecting...</span>
+                  <span ng-hide="state.leaveNetworkInProgress">
+                      {{ 'Connect' | translate }}</span>
+                  <span ng-show="state.leaveNetworkInProgress">{{ 'Connecting' | translate }}...</span>
                 </button>
               </div>
             </div>
           </div>
           <div ng-if="state.connected">
             <label>Exec into container as <code>{{ ::formValues.user || 'default user' }}</code> using command <code>{{ formValues.isCustomCommand ? formValues.customCommand : formValues.command }}</code></label>
-            <button type="button" class="btn btn-default" ng-click="disconnect()">Disconnect</button>
+            <button type="button" class="btn btn-default" ng-click="disconnect()">
+                {{ 'Disconnect' | translate }}
+            </button>
           </div>
         </form>
       </rd-widget-body>

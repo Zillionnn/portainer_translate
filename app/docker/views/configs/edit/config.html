@@ -17,7 +17,7 @@
         <table class="table">
           <tbody>
             <tr>
-              <td>Name</td>
+              <td>{{ 'Name' | translate }}</td>
               <td>{{ config.Name }}</td>
             </tr>
             <tr>
@@ -29,15 +29,15 @@
               </td>
             </tr>
             <tr>
-              <td>Created</td>
+              <td>{{ 'Created' | translate }}</td>
               <td>{{ config.CreatedAt | getisodate }}</td>
             </tr>
             <tr>
-              <td>Last updated</td>
+              <td>{{ 'Last_updated' | translate }}</td>
               <td>{{ config.UpdatedAt | getisodate }}</td>
             </tr>
             <tr ng-if="!(config.Labels | emptyobject)">
-              <td>Labels</td>
+              <td>{{ 'Labels' | translate }}</td>
               <td>
                 <table class="table table-bordered table-condensed">
                   <tr ng-repeat="(k, v) in config.Labels">

@@ -104,7 +104,9 @@
         <div class="col-sm-12 small text-warning">
           <div ng-messages="macvlanConfigurationForm.config_network.$error">
             <p ng-message="required">
-              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Select a configuration network.</p>
+              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> 
+              {{ 'Select_configuration_network' | translate }}
+            </p>
           </div>
         </div>
       </div>

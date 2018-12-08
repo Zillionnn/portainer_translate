@@ -681,10 +681,27 @@
   "Parent_network_card":"Parent network card",
 
   "Parent_network_card_must_specified":"Parent network card must be specified.",
-  "Select_network":"Select a network"
-  
-  
-  
+  "Select_network":"Select a network",
+  "Select_configuration_network":"Select a configuration network.",
+
+  "Use_NFS_volume":"Use NFS volume",
+  "NFS_Settings":"NFS Settings",
+
+  "Add_config":"Add config",
+  "Create_config":"Create config",
+  "Last_updated":"Last updated",
+  "Use_custom_command":"Use custom command",
+  "Disconnect":"Disconnect",
+  "Image_configuration":"Image configuration",
+  "will_not_be_able_to_create_container_rst":" image is not registered inside Portainer, you will not be able to create a container. Please register that registry first.",
+  "Always_pull_the_image":"Always pull the image",
+  "enabled_Portainer_will_automatically":"When enabled, Portainer will automatically try to pull the specified image before creating the container.",
+  "Ports_configuration":"Ports configuration",
+  "Publish_all_exposed_ports":"Publish all exposed ports",
+  "Portainer_will_let_Docker_sth":"When enabled, Portainer will let Docker automatically map a random port on the host to each one defined in the image Dockerfile.",
+  "Deployment":"Deployment",
+  "Command_logging":"Command & logging",
+  "Env":"Env"
   
   
   
