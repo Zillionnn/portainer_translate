@@ -1,7 +1,9 @@
 <rd-header>
   <rd-header-title title-text="Host job execution"></rd-header-title>
   <rd-header-content>
-    Host &gt; <a ui-sref="docker.host">{{ $ctrl.host.Name }}</a> &gt; execute job
+      {{ 'Host' | translate }} &gt; 
+      <a ui-sref="docker.host">{{ $ctrl.host.Name }}</a>
+       &gt;{{ 'execute_job' | translate }}
   </rd-header-content>
 </rd-header>
 

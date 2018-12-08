@@ -1,6 +1,7 @@
 <rd-header>
   <rd-header-title title-text="Dashboard"></rd-header-title>
-  <rd-header-content>Endpoint summary</rd-header-content>
+  <rd-header-content>
+      {{ 'Endpoint_summary' | translate }}</rd-header-content>
 </rd-header>
 
 <div class="row" ng-if="applicationState.endpoint.mode.agentProxy && applicationState.endpoint.mode.provider === 'DOCKER_SWARM_MODE'">
@@ -16,12 +17,14 @@
   <span class="small">
     <p class="text-muted" ng-if="applicationState.endpoint.mode.role === 'MANAGER'">
       <i class="fa fa-exclamation-circle orange-icon" aria-hidden="true" style="margin-right: 2px;"></i>
-      Portainer is connected to a node that is part of a Swarm cluster. Some resources located on other nodes in the cluster might not be available for management, have a look
+      <!-- Portainer is connected to a node that is part of a Swarm cluster. Some resources located on other nodes in the cluster might not be available for management, have a look -->
+      {{ 'Portainer_is_connected_to_a_node_Swarm' | translate }}
       at <a href="http://portainer.readthedocs.io/en/stable/agent.html" target="_blank">our agent setup</a> for more details.
     </p>
     <p class="text-muted" ng-if="applicationState.endpoint.mode.role === 'WORKER'">
       <i class="fa fa-exclamation-circle orange-icon" aria-hidden="true" style="margin-right: 2px;"></i>
-      Portainer is connected to a worker node. Swarm management features will not be available.
+      <!-- Portainer is connected to a worker node. Swarm management features will not be available. -->
+      {{ 'Portainer_worker_node_Swarm_management' | translate }}
     </p>
   </span>
 </information-panel>
@@ -34,14 +37,18 @@
         <table class="table">
           <tbody>
             <tr>
-              <td>Endpoint</td>
+              <td>
+                  {{ 'Endpoint' | translate }}
+                </td>
               <td>
                 {{ endpoint.Name }}
                 <span class="small text-muted space-left">
                     <i class="fa fa-microchip"></i> {{ endpoint.Snapshots[0].TotalCPU }}
                     <i class="fa fa-memory space-left"></i> {{ endpoint.Snapshots[0].TotalMemory | humansize }}
                 </span>
-                <span class="small text-muted"> - {{ info.Swarm && info.Swarm.NodeID !== '' ? 'Swarm' : 'Standalone' }} {{ info.ServerVersion }} <span ng-if="endpoint.Type === 2">+ <i class="fa fa-bolt" aria-hidden="true"></i>  Agent</span></span>
+                <span class="small text-muted"> - {{ info.Swarm && info.Swarm.NodeID !== '' ? 'Swarm' : 'Standalone' }} {{ info.ServerVersion }} <span ng-if="endpoint.Type === 2">+ <i class="fa fa-bolt" aria-hidden="true"></i> 
+                  {{ 'Agent' | translate }} 
+                  </span></span>
               </td>
             </tr>
             <tr>
@@ -49,7 +56,7 @@
               <td>{{ endpoint.URL | stripprotocol }}</td>
             </tr>
             <tr>
-              <td>Tags</td>
+              <td>{{ 'Tags' | translate }}</td>
               <td>
                 <span ng-if="endpoint.Tags.length === 0">
                   -
@@ -64,7 +71,9 @@
             <tr ng-if="applicationState.endpoint.mode.provider === 'DOCKER_SWARM_MODE' && applicationState.endpoint.mode.role === 'MANAGER'">
               <td colspan="2">
                 <div class="btn-group" role="group" aria-label="...">
-                  <a ui-sref="docker.swarm.visualizer"><i class="fa fa-object-group space-right" aria-hidden="true"></i>Go to cluster visualizer</a>
+                  <a ui-sref="docker.swarm.visualizer"><i class="fa fa-object-group space-right" aria-hidden="true"></i>
+                    {{ 'Go_to_cluster_visualizer' | translate }}
+                  </a>
                 </div>
               </td>
             </tr>

@@ -34,18 +34,25 @@
           <div class="form-group">
             <div class="col-sm-12">
               <span class="small text-muted">
-                Note: you can click on the upload icon <span class="fa fa-upload" aria-hidden="true"></span> to push an image
-                or on the download icon <span class="fa fa-download" aria-hidden="true"></span> to pull an image
-                or on the trash icon <span class="fa fa-trash-alt" aria-hidden="true"></span> to delete a tag.
+                <!-- Note: you can click on the upload icon  -->
+                {{ 'Note_you_can_click_upload_icon' | translate }}
+                <span class="fa fa-upload" aria-hidden="true"></span>
+                {{ 'to_push_an_image' | translate }}
+                {{ 'or_on_the_download_icon' | translate }} 
+                <span class="fa fa-download" aria-hidden="true"></span>
+                {{ 'to_pull_an_image' | translate }}
+                {{ 'or_on_the_trash_icon' | translate }} 
+                <span class="fa fa-trash-alt" aria-hidden="true"></span>
+                {{ 'to_delete_tag' | translate }}
               </span>
             </div>
             <div class="col-sm-12">
               <span id="downloadResourceHint" class="createResource" style="display: none; margin-left: 0;">
-                Download in progress...
+                  {{ 'Download_in_progress' | translate }}...
                 <i class="fa fa-circle-notch fa-spin" aria-hidden="true" style="margin-left: 2px;"></i>
               </span>
               <span id="uploadResourceHint" class="createResource" style="display: none; margin-left: 0;">
-                Upload in progress...
+                  {{ 'Upload_in_progress' | translate }}...
                 <i class="fa fa-circle-notch fa-spin" aria-hidden="true" style="margin-left: 2px;"></i>
               </span>
             </div>
@@ -72,13 +79,18 @@
           <!-- tag-note -->
           <div class="form-group">
             <div class="col-sm-12">
-              <span class="small text-muted">Note: if you don't specify the tag in the image name, <span class="label label-default">latest</span> will be used.</span>
+              <span class="small text-muted">
+                  {{ 'Note_if_you_don_specify_the_tag' | translate }},
+                 <span class="label label-default">{{ 'latest' | translate }}</span> 
+                 {{ 'will_be_used' | translate }}.</span>
             </div>
           </div>
           <!-- !tag-note -->
           <div class="form-group">
             <div class="col-sm-12">
-              <button type="button" class="btn btn-primary btn-sm" ng-disabled="!formValues.Image" ng-click="tagImage()">Tag</button>
+              <button type="button" class="btn btn-primary btn-sm" ng-disabled="!formValues.Image" ng-click="tagImage()">
+                  {{ 'Tag' | translate }}
+              </button>
             </div>
           </div>
         </form>
@@ -98,32 +110,42 @@
               <td>ID</td>
               <td>
                 {{ image.Id }}
-                <button class="btn btn-xs btn-danger" ng-click="removeImage(image.Id)"><i class="fa fa-trash-alt space-right" aria-hidden="true"></i>Delete this image</button>
-                <button class="btn btn-xs btn-primary" ng-click="exportImage(image)" button-spinner="$ctrl.exportInProgress" ng-disabled="state.exportInProgress">
-                    <i class="fa fa-download space-right" aria-hidden="true"></i>
-                    <span ng-hide="state.exportInProgress">Export this image</span>
-                    <span ng-show="state.exportInProgress">Export in progress...</span>
+                <button class="btn btn-xs btn-danger" ng-click="removeImage(image.Id)"><i class="fa fa-trash-alt space-right" aria-hidden="true"></i>
+                  {{ 'Delete_this_image' | translate }}
+                </button>
+                <button class="btn btn-xs btn-primary" ng-click="exportImage(image)" button-spinner="$ctrl.exportInProgress" 
+                ng-disabled="state.exportInProgress">
+                    <i class="fa fa-download space-right"
+                     aria-hidden="true"></i>
+                    <span ng-hide="state.exportInProgress">
+                        {{ 'Export_this_image' | translate }}
+                    </span>
+                    <span ng-show="state.exportInProgress">
+                        {{ 'Export_in_progress' | translate }}...</span>
                 </button>
               </td>
             </tr>
             <tr ng-if="image.Parent">
-              <td>Parent</td>
-              <td><a ui-sref="docker.images.image({id: image.Parent})">{{ image.Parent }}</a></td>
+              <td>
+                {{ 'Parent' | translate }}
+              </td>
+              <td><a ui-sref="docker.images.image({id: image.Parent})">
+                {{ image.Parent }}</a></td>
             </tr>
             <tr>
-              <td>Size</td>
+              <td>{{ 'Size' | translate }}</td>
               <td>{{ image.VirtualSize|humansize }}</td>
             </tr>
             <tr>
-              <td>Created</td>
+              <td>{{ 'Created' | translate }}</td>
               <td>{{ image.Created|getisodate }}</td>
             </tr>
             <tr>
-              <td>Build</td>
+              <td>{{ 'Build' | translate }}</td>
               <td>Docker {{ image.DockerVersion }} on {{ image.Os}}, {{ image.Architecture }}</td>
             </tr>
             <tr ng-if="image.Author">
-              <td>Author</td>
+              <td>{{ 'Author' | translate }}</td>
               <td>{{ image.Author }}</td>
             </tr>
           </tbody>
@@ -145,11 +167,11 @@
               <td><code>{{ image.Command|command }}</code></td>
             </tr>
             <tr ng-if="image.Entrypoint">
-              <td>ENTRYPOINT</td>
+              <td>{{ 'ENTRYPOINT' | translate }}</td>
               <td><code>{{ image.Entrypoint|command }}</code></td>
             </tr>
             <tr ng-if="image.ExposedPorts.length > 0">
-              <td>EXPOSE</td>
+              <td>{{ 'EXPOSE' | translate }}</td>
               <td>
                 <span class="label label-default space-right" ng-repeat="port in image.ExposedPorts">
                   {{ port }}
@@ -157,7 +179,7 @@
               </td>
             </tr>
             <tr ng-if="image.Volumes.length > 0">
-              <td>VOLUME</td>
+              <td>{{ 'VOLUME' | translate }}</td>
               <td>
                 <span class="label label-default space-right" ng-repeat="volume in image.Volumes">
                   {{ volume }}
@@ -191,21 +213,21 @@
           <thead>
             <th style="white-space:nowrap;">
               <a ng-click="order('Order')">
-                Order
+                  {{ 'Order' | translate }}
                 <span ng-show="sortType == 'Order' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
                 <span ng-show="sortType == 'Order' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
               </a>
             </th>
             <th>
               <a ng-click="order('Size')">
-                Size
+                  {{ 'Size' | translate }}
                 <span ng-show="sortType == 'Size' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
                 <span ng-show="sortType == 'Size' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
               </a>
             </th>
             <th>
               <a ng-click="order('CreatedBy')">
-                Layer
+                  {{ 'Layer' | translate }}
                 <span ng-show="sortType == 'CreatedBy' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
                 <span ng-show="sortType == 'CreatedBy' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
               </a>

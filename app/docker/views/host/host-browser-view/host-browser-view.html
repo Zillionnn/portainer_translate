@@ -1,7 +1,8 @@
 <rd-header>
   <rd-header-title title-text="Host Browser"></rd-header-title>
   <rd-header-content>
-      Host &gt; <a ui-sref="docker.host">{{ $ctrl.host.Name }}</a> &gt; browse
+      {{ 'Host' | translate }} &gt; <a ui-sref="docker.host">{{ $ctrl.host.Name }}</a> &gt; 
+      {{ 'browse' | translate }}
   </rd-header-content>
 </rd-header>
 

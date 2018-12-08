@@ -645,6 +645,7 @@
   "Total_CPU":"Total CPU",
   "Total_memory":"Total memory",
   "Browse":"Browse",
+  "browse":"browse",
   "Execute_job":"Execute job",
 
   "Drain":"Drain",
@@ -728,15 +729,76 @@
   "Memory_soft_limit":"Memory soft limit",
   "Memory_limit":"Memory limit",
   "CPU_limit":"CPU limit",
-  "Maximum_CPU_usage":"Maximum CPU usage"
+  "Maximum_CPU_usage":"Maximum CPU usage",
+
+  "Recreate":"Recreate",
+  "Recreation_in_progress":"Recreation in progress",
+  "Duplicate_Edit":"Duplicate/Edit",
+  "address":"address",
+  "Start_time":"Start time",
+  "Finished":"Finished",
+  "Failure_count":"Failure count",
+  "Last_output":"Last output",
+  "Create_image":"Create image",
+  "You_can_create_an_image_from_thi":"You can create an image from this container, this allows you to backup important data or save  helpful configurations. You'll be able to spin up another container based on this image afterward.",
+  "Note_if_you_do_not_specify_the_tag":"Note: if you don't specify the tag in the image name",
+  "will_be_used":"will be used",
+  "latest":"latest",
+  "Create":"Create",
+  "Port_configuration":"Port configuration",
+  "Restart_policies":"Restart policies",
+  "Host_volume":"Host/volume",
+  "Path_in_container":"Path in container",
   
-  
+  "This_view_displays_real_time_statistics_about":"This view displays real-time statistics about the container ",
+  "list_of_the_running_processes_inside":"as well as a list of the running processes  inside this container.",
+  "Refresh_rate":"Refresh rate",
+
+  "Endpoint_summary":"Endpoint summary",
+  "Portainer_is_connected_to_a_node_Swarm":"Portainer is connected to a node that is part of a Swarm cluster. Some resources located on other nodes in the cluster might not be available for management,",
+  "Portainer_worker_node_Swarm_management":"Portainer is connected to a worker node. Swarm management features will not be available.",
+
+  "execute_job":"execute job",
+  "Note_you_can_click_upload_icon":"Note: you can click on the upload icon",
+  "to_push_an_image":"to push an image",
+  "or_on_the_download_icon":"or on the download icon",
+  "to_pull_an_image":" to pull an image",
+  "or_on_the_trash_icon":"or on the trash icon",
+  "to_delete_tag":" to delete a tag.",
+  "Download_in_progress":"Download in progress",
+  "Upload_in_progress":"Upload in progress",
+  "Note_if_you_don_specify_the_tag":"Note: if you don't specify the tag in the image name",
+  "Delete_this_image":"Delete this image",
+  "Export_this_image":"Export this image",
+  "Parent":"Parent",
+  "Build":"Build",
+  "Author":"Author",
+  "ENTRYPOINT":"ENTRYPOINT",
+  "EXPOSE":"EXPOSE",
+  "VOLUME":"VOLUME",
+  "Order":"Order",
+  "Layer":"Layer",
+  "Build_image":"Build image",
+  "Builder":"Builder",
+  "Naming":"Naming",
+  "specify_multiple_names":"You can specify multiple names to your image.",
+  "Names":"Names",
+  "add_additional_name":"add additional name",
+  "specify_one_name_for_image":"You must specify at least one name for the image.",
+  "specified_in_following_formats":"A name must be specified in one of the following formats",
+  "Upload_tarball_or_a_Dockerfile":"Upload a tarball or a Dockerfile from your computer",
+  "Specify_an_URL_to_a_file":"Specify an URL to a file",
+  "upload_Dockerfile_or_a_tar":"You can upload a Dockerfile or a tar archive containing a Dockerfile from your computer. When using an tarball, the root folder will be used as the build context.",
+  "Indicate_the_path_Dockerfile_rball.":"Indicate the path to the Dockerfile within the tarball.",
+  "Dockerfile_path":"Dockerfile path",
+  "Specify_Dockerfile_tarball_public_Git":"Specify the URL to a Dockerfile, a tarball or a public Git repository (suffixed by <b>.git</b>). When using a tarball or a Git repository URL, the root folder will be used as the build context.",
+  "Indicate_Dockerfile_erfile":"Indicate the path to the Dockerfile within the tarball/repository (ignored when using a Dockerfile).",
+  "Build_the_image":"Build the image",
+  "Image_building_in_progress":"Image building in progress",
+  "No_build_output_available":"No build output available."
   
   
 
-  
-  
-    
   
 
 

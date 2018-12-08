@@ -1,7 +1,11 @@
 <rd-header>
   <rd-header-title title-text="Container statistics"></rd-header-title>
   <rd-header-content>
-    <a ui-sref="docker.containers">Containers</a> &gt; <a ui-sref="docker.containers.container({id: container.Id})">{{ container.Name|trimcontainername }}</a> &gt; Stats
+    <a ui-sref="docker.containers">
+      {{ 'Containers' | translate }}
+    </a> &gt; 
+    <a ui-sref="docker.containers.container({id: container.Id})">{{ container.Name|trimcontainername }}</a> &gt; 
+    {{ 'Stats' | translate }}
   </rd-header-content>
 </rd-header>
 
@@ -15,14 +19,17 @@
           <div class="form-group">
             <div class="col-sm-12">
               <span class="small text-muted">
-                This view displays real-time statistics about the container <b>{{ container.Name|trimcontainername }}</b> as well as a list of the running processes
-                inside this container.
+                <!-- This view displays real-time statistics about the container  -->
+                {{ 'This_view_displays_real_time_statistics_about' | translate }}
+                <b>{{ container.Name|trimcontainername }}</b> 
+                <!-- as well as a list of the running processes inside this container. -->
+                {{ 'list_of_the_running_processes_inside' | translate }}
               </span>
             </div>
           </div>
           <div class="form-group">
             <label for="refreshRate" class="col-sm-3 col-md-2 col-lg-2 margin-sm-top control-label text-left">
-              Refresh rate
+                {{ 'Refresh_rate' | translate }}
             </label>
             <div class="col-sm-3 col-md-2">
               <select id="refreshRate" ng-model="state.refreshRate" ng-change="changeUpdateRepeater()" class="form-control">

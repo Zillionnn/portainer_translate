@@ -1,9 +1,10 @@
 <rd-header>
-  <!-- TODO??? -->
   <rd-header-title title-text="Container details">
   </rd-header-title>
   <rd-header-content>
-    <a ui-sref="docker.containers">Containers</a> &gt; <a ui-sref="docker.containers.container({id: container.Id})">{{ container.Name|trimcontainername }}</a>
+    <a ui-sref="docker.containers">
+        {{ 'Containers' | translate }}
+    </a> &gt; <a ui-sref="docker.containers.container({id: container.Id})">{{ container.Name|trimcontainername }}</a>
   </rd-header-content>
 </rd-header>
 
@@ -13,20 +14,39 @@
         <rd-widget-header icon="fa-cogs" title-text="Actions"></rd-widget-header>
         <rd-widget-body classes="padding">
           <div class="btn-group" role="group" aria-label="...">
-            <button class="btn btn-success btn-sm" ng-click="start()" ng-disabled="container.State.Running"><i class="fa fa-play space-right" aria-hidden="true"></i>Start</button>
-            <button class="btn btn-danger btn-sm" ng-click="stop()" ng-disabled="!container.State.Running"><i class="fa fa-stop space-right" aria-hidden="true"></i>Stop</button>
-            <button class="btn btn-danger btn-sm" ng-click="kill()" ng-disabled="!container.State.Running"><i class="fa fa-bomb space-right" aria-hidden="true"></i>Kill</button>
-            <button class="btn btn-primary btn-sm" ng-click="restart()" ng-disabled="!container.State.Running"><i class="fa fa-sync space-right" aria-hidden="true"></i>Restart</button>
-            <button class="btn btn-primary btn-sm" ng-click="pause()" ng-disabled="!container.State.Running || container.State.Paused"><i class="fa fa-pause space-right" aria-hidden="true"></i>Pause</button>
-            <button class="btn btn-primary btn-sm" ng-click="unpause()" ng-disabled="!container.State.Paused"><i class="fa fa-play space-right" aria-hidden="true"></i>Resume</button>
-            <button class="btn btn-danger btn-sm" ng-click="confirmRemove()"><i class="fa fa-trash-alt space-right" aria-hidden="true"></i>Remove</button>
+            <button class="btn btn-success btn-sm" ng-click="start()" ng-disabled="container.State.Running"><i class="fa fa-play space-right" aria-hidden="true"></i>
+              {{ 'Start' | translate }}
+            </button>
+            <button class="btn btn-danger btn-sm" ng-click="stop()" ng-disabled="!container.State.Running"><i class="fa fa-stop space-right" aria-hidden="true"></i>
+              {{ 'Stop' | translate }}
+            </button>
+            <button class="btn btn-danger btn-sm" ng-click="kill()" ng-disabled="!container.State.Running"><i class="fa fa-bomb space-right" aria-hidden="true"></i>
+              {{ 'Kill' | translate }}
+            </button>
+            <button class="btn btn-primary btn-sm" ng-click="restart()" ng-disabled="!container.State.Running"><i class="fa fa-sync space-right" aria-hidden="true"></i>
+              {{ 'Restart' | translate }}
+            </button>
+            <button class="btn btn-primary btn-sm" ng-click="pause()" ng-disabled="!container.State.Running || container.State.Paused"><i class="fa fa-pause space-right" aria-hidden="true"></i>
+              {{ 'Pause' | translate }}
+            </button>
+            <button class="btn btn-primary btn-sm" ng-click="unpause()" ng-disabled="!container.State.Paused"><i class="fa fa-play space-right" aria-hidden="true"></i>
+              {{ 'Resume' | translate }}
+            </button>
+            <button class="btn btn-danger btn-sm" ng-click="confirmRemove()"><i class="fa fa-trash-alt space-right" aria-hidden="true"></i>
+              {{ 'Remove' | translate }}
+            </button>
           </div>
           <div class="btn-group" role="group" aria-label="..." ng-if="!container.Config.Labels['com.docker.swarm.service.id']">
             <button type="button" class="btn btn-danger btn-sm" ng-disabled="state.recreateContainerInProgress" ng-click="recreate()" button-spinner="state.recreateContainerInProgress">
-              <span ng-hide="state.recreateContainerInProgress"><i class="fa fa-sync space-right" aria-hidden="true"></i>Recreate</span>
-              <span ng-show="state.recreateContainerInProgress">Recreation in progress...</span>
+              <span ng-hide="state.recreateContainerInProgress"><i class="fa fa-sync space-right" aria-hidden="true"></i>
+                {{ 'Recreate' | translate }}
+              </span>
+              <span ng-show="state.recreateContainerInProgress">
+                  {{ 'Recreation_in_progress' | translate }}...</span>
             </button>
-            <a class="btn btn-primary btn-sm" type="button" ui-sref="docker.containers.new({ from: container.Id, nodeName: nodeName })"><i class="fa fa-copy space-right" aria-hidden="true"></i>Duplicate/Edit</a>
+            <a class="btn btn-primary btn-sm" type="button" ui-sref="docker.containers.new({ from: container.Id, nodeName: nodeName })"><i class="fa fa-copy space-right" aria-hidden="true"></i>
+              {{ 'Duplicate_Edit' | translate }}
+            </a>
           </div>
         </rd-widget-body>
       </rd-widget>
@@ -45,25 +65,29 @@
                 <td>{{ container.Id }}</td>
               </tr>
               <tr>
-                <td>Name</td>
+                <td>{{ 'Name' | translate }}</td>
                 <td ng-if="!container.edit">
                   {{ container.Name|trimcontainername }}
-                  <a href="" data-toggle="tooltip" title="Edit container name" ng-click="container.edit = true;"><i class="fa fa-edit"></i></a>
+                  <a href="" data-toggle="tooltip" title="Edit container name" ng-click="container.edit = true;">
+                    <i class="fa fa-edit"></i>
+                  </a>
                 </td>
                 <td ng-if="container.edit">
                   <form ng-submit="renameContainer()">
                     <input type="text" class="containerNameInput" ng-model="container.newContainerName">
-                    <a href="" ng-click="container.edit = false;"><i class="fa fa-times"></i></a>
-                    <a href="" ng-click="renameContainer()"><i class="fa fa-check-square"></i></a>
+                    <a href="" ng-click="container.edit = false;">
+                      <i class="fa fa-times"></i></a>
+                    <a href="" ng-click="renameContainer()">
+                      <i class="fa fa-check-square"></i></a>
                   </form>
                 </td>
               </tr>
               <tr ng-if="container.NetworkSettings.IPAddress">
-                <td>IP address</td>
+                <td>IP {{ 'address' | translate }}</td>
                 <td>{{ container.NetworkSettings.IPAddress }}</td>
               </tr>
               <tr>
-                <td>Status</td>
+                <td>{{ 'Status' | translate }}</td>
                 <td>
                   <i class="fa fa-heartbeat space-right green-icon" ng-if="container.State.Running"></i>
                   <i class="fa fa-heartbeat space-right red-icon" ng-if="!container.State.Running && container.State.Status !== 'created'"></i>
@@ -71,24 +95,36 @@
                 </td>
               </tr>
               <tr>
-                <td>Created</td>
+                <td>{{ 'Created' | translate }}</td>
                 <td>{{ container.Created|getisodate }}</td>
               </tr>
               <tr ng-if="container.State.Running">
-                <td>Start time</td>
+                <td>{{ 'Start_time' | translate }}</td>
                 <td>{{ container.State.StartedAt|getisodate }}</td>
               </tr>
               <tr ng-if="!container.State.Running && container.State.Status !== 'created'">
-                <td>Finished</td>
+                <td>{{ 'Finished' | translate }}</td>
                 <td>{{ container.State.FinishedAt|getisodate }}</td>
               </tr>
               <tr>
                 <td colspan="2">
                   <div class="btn-group" role="group" aria-label="...">
-                    <a class="btn" type="button" ui-sref="docker.containers.container.stats({ id: container.Id })"><i class="fa fa-chart-area space-right" aria-hidden="true"></i>Stats</a>
-                    <a class="btn" type="button" ui-sref="docker.containers.container.logs({ id: container.Id })"><i class="fa fa-file-alt space-right" aria-hidden="true"></i>Logs</a>
-                    <a class="btn" type="button" ui-sref="docker.containers.container.console({ id: container.Id })"><i class="fa fa-terminal space-right" aria-hidden="true"></i>Console</a>
-                    <a class="btn" type="button" ui-sref="docker.containers.container.inspect({ id: container.Id })"><i class="fa fa-info-circle space-right" aria-hidden="true"></i>Inspect</a>
+                    <a class="btn" type="button" ui-sref="docker.containers.container.stats({ id: container.Id })">
+                      <i class="fa fa-chart-area space-right" aria-hidden="true"></i>
+                      {{ 'Stats' | translate }}
+                    </a>
+                    <a class="btn" type="button" ui-sref="docker.containers.container.logs({ id: container.Id })">
+                      <i class="fa fa-file-alt space-right" aria-hidden="true"></i>
+                      {{ 'Logs' | translate }}
+                    </a>
+                    <a class="btn" type="button" ui-sref="docker.containers.container.console({ id: container.Id })">
+                      <i class="fa fa-terminal space-right" aria-hidden="true"></i>
+                      {{ 'Console' | translate }}
+                    </a>
+                    <a class="btn" type="button" ui-sref="docker.containers.container.inspect({ id: container.Id })">
+                      <i class="fa fa-info-circle space-right" aria-hidden="true"></i>
+                      {{ 'Inspect' | translate }}
+                    </a>
                   </div>
                 </td>
               </tr>
@@ -116,18 +152,18 @@
           <table class="table">
             <tbody>
               <tr>
-                <td>Status</td>
+                <td>{{ 'Status' | translate }}</td>
                 <td>
                   <i ng-class="{'healthy': 'fa fa-heartbeat space-right green-icon', 'unhealthy': 'fa fa-heartbeat space-right red-icon', 'starting': 'fa fa-heartbeat space-right orange-icon'}[container.State.Health.Status]"></i>
                   {{ container.State.Health.Status }}
                 </td>
               </tr>
               <tr>
-                <td>Failure count</td>
+                <td>{{ 'Failure_count' | translate }}</td>
                 <td>{{ container.State.Health.FailingStreak }}</td>
               </tr>
               <tr>
-                <td>Last output</td>
+                <td>{{ 'Last_output' | translate }}</td>
                 <td>{{ container.State.Health.Log[container.State.Health.Log.length - 1].Output }}</td>
               </tr>
             </tbody>
@@ -140,15 +176,16 @@
   <div class="row">
     <div class="col-lg-12 col-md-12 col-xs-12">
       <rd-widget>
-        <rd-widget-header icon="fa-clone" title-text="Create image"></rd-widget-header>
+        <rd-widget-header icon="fa-clone" title-text="{{ 'Create_image' | translate }}"></rd-widget-header>
         <rd-widget-body>
           <form class="form-horizontal">
             <!-- tag-description -->
             <div class="form-group">
               <div class="col-sm-12">
                 <span class="small text-muted">
-                  You can create an image from this container, this allows you to backup important data or save
-                  helpful configurations. You'll be able to spin up another container based on this image afterward.
+                  <!-- You can create an image from this container, this allows you to backup important data or save
+                  helpful configurations. You'll be able to spin up another container based on this image afterward. -->
+                  {{ 'You_can_create_an_image_from_thi' | translate }}
                 </span>
               </div>
             </div>
@@ -164,13 +201,18 @@
             <!-- tag-note -->
             <div class="form-group">
               <div class="col-sm-12">
-                <span class="small text-muted">Note: if you don't specify the tag in the image name, <span class="label label-default">latest</span> will be used.</span>
+                <span class="small text-muted">
+                    {{ 'Note_if_you_do_not_specify_the_tag' | translate }}, 
+                    <span class="label label-default">{{ 'latest' | translate }}</span>
+                    {{ 'will_be_used' | translate }}.</span>
               </div>
             </div>
             <!-- !tag-note -->
             <div class="form-group">
               <div class="col-sm-12">
-                <button type="button" class="btn btn-primary btn-sm" ng-disabled="!config.Image" ng-click="commit()">Create</button>
+                <button type="button" class="btn btn-primary btn-sm" ng-disabled="!config.Image" ng-click="commit()">
+                    {{ 'Create' | translate }}
+                </button>
               </div>
             </div>
           </form>
@@ -187,11 +229,11 @@
           <table class="table">
             <tbody>
               <tr>
-                <td>Image</td>
+                <td>{{ 'Image' | translate }}</td>
                 <td><a ui-sref="docker.images.image({ id: container.Image, nodeName: nodeName })">{{ container.Config.Image}}@{{container.Image}}</a></td>
               </tr>
               <tr ng-if="portBindings.length > 0">
-                <td>Port configuration</td>
+                <td>{{ 'Port_configuration' | translate }}</td>
                 <td>
                   <div ng-repeat="portMapping in portBindings">
                     {{ portMapping.host }} <i class="fa fa-long-arrow-alt-right"></i> {{ portMapping.container }}
@@ -214,7 +256,7 @@
                 </td>
               </tr>
               <tr ng-if="!(container.Config.Labels | emptyobject)">
-                <td>Labels</td>
+                <td>{{ 'Labels' | translate }}</td>
                 <td>
                   <table class="table table-bordered table-condensed">
                     <tr ng-repeat="(k, v) in container.Config.Labels">
@@ -225,7 +267,7 @@
                 </td>
               </tr>
               <tr>
-                <td>Restart policies</td>
+                <td>{{ 'Restart_policies' | translate }}</td>
                 <td>
                   <container-restart-policy ng-if="container"
                     name="container.HostConfig.RestartPolicy.Name"
@@ -248,8 +290,8 @@
           <table class="table">
             <thead>
               <tr>
-                <th>Host/volume</th>
-                <th>Path in container</th>
+                <th>{{ 'Host_volume' | translate }}</th>
+                <th>{{ 'Path_in_container' | translate }}</th>
               </tr>
             </thead>
             <tbody>
