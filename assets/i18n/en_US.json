@@ -839,6 +839,7 @@
   "Placement_constraints":"Placement constraints",
   "placement_constraint":"placement constraint",
   "Placement_preferences":"Placement preferences",
+  "placement_preferences":"placement preferences",
   "strategy":"strategy",
 
   "secrets_available_under":" By default, secrets will be available under",
@@ -915,11 +916,18 @@
   "There_are_no_mounts_for_this_service":"There are no mounts for this service.",
   "Source":"Source",
   "Target":"Target",
-  "service_not_connected_networks":"This service is not connected to any networks."
-
-
-
-
+  "service_not_connected_networks":"This service is not connected to any networks.",
+  "no_placement_preferences_for_service":"There are no placement preferences for this service.",
+  "Strategy":"Strategy",
+  "port_mapping":"port mapping",
+  "This_service_no_ports_published":"This service has no ports published.",
+  "Host_port":"Host port",
+  "Container_port":"Container port",
+  "Protocol":"Protocol",
+  "Publish_mode":"Publish mode",
+  "ingress":"ingress",
+  "Minimum_memory_available_ted":"Minimum memory available on a node to run a task (set to 0 for unlimited)",
+  "Maximum_memory_usage_per_task_L":"Maximum memory usage per task (set to 0 for unlimited)"
   
   
 

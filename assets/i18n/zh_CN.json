@@ -890,7 +890,55 @@
   "Service_labels":"Service labels",
   "add_service_label":"add service label",
   "Container_labels":"Container labels",
-  "add_container_label":"add container label"
+  "add_container_label":"add container label",
+
+
+  "Add_a_config":"Add a config",
+  "add_config":"Select a config",
+  "Mode":"Mode",
+  "Remove_config":"Remove config",
+  "No_configs_associated_to_this_service":"No configs associated to this service.",
+  "no_placement_constraints_for":"There are no placement constraints for this service.",
+
+  "Operator":"Operator",
+  "Reset_all_changes":"Reset all changes",
+  "Command_to_execute":"Command to execute.",
+  "Args":"Args",
+  "Arguments_passed_to_command":"Arguments passed to command in container.",
+  "Username_or_UID":"Username or UID",
+  "Working_directory":"Working directory",
+  "Working_directory_inside_the_container":"Working directory inside the container.",
+  "Stop_grace_period":"Stop grace period",
+  "Time_wait_before_force_killing":"Time to wait before force killing a container (default none).",
+
+  "container_label":"container label",
+  "no_container_labels_for_service":"There are no container labels for this service.",
+
+  "environment_variables":"environment variables",
+  "no_environment_variables_for_service":"There are no environment variables for this service.",
+
+  "add_host_entry":"add host entry",
+  "Hosts_file_has_no_extra_entries":"The Hosts file has no extra entries.",
+  "No_options_associated_to_this_logging":"No options associated to this logging driver.",
+  "mount":"mount",
+  "There_are_no_mounts_for_this_service":"There are no mounts for this service.",
+  "Source":"Source",
+  "Target":"Target",
+  "service_not_connected_networks":"This service is not connected to any networks.",
+  "no_placement_preferences_for_service":"There are no placement preferences for this service.",
+  "Strategy":"Strategy",
+  "port_mapping":"port mapping",
+  "This_service_no_ports_published":"This service has no ports published.",
+  "Host_port":"Host port",
+  "Container_port":"Container port",
+  "Protocol":"Protocol",
+  "Publish_mode":"Publish mode",
+  "ingress":"ingress",
+  "Minimum_memory_available_ted":"Minimum memory available on a node to run a task (set to 0 for unlimited)",
+  "Maximum_memory_usage_per_task_L":"Maximum memory usage per task (set to 0 for unlimited)"
+  
+  
+
 
   
 
