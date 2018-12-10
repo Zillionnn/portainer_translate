@@ -5,15 +5,16 @@
     </a>
   </rd-header-title>
   <rd-header-content>
-    <a ui-sref="docker.services">Services</a> &gt; <a ui-sref="docker.services.service({id: service.Id})">{{ service.Name }}</a>
+    <a ui-sref="docker.services">{{ 'Services' | translate }}</a> &gt; <a ui-sref="docker.services.service({id: service.Id})">{{ service.Name }}</a>
   </rd-header-content>
 </rd-header>
 
 <div class="row">
   <div ng-if="isUpdating" class="col-lg-12 col-md-12 col-xs-12">
     <div class="alert alert-info" role="alert" id="service-update-alert">
-      <p>This service is being updated. Editing this service is currently disabled.</p>
-      <a ui-sref="docker.services.service({id: service.Id}, {reload: true})">Refresh to see if this service has finished updated.</a>
+      <p>{{ 'service_updated_Editing_disabled' | translate }}</p>
+      <a ui-sref="docker.services.service({id: service.Id}, {reload: true})">
+          {{ 'Refresh_to_see_if' | translate }}</a>
     </div>
   </div>
 </div>
@@ -26,7 +27,7 @@
         <table class="table">
           <tbody>
             <tr>
-              <td>Name</td>
+              <td>{{ 'Name' | translate }}</td>
               <td ng-if="applicationState.endpoint.apiVersion <= 1.24">
                 <input type="text" class="form-control" ng-model="service.Name" ng-change="updateServiceAttribute(service, 'Name')" ng-disabled="isUpdating">
               </td>
@@ -41,23 +42,23 @@
               </td>
             </tr>
             <tr ng-if="service.CreatedAt">
-              <td>Created at</td>
+              <td>{{ 'Created_at' | translate }}</td>
               <td>{{ service.CreatedAt|getisodate}}</td>
             </tr>
             <tr ng-if="service.UpdatedAt">
-              <td>Last updated at</td>
+              <td>{{ 'Last_updated_at' | translate }}</td>
               <td>{{ service.UpdatedAt|getisodate }}</td>
             </tr>
             <tr ng-if="service.Version">
-              <td>Version</td>
+              <td>{{ 'Version' | translate }}</td>
               <td>{{ service.Version }}</td>
             </tr>
             <tr>
-              <td>Scheduling mode</td>
+              <td>{{ 'Scheduling_mode' | translate }}</td>
               <td>{{ service.Mode }}</td>
             </tr>
             <tr ng-if="service.Mode === 'replicated'">
-              <td>Replicas</td>
+              <td>{{ 'Replicas' | translate }}</td>
               <td>
                 <span ng-if="service.Mode === 'replicated'">
                   <input class="input-sm" type="number" ng-model="service.Replicas" ng-change="updateServiceAttribute(service, 'Replicas')" ng-disabled="isUpdating" />
@@ -65,7 +66,7 @@
               </td>
             </tr>
             <tr>
-              <td>Image</td>
+              <td>{{ 'Image' | translate }}</td>
               <td>
                   <input type="text" class="form-control" uib-typeahead="image for image in availableImages | filter:$viewValue | limitTo:5"
                     ng-model="service.Image" ng-change="updateServiceAttribute(service, 'Image')" id="image_name" ng-disabled="isUpdating">
@@ -73,7 +74,7 @@
             </tr>
             <tr>
               <td colspan="{{webhookURL ? '1' : '2'}}">
-                Service webhook
+                  {{ 'Service_webhook' | translate }}
                 <portainer-tooltip position="top" message="Webhook (or callback URI) used to automate the update of this service. Sending a POST request to this callback URI (without requiring any authentication) will pull the most up-to-date version of the associated image and re-deploy this service."></portainer-tooltip>
                 <label class="switch" style="margin-left: 20px;">
                   <input type="checkbox" ng-model="WebhookExists" ng-click="updateWebhook(service)"><i></i>
@@ -91,14 +92,16 @@
           </tr>
             <tr>
               <td colspan="2">
-                <a ng-if="applicationState.endpoint.apiVersion >= 1.30" class="btn btn-primary btn-sm" type="button" ui-sref="docker.services.service.logs({id: service.Id})"><i class="fa fa-file-alt space-right" aria-hidden="true"></i>Service logs</a>
+                <a ng-if="applicationState.endpoint.apiVersion >= 1.30" class="btn btn-primary btn-sm" type="button" ui-sref="docker.services.service.logs({id: service.Id})"><i class="fa fa-file-alt space-right" aria-hidden="true"></i>
+                  {{ 'Service_logs' | translate }}</a>
                 <button type="button" class="btn btn-primary btn-sm" ng-disabled="state.updateInProgress || isUpdating" ng-click="forceUpdateService(service)" button-spinner="state.updateInProgress" ng-if="applicationState.endpoint.apiVersion >= 1.25">
-                  <span ng-hide="state.updateInProgress"><i class="fa fa-sync space-right" aria-hidden="true"></i>Update the service</span>
-                  <span ng-show="state.updateInProgress">Update in progress...</span>
+                  <span ng-hide="state.updateInProgress"><i class="fa fa-sync space-right" aria-hidden="true"></i>{{ 'Update_the_service' | translate }}</span>
+                  <span ng-show="state.updateInProgress">{{ 'Update_in_progress' | translate }}...</span>
                 </button>
                 <button type="button" class="btn btn-danger btn-sm" ng-disabled="state.deletionInProgress || isUpdating" ng-click="removeService()" button-spinner="state.deletionInProgress">
-                  <span ng-hide="state.deletionInProgress"><i class="fa fa-trash-alt space-right" aria-hidden="true"></i>Delete the service</span>
-                  <span ng-show="state.deletionInProgress">Deletion in progress...</span>
+                  <span ng-hide="state.deletionInProgress"><i class="fa fa-trash-alt space-right" aria-hidden="true"></i>
+                    {{ 'Delete_the_service' | translate }}</span>
+                  <span ng-show="state.deletionInProgress">{{ 'Deletion_in_progress' | translate }}...</span>
                 </button>
               </td>
             </tr>
@@ -111,13 +114,15 @@
         </p>
         <div class="btn-toolbar" role="toolbar">
           <div class="btn-group" role="group">
-            <button type="button" class="btn btn-primary" ng-disabled="!hasChanges(service, ['Mode', 'Replicas', 'Image', 'Name', 'Webhooks'])" ng-click="updateService(service)">Apply changes</button>
+            <button type="button" class="btn btn-primary" ng-disabled="!hasChanges(service, ['Mode', 'Replicas', 'Image', 'Name', 'Webhooks'])" ng-click="updateService(service)">
+                {{ 'Apply_changes' | translate }}</button>
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
-              <li><a ng-click="cancelChanges(service, ['Mode', 'Replicas', 'Image', 'Name'])">Reset changes</a></li>
-              <li><a ng-click="cancelChanges(service)">Reset all changes</a></li>
+              <li><a ng-click="cancelChanges(service, ['Mode', 'Replicas', 'Image', 'Name'])">
+                  {{ 'Reset_changes' | translate }}</a></li>
+              <li><a ng-click="cancelChanges(service)">{{ ''Reset_all_changes | translate }}</a></li>
             </ul>
           </div>
         </div>
@@ -130,20 +135,21 @@
       <rd-widget-header icon="fa-bars" title-text="Quick navigation"></rd-widget-header>
       <rd-widget-body classes="no-padding">
         <ul class="nav nav-pills nav-stacked">
-          <li><a href ng-click="goToItem('service-env-variables')">Environment variables</a></li>
-          <li><a href ng-click="goToItem('service-container-labels')">Container labels</a></li>
-          <li><a href ng-click="goToItem('service-mounts')">Mounts</a></li>
-          <li><a href ng-click="goToItem('service-network-specs')">Network &amp; published ports</a></li>
-          <li><a href ng-click="goToItem('service-resources')">Resource limits &amp; reservations</a></li>
-          <li><a href ng-click="goToItem('service-placement-constraints')">Placement constraints</a></li>
-          <li ng-if="applicationState.endpoint.apiVersion >= 1.30"><a href ng-click="goToItem('service-placement-preferences')">Placement preferences</a></li>
-          <li><a href ng-click="goToItem('service-restart-policy')">Restart policy</a></li>
-          <li><a href ng-click="goToItem('service-update-config')">Update configuration</a></li>
-          <li><a href ng-click="goToItem('service-logging')">Logging</a></li>
-          <li><a href ng-click="goToItem('service-labels')">Service labels</a></li>
-          <li><a href ng-click="goToItem('service-configs')">Configs</a></li>
-          <li ng-if="applicationState.endpoint.apiVersion >= 1.25"><a href ng-click="goToItem('service-secrets')">Secrets</a></li>
-          <li><a href ng-click="goToItem('service-tasks')">Tasks</a></li>
+          <li><a href ng-click="goToItem('service-env-variables')">{{ 'Environment_variables' | translate }}</a></li>
+          <li><a href ng-click="goToItem('service-container-labels')">{{ 'Container_labels' | translate }}</a></li>
+          <li><a href ng-click="goToItem('service-mounts')">{{ 'Mounts' | translate }}</a></li>
+          <li><a href ng-click="goToItem('service-network-specs')">{{ 'Network' | translate }} &amp; {{ 'published_ports' | translate }}</a></li>
+          <li><a href ng-click="goToItem('service-resources')">{{ 'Resource_limits' | translate }} &amp; {{ 'reservations' | translate }}</a></li>
+          <li><a href ng-click="goToItem('service-placement-constraints')">{{ 'Placement_constraints' | translate }}</a></li>
+          <li ng-if="applicationState.endpoint.apiVersion >= 1.30"><a href ng-click="goToItem('service-placement-preferences')">{{ 'Placement_preferences' | translate }}</a></li>
+          <li><a href ng-click="goToItem('service-restart-policy')">{{ 'Restart_policy' | translate }}</a></li>
+          <li><a href ng-click="goToItem('service-update-config')">{{ 'Update_configuration' | translate }}</a></li>
+          <li><a href ng-click="goToItem('service-logging')">{{ 'Logging' | translate }}</a></li>
+          <li><a href ng-click="goToItem('service-labels')">{{ 'Service_labels' | translate }}</a></li>
+          <li><a href ng-click="goToItem('service-configs')">{{ 'Configs' | translate }}</a></li>
+          <li ng-if="applicationState.endpoint.apiVersion >= 1.25">
+            <a href ng-click="goToItem('service-secrets')">{{ 'Secrets' | translate }}</a></li>
+          <li><a href ng-click="goToItem('service-tasks')">{{ '' | translate }}Tasks</a></li>
         </ul>
       </rd-widget-body>
     </rd-widget>
@@ -162,10 +168,13 @@
 <div class="row">
   <hr>
   <div class="col-lg-12 col-md-12 col-xs-12">
-    <h3 id="container-specs">Container specification</h3>
-    <div id="service-container-spec" class="padding-top" ng-include="'app/docker/views/services/edit/includes/container-specs.html'"></div>
-    <div id="service-env-variables" class="padding-top" ng-include="'app/docker/views/services/edit/includes/environmentvariables.html'"></div>
-    <div id="service-container-labels" class="padding-top" ng-include="'app/docker/views/services/edit/includes/containerlabels.html'"></div>
+    <h3 id="container-specs">{{ 'Container_specification' | translate }}</h3>
+    <div id="service-container-spec" class="padding-top" 
+    ng-include="'app/docker/views/services/edit/includes/container-specs.html'"></div>
+    <div id="service-env-variables" class="padding-top" 
+    ng-include="'app/docker/views/services/edit/includes/environmentvariables.html'"></div>
+    <div id="service-container-labels" class="padding-top" 
+    ng-include="'app/docker/views/services/edit/includes/containerlabels.html'"></div>
     <div id="service-mounts" class="padding-top" ng-include="'app/docker/views/services/edit/includes/mounts.html'"></div>
   </div>
 </div>
@@ -173,7 +182,7 @@
 <div class="row">
   <hr>
   <div class="col-lg-12 col-md-12 col-xs-12">
-    <h3 id="service-network-specs">Networks &amp; ports</h3>
+    <h3 id="service-network-specs">{{ 'Networks' | translate }} &amp; {{ 'ports' | translate }}</h3>
     <div id="service-networks" class="padding-top" ng-include="'app/docker/views/services/edit/includes/networks.html'"></div>
     <div id="service-published-ports" class="padding-top" ng-include="'app/docker/views/services/edit/includes/ports.html'"></div>
     <div id="service-hosts-entries" class="padding-top" ng-include="'app/docker/views/services/edit/includes/hosts.html'"></div>
@@ -183,7 +192,7 @@
 <div class="row">
   <hr>
   <div class="col-lg-12 col-md-12 col-xs-12">
-    <h3 id="service-specs">Service specification</h3>
+    <h3 id="service-specs">{{ 'Service_specification' | translate }}</h3>
     <div id="service-resources" class="padding-top" ng-include="'app/docker/views/services/edit/includes/resources.html'"></div>
     <div id="service-placement-constraints" class="padding-top" ng-include="'app/docker/views/services/edit/includes/constraints.html'"></div>
     <div id="service-placement-preferences" ng-if="applicationState.endpoint.apiVersion >= 1.30" class="padding-top" ng-include="'app/docker/views/services/edit/includes/placementPreferences.html'"></div>

@@ -927,7 +927,42 @@
   "Publish_mode":"Publish mode",
   "ingress":"ingress",
   "Minimum_memory_available_ted":"Minimum memory available on a node to run a task (set to 0 for unlimited)",
-  "Maximum_memory_usage_per_task_L":"Maximum memory usage per task (set to 0 for unlimited)"
+  "Maximum_memory_usage_per_task_L":"Maximum memory usage per task (set to 0 for unlimited)",
+
+  "Any":"Any",
+  "Condition_for_restart":"Condition for restart.",
+  "Delay_between_restart_attempts":"Restart delay",
+  "Maximum_attempts_restart":"Maximum attempts to restart a given task before giving up (default value is 0, which means unlimited).",
+
+  "Add_a_secret":"Add a secret",
+  "add_secret":"add secret",
+  "Remove_secret":"Remove secret",
+  "No_secrets_associated_to":"No secrets associated to this service.",
+  "no_labels_for_this":"There are no labels for this service.",
+  "Update_Parallelism":"Update Parallelism",
+  "Amount_time_between_updates":"Amount of time between updates expressed by a number followed by unit (ns|us|ms|s|m|h). Example: 1m.",
+  "Update_Failure_Action":"Update Failure Action",
+  "service_updated_Editing_disabled":"This service is being updated. Editing this service is currently disabled.",
+  "Refresh_to_see_if":"Refresh to see if this service has finished updated.",
+  "Created_at":"Created at",
+  "Last_updated_at":"Last updated at",
+
+  "Service_webhook":"Service webhook",
+  "Service_logs":"Service logs",
+  "Update_the_service":"Update the service",
+  "Update_in_progress":"Update in progress",
+  "Delete_the_service":"Delete the service",
+  "Deletion_in_progress":"Deletion in progress",
+
+  "Mounts":"Mounts",
+  "reservations":"reservations",
+  "Resource_limits":"Resource limits",
+  "published_ports":"published ports",
+  "Update_configuration":"Update configuration",
+  "Container_specification":"Container specification",
+  "ports":"ports",
+  "Service_specification":"ervice specification"
+  
   
   
 

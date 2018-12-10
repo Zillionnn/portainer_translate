@@ -6,49 +6,52 @@
       <table class="table">
         <tbody>
           <tr>
-            <td>Update Parallelism</td>
+            <td>{{ 'Update_Parallelism' | translate }}</td>
             <td>
               <input class="input-sm" type="number" ng-model="service.UpdateParallelism" ng-change="updateServiceAttribute(service, 'UpdateParallelism')" ng-disabled="isUpdating"/>
             </td>
             <td>
               <p class="small text-muted" style="margin-top: 10px;">
-                Maximum number of tasks to be updated simultaneously (0 to update all at once).
+                <!-- Maximum number of tasks to be updated simultaneously (0 to update all at once). -->
+                {{ 'Maximum_number_of_tasks_updated_simultaneously' | translate }}
               </p>
             </td>
           </tr>
           <tr>
-            <td>Update Delay</td>
+            <td>{{ 'Update_delay' | translate }}</td>
             <td>
               <input class="input-sm" type="text" ng-model="service.UpdateDelay" ng-change="updateServiceAttribute(service, 'UpdateDelay')" ng-pattern="/^([0-9]+)(h|m|s|ms|us|ns)$/i" ng-disabled="isUpdating"/>
             </td>
             <td>
               <p class="small text-muted" style="margin-top: 10px;">
-                Amount of time between updates expressed by a number followed by unit (ns|us|ms|s|m|h). Example: 1m.
+                <!-- Amount of time between updates expressed by a number followed by unit (ns|us|ms|s|m|h). Example: 1m. -->
+                {{ 'Amount_time_between_updates' | translate }}
               </p>
             </td>
           </tr>
           <tr>
-            <td>Update Failure Action</td>
+            <td>{{ 'Update_Failure_Action' | translate }}</td>
             <td>
               <div class="form-group">
                 <label class="radio-inline">
                   <input type="radio" name="failure_action" ng-model="service.UpdateFailureAction" value="continue" ng-change="updateServiceAttribute(service, 'UpdateFailureAction')" ng-disabled="isUpdating">
-                  Continue
+                  {{ 'Continue' | translate }}
                 </label>
                 <label class="radio-inline">
                   <input type="radio" name="failure_action" ng-model="service.UpdateFailureAction" value="pause" ng-change="updateServiceAttribute(service, 'UpdateFailureAction')" ng-disabled="isUpdating">
-                  Pause
+                  {{ 'Pause' | translate }}
                 </label>
               </div>
             </td>
             <td>
               <p class="small text-muted" style="margin-top: 10px;">
-                Action taken on failure to start after update.
+                <!-- Action taken on failure to start after update. -->
+                {{ 'Action_taken_on_failure' | translate }}
               </p>
             </td>
           </tr>
           <tr ng-if="applicationState.endpoint.apiVersion >= 1.29">
-            <td>Order</td>
+            <td>{{ 'Order' | translate }}</td>
             <td>
               <div class="form-group">
                 <label class="radio-inline">
@@ -63,7 +66,7 @@
             </td>
             <td>
               <p class="small text-muted" style="margin-top: 10px;">
-                Operation order on failure.
+                  {{ 'Operation_order_on_failure' | translate }}
               </p>
             </td>
           </tr>
@@ -73,13 +76,15 @@
     <rd-widget-footer>
       <div class="btn-toolbar" role="toolbar">
         <div class="btn-group" role="group">
-          <button type="button" class="btn btn-primary btn-sm" ng-disabled="!hasChanges(service, ['UpdateFailureAction', 'UpdateDelay', 'UpdateParallelism', 'UpdateOrder'])" ng-click="updateService(service)">Apply changes</button>
+          <button type="button" class="btn btn-primary btn-sm" ng-disabled="!hasChanges(service, ['UpdateFailureAction', 'UpdateDelay', 'UpdateParallelism', 'UpdateOrder'])" ng-click="updateService(service)">
+              {{ 'Apply_changes' | translate }}</button>
           <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
-            <li><a ng-click="cancelChanges(service, ['UpdateFailureAction', 'UpdateDelay', 'UpdateParallelism', 'UpdateOrder'])">Reset changes</a></li>
-            <li><a ng-click="cancelChanges(service)">Reset all changes</a></li>
+            <li><a ng-click="cancelChanges(service, ['UpdateFailureAction', 'UpdateDelay', 'UpdateParallelism', 'UpdateOrder'])">
+                {{ 'Reset_changes' | translate }}</a></li>
+            <li><a ng-click="cancelChanges(service)">{{ 'Reset_all_changes' | translate }}</a></li>
           </ul>
         </div>
       </div>

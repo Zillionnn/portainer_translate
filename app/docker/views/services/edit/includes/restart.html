@@ -6,52 +6,55 @@
       <table class="table">
         <tbody>
           <tr>
-            <td>Restart condition</td>
+            <td>{{ 'Restart_condition' | translate }}</td>
             <td>
               <div class="input-group input-group-sm">
                 <select class="selectpicker form-control" ng-model="service.RestartCondition" ng-change="updateServiceAttribute(service, 'RestartCondition')" ng-disabled="isUpdating">
-                  <option value="none">None</option>
-                  <option value="on-failure">On failure</option>
-                  <option value="any">Any</option>
+                  <option value="none">{{ 'None' | translate }}</option>
+                  <option value="on-failure">{{ 'On_failure' | translate }}</option>
+                  <option value="any">{{ 'Any' | translate }}</option>
                 </select>
               </div>
             </td>
             <td>
               <p class="small text-muted" style="margin-top: 10px;">
-                Condition for restart.
+                {{ 'Condition_for_restart' | translate }}
               </p>
             </td>
           </tr>
           <tr>
-            <td>Restart delay</td>
+            <td>{{ 'Restart_delay' | translate }}</td>
             <td>
               <input class="input-sm" type="text" ng-model="service.RestartDelay" ng-change="updateServiceAttribute(service, 'RestartDelay')" ng-pattern="/^([0-9]+)(h|m|s|ms|us|ns)$/i" ng-disabled="isUpdating"/>
             </td>
             <td>
               <p class="small text-muted" style="margin-top: 10px;">
-                Delay between restart attempts expressed by a number followed by unit (ns|us|ms|s|m|h). Default value is 5s, 5 seconds.
+                <!-- Delay between restart attempts expressed by a number followed by unit (ns|us|ms|s|m|h). Default value is 5s, 5 seconds. -->
+                {{ 'Delay_between_restart_attempts' | translate }}
               </p>
             </td>
           </tr>
           <tr>
-            <td>Restart max attempts</td>
+            <td>{{ 'Restart_max_attempts' | translate }}</td>
             <td>
               <input class="input-sm" type="number" ng-model="service.RestartMaxAttempts" ng-change="updateServiceAttribute(service, 'RestartMaxAttempts')" ng-disabled="isUpdating"/>
             </td>
             <td>
               <p class="small text-muted" style="margin-top: 10px;">
-                Maximum attempts to restart a given task before giving up (default value is 0, which means unlimited).
+                <!-- Maximum attempts to restart a given task before giving up (default value is 0, which means unlimited). -->
+                {{ 'Maximum_attempts_restart' | translate }}
               </p>
             </td>
           </tr>
           <tr>
-            <td>Restart window</td>
+            <td>{{ 'Restart_window' | translate }}</td>
             <td>
               <input class="input-sm" type="text" ng-model="service.RestartWindow" ng-change="updateServiceAttribute(service, 'RestartWindow')" ng-pattern="/^([0-9]+)(h|m|s|ms|us|ns)$/i" ng-disabled="isUpdating"/>
             </td>
             <td>
               <p class="small text-muted" style="margin-top: 10px;">
-                Time window to evaluate restart attempts expressed by a number followed by unit (ns|us|ms|s|m|h). Default value is 0 seconds, which is unbounded.
+                <!-- Time window to evaluate restart attempts expressed by a number followed by unit (ns|us|ms|s|m|h). Default value is 0 seconds, which is unbounded. -->
+                {{ 'Time_window_to_evaluate_restart' | translate }}
               </p>
             </td>
           </tr>
@@ -61,13 +64,16 @@
     <rd-widget-footer>
       <div class="btn-toolbar" role="toolbar">
         <div class="btn-group" role="group">
-          <button type="button" class="btn btn-primary btn-sm" ng-disabled="!hasChanges(service, ['RestartCondition', 'RestartDelay', 'RestartMaxAttempts', 'RestartWindow'])" ng-click="updateService(service)">Apply changes</button>
+          <button type="button" class="btn btn-primary btn-sm" ng-disabled="!hasChanges(service, ['RestartCondition', 'RestartDelay', 'RestartMaxAttempts', 'RestartWindow'])" ng-click="updateService(service)">
+              {{ 'Apply_changes' | translate }}</button>
           <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
-            <li><a ng-click="cancelChanges(service, ['RestartCondition', 'RestartDelay', 'RestartMaxAttempts', 'RestartWindow'])">Reset changes</a></li>
-            <li><a ng-click="cancelChanges(service)">Reset all changes</a></li>
+            <li><a ng-click="cancelChanges(service, ['RestartCondition', 'RestartDelay', 'RestartMaxAttempts', 'RestartWindow'])">
+                {{ 'Reset_changes' | translate }}</a></li>
+            <li><a ng-click="cancelChanges(service)">
+                {{ 'Reset_all_changes' | translate }}</a></li>
           </ul>
         </div>
       </div>
