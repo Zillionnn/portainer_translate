@@ -1,6 +1,6 @@
 <form class="form-horizontal" style="margin-top: 15px;">
   <div class="col-sm-12 form-section-title">
-      Update config
+      {{ 'Update_config' | translate }}
   </div>
   <!-- parallelism-input -->
   <div class="form-group">
@@ -10,7 +10,8 @@
     </div>
     <div class="col-sm-5">
       <p class="small text-muted">
-        Maximum number of tasks to be updated simultaneously (0 to update all at once).
+        <!-- Maximum number of tasks to be updated simultaneously (0 to update all at once). -->
+        {{ 'Maximum_number_of_tasks_updated_simultaneously' | translate }}
       </p>
     </div>
   </div>
@@ -18,7 +19,7 @@
   <!-- delay-input -->
   <div class="form-group">
     <label for="update-delay" class="col-sm-3 col-lg-2 control-label text-left">
-      Update delay
+        {{ 'Update_delay' | translate }}
       <portainer-tooltip position="bottom" message="Supported format examples: 1h, 5m, 10s, 1000ms, 15us, 60ns."></portainer-tooltip>
     </label>                
     <div class="col-sm-4 col-lg-3">
@@ -26,30 +27,34 @@
     </div>
     <div class="col-sm-5">
       <p class="small text-muted">
-        Amount of time between updates expressed by a number followed by unit (ns|us|ms|s|m|h). Default value is 0s, 0 seconds.
+        <!-- Amount of time between updates expressed by a number followed by unit (ns|us|ms|s|m|h). Default value is 0s, 0 seconds. -->
+        {{ 'Amount_of_time_between_updates' | translate }}
       </p>
     </div>
   </div>
   <!-- !delay-input -->
   <!-- failureAction-input -->
   <div class="form-group">
-    <label for="failure-action" class="col-sm-3 col-lg-2 control-label text-left">Update failure action</label>
+    <label for="failure-action" class="col-sm-3 col-lg-2 control-label text-left">
+        {{ 'Update_failure_action' | translate }}</label>
     <div class="col-sm-4 col-lg-3">
       <div class="btn-group btn-group-sm">
-        <label class="btn btn-primary" ng-model="formValues.FailureAction" uib-btn-radio="'continue'">Continue</label>
-        <label class="btn btn-primary" ng-model="formValues.FailureAction" uib-btn-radio="'pause'">Pause</label>
+        <label class="btn btn-primary" ng-model="formValues.FailureAction" uib-btn-radio="'continue'">{{ 'Continue' | translate }}</label>
+        <label class="btn btn-primary" ng-model="formValues.FailureAction" uib-btn-radio="'pause'">{{ 'Pause' | translate }}</label>
       </div>
     </div>
     <div class="col-sm-5">
       <p class="small text-muted">
-        Action taken on failure to start after update.
+        <!-- Action taken on failure to start after update. -->
+        {{ 'Action_taken_on_failure' | translate }}
       </p>
     </div>
   </div>
   <!-- !failureAction-input -->
   <!-- order-input -->
   <div class="form-group" ng-if="applicationState.endpoint.apiVersion >= 1.29">
-    <label for="update-order" class="col-sm-3 col-lg-2 control-label text-left">Update order</label>
+    <label for="update-order" class="col-sm-3 col-lg-2 control-label text-left">
+        {{ 'Update_order' | translate }}</label>
     <div class="col-sm-4 col-lg-3">
       <div class="btn-group btn-group-sm">
         <label class="btn btn-primary" ng-model="formValues.UpdateOrder" uib-btn-radio="'start-first'">start-first</label>
@@ -58,18 +63,20 @@
     </div>
     <div class="col-sm-5">
       <p class="small text-muted">
-        Operation order on failure.
+          {{ 'Operation_order_on_failure' | translate }}
       </p>
     </div>
   </div>
   <!-- !order-input -->
   
   <div class="col-sm-12 form-section-title">
-      Restart policy
+      {{ 'Restart_policy' | translate }}
   </div>
   <!-- restartCondition-input -->
   <div class="form-group">
-    <label for="restart-condition" class="col-sm-3 col-lg-2 control-label text-left">Restart condition</label>
+    <label for="restart-condition" class="col-sm-3 col-lg-2 control-label text-left">
+        {{ 'Restart_condition' | translate }}
+      </label>
     <div class="col-sm-4 col-lg-3">
       <div class="btn-group btn-group-sm">
         <label class="btn btn-primary" ng-model="formValues.RestartCondition" uib-btn-radio="'none'">None</label>
@@ -79,7 +86,8 @@
     </div>
     <div class="col-sm-5">
       <p class="small text-muted">
-        Restart when condition is met (default condition "any"). 
+        <!-- Restart when condition is met (default condition "any").  -->
+        {{ 'Restart_condition_is_met' | translate }}
       </p>
     </div>
   </div>
@@ -87,7 +95,7 @@
   <!-- restartDelay-input -->
   <div class="form-group">
     <label for="restart-delay" class="col-sm-3 col-lg-2 control-label text-left">
-      Restart delay
+      {{ 'Restart_delay' | translate }}
       <portainer-tooltip position="bottom" message="Supported format examples: 1h, 5m, 10s, 1000ms, 15us, 60ns."></portainer-tooltip>
     </label>                
     <div class="col-sm-4 col-lg-3">
@@ -95,20 +103,24 @@
     </div>
     <div class="col-sm-5">
       <p class="small text-muted">
-        Delay between restart attempts expressed by a number followed by unit (ns|us|ms|s|m|h). Default value is 5s, 5 seconds.
+        <!-- Delay between restart attempts expressed by a number followed by unit (ns|us|ms|s|m|h). Default value is 5s, 5 seconds. -->
+        {{ 'Delay_between_restart_attempts_expressed' | translate }}
       </p>
     </div>
   </div>
   <!-- !restartDelay-input -->
   <!-- restartMaxAttempts-input -->
    <div class="form-group">
-    <label for="restart-max-attempts" class="col-sm-3 col-lg-2 control-label text-left">Restart max attempts</label>
+    <label for="restart-max-attempts" class="col-sm-3 col-lg-2 control-label text-left">
+        {{ 'Restart_max_attempts' | translate }}
+    </label>
     <div class="col-sm-4 col-lg-3">
       <input type="number" class="form-control" ng-model="formValues.RestartMaxAttempts" id="restart-max-attempts" placeholder="e.g. 0">
     </div>
     <div class="col-sm-5">
       <p class="small text-muted">
-        Maximum attempts to restart a given task before giving up (default value is 0, which means unlimited).
+        <!-- Maximum attempts to restart a given task before giving up (default value is 0, which means unlimited). -->
+        {{ 'Maximum_attempts_restart_given' | translate }}
       </p>
     </div>
   </div>
@@ -116,7 +128,7 @@
   <!-- restartWindow-input -->
   <div class="form-group">
     <label for="restart-window" class="col-sm-3 col-lg-2 control-label text-left">
-      Restart window
+        {{ 'Restart_window' | translate }}
       <portainer-tooltip position="bottom" message="Supported format examples: 1h, 5m, 10s, 1000ms, 15us, 60ns."></portainer-tooltip>
     </label>                
     <div class="col-sm-4 col-lg-3">
@@ -124,7 +136,8 @@
     </div>
     <div class="col-sm-5">
       <p class="small text-muted">
-        Time window to evaluate restart attempts expressed by a number followed by unit (ns|us|ms|s|m|h). Default value is 0 seconds, which is unbounded.
+        <!-- Time window to evaluate restart attempts expressed by a number followed by unit (ns|us|ms|s|m|h). Default value is 0 seconds, which is unbounded. -->
+        {{ 'Time_window_to_evaluate_restart' | translate }}
       </p>
     </div>
   </div>

@@ -1,7 +1,9 @@
 <rd-header>
   <rd-header-title title-text="Image details"></rd-header-title>
   <rd-header-content>
-    <a ui-sref="docker.images">Images</a> &gt; <a ui-sref="docker.images.image({id: image.Id})">{{ image.Id }}</a>
+    <a ui-sref="docker.images">
+        {{ 'Images' | translate }}
+      </a> &gt; <a ui-sref="docker.images.image({id: image.Id})">{{ image.Id }}</a>
   </rd-header-content>
 </rd-header>
 

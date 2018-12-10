@@ -804,22 +804,95 @@
   "Image_building_in_progress":"正在进行映像构建",
   "No_build_output_available":"没有可用的生成输出。",
 
-  "Retry_interval_in_seconds":"重试间隔 (以秒为单位)。"
-  
-  
-  
-  
+  "Retry_interval_in_seconds":"重试间隔 (以秒为单位)。",
 
   
-  
-  
-   
-  
+  "Import_image":"Import image",
+  "upload_archive_containing_your_images":"You can upload a tar archive containing your images.",
+  "Images_uploading_in_progress":"Images uploading in progress",
+  "Note_if_you_dont_specify_the_tag":"Note: if you don't specify the tag in the image name,",
+  "Pull_the_image":"Pull the image",
+
+  "Add_network":"Add network",
+  "Driver_configuration":"Driver configuration",
+  "Select_a_driver":"Select a driver",
+  "Driver_options":"Driver options",
+  "add_driver_option":"add driver option",
+  "Network_configuration":"Network configuration",
+  "Subnet":"Subnet",
+  "range":"range",
+  "Exclude":"Exclude",
+  "Advanced_configuration":"Advanced configuration",
+  "Restrict_external_access_to_the_network":"Restrict external access to the network",
+  "Enable_manual_container_attachment":"Enable manual container attachment",
+  "Create_the_network":"Create the network",
+  "Creating_network":"Creating network",
+
+  "Container_Name":"Container Name",
+  "Encode":"Encode",
+  "Secrets_base64_encoded":"Secrets need to be base64 encoded. Disable this if your secret is already base64 encoded.",
+  "Create_the_secret":"Create the secret",
+  "Creating_secret":"Creating secret",
+
+  "Secret_details":"Secret details",
+  "Secrets_list":"Secrets list",
+  "add_a_config":"add a config",
+  "Select_a_config":"Select a config",
+  "Minimum_memory_available_on":" Minimum memory available on a node to run a task",
+  "Maximum_memory_usage_per_task":"Maximum memory usage per task",
+  "CPU_reservation":"CPU reservation",
+  "Minimum_CPU_available_on":"Minimum CPU available on a node to run a task",
+  "Maximum_CPU_usage_per_task":" Maximum CPU usage per task",
+  "Placement":"Placement",
+  "Placement_constraints":"Placement constraints",
+  "placement_constraint":"placement constraint",
+  "Placement_preferences":"Placement preferences",
+  "strategy":"strategy",
+
+  "secrets_available_under":" By default, secrets will be available under",
+  "in_containers":"in containers.",
+  "add_a_secret":"add a secret",
+  "Select_a_secret":"Select a secret",
+  "target":"target",
+  "Default_location":"Default location",
+  "Override":"Override",
+  "Update_config":"Update config",
+  "Maximum_number_of_tasks_updated_simultaneously":"Maximum number of tasks to be updated simultaneously (0 to update all at once).",
+  "Update_delay":"Update delay",
+  "Amount_of_time_between_updates":"Amount of time between updates expressed by a number followed by unit (ns|us|ms|s|m|h). Default value is 0s, 0 seconds.",
+  "Update_failure_action":"Update failure action",
+  "Continue":"Continue",
+  "Action_taken_on_failure":"Action taken on failure to start after update.",
+  "Update_order":"Update order",
+  "Operation_order_on_failure":" Operation order on failure.",
+  "Restart_condition":"Restart condition",
+  "Restart_condition_is_met":"Restart when condition is met (default condition 'any'). ",
+  "Restart_delay":"Restart delay",
+  "Delay_between_restart_attempts_expressed":" Delay between restart attempts expressed by a number followed by unit (ns|us|ms|s|m|h). Default value is 5s, 5 seconds.",
+  "Restart_max_attempts":"Restart max attempts",
+  "Maximum_attempts_restart_given":"Maximum attempts to restart a given task before giving up (default value is 0, which means unlimited).",
+  "Restart_window":"Restart window",
+  "Time_window_to_evaluate_restart":"Time window to evaluate restart attempts expressed by a number followed by unit (ns|us|ms|s|m|h). Default value is 0 seconds, which is unbounded.",
+  "Scheduling":"Scheduling",
+  "Scheduling_mode":"Scheduling mode",
+  "Global":"Global",
+  "Replicated":"Replicated",
+  "Replicas":"Replicas",
+  "Ingress":"Ingress",
+  "Webhooks":"Webhooks",
+  "Create_service_webhook":"Create a service webhook",
+  "Update_config_Restart":"Update config & Restart",
+  "Resources_Placement":"Resources & Placement",
+  "Entrypoint":"Entrypoint",
+  "Logging_driver_for_service_that_will":"Logging driver for service that will override the default docker daemon driver. Select Default logging driver if you don't want to override it. Supported logging drivers can be found ",
+  "Extra_networks":"Extra networks",
+  "add_extra_network":"add extra network",
+  "Service_labels":"Service labels",
+  "add_service_label":"add service label",
+  "Container_labels":"Container labels",
+  "add_container_label":"add container label"
 
   
- 
-  
-
 
   
 }

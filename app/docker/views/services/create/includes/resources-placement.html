@@ -1,11 +1,11 @@
 <form class="form-horizontal" style="margin-top: 15px;">
   <div class="col-sm-12 form-section-title">
-    Resources
+      {{ 'Resources' | translate }}
   </div>
   <!-- memory-reservation-input -->
   <div class="form-group">
     <label for="memory-reservation" class="col-sm-3 col-lg-2 control-label text-left" style="margin-top: 20px;">
-      Memory reservation
+        {{ 'Memory_reservation' | translate }}
     </label>
     <div class="col-sm-3">
       <slider model="formValues.MemoryReservation" floor="0" ceil="state.sliderMaxMemory" step="256" ng-if="state.sliderMaxMemory"></slider>
@@ -15,7 +15,7 @@
     </div>
     <div class="col-sm-4">
       <p class="small text-muted" style="margin-top: 7px;">
-        Minimum memory available on a node to run a task (<b>MB</b>)
+          {{ 'Minimum_memory_available_on' | translate }} (<b>MB</b>)
       </p>
     </div>
   </div>
@@ -23,7 +23,7 @@
   <!-- memory-limit-input -->
   <div class="form-group">
     <label for="memory-limit" class="col-sm-3 col-lg-2 control-label text-left" style="margin-top: 20px;">
-      Memory limit
+        {{ 'Memory_limit' | translate }}
     </label>
     <div class="col-sm-3">
       <slider model="formValues.MemoryLimit" floor="0" ceil="state.sliderMaxMemory" step="256" ng-if="state.sliderMaxMemory"></slider>
@@ -33,7 +33,7 @@
     </div>
     <div class="col-sm-4" style="margin-top: 7px;">
       <p class="small text-muted">
-        Maximum memory usage per task (<b>MB</b>)
+          {{ 'Maximum_memory_usage_per_task' | translate }} (<b>MB</b>)
       </p>
     </div>
   </div>
@@ -41,14 +41,14 @@
   <!-- cpu-reservation-input -->
   <div class="form-group">
     <label for="cpu-reservation" class="col-sm-3 col-lg-2 control-label text-left" style="margin-top: 20px;">
-      CPU reservation
+        {{ 'CPU_reservation' | translate }}
     </label>
     <div class="col-sm-5">
       <slider model="formValues.CpuReservation" floor="0" ceil="state.sliderMaxCpu" step="0.25" precision="2" ng-if="state.sliderMaxCpu"></slider>
     </div>
     <div class="col-sm-4" style="margin-top: 20px;">
       <p class="small text-muted">
-        Minimum CPU available on a node to run a task
+          {{ 'Minimum_CPU_available_on' | translate }}
       </p>
     </div>
   </div>
@@ -56,33 +56,34 @@
   <!-- cpu-limit-input -->
   <div class="form-group">
     <label for="cpu-limit" class="col-sm-3 col-lg-2 control-label text-left" style="margin-top: 20px;">
-      CPU limit
+        {{ 'CPU_limit' | translate }}
     </label>
     <div class="col-sm-5">
       <slider model="formValues.CpuLimit" floor="0" ceil="state.sliderMaxCpu" step="0.25" precision="2" ng-if="state.sliderMaxCpu"></slider>
     </div>
     <div class="col-sm-4" style="margin-top: 20px;">
       <p class="small text-muted">
-        Maximum CPU usage per task
+          {{ 'Maximum_CPU_usage_per_task' | translate }}
       </p>
     </div>
   </div>
   <!-- !cpu-limit-input -->
   <div class="col-sm-12 form-section-title">
-    Placement
+      {{ 'Placement' | translate }}
   </div>
   <!-- placement-constraints -->
   <div class="form-group">
     <div class="col-sm-12" style="margin-top: 5px;">
-      <label class="control-label text-left">Placement constraints</label>
+      <label class="control-label text-left">
+          {{ 'Placement_constraints' | translate }}</label>
       <span class="label label-default interactive" style="margin-left: 10px;" ng-click="addPlacementConstraint()">
-        <i class="fa fa-plus-circle" aria-hidden="true"></i> placement constraint
+        <i class="fa fa-plus-circle" aria-hidden="true"></i> {{ 'placement_constraint' | translate }}
       </span>
     </div>
     <div class="col-sm-12 form-inline" style="margin-top: 10px;">
       <div ng-repeat="constraint in formValues.PlacementConstraints" style="margin-top: 2px;">
         <div class="input-group col-sm-4 input-group-sm">
-          <span class="input-group-addon">name</span>
+          <span class="input-group-addon">{{ 'name' | translate }}</span>
           <input type="text" class="form-control" ng-model="constraint.key" placeholder="e.g. node.role">
         </div>
         <div class="input-group col-sm-1 input-group-sm">
@@ -92,7 +93,7 @@
           </select>
         </div>
         <div class="input-group col-sm-5 input-group-sm">
-          <span class="input-group-addon">value</span>
+          <span class="input-group-addon">{{ 'value' | translate }}</span>
           <input type="text" class="form-control" ng-model="constraint.value" placeholder="e.g. manager">
         </div>
         <button class="btn btn-sm btn-danger" type="button" ng-click="removePlacementConstraint($index)">
@@ -105,19 +106,19 @@
   <!-- placement-preferences -->
   <div class="form-group" ng-if="applicationState.endpoint.apiVersion >= 1.30">
     <div class="col-sm-12" style="margin-top: 5px;">
-      <label class="control-label text-left">Placement preferences</label>
+      <label class="control-label text-left">{{ 'Placement_preferences' | translate }}</label>
       <span class="label label-default interactive" style="margin-left: 10px;" ng-click="addPlacementPreference()">
-        <i class="fa fa-plus-circle" aria-hidden="true"></i> placement preference
+        <i class="fa fa-plus-circle" aria-hidden="true"></i> {{ 'Placement_preferences' | translate }}
       </span>
     </div>
     <div class="col-sm-12 form-inline" style="margin-top: 10px;">
       <div ng-repeat="preference in formValues.PlacementPreferences" style="margin-top: 2px;">
         <div class="input-group col-sm-4 input-group-sm">
-          <span class="input-group-addon">strategy</span>
+          <span class="input-group-addon">{{ 'strategy' | translate }}</span>
           <input type="text" class="form-control" ng-model="preference.strategy" placeholder="e.g. spread">
         </div>
         <div class="input-group col-sm-5 input-group-sm">
-          <span class="input-group-addon">value</span>
+          <span class="input-group-addon">{{ 'value' | translate }}</span>
           <input type="text" class="form-control" ng-model="preference.value" placeholder="e.g. node.labels.datacenter">
         </div>
         <button class="btn btn-sm btn-danger" type="button" ng-click="removePlacementPreference($index)">

@@ -1,7 +1,8 @@
 <rd-header>
   <rd-header-title title-text="Create service"></rd-header-title>
   <rd-header-content>
-    <a ui-sref="docker.services">Services</a> &gt; Add service
+    <a ui-sref="docker.services">{{ 'Services' | translate }}</a>
+     &gt; {{ 'Add_service' | translate }}
   </rd-header-content>
 </rd-header>
 
@@ -12,14 +13,14 @@
         <form class="form-horizontal" autocomplete="off">
           <!-- name-input -->
           <div class="form-group">
-            <label for="service_name" class="col-sm-1 control-label text-left">Name</label>
+            <label for="service_name" class="col-sm-1 control-label text-left">{{ 'Name' | translate }}</label>
             <div class="col-sm-11">
               <input type="text" class="form-control" ng-model="formValues.Name" id="service_name" placeholder="e.g. myService">
             </div>
           </div>
           <!-- !name-input -->
           <div class="col-sm-12 form-section-title">
-            Image configuration
+              {{ 'Image_configuration' | translate }}
           </div>
           <!-- image-and-registry -->
           <por-image-registry
@@ -30,45 +31,47 @@
           ></por-image-registry>
           <!-- !image-and-registry -->
           <div class="col-sm-12 form-section-title">
-            Scheduling
+              {{ 'Scheduling' | translate }}
           </div>
           <!-- scheduling-mode -->
           <div class="form-group">
             <div class="col-sm-12">
               <label class="control-label text-left">
-                Scheduling mode
+                  {{ 'Scheduling_mode' | translate }}
               </label>
               <div class="btn-group btn-group-sm" style="margin-left: 20px;">
-                <label class="btn btn-primary" ng-model="formValues.Mode" uib-btn-radio="'global'">Global</label>
-                <label class="btn btn-primary" ng-model="formValues.Mode" uib-btn-radio="'replicated'">Replicated</label>
+                <label class="btn btn-primary" ng-model="formValues.Mode" uib-btn-radio="'global'">
+                    {{ 'Global' | translate }}</label>
+                <label class="btn btn-primary" ng-model="formValues.Mode" uib-btn-radio="'replicated'">
+                    {{ 'Replicated' | translate }}</label>
               </div>
             </div>
           </div>
           <div class="form-group form-inline" ng-if="formValues.Mode === 'replicated'">
             <div class="col-sm-12">
               <label class="control-label text-left">
-                Replicas
+                  {{ 'Replicas' | translate }}
               </label>
               <input type="number" class="form-control" ng-model="formValues.Replicas" id="replicas" placeholder="e.g. 3" style="margin-left: 20px;">
             </div>
           </div>
           <!-- !scheduling-mode -->
           <div class="col-sm-12 form-section-title">
-            Ports configuration
+              {{ 'Ports_configuration' | translate }}
           </div>
           <!-- port-mapping -->
           <div class="form-group">
             <div class="col-sm-12" style="margin-top: 5px;">
-              <label class="control-label text-left">Port mapping</label>
+              <label class="control-label text-left">{{ 'Port_mapping' | translate }}</label>
               <span class="label label-default interactive" style="margin-left: 10px;" ng-click="addPortBinding()">
-                <i class="fa fa-plus-circle" aria-hidden="true"></i> map additional port
+                <i class="fa fa-plus-circle" aria-hidden="true"></i>{{ 'map_additional_port' | translate }}
               </span>
             </div>
             <div class="col-sm-12 form-inline" style="margin-top: 10px;">
               <div ng-repeat="portBinding in formValues.Ports" style="margin-top: 2px;">
                 <!-- host-port -->
                 <div class="input-group col-sm-3 input-group-sm">
-                  <span class="input-group-addon">host</span>
+                  <span class="input-group-addon">{{ 'host' | translate }}</span>
                   <input type="text" class="form-control" ng-model="portBinding.PublishedPort" placeholder="e.g. 80 or 1.2.3.4:80 (optional)">
                 </div>
                 <!-- !host-port -->
@@ -77,7 +80,7 @@
                 </span>
                 <!-- container-port -->
                 <div class="input-group col-sm-3 input-group-sm">
-                  <span class="input-group-addon">container</span>
+                  <span class="input-group-addon">{{ 'container' | translate }}</span>
                   <input type="text" class="form-control" ng-model="portBinding.TargetPort" placeholder="e.g. 80">
                 </div>
                 <!-- !container-port -->
@@ -88,8 +91,8 @@
                     <label class="btn btn-primary" ng-model="portBinding.Protocol" uib-btn-radio="'udp'">UDP</label>
                   </div>
                   <div class="btn-group btn-group-sm">
-                    <label class="btn btn-primary" ng-model="portBinding.PublishMode" uib-btn-radio="'ingress'">Ingress</label>
-                    <label class="btn btn-primary" ng-model="portBinding.PublishMode" uib-btn-radio="'host'">Host</label>
+                    <label class="btn btn-primary" ng-model="portBinding.PublishMode" uib-btn-radio="'ingress'">{{ 'Ingress' | translate }}</label>
+                    <label class="btn btn-primary" ng-model="portBinding.PublishMode" uib-btn-radio="'host'">{{ 'Host' | translate }}</label>
                   </div>
                   <button class="btn btn-sm btn-danger" type="button" ng-click="removePortBinding($index)">
                     <i class="fa fa-trash" aria-hidden="true"></i>
@@ -103,12 +106,12 @@
           <!-- !port-mapping -->
           <!-- create-webhook -->
           <div class="col-sm-12 form-section-title">
-            Webhooks
+              {{ 'Webhooks' | translate }}
           </div>
           <div class="form-group">
             <div class="col-sm-12">
               <label class="control-label text-left">
-                Create a service webhook
+                  {{ 'Create_service_webhook' | translate }}
                 <portainer-tooltip position="top" message="Create a webhook (or callback URI) to automate the update of this service. Sending a POST request to this callback URI (without requiring any authentication) will pull the most up-to-date version of the associated image and re-deploy this service."></portainer-tooltip>
               </label>
               <label class="switch" style="margin-left: 20px;">
@@ -145,14 +148,20 @@
     <rd-widget>
       <rd-widget-body>
         <ul class="nav nav-pills nav-justified">
-          <li class="active interactive"><a data-target="#command" data-toggle="tab">Command & Logging</a></li>
+          <li class="active interactive"><a data-target="#command" data-toggle="tab">
+              {{ 'Command_logging' | translate }}</a></li>
           <li class="interactive"><a data-target="#volumes" data-toggle="tab">Volumes</a></li>
-          <li class="interactive"><a data-target="#network" data-toggle="tab">Network</a></li>
-          <li class="interactive"><a data-target="#labels" data-toggle="tab">Labels</a></li>
-          <li class="interactive"><a data-target="#update-config" data-toggle="tab">Update config & Restart</a></li>
+          <li class="interactive"><a data-target="#network" data-toggle="tab">
+              {{ 'Network' | translate }}</a></li>
+          <li class="interactive"><a data-target="#labels" data-toggle="tab">
+              {{ 'Labels' | translate }}</a></li>
+          <li class="interactive"><a data-target="#update-config" data-toggle="tab">
+              {{ 'Update_config_Restart' | translate }}</a></li>
           <li class="interactive" ng-if="applicationState.endpoint.apiVersion >= 1.25"><a data-target="#secrets" data-toggle="tab">Secrets</a></li>
-          <li class="interactive"><a data-target="#configs" data-toggle="tab" ng-if="applicationState.endpoint.apiVersion >= 1.30">Configs</a></li>
-          <li class="interactive"><a data-target="#resources-placement" data-toggle="tab" ng-click="refreshSlider()">Resources & Placement</a></li>
+          <li class="interactive"><a data-target="#configs" data-toggle="tab" ng-if="applicationState.endpoint.apiVersion >= 1.30">
+              {{ 'Configs' | translate }}</a></li>
+          <li class="interactive"><a data-target="#resources-placement" data-toggle="tab" ng-click="refreshSlider()">
+              {{ 'Resources_Placement' | translate }}Resources & Placement</a></li>
         </ul>
         <!-- tab-content -->
         <div class="tab-content">
@@ -160,11 +169,12 @@
           <div class="tab-pane active" id="command">
             <form class="form-horizontal" style="margin-top: 15px;">
               <div class="col-sm-12 form-section-title">
-                Command
+                  {{ 'Command' | translate }}
               </div>
               <!-- command-input -->
               <div class="form-group">
-                <label for="service_command" class="col-sm-2 col-lg-1 control-label text-left">Command</label>
+                <label for="service_command" class="col-sm-2 col-lg-1 control-label text-left">
+                    {{ 'Command' | translate }}</label>
                 <div class="col-sm-9">
                   <input type="text" class="form-control" ng-model="formValues.Command" id="service_command" placeholder="e.g. /usr/bin/nginx -t -c /mynginx.conf">
                 </div>
@@ -172,7 +182,8 @@
               <!-- !command-input -->
               <!-- entrypoint-input -->
               <div class="form-group">
-                <label for="service_entrypoint" class="col-sm-2 col-lg-1 control-label text-left">Entrypoint</label>
+                <label for="service_entrypoint" class="col-sm-2 col-lg-1 control-label text-left">
+                    {{ 'Entrypoint' | translate }}</label>
                 <div class="col-sm-9">
                   <input type="text" class="form-control" ng-model="formValues.EntryPoint" id="service_entrypoint" placeholder="e.g. /bin/sh -c">
                 </div>
@@ -180,11 +191,14 @@
               <!-- !entrypoint-input -->
               <!-- workdir-user-input -->
               <div class="form-group">
-                <label for="service_workingdir" class="col-sm-2 col-lg-1 control-label text-left">Working Dir</label>
+                <label for="service_workingdir" class="col-sm-2 col-lg-1 control-label text-left">
+                    {{ 'Working_Dir' | translate }}
+                  </label>
                 <div class="col-sm-4">
                   <input type="text" class="form-control" ng-model="formValues.WorkingDir" id="service_workingdir" placeholder="e.g. /myapp">
                 </div>
-                <label for="service_user" class="col-sm-1 control-label text-left">User</label>
+                <label for="service_user" class="col-sm-1 control-label text-left">
+                    {{ 'User' | translate }}</label>
                 <div class="col-sm-4">
                   <input type="text" class="form-control" ng-model="formValues.User" id="service_user" placeholder="e.g. nginx">
                 </div>
@@ -193,20 +207,23 @@
               <!-- environment-variables -->
               <div class="form-group">
                 <div class="col-sm-12" style="margin-top: 5px;">
-                  <label class="control-label text-left">Environment variables</label>
+                  <label class="control-label text-left">
+                      {{ 'Environment_variables' | translate }}
+                    </label>
                   <span class="label label-default interactive" style="margin-left: 10px;" ng-click="addEnvironmentVariable()">
-                    <i class="fa fa-plus-circle" aria-hidden="true"></i> add environment variable
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i> 
+                    {{ 'add_environment_variable' | translate }}
                   </span>
                 </div>
                 <!-- environment-variable-input-list -->
                 <div class="col-sm-12 form-inline" style="margin-top: 10px;">
                   <div ng-repeat="variable in formValues.Env" style="margin-top: 2px;">
                     <div class="input-group col-sm-5 input-group-sm">
-                      <span class="input-group-addon">name</span>
+                      <span class="input-group-addon">{{ 'name' | translate }}</span>
                       <input type="text" class="form-control" ng-model="variable.name" placeholder="e.g. FOO">
                     </div>
                     <div class="input-group col-sm-5 input-group-sm">
-                      <span class="input-group-addon">value</span>
+                      <span class="input-group-addon">{{ 'value' | translate }}</span>
                       <input type="text" class="form-control" ng-model="variable.value" placeholder="e.g. bar">
                     </div>
                     <button class="btn btn-sm btn-danger" type="button" ng-click="removeEnvironmentVariable($index)">
@@ -219,21 +236,24 @@
               <!-- !environment-variables -->
 
               <div class="col-sm-12 form-section-title">
-                Logging
+                  {{ 'Logging' | translate }}
               </div>
               <!-- logging-driver -->
               <div class="form-group">
                 <label for="log-driver" class="col-sm-2 col-lg-1 control-label text-left">Driver</label>
                 <div class="col-sm-4">
                   <select class="form-control" ng-model="formValues.LogDriverName" id="log-driver">
-                    <option selected value="">Default logging driver</option>
+                    <option selected value="">
+                        {{ 'Default_logging_driver' | translate }}
+                    </option>
                     <option ng-repeat="driver in availableLoggingDrivers" ng-value="driver">{{ driver }}</option>
-                    <option value="none">none</option>
+                    <option value="none">{{ 'none' | translate }}</option>
                   </select>
                 </div>
                 <div class="col-sm-5">
                   <p class="small text-muted">
-                    Logging driver for service that will override the default docker daemon driver. Select Default logging driver if you don't want to override it. Supported logging drivers can be found <a href="https://docs.docker.com/engine/admin/logging/overview/#supported-logging-drivers" target="_blank">in the Docker documentation</a>.
+                    <!-- Logging driver for service that will override the default docker daemon driver. Select Default logging driver if you don't want to override it. Supported logging drivers can be found <a href="https://docs.docker.com/engine/admin/logging/overview/#supported-logging-drivers" target="_blank">in the Docker documentation</a>. -->
+                    {{ 'Logging_driver_for_service_that_will' | translate }}<a href="https://docs.docker.com/engine/admin/logging/overview/#supported-logging-drivers" target="_blank">{{ 'in_the_Docker_documentation' | translate }}</a>.
                   </p>
                 </div>
               </div>
@@ -242,22 +262,22 @@
               <div class="form-group">
                 <div class="col-sm-12" style="margin-top: 5px;">
                   <label class="control-label text-left">
-                    Options
+                      {{ 'Options' | translate }}
                     <portainer-tooltip position="top" message="Add button is disabled unless a driver other than none or default is selected. Options are specific to the selected driver, refer to the driver documentation."></portainer-tooltip>
                   </label>
                   <span class="label label-default interactive" style="margin-left: 10px;" ng-click="!formValues.LogDriverName || formValues.LogDriverName === 'none' || addLogDriverOpt(formValues.LogDriverName)">
-                    <i class="fa fa-plus-circle" aria-hidden="true"></i> add logging driver option
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i> {{ 'add_logging_driver_option' | translate }}
                   </span>
                 </div>
                 <!-- logging-opts-input-list -->
                 <div class="col-sm-12 form-inline" style="margin-top: 10px;">
                   <div ng-repeat="opt in formValues.LogDriverOpts" style="margin-top: 2px;">
                     <div class="input-group col-sm-5 input-group-sm">
-                      <span class="input-group-addon">option</span>
+                      <span class="input-group-addon"> {{ 'option' | translate }}</span>
                       <input type="text" class="form-control" ng-model="opt.name" placeholder="e.g. FOO">
                     </div>
                     <div class="input-group col-sm-5 input-group-sm">
-                      <span class="input-group-addon">value</span>
+                      <span class="input-group-addon">{{ 'value' | translate }}</span>
                       <input type="text" class="form-control" ng-model="opt.value" placeholder="e.g. bar">
                     </div>
                     <button class="btn btn-sm btn-danger" type="button" ng-click="removeLogDriverOpt($index)">
@@ -279,9 +299,11 @@
               <!-- volumes -->
               <div class="form-group">
                 <div class="col-sm-12" style="margin-top: 5px;">
-                  <label class="control-label text-left">Volume mapping</label>
+                  <label class="control-label text-left">
+                      {{ 'Volume_mapping' | translate }}
+                    </label>
                   <span class="label label-default interactive" style="margin-left: 10px;" ng-click="addVolume()">
-                    <i class="fa fa-plus-circle" aria-hidden="true"></i> map additional volume
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i> {{ 'map_additional_volume' | translate }}
                   </span>
                 </div>
                 <!-- volumes-input-list -->
@@ -292,7 +314,8 @@
                       <div class="col-sm-12 form-inline">
                         <!-- container-path -->
                         <div class="input-group input-group-sm col-sm-6">
-                          <span class="input-group-addon">container</span>
+                          <span class="input-group-addon">
+                              {{ 'container' | translate }}</span>
                           <input type="text" class="form-control" ng-model="volume.Target" placeholder="e.g. /path/in/container">
                         </div>
                         <!-- !container-path -->
@@ -300,7 +323,8 @@
                         <div class="input-group col-sm-5" style="margin-left: 5px;">
                           <div class="btn-group btn-group-sm" ng-if="isAdmin || allowBindMounts">
                             <label class="btn btn-primary" ng-model="volume.Type" uib-btn-radio="'volume'" ng-click="volume.name = ''">Volume</label>
-                            <label class="btn btn-primary" ng-model="volume.Type" uib-btn-radio="'bind'" ng-click="volume.Id = ''">Bind</label>
+                            <label class="btn btn-primary" ng-model="volume.Type" uib-btn-radio="'bind'" ng-click="volume.Id = ''">
+                                {{ 'Bind' | translate }}</label>
                           </div>
                           <button class="btn btn-sm btn-danger" type="button" ng-click="removeVolume($index)">
                             <i class="fa fa-trash" aria-hidden="true"></i>
@@ -316,21 +340,24 @@
                         <div class="input-group input-group-sm col-sm-6" ng-if="volume.Type === 'volume'">
                           <span class="input-group-addon">volume</span>
                           <select class="form-control" ng-model="volume.Source" ng-options="vol.Id|truncate:30 for vol in availableVolumes">
-                            <option selected disabled hidden value="">Select a volume</option>
+                            <option selected disabled hidden value="">
+                              {{ 'Select_a_volume' | translate }}</option>
                           </select>
                         </div>
                         <!-- !volume -->
                         <!-- bind -->
                         <div class="input-group input-group-sm col-sm-6" ng-if="volume.Type === 'bind'">
-                          <span class="input-group-addon">host</span>
+                          <span class="input-group-addon">{{ 'host' | translate }}</span>
                           <input type="text" class="form-control" ng-model="volume.Source" placeholder="e.g. /path/on/host">
                         </div>
                         <!-- !bind -->
                         <!-- read-only -->
                         <div class="input-group input-group-sm col-sm-5" style="margin-left: 5px;">
                           <div class="btn-group btn-group-sm">
-                            <label class="btn btn-primary" ng-model="volume.ReadOnly" uib-btn-radio="false">Writable</label>
-                            <label class="btn btn-primary" ng-model="volume.ReadOnly" uib-btn-radio="true">Read-only</label>
+                            <label class="btn btn-primary" ng-model="volume.ReadOnly" uib-btn-radio="false">
+                                {{ 'Writable' | translate }}</label>
+                            <label class="btn btn-primary" ng-model="volume.ReadOnly" uib-btn-radio="true">
+                                {{ 'Read_only' | translate }}</label>
                           </div>
                         </div>
                         <!-- !read-only -->
@@ -350,10 +377,12 @@
             <form class="form-horizontal" style="margin-top: 15px;">
               <!-- network-input -->
               <div class="form-group">
-                <label for="container_network" class="col-sm-2 col-lg-1 control-label text-left">Network</label>
+                <label for="container_network" class="col-sm-2 col-lg-1 control-label text-left">
+                    {{ 'Network' | translate }}</label>
                 <div class="col-sm-9">
                   <select class="form-control" ng-model="formValues.Network">
-                    <option selected disabled hidden value="">Select a network</option>
+                    <option selected disabled hidden value="">
+                        {{ 'Select_a_network' | translate }}</option>
                     <option ng-repeat="net in availableNetworks | orderBy: 'Name'" ng-value="net.Name">{{ net.Name }}</option>
                   </select>
                 </div>
@@ -363,16 +392,19 @@
               <!-- extra-networks -->
               <div class="form-group">
                 <div class="col-sm-12" style="margin-top: 5px;">
-                  <label class="control-label text-left">Extra networks</label>
+                  <label class="control-label text-left">
+                      {{ 'Extra_networks' | translate }}</label>
                   <span class="label label-default interactive" style="margin-left: 10px;" ng-click="addExtraNetwork()">
-                    <i class="fa fa-plus-circle" aria-hidden="true"></i> add extra network
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i> {{ 'add_extra_network' | translate }}
                   </span>
                 </div>
                 <!-- network-input-list -->
                 <div class="col-sm-12 form-inline" style="margin-top: 10px;">
                   <div ng-repeat="network in formValues.ExtraNetworks" style="margin-top: 2px;">
                     <select class="form-control" ng-model="network.Name">
-                      <option selected disabled hidden value="">Select a network</option>
+                      <option selected disabled hidden value="">
+                          {{ 'Select_a_network' | translate }}
+                        </option>
                       <option ng-repeat="net in availableNetworks" ng-value="net.Name">{{ net.Name }}</option>
                     </select>
                     <button class="btn btn-sm btn-danger" type="button" ng-click="removeExtraNetwork($index)">
@@ -386,16 +418,17 @@
               <!-- extra-hosts-variables -->
               <div class="form-group" ng-if="applicationState.endpoint.apiVersion >= 1.25">
                 <div class="col-sm-12" style="margin-top: 5px;">
-                  <label class="control-label text-left">Hosts file entries</label>
+                  <label class="control-label text-left">
+                      {{ 'Hosts_file_entries' | translate }}</label>
                   <span class="label label-default interactive" style="margin-left: 10px;" ng-click="addHostsEntry()">
-                    <i class="fa fa-plus-circle" aria-hidden="true"></i> add additional entry
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i> {{ 'add_additional_entry' | translate }}
                   </span>
                 </div>
                 <!-- hosts-input-list -->
                 <div class="col-sm-12 form-inline" style="margin-top: 10px;">
                   <div ng-repeat="variable in formValues.HostsEntries" style="margin-top: 2px;">
                     <div class="input-group col-sm-5 input-group-sm">
-                      <span class="input-group-addon">value</span>
+                      <span class="input-group-addon">{{ 'value' | translate }}</span>
                       <input type="text" class="form-control" ng-model="variable.value" placeholder="e.g. host:IP">
                     </div>
                     <button class="btn btn-sm btn-danger" type="button" ng-click="removeHostsEntry($index)">
@@ -415,20 +448,20 @@
               <!-- labels -->
               <div class="form-group">
                 <div class="col-sm-12" style="margin-top: 5px;">
-                  <label class="control-label text-left">Service labels</label>
+                  <label class="control-label text-left">{{ 'Service_labels' | translate }}</label>
                   <span class="label label-default interactive" style="margin-left: 10px;" ng-click="addLabel()">
-                    <i class="fa fa-plus-circle" aria-hidden="true"></i> add service label
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i> {{ 'add_service_label' | translate }}
                   </span>
                 </div>
                 <!-- labels-input-list -->
                 <div class="col-sm-12 form-inline" style="margin-top: 10px;">
                   <div ng-repeat="label in formValues.Labels" style="margin-top: 2px;">
                     <div class="input-group col-sm-5 input-group-sm">
-                      <span class="input-group-addon">name</span>
+                      <span class="input-group-addon">{{ 'name' | translate }}</span>
                       <input type="text" class="form-control" ng-model="label.key" placeholder="e.g. com.example.foo">
                     </div>
                     <div class="input-group col-sm-5 input-group-sm">
-                      <span class="input-group-addon">value</span>
+                      <span class="input-group-addon">{{ 'value' | translate }}</span>
                       <input type="text" class="form-control" ng-model="label.value" placeholder="e.g. bar">
                     </div>
                     <button class="btn btn-sm btn-danger" type="button" ng-click="removeLabel($index)">
@@ -442,20 +475,21 @@
               <!-- container-labels -->
               <div class="form-group">
                 <div class="col-sm-12" style="margin-top: 5px;">
-                  <label class="control-label text-left">Container labels</label>
+                  <label class="control-label text-left">
+                      {{ 'Container_labels' | translate }}</label>
                   <span class="label label-default interactive" style="margin-left: 10px;" ng-click="addContainerLabel()">
-                    <i class="fa fa-plus-circle" aria-hidden="true"></i> add container label
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i> {{ 'add_container_label' | translate }}
                   </span>
                 </div>
                 <!-- container-labels-input-list -->
                 <div class="col-sm-12 form-inline" style="margin-top: 10px;">
                   <div ng-repeat="label in formValues.ContainerLabels" style="margin-top: 2px;">
                     <div class="input-group col-sm-5 input-group-sm">
-                      <span class="input-group-addon">name</span>
+                      <span class="input-group-addon">{{ 'name' | translate }}</span>
                       <input type="text" class="form-control" ng-model="label.key" placeholder="e.g. com.example.foo">
                     </div>
                     <div class="input-group col-sm-5 input-group-sm">
-                      <span class="input-group-addon">value</span>
+                      <span class="input-group-addon">{{ 'value' | translate }}</span>
                       <input type="text" class="form-control" ng-model="label.value" placeholder="e.g. bar">
                     </div>
                     <button class="btn btn-sm btn-danger" type="button" ng-click="removeContainerLabel($index)">

@@ -1,7 +1,8 @@
 <rd-header>
   <rd-header-title title-text="Create network"></rd-header-title>
   <rd-header-content>
-    <a ui-sref="docker.networks">Networks</a> &gt; Add network
+    <a ui-sref="docker.networks">{{ 'Networks' | translate }}</a> &gt; 
+    {{ 'Add_network' | translate }}
   </rd-header-content>
 </rd-header>
 
@@ -12,21 +13,25 @@
         <form class="form-horizontal" name="networkCreationForm">
           <!-- name-input -->
           <div class="form-group">
-            <label for="network_name" class="col-sm-2 col-lg-1 control-label text-left">Name</label>
+            <label for="network_name" class="col-sm-2 col-lg-1 control-label text-left">
+                {{ 'Name' | translate }}</label>
             <div class="col-sm-10 col-lg-11">
               <input type="text" class="form-control" ng-model="config.Name" id="network_name" placeholder="e.g. myNetwork">
             </div>
           </div>
           <!-- !name-input -->
           <div class="col-sm-12 form-section-title">
-            Driver configuration
+              {{ 'Driver_configuration' | translate }}
           </div>
           <!-- driver-input -->
           <div class="form-group">
-            <label for="network_driver" class="col-sm-2 col-lg-1 control-label text-left">Driver</label>
+            <label for="network_driver" class="col-sm-2 col-lg-1 control-label text-left">
+                {{ 'Driver' | translate }}
+              </label>
             <div class="col-sm-10 col-lg-11">
               <select class="form-control" ng-options="driver for driver in availableNetworkDrivers" ng-model="config.Driver" ng-if="availableNetworkDrivers.length > 0">
-                <option disabled hidden value="">Select a driver</option>
+                <option disabled hidden value="">
+                    {{ 'Select_a_driver' | translate }}</option>
               </select>
               <input type="text" class="form-control" ng-model="config.Driver" id="network_driver" placeholder="e.g. driverName" ng-if="availableNetworkDrivers.length === 0">
             </div>
@@ -36,22 +41,22 @@
           <div class="form-group">
             <div class="col-sm-12" style="margin-top: 5px;">
               <label class="control-label text-left">
-                Driver options
+                  {{ 'Driver_options' | translate }}
                 <portainer-tooltip position="bottom" message="Driver options are specific to the selected driver. Please refer to the selected driver documentation."></portainer-tooltip>
               </label>
               <span class="label label-default interactive" style="margin-left: 10px;" ng-click="addDriverOption()">
-                <i class="fa fa-plus-circle" aria-hidden="true"></i> add driver option
+                <i class="fa fa-plus-circle" aria-hidden="true"></i> {{ 'add_driver_option' | translate }}
               </span>
             </div>
             <!-- driver-options-input-list -->
             <div class="col-sm-12 form-inline" style="margin-top: 10px;">
               <div ng-repeat="option in formValues.DriverOptions" style="margin-top: 2px;">
                 <div class="input-group col-sm-5 input-group-sm">
-                  <span class="input-group-addon">name</span>
+                  <span class="input-group-addon">{{ 'name' | translate }}</span>
                   <input type="text" class="form-control" ng-model="option.name" placeholder="e.g. com.docker.network.bridge.enable_icc">
                 </div>
                 <div class="input-group col-sm-5 input-group-sm">
-                  <span class="input-group-addon">value</span>
+                  <span class="input-group-addon">{{ 'value' | translate }}</span>
                   <input type="text" class="form-control" ng-model="option.value" placeholder="e.g. true">
                 </div>
                 <button class="btn btn-sm btn-danger" type="button" ng-click="removeDriverOption($index)">
@@ -67,15 +72,17 @@
           <!-- !macvlan-management -->
           <div ng-hide="config.Driver === 'macvlan' && formValues.Macvlan.Scope === 'swarm'">
             <div class="col-sm-12 form-section-title">
-              Network configuration
+                {{ 'Network_configuration' | translate }}
             </div>
             <!-- subnet-gateway-inputs -->
             <div class="form-group">
-              <label for="network_subnet" class="col-sm-2 col-lg-1 control-label text-left">Subnet</label>
+              <label for="network_subnet" class="col-sm-2 col-lg-1 control-label text-left">
+                  {{ 'Subnet' | translate }}</label>
               <div class="col-sm-4 col-lg-5">
                 <input type="text" class="form-control" ng-model="formValues.Subnet" id="network_subnet" placeholder="e.g. 172.20.0.0/16">
               </div>
-              <label for="network_gateway" class="col-sm-2 col-lg-1 control-label text-left">Gateway</label>
+              <label for="network_gateway" class="col-sm-2 col-lg-1 control-label text-left">
+                  {{ 'Gateway' | translate }}</label>
               <div class="col-sm-4 col-lg-5">
                 <input type="text" class="form-control" ng-model="formValues.Gateway" id="network_gateway" placeholder="e.g. 172.20.10.11">
               </div>
@@ -83,11 +90,11 @@
             <!-- !subnet-gateway-inputs -->
             <!-- iprange-auxaddr-inputs -->
             <div class="form-group">
-              <label for="network_iprange" class="col-sm-2 col-lg-1 control-label text-left">IP range</label>
+              <label for="network_iprange" class="col-sm-2 col-lg-1 control-label text-left">IP {{ 'range' | translate }}</label>
               <div class="col-sm-4 col-lg-5">
                 <input type="text" class="form-control" ng-model="formValues.IPRange" id="network_iprange" placeholder="e.g. 172.20.10.128/25">
               </div>
-              <label for="network_auxaddr" class="col-sm-2 col-lg-1 control-label text-left">Exclude IPs</label>
+              <label for="network_auxaddr" class="col-sm-2 col-lg-1 control-label text-left">{{ 'Exclude' | translate }} IPs</label>
               <div class="col-sm-4 col-lg-5">
                 <input type="text" class="form-control" ng-model="formValues.AuxAddress" id="network_auxaddr" placeholder="e.g. my-router=172.20.10.129">
               </div>
@@ -95,25 +102,25 @@
             <!-- !iprange-auxaddr-inputs -->
           </div>
           <div class="col-sm-12 form-section-title">
-            Advanced configuration
+              {{ 'Advanced_configuration' | translate }}
           </div>
           <!-- labels -->
           <div class="form-group">
             <div class="col-sm-12" style="margin-top: 5px;">
-              <label class="control-label text-left">Labels</label>
+              <label class="control-label text-left">{{ 'Labels' | translate }}</label>
               <span class="label label-default interactive" style="margin-left: 10px;" ng-click="addLabel()">
-                <i class="fa fa-plus-circle" aria-hidden="true"></i> add label
+                <i class="fa fa-plus-circle" aria-hidden="true"></i> {{ 'add_label' | translate }}
               </span>
             </div>
             <!-- labels-input-list -->
             <div class="col-sm-12 form-inline" style="margin-top: 10px;">
               <div ng-repeat="label in formValues.Labels" style="margin-top: 2px;">
                 <div class="input-group col-sm-5 input-group-sm">
-                  <span class="input-group-addon">name</span>
+                  <span class="input-group-addon">{{ 'name' | translate }}</span>
                   <input type="text" class="form-control" ng-model="label.key" placeholder="e.g. com.example.foo">
                 </div>
                 <div class="input-group col-sm-5 input-group-sm">
-                  <span class="input-group-addon">value</span>
+                  <span class="input-group-addon">{{ 'value' | translate }}</span>
                   <input type="text" class="form-control" ng-model="label.value" placeholder="e.g. bar">
                 </div>
                 <button class="btn btn-sm btn-danger" type="button" ng-click="removeLabel($index)">
@@ -128,7 +135,7 @@
           <div class="form-group" ng-hide="config.Driver === 'macvlan' && formValues.Macvlan.Scope === 'local'">
             <div class="col-sm-12">
               <label for="ownership" class="control-label text-left">
-                Restrict external access to the network
+                  {{ 'Restrict_external_access_to_the_network' | translate }}
               </label>
               <label name="ownership" class="switch" style="margin-left: 20px;">
                 <input type="checkbox" ng-model="config.Internal">
@@ -141,7 +148,7 @@
           <div class="form-group" ng-hide="config.Driver === 'macvlan' && formValues.Macvlan.Scope === 'local'">
             <div class="col-sm-12">
               <label for="attachable" class="control-label text-left">
-                Enable manual container attachment
+                  {{ 'Enable_manual_container_attachment' | translate }}
               </label>
               <label name="attachable" class="switch" style="margin-left: 20px;">
                 <input type="checkbox" ng-model="config.Attachable">
@@ -152,7 +159,7 @@
           <!-- !attachable -->
           <div ng-if="applicationState.endpoint.mode.agentProxy && applicationState.endpoint.mode.provider === 'DOCKER_SWARM_MODE' && config.Driver !== 'overlay' && config.Driver !== 'macvlan'">
             <div class="col-sm-12 form-section-title">
-              Deployment
+                {{ 'Deployment' | translate }}
             </div>
             <!-- node-selection -->
             <node-selector model="formValues.NodeName">
@@ -164,14 +171,16 @@
           <!-- !access-control -->
           <!-- actions -->
           <div class="col-sm-12 form-section-title">
-            Actions
+              {{ 'Actions' | translate }}
           </div>
           <div class="form-group">
             <div class="col-sm-12">
               <button type="button" class="btn btn-primary btn-sm" ng-disabled="state.actionInProgress || !config.Name || (config.Driver === 'macvlan' && networkCreationForm.$invalid)"
                 ng-click="create()" button-spinner="state.actionInProgress">
-                <span ng-hide="state.actionInProgress">Create the network</span>
-                <span ng-show="state.actionInProgress">Creating network...</span>
+                <span ng-hide="state.actionInProgress">
+                    {{ 'Create_the_network' | translate }}</span>
+                <span ng-show="state.actionInProgress">
+                    {{ 'Creating_network' | translate }}...</span>
               </button>
               <i id="createResourceSpinner" class="fa fa-cog fa-spin" style="margin-left: 5px; display: none;"></i>
               <span class="text-danger" ng-if="state.formValidationError" style="margin-left: 5px;">{{ state.formValidationError }}</span>
