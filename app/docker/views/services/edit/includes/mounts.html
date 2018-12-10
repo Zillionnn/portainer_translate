@@ -3,35 +3,35 @@
     <rd-widget-header icon="fa-tasks" title-text="Mounts">
       <div class="nopadding">
         <a class="btn btn-default btn-sm pull-right" ng-click="isUpdating ||addMount(service)" ng-disabled="isUpdating">
-          <i class="fa fa-plus-circle" aria-hidden="true"></i> mount
+          <i class="fa fa-plus-circle" aria-hidden="true"></i> {{ 'mount' | translate }}
         </a>
       </div>
     </rd-widget-header>
     <rd-widget-body ng-if="service.ServiceMounts.length === 0">
-      <p>There are no mounts for this service.</p>
+      <p>{{ 'There_are_no_mounts_for_this_service' | translate }}</p>
     </rd-widget-body>
     <rd-widget-body ng-if="service.ServiceMounts.length > 0" classes="no-padding">
       <table class="table" >
         <thead>
           <tr>
-            <th ng-if="isAdmin || allowBindMounts">Type</th>
-            <th>Source</th>
-            <th>Target</th>
-            <th>Read only</th>
-            <th>Actions</th>
+            <th ng-if="isAdmin || allowBindMounts">{{ 'Type' | translate }}</th>
+            <th>{{ 'Source' | translate }}</th>
+            <th>{{ 'Target' | translate }}</th>
+            <th>{{ 'Read_only' | translate }}</th>
+            <th>{{ 'Actions' | translate }}</th>
           </tr>
         </thead>
         <tbody>
           <tr ng-repeat="mount in service.ServiceMounts">
             <td ng-if="isAdmin || allowBindMounts">
               <select name="mountType" class="form-control" ng-model="mount.Type" ng-disabled="isUpdating">
-                <option value="volume">Volume</option>
-                <option value="bind">Bind</option>
+                <option value="volume">{{ 'Volume' | translate }}</option>
+                <option value="bind">{{ 'Bind' | translate }}</option>
               </select>
             </td>
             <td>
               <select class="form-control" ng-model="mount.Source" ng-options="vol.Id|truncate:30 as vol.Id for vol in availableVolumes" ng-if="mount.Type === 'volume'">
-                <option selected disabled hidden value="">Select a volume</option>
+                <option selected disabled hidden value="">{{ 'Select_a_volume' | translate }}</option>
               </select>
               <input type="text" class="form-control" ng-model="mount.Source" placeholder="e.g. /tmp/portainer/data" ng-change="updateMount(service, mount)" ng-disabled="isUpdating || (!isAdmin && !allowBindMounts && mount.Type === 'bind')" ng-if="mount.Type === 'bind'">
             </td>
@@ -55,13 +55,16 @@
     <rd-widget-footer>
       <div class="btn-toolbar" role="toolbar">
         <div class="btn-group" role="group">
-          <button type="button" class="btn btn-primary btn-sm" ng-disabled="!hasChanges(service, ['ServiceMounts'])" ng-click="updateService(service)">Apply changes</button>
+          <button type="button" class="btn btn-primary btn-sm" ng-disabled="!hasChanges(service, ['ServiceMounts'])" ng-click="updateService(service)">
+              {{ 'Apply_changes' | translate }}</button>
           <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
-            <li><a ng-click="cancelChanges(service, ['ServiceMounts'])">Reset changes</a></li>
-            <li><a ng-click="cancelChanges(service)">Reset all changes</a></li>
+            <li><a ng-click="cancelChanges(service, ['ServiceMounts'])">
+                {{ 'Reset_changes' | translate }}</a></li>
+            <li><a ng-click="cancelChanges(service)">
+                {{ 'Reset_all_changes' | translate }}</a></li>
           </ul>
         </div>
       </div>

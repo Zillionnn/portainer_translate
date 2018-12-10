@@ -3,20 +3,20 @@
     <rd-widget-header icon="fa-tasks" title-text="Placement constraints">
       <div class="nopadding">
         <a class="btn btn-default btn-sm pull-right" ng-click="isUpdating || addPlacementConstraint(service)" ng-disabled="isUpdating">
-          <i class="fa fa-plus-circle" aria-hidden="true"></i> placement constraint
+          <i class="fa fa-plus-circle" aria-hidden="true"></i> {{ 'placement_constraint' | translate }}
         </a>
       </div>
     </rd-widget-header>
     <rd-widget-body ng-if="service.ServiceConstraints.length === 0">
-      <p>There are no placement constraints for this service.</p>
+      <p>{{ 'no_placement_constraints_for' | translate }}</p>
     </rd-widget-body>
     <rd-widget-body ng-if="service.ServiceConstraints.length > 0" classes="no-padding">
       <table class="table" >
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Operator</th>
-            <th>Value</th>
+            <th>{{ 'Name' | translate }}</th>
+            <th>{{ 'Operator' | translate }}</th>
+            <th>{{ 'Value' | translate }}</th>
           </tr>
         </thead>
         <tbody>
@@ -51,13 +51,13 @@
     <rd-widget-footer>
       <div class="btn-toolbar" role="toolbar">
         <div class="btn-group" role="group">
-          <button type="button" class="btn btn-primary btn-sm" ng-disabled="!hasChanges(service, ['ServiceConstraints'])" ng-click="updateService(service)">Apply changes</button>
+          <button type="button" class="btn btn-primary btn-sm" ng-disabled="!hasChanges(service, ['ServiceConstraints'])" ng-click="updateService(service)">{{ 'Apply_changes' | translate }}</button>
           <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
-            <li><a ng-click="cancelChanges(service, ['ServiceConstraints'])">Reset changes</a></li>
-            <li><a ng-click="cancelChanges(service)">Reset all changes</a></li>
+            <li><a ng-click="cancelChanges(service, ['ServiceConstraints'])">{{ 'Reset_changes' | translate }}</a></li>
+            <li><a ng-click="cancelChanges(service)">{{ 'Reset_all_changes' | translate }}</a></li>
           </ul>
         </div>
       </div>

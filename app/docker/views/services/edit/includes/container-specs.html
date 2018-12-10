@@ -9,43 +9,46 @@
             <td><code ng-if="service.Command">{{ service.Command|command }}</code></td>
             <td>
               <p class="small text-muted" style="margin-top: 10px;">
-                Command to execute.
+                  {{ 'Command_to_execute' | translate }}
               </p>
             </td>
           </tr>
           <tr>
-            <td>Args</td>
+            <td>{{ 'Args' | translate }}</td>
             <td><code ng-if="service.Arguments">{{ service.Arguments }}</code></td>
             <td>
               <p class="small text-muted" style="margin-top: 10px;">
-                Arguments passed to command in container.
+                <!-- Arguments passed to command in container. -->
+                {{ 'Arguments_passed_to_command' | translate }}
               </p>
             </td>
           </tr>
           <tr>
-            <td>User</td>
+            <td>{{ 'User' | translate }}</td>
             <td>{{ service.User }}</td>
             <td>
               <p class="small text-muted" style="margin-top: 10px;">
-                Username or UID.
+                  {{ 'Username_or_UID' | translate }}
               </p>
             </td>
           </tr>
           <tr>
-            <td>Working directory</td>
+            <td>{{ 'Working_directory' | translate }}</td>
             <td>{{ service.Dir }}</td>
             <td>
               <p class="small text-muted" style="margin-top: 10px;">
-                Working directory inside the container.
+                <!-- Working directory inside the container. -->
+                {{ 'Working_directory_inside_the_container' | translate }}
               </p>
             </td>
           </tr>
           <tr>
-            <td>Stop grace period</td>
+            <td>{{ 'Stop_grace_period' | translate }}</td>
             <td>{{ service.StopGracePeriod }}</td>
             <td>
               <p class="small text-muted" style="margin-top: 10px;">
-                Time to wait before force killing a container (default none).
+                <!-- Time to wait before force killing a container (default none). -->
+                {{ 'Time_wait_before_force_killing' | translate }}
               </p>
             </td>
           </tr>
