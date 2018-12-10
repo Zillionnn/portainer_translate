@@ -213,7 +213,7 @@
   "specify_URL_logo_For_an_optimal_display_by_55px":"您可以在此处指定徽标的URL。 为获得最佳显示效果，徽标尺寸应为155像素×55像素。",
   "Use_external_templates":"使用外部模板",
   "App_Templates":"添加模板",
-  "When_using_external_templates_something_will_disabled.":"使用外部模板时，将禁用应用内模板管理。",
+  "externaltemplates":"使用外部模板时，将禁用应用内模板管理。",
   "specify_the_URL_to_your_own_template_definitions":"您可以在此处指定自己的模板定义文件的URL。",
   "See":"看到",
   "documentation":"文档",
@@ -454,7 +454,7 @@
   "Cron_rule":"克朗规则",
 
   "Retry_count":"重试次数",
-  "No_retries_endpoint_acoint.":"无法到达端点时的重试次数。",
+  "No_retries_endpoint_acoint":"无法到达端点时的重试次数。",
   "Retry_interval":"重试间隔",
   "Job_content":"工作内容",
   "This_schedule_executed_via":"此计划将通过目标主机上的特权容器执行。 您可以访问主机文件系统",
@@ -802,7 +802,9 @@
   "Indicate_Dockerfile_erfile":"指示 tarball/repository 库中 dockerfile 的路径 (在使用 dockerfile 时被忽略)。",
   "Build_the_image":"构建映像",
   "Image_building_in_progress":"正在进行映像构建",
-  "No_build_output_available":"没有可用的生成输出。"
+  "No_build_output_available":"没有可用的生成输出。",
+
+  "Retry_interval_in_seconds":"重试间隔 (以秒为单位)。"
   
   
   

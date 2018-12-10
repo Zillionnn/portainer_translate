@@ -53,7 +53,8 @@
             <div class="col-sm-12">
               <label for="toggle_templates" class="control-label text-left">
                   {{ 'Use_external_templates' | translate }}
-                <portainer-tooltip position="bottom" message=" {{ 'When_using_external_templates_something_will_disabled' | translate }}"></portainer-tooltip>
+                <portainer-tooltip position="bottom" message="{{ 'externaltemplates' | translate }}"></portainer-tooltip>
+                
               </label>
               <label class="switch" style="margin-left: 20px;">
                 <input type="checkbox" name="toggle_templates" ng-model="formValues.externalTemplates"><i></i>

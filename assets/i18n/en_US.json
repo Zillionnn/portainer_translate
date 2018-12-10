@@ -212,7 +212,8 @@
   "specify_URL_logo_For_an_optimal_display_by_55px":"You can specify the URL to your logo here. For an optimal display, logo dimensions should be 155px by 55px.",
   "Use_external_templates":"Use external templates",
   "App_Templates":"App Templates",
-  "When_using_external_templates_something_will_disabled.":"When using external templates, in-app template management will be disabled.",
+
+  "externaltemplates":"When using external templates, in-app template management will be disabled.",
   "specify_the_URL_to_your_own_template_definitions":"You can specify the URL to your own template definitions file here.",
   "See":"See",
   "documentation":"documentation",
@@ -449,7 +450,7 @@
   "Cron_rule":"Cron rule",
 
   "Retry_count":"Retry count",
-  "No_retries_endpoint_acoint.":"Number of retries when it's not possible to reach the endpoint.",
+  "No_retries_endpoint_acoint":"Number of retries when it's not possible to reach the endpoint.",
   "Retry_interval":"Retry interval",
   "Job_content":"Job content",
   "This_schedule_executed_via":"This schedule will be executed via a privileged container on the target hosts. You can access the host filesystem under the",
@@ -795,7 +796,8 @@
   "Indicate_Dockerfile_erfile":"Indicate the path to the Dockerfile within the tarball/repository (ignored when using a Dockerfile).",
   "Build_the_image":"Build the image",
   "Image_building_in_progress":"Image building in progress",
-  "No_build_output_available":"No build output available."
+  "No_build_output_available":"No build output available.",
+  "Retry_interval_in_seconds":"Retry interval in seconds."
   
   
 

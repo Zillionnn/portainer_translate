@@ -110,7 +110,7 @@
           <div class="form-group">
             <div class="col-sm-12">
               <button type="button" class="btn btn-primary btn-sm" ng-disabled="state.actionInProgress || !formValues.Name || !formValues.URL || (formValues.Authentication && (!formValues.Username || !formValues.Password))" ng-click="addRegistry()" button-spinner="state.actionInProgress">
-                <span ng-hide="state.actionInProgress">{{ 'Add_registry' | translate }}Add registry</span>
+                <span ng-hide="state.actionInProgress">{{ 'Add_registry' | translate }}</span>
                 <span ng-show="state.actionInProgress">{{ 'Adding_registry' | translate }}...</span>
               </button>
             </div>
