@@ -1,7 +1,7 @@
 <rd-header>
-  <rd-header-title title-text="Profile details"></rd-header-title>
+  <rd-header-title title-text="{{ 'Profile_details' | translate }}"></rd-header-title>
   <rd-header-content>
-    <a ui-sref="storidge.cluster">Storidge</a> &gt; <a ui-sref="storidge.profiles">Profiles</a> &gt; {{ profile.Name }}
+    <a ui-sref="storidge.cluster">{{ 'Storidge' | translate }}</a> &gt; <a ui-sref="storidge.profiles">Profiles</a> &gt; {{ profile.Name }}
   </rd-header-content>
 </rd-header>
 
@@ -12,18 +12,19 @@
         <form class="form-horizontal" name="storidgeUpdateProfileForm">
           <!-- name-input -->
           <div class="form-group">
-            <label for="profile_name" class="col-sm-2 col-lg-1 control-label text-left">Name</label>
+            <label for="profile_name" class="col-sm-2 col-lg-1 control-label text-left">
+                {{ 'Name' | translate }}</label>
             <div class="col-sm-10 col-lg-11">
               <input type="text" class="form-control" ng-model="profile.Name" name="profile_name" disabled>
             </div>
           </div>
           <!-- !name-input -->
           <div class="col-sm-12 form-section-title">
-            Profile configuration
+              {{ 'Profile_configuration' | translate }}
           </div>
           <!-- directory -->
           <div class="form-group" ng-class="{ 'has-error': storidgeUpdateProfileForm.profile_directory.$invalid }">
-            <label for="profile_directory" class="col-sm-2 col-lg-1 control-label text-left">Directory</label>
+            <label for="profile_directory" class="col-sm-2 col-lg-1 control-label text-left">{{ 'Directory' | translate }}</label>
             <div class="col-sm-10 col-lg-11">
               <input type="text" class="form-control" ng-model="profile.Directory" name="profile_directory" placeholder="e.g. /cio/myProfile" required>
             </div>
@@ -31,14 +32,14 @@
           <div class="form-group" ng-show="storidgeUpdateProfileForm.profile_directory.$invalid">
             <div class="col-sm-12 small text-warning">
               <div ng-messages="storidgeUpdateProfileForm.profile_directory.$error">
-                <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> This field is required.</p>
+                <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{ 'This_field_is_required' | translate }}</p>
               </div>
             </div>
           </div>
           <!-- !directory -->
           <!-- capacity -->
           <div class="form-group" ng-class="{ 'has-error': storidgeUpdateProfileForm.profile_capacity.$invalid }">
-            <label for="profile_capacity" class="col-sm-2 col-lg-1 control-label text-left">Capacity</label>
+            <label for="profile_capacity" class="col-sm-2 col-lg-1 control-label text-left">{{ 'Capacity' | translate }}</label>
             <div class="col-sm-10 col-lg-11">
               <input type="number" class="form-control" ng-model="profile.Capacity" name="profile_capacity" ng-min="1" ng-max="64000" placeholder="2" required>
             </div>
@@ -46,16 +47,16 @@
           <div class="form-group" ng-show="storidgeUpdateProfileForm.profile_capacity.$invalid">
             <div class="col-sm-12 small text-warning">
               <div ng-messages="storidgeUpdateProfileForm.profile_capacity.$error">
-                <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> This field is required.</p>
-                <p ng-message="min"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Minimum value for capacity: 1.</p>
-                <p ng-message="max"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Maximum value for capacity: 64000.</p>
+                <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{ 'This_field_is_required' | translate }}</p>
+                <p ng-message="min"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{ 'Minimum_value_for_capacity' | translate }}: 1.</p>
+                <p ng-message="max"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{ 'Maximum_value_for_capacity' | translate }}: 64000.</p>
               </div>
             </div>
           </div>
           <!-- !capacity -->
           <!-- redundancy -->
           <div class="form-group">
-            <label for="profile_redundancy" class="col-sm-2 col-lg-1 control-label text-left">Redundancy</label>
+            <label for="profile_redundancy" class="col-sm-2 col-lg-1 control-label text-left">{{ 'Redundancy' | translate }}</label>
             <div class="col-sm-10 col-lg-11">
               <select name="profile_redundancy" ng-model="profile.Redundancy" ng-options="+(opt.value) as opt.label for opt in RedundancyOptions" class="form-control">
               </select>
@@ -64,18 +65,18 @@
           <!-- !redudancy -->
           <!-- provisioning -->
           <div class="form-group">
-            <label for="profile_provisioning" class="col-sm-2 col-lg-1 control-label text-left">Provisioning</label>
+            <label for="profile_provisioning" class="col-sm-2 col-lg-1 control-label text-left">{{ 'Provisioning' | translate }}</label>
             <div class="col-sm-10 col-lg-11">
               <select name="profile_provisioning" ng-model="profile.Provisioning" class="form-control">
-                <option value="thin">Thin</option>
-                <option value="thick">Thick</option>
+                <option value="thin">{{ 'Thin' | translate }}</option>
+                <option value="thick">{{ 'Thick' | translate }}</option>
               </select>
             </div>
           </div>
           <!-- !provisioning -->
           <!-- type -->
           <div class="form-group">
-            <label for="profile_type" class="col-sm-2 col-lg-1 control-label text-left">Type</label>
+            <label for="profile_type" class="col-sm-2 col-lg-1 control-label text-left">{{ 'Type' | translate }}</label>
             <div class="col-sm-10 col-lg-11">
               <select name="profile_type" ng-model="profile.Type" class="form-control">
                 <option value="ssd">SSD</option>
@@ -100,11 +101,11 @@
               </div>
             </div>
             <div class="form-group" ng-if="state.LimitIOPS">
-              <label for="min_iops" class="col-sm-1 control-label text-left">Min</label>
+              <label for="min_iops" class="col-sm-1 control-label text-left">{{ 'Min' | translate }}</label>
               <div class="col-sm-5" ng-class="{ 'has-error': storidgeUpdateProfileForm.min_iops.$invalid }">
                 <input type="number" class="form-control" ng-model="profile.MinIOPS" name="min_iops" ng-min="30" ng-max="999999" placeholder="100" required>
               </div>
-              <label for="max_iops" class="col-sm-1 control-label text-left">Max</label>
+              <label for="max_iops" class="col-sm-1 control-label text-left">{{ 'Max' | translate }}</label>
               <div class="col-sm-5" ng-class="{ 'has-error': storidgeUpdateProfileForm.max_iops.$invalid }">
                 <input type="number" class="form-control" ng-model="profile.MaxIOPS" name="max_iops" ng-min="30" ng-max="999999" placeholder="2000" required>
               </div>
@@ -112,18 +113,18 @@
             <div class="form-group" ng-show="storidgeUpdateProfileForm.min_iops.$invalid">
               <div class="col-sm-12 small text-warning">
                 <div ng-messages="storidgeUpdateProfileForm.min_iops.$error">
-                  <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> A value is required for Min IOPS.</p>
-                  <p ng-message="min"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Minimum value for Min IOPS: 30.</p>
-                  <p ng-message="max"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Maximum value for Min IOPS: 999999.</p>
+                  <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{ 'required_for_Min_IOPS' | translate }}.</p>
+                  <p ng-message="min"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{ 'Minimum_value_for_Min_IOPS' | translate }}: 30.</p>
+                  <p ng-message="max"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{ 'Maximum_value_for_Min_IOPS' | translate }}: 999999.</p>
                 </div>
               </div>
             </div>
             <div class="form-group" ng-show="storidgeUpdateProfileForm.max_iops.$invalid">
               <div class="col-sm-12 small text-warning">
                 <div ng-messages="storidgeUpdateProfileForm.max_iops.$error">
-                  <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> A value is required for Max IOPS.</p>
-                  <p ng-message="min"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Minimum value for Max IOPS: 30.</p>
-                  <p ng-message="max"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Maximum value for Max IOPS: 999999.</p>
+                  <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{ 'required_for_Max_IOPS' | translate }}</p>
+                  <p ng-message="min"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{ 'Minimum_value_for_Max_IOPS' | translate }}: 30.</p>
+                  <p ng-message="max"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{ 'Maximum_value_for_Max_IOPS' | translate }}: 999999.</p>
                 </div>
               </div>
             </div>
@@ -132,12 +133,12 @@
           <!-- bandwidth -->
           <div ng-if="!state.LimitIOPS || state.NoLimit">
             <div class="col-sm-12 form-section-title">
-              Bandwidth
+                {{ 'Bandwidth' | translate }}
             </div>
             <div class="form-group">
               <div class="col-sm-12">
                 <label for="permissions" class="control-label text-left">
-                  Limit bandwidth
+                    {{ 'Limit_bandwidth' | translate }}
                 </label>
                 <label class="switch" style="margin-left: 20px;">
                   <input type="checkbox" ng-model="state.LimitBandwidth" ng-change="state.NoLimit = (!state.LimitBandwidth && !state.LimitIOPS)"><i></i>
@@ -145,11 +146,11 @@
               </div>
             </div>
             <div class="form-group" ng-if="state.LimitBandwidth">
-              <label for="min_bandwidth" class="col-sm-1 control-label text-left">Min</label>
+              <label for="min_bandwidth" class="col-sm-1 control-label text-left">{{ 'Min' | translate }}</label>
               <div class="col-sm-5" ng-class="{ 'has-error': storidgeUpdateProfileForm.min_bandwidth.$invalid }">
                 <input type="number" class="form-control" ng-model="profile.MinBandwidth" name="min_bandwidth" ng-min="1" ng-max="5000" placeholder="1" required>
               </div>
-              <label for="max_bandwidth" class="col-sm-1 control-label text-left">Max</label>
+              <label for="max_bandwidth" class="col-sm-1 control-label text-left">{{ 'Max' | translate }}</label>
               <div class="col-sm-5" ng-class="{ 'has-error': storidgeUpdateProfileForm.max_bandwidth.$invalid }">
                 <input type="number" class="form-control" ng-model="profile.MaxBandwidth" name="max_bandwidth" ng-min="1" ng-max="5000" placeholder="100" required>
               </div>
@@ -157,18 +158,18 @@
             <div class="form-group" ng-show="storidgeUpdateProfileForm.min_bandwidth.$invalid">
               <div class="col-sm-12 small text-warning">
                 <div ng-messages="storidgeUpdateProfileForm.min_bandwidth.$error">
-                  <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> A value is required for Min bandwidth.</p>
-                  <p ng-message="min"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Minimum value for Min bandwidth: 1.</p>
-                  <p ng-message="max"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Maximum value for Min bandwidth: 5000.</p>
+                  <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>{{ 'required_for_Min_bandwidth' | translate }}</p>
+                  <p ng-message="min"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{ 'Minimum_value_for_Min_bandwidth' | translate }}: 1.</p>
+                  <p ng-message="max"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{ 'Maximum_value_for_Min_bandwidth' | translate }}: 5000.</p>
                 </div>
               </div>
             </div>
             <div class="form-group" ng-show="storidgeUpdateProfileForm.max_bandwidth.$invalid">
               <div class="col-sm-12 small text-warning">
                 <div ng-messages="storidgeUpdateProfileForm.max_bandwidth.$error">
-                  <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> A value is required for Max bandwidth.</p>
-                  <p ng-message="min"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Minimum value for Max bandwidth: 1.</p>
-                  <p ng-message="max"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Maximum value for Max bandwidth: 5000.</p>
+                  <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{ 'required_for_Max_bandwidth' | translate }}</p>
+                  <p ng-message="min"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{ 'Minimum_value_for_Max_bandwidth' | translate }}: 1.</p>
+                  <p ng-message="max"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{ 'Maximum_value_for_Max_bandwidth' | translate }}: 5000.</p>
                 </div>
               </div>
             </div>
@@ -176,17 +177,17 @@
           <!-- !bandwidth -->
           <!-- actions -->
           <div class="col-sm-12 form-section-title">
-            Actions
+              {{ 'Actions' | translate }}
           </div>
           <div class="form-group">
             <div class="col-sm-12">
               <button type="button" class="btn btn-primary btn-sm" ng-click="update()" ng-disabled="state.updateInProgress || !storidgeUpdateProfileForm.$valid" button-spinner="state.updateInProgress">
-                <span ng-hide="state.updateInProgress">Update the profile</span>
-                <span ng-show="state.updateInProgress">Updating profile...</span>
+                <span ng-hide="state.updateInProgress">{{ 'Update_the_profile' | translate }}</span>
+                <span ng-show="state.updateInProgress">{{ 'Updating_profile' | translate }}...</span>
               </button>
               <button type="button" class="btn btn-danger btn-sm" ng-click="delete()" ng-disabled="state.deleteInProgress" button-spinner="state.deleteInProgress">
-                <span ng-hide="state.deleteInProgress">Delete the profile</span>
-                <span ng-show="state.deleteInProgress">Deleting profile...</span>
+                <span ng-hide="state.deleteInProgress">{{ 'Delete_the_profile' | translate }}</span>
+                <span ng-show="state.deleteInProgress">{{ 'Deleting_profile' | translate }}...</span>
               </button>
             </div>
           </div>

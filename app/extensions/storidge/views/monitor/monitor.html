@@ -1,18 +1,19 @@
 <rd-header>
-  <rd-header-title title-text="Storidge monitor">
+  <rd-header-title title-text="{{ 'Storidge_monitor' | translate }}">
     <a data-toggle="tooltip" title="Refresh" ui-sref="storidge.monitor" ui-sref-opts="{reload: true}">
       <i class="fa fa-sync" aria-hidden="true"></i>
     </a>
   </rd-header-title>
   <rd-header-content>
-    <a ui-sref="storidge.cluster">Storidge</a> &gt; <a ui-sref="storidge.monitor">Cluster monitoring</a>
+    <a ui-sref="storidge.cluster">{{ 'Storidge' | translate }}</a> &gt; <a ui-sref="storidge.monitor">
+        {{ 'Cluster_monitoring' | translate }}</a>
   </rd-header-content>
 </rd-header>
 
 <div class="row">
   <div class="col-md-4 col-sm-12">
     <rd-widget>
-      <rd-widget-header icon="fa-tachometer-alt" title-text="Cluster capacity"></rd-widget-header>
+      <rd-widget-header icon="fa-tachometer-alt" title-text="{{ 'Cluster_capacity' | translate }}"></rd-widget-header>
       <rd-widget-body>
         <div class="chart-container" style="position: relative;">
           <canvas id="capacityChart" width="770" height="400"></canvas>
@@ -21,11 +22,11 @@
           <table class="table">
             <tbody>
               <tr>
-                <td>Capacity available</td>
+                <td>{{ 'Capacity_available' | translate }}</td>
                 <td>{{ ((info.FreeCapacity * 100) / info.TotalCapacity).toFixed(1) }}%</td>
               </tr>
               <tr>
-                <td>Provisioned capacity</td>
+                <td>{{ 'Provisioned_capacity' | translate }}</td>
                 <td>
                   {{ info.ProvisionedCapacity | humansize }}
                   <span ng-if="+(info.ProvisionedCapacity) >= +(info.TotalCapacity)">
@@ -34,7 +35,7 @@
                 </td>
               </tr>
               <tr>
-                <td>Total capacity</td>
+                <td>{{ 'Total_capacity' | translate }}</td>
                 <td>{{ info.TotalCapacity | humansize }}</td>
               </tr>
             </tbody>
@@ -54,11 +55,11 @@
           <table class="table">
             <tbody>
               <tr>
-                <td>IOPS available</td>
+                <td>{{ 'IOPS_available' | translate }}</td>
                 <td>{{ ((info.FreeIOPS * 100) / info.TotalIOPS).toFixed(1) }}%</td>
               </tr>
               <tr>
-                <td>Provisioned IOPS</td>
+                <td>{{ 'Provisioned_IOPS' | translate }}</td>
                 <td>
                   {{ info.ProvisionedIOPS | number }}
                   <span ng-if="+(info.ProvisionedIOPS) >= +(info.TotalIOPS)">
@@ -67,7 +68,7 @@
                 </td>
               </tr>
               <tr>
-                <td>Total IOPS</td>
+                <td>{{ 'Total_IOPS' | translate }}</td>
                 <td>{{ info.TotalIOPS | number }}</td>
               </tr>
             </tbody>
@@ -87,11 +88,11 @@
           <table class="table">
             <tbody>
               <tr>
-                <td>Bandwidth available</td>
+                <td>{{ 'Bandwidth_available' | translate }}</td>
                 <td>{{ ((info.FreeBandwidth * 100) / info.TotalBandwidth).toFixed(1) }}%</td>
               </tr>
               <tr>
-                <td>Provisioned bandwidth</td>
+                <td>{{ 'Provisioned_bandwidth' | translate }}</td>
                 <td>
                   {{ info.ProvisionedBandwidth | humansize }}
                   <span ng-if="+(info.ProvisionedBandwidth) >= +(info.TotalBandwidth)">
@@ -100,7 +101,7 @@
                 </td>
               </tr>
               <tr>
-                <td>Total bandwidth</td>
+                <td>{{ 'Total_bandwidth' | translate }}</td>
                 <td>{{ info.TotalBandwidth | humansize }} /s</td>
               </tr>
             </tbody>
@@ -114,7 +115,7 @@
 <div class="row">
   <div class="col-sm-12">
     <storidge-cluster-events-datatable
-    title-text="Cluster events" title-icon="fa-history"
+    title-text="{{ 'Cluster_events' | translate }}" title-icon="fa-history"
     dataset="events" table-key="storidge_cluster_events"
     order-by="Time"  reverse-order="true"
     ></storidge-cluster-events-datatable>

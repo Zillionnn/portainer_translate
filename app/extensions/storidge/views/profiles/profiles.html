@@ -12,13 +12,13 @@
 <div class="row">
   <div class="col-md-12">
     <rd-widget>
-      <rd-widget-header icon="fa-plus" title-text="Add a profile">
+      <rd-widget-header icon="fa-plus" title-text="{{ 'Add_a_profile' | translate }}">
       </rd-widget-header>
       <rd-widget-body>
         <form class="form-horizontal">
           <!-- name-input -->
           <div class="form-group">
-            <label for="profile_name" class="col-sm-1 control-label text-left">Name</label>
+            <label for="profile_name" class="col-sm-1 control-label text-left">{{ 'Name' | translate }}</label>
             <div class="col-sm-11">
               <input type="text" class="form-control" ng-model="formValues.Name" id="profile_name" placeholder="e.g. myProfile">
             </div>
@@ -27,17 +27,18 @@
           <!-- tag-note -->
           <div class="form-group">
             <div class="col-sm-12">
-              <span class="small text-muted">Note: The profile will be created using the default properties.</span>
+              <span class="small text-muted">
+                  {{ 'Note_The_profile_will_be_created_using_operties' | translate }}</span>
             </div>
           </div>
           <!-- !tag-note -->
           <div class="form-group">
             <div class="col-sm-12">
               <button type="button" class="btn btn-primary btn-sm" ng-click="create()" ng-disabled="state.actionInProgress || !formValues.Name" button-spinner="state.actionInProgress">
-                <span ng-hide="state.actionInProgress">Create the profile</span>
-                <span ng-show="state.actionInProgress">Creating profile...</span>
+                <span ng-hide="state.actionInProgress">{{ 'Create_the_profile' | translate }}</span>
+                <span ng-show="state.actionInProgress">{{ 'Creating_profile' | translate }}...</span>
               </button>
-              <button type="button" class="btn btn-primary btn-sm" ng-disabled="!formValues.Name" ui-sref="storidge.profiles.new({ profileName: formValues.Name })">Modify defaults...</button>
+              <button type="button" class="btn btn-primary btn-sm" ng-disabled="!formValues.Name" ui-sref="storidge.profiles.new({ profileName: formValues.Name })">{{ 'Modify_defaults' | translate }}...</button>
             </div>
           </div>
         </form>

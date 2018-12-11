@@ -961,10 +961,94 @@
   "Update_configuration":"Update configuration",
   "Container_specification":"Container specification",
   "ports":"ports",
-  "Service_specification":"ervice specification"
-  
-  
-  
+  "Service_specification":"ervice specification",
+
+  "Cluster_visualizer":"Cluster visualizer",
+  "Only_display_running_tasks":"Only display running tasks",
+  "version":"version",
+
+  "State_Message":"State Message",
+  "Error_message":"Error message",
+  "Create_volume":"Create volume",
+
+  "Storidge":"Storidge",
+  "Create_the_volume":"Create the volume",
+  "Creating_volume":"Creating volume",
+  "Volume_list":"Volume list",
+
+  "Volume_details":"Volume details",
+  "Mount_path":"Mount path",
+  "Volume_options":"Volume options",
+  "Mounted_At":"Mounted At",
+
+  "Module":"Module",
+  "No_events_available":"No events available.",
+  "No_nodes_available":"No nodes available",
+  "No_profile_available":"No profile available.",
+
+  "Select_a_profile":"Select a profile",
+  "Storidge_cluster":"Storidge cluster",
+  "Cluster_details":"Cluster details",
+  "Domain":"Domain",
+  "Shutdown_the_cluster":"Shutdown the cluster",
+  "Shutting_down_cluster":"Shutting down cluster",
+  "Reboot_the_cluster":"Reboot the cluster",
+  "Rebooting_cluster":"Rebooting cluster",
+
+  "Storidge_monitor":"Storidge monitor",
+  "Cluster_monitoring":"Cluster monitoring",
+  "Cluster_capacity":"Cluster capacity",
+  "Capacity_available":"Capacity available",
+  "Provisioned_capacity":"Provisioned capacity",
+  "Total_capacity":"Total capacity",
+  "IOPS_available":"IOPS available",
+  "Provisioned_IOPS":"Provisioned IOPS",
+  "Total_IOPS":"Total IOPS",
+  "Bandwith_usage":"Bandwith usage",
+  "Bandwidth_available":"Bandwidth available",
+  "Provisioned_bandwidth":"Provisioned bandwidth",
+  "Total_bandwidth":"Total bandwidth",
+  "Cluster_events":"Cluster events",
+  "Create_profile":"Create profile",
+  "Add_profile":"Add profile",
+  "Profile_configuration":"Profile configuration",
+  "Minimum_value_for_capacity":"Minimum value for capacity",
+  "Maximum_value_for_capacity":" Maximum value for capacity",
+  "Redundancy":"Redundancy",
+  "Provisioning":"Provisioning",
+  "Thin":"Thin",
+  "Thick":"Thick",
+  "Min":"Min",
+  "Max":"Max",
+  "required_for_Min_IOPS":"A value is required for Min IOPS.",
+  "Minimum_value_for_Min_IOPS":"Minimum value for Min IOPS",
+  "Maximum_value_for_Min_IOPS":"Maximum value for Min IOPS",
+  "required_for_Max_IOPS":"A value is required for Max IOPS.",
+  "Minimum_value_for_Max_IOPS":"Minimum value for Max IOPS",
+  "Maximum_value_for_Max_IOPS":"Maximum value for Max IOPS",
+  "Bandwidth":"Bandwidth",
+  "Limit_bandwidth":"Limit bandwidth",
+  "required_for_Min_bandwidth":"A value is required for Min bandwidth.",
+  "Minimum_value_for_Min_bandwidth":"Minimum value for Min bandwidth",
+  "Maximum_value_for_Min_bandwidth":"Maximum value for Min bandwidth",
+  "required_for_Max_bandwidth":"A value is required for Max bandwidth.",
+  "Minimum_value_for_Max_bandwidth":"Minimum value for Max bandwidth",
+  "Maximum_value_for_Max_bandwidth":"Maximum value for Max bandwidth",
+  "Create_the_profile":"Create the profile",
+  "Creating_profile":"Creating profile",
+
+  "Profile_details":"Profile details",
+  "Capacity":"Capacity",
+
+  "Update_the_profile":"Update the profile",
+  "Updating_profile":"Updating profile",
+  "Delete_the_profile":"Delete the profile",
+  "Deleting_profile":"Deleting profile",
+
+  "Add_a_profile":"Add a profile",
+  "Note_The_profile_will_be_created_using_operties":"Note: The profile will be created using the default properties.",
+  "Modify_defaults":"Modify defaults"
+   
 
   
 

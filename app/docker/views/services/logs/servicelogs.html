@@ -1,7 +1,10 @@
 <rd-header>
   <rd-header-title title-text="Service logs"></rd-header-title>
   <rd-header-content>
-    <a ui-sref="docker.services">Services</a> > <a ui-sref="docker.services.service({id: service.Id})">{{ service.Name }}</a> &gt; Logs
+    <a ui-sref="docker.services">
+{{ 'Services' | translate }}</a> >
+ <a ui-sref="docker.services.service({id: service.Id})">
+   {{ service.Name }}</a> &gt; {{ 'Logs' | translate }}
   </rd-header-content>
 </rd-header>
 

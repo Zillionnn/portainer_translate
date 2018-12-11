@@ -4,7 +4,7 @@
       <i class="fa fa-sync" aria-hidden="true"></i>
     </a>
   </rd-header-title>
-  <rd-header-content>Swarm</rd-header-content>
+  <rd-header-content>{{ 'Swarm' | translate }}</rd-header-content>
 </rd-header>
 
 <div class="row">
@@ -15,19 +15,19 @@
         <table class="table">
           <tbody>
             <tr>
-              <td>Nodes</td>
+              <td>{{ 'Nodes' | translate }}</td>
               <td>{{ info.Swarm.Nodes }}</td>
             </tr>
             <tr>
-              <td>Docker API version</td>
+              <td>Docker API {{ 'version' | translate }}</td>
               <td>{{ docker.ApiVersion }}</td>
             </tr>
             <tr>
-              <td>Total CPU</td>
+              <td>{{ 'Total_CPU' | translate }}</td>
               <td>{{ totalCPU }}</td>
             </tr>
             <tr>
-              <td>Total memory</td>
+              <td>{{ 'Total_memory' | translate }}</td>
               <td>{{ totalMemory|humansize: 2 }}</td>
             </tr>
             <tr>
